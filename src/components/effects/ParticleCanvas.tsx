@@ -68,7 +68,7 @@ export function ParticleCanvas() {
         ? ["#a855f7", "#8b5cf6", "#ec4899", "#6366f1"]
         : preset === "obsidian-glow"
         ? ["#ffffff", "#e2e8f0", "#94a3b8", "#cbd5e1"]
-        : ["#00f2fe", "#4facfe", "#38bdf8", "#818cf8"]; // cyber-zen default
+        : ["#0284c7", "#009fe3", "#00b4b8", "#38bdf8", "#2dd4bf"]; // Logo-matched Sky Blue to Teal
 
     const particleCount = Math.min(Math.floor((width * height) / 18000), 75);
     const particles: Particle[] = [];

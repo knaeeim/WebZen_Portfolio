@@ -29,9 +29,9 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-[auto] sm:min-h-[88vh] pt-24 xs:pt-28 sm:pt-32 pb-10 sm:pb-16 flex items-center justify-center overflow-hidden">
-      {/* Ambient background glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[550px] h-[220px] sm:h-[320px] bg-gradient-to-tr from-cyan-500/20 via-blue-600/15 to-purple-600/20 blur-[90px] sm:blur-[130px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/3 right-4 sm:right-10 w-[180px] sm:w-[260px] h-[180px] sm:h-[260px] bg-purple-600/10 blur-[70px] sm:blur-[90px] rounded-full pointer-events-none" />
+      {/* Ambient background glows matching logo palette (Sky Blue to Teal) */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[580px] h-[220px] sm:h-[340px] bg-gradient-to-tr from-[#0284c7]/25 via-[#009fe3]/18 to-[#00b4b8]/22 blur-[90px] sm:blur-[140px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/3 right-4 sm:right-10 w-[180px] sm:w-[280px] h-[180px] sm:h-[280px] bg-[#00b4b8]/15 blur-[70px] sm:blur-[100px] rounded-full pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 text-center z-10 w-full">
         

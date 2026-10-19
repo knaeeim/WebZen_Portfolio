@@ -26,7 +26,7 @@ export default function Home() {
 
   if (!isLoaded) {
     return (
-      <div className="min-h-screen bg-[#05070f] flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-b from-[#031326] to-[#020e1a] flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-2xl shadow-cyan-500/25 border border-white/15 animate-pulse">
             <img src="/logo.png" alt="WebZen Bangladesh" className="w-full h-full object-cover" />
@@ -74,7 +74,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#05070f] text-slate-100 flex flex-col selection:bg-cyan-500 selection:text-black">
+    <div className="relative min-h-screen bg-gradient-to-b from-[#031326] via-[#020e1a] to-[#02151d] text-slate-100 flex flex-col selection:bg-cyan-400 selection:text-slate-950">
       {/* Visual background layers */}
       <ParticleCanvas />
       <MouseSpotlight />
