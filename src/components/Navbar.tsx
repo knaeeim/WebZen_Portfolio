@@ -232,7 +232,7 @@ export function Navbar() {
             {/* Theme Toggle Button (Deep Oceanic Dark / Crisp Oceanic Light) */}
             <button
               onClick={toggleTheme}
-              className={`flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl border transition-all cursor-pointer shadow-md ${
+              className={`flex items-center justify-center w-[34px] h-[34px] rounded-xl border transition-all cursor-pointer shadow-md shrink-0 ${
                 theme === "light"
                   ? "bg-white hover:bg-slate-100 border-cyan-500/40 text-amber-500 shadow-slate-200"
                   : "bg-[#0a2847] hover:bg-[#0f3c69] border-cyan-500/35 text-amber-300 shadow-black/30"
@@ -250,7 +250,7 @@ export function Navbar() {
             {/* Language Switcher (Bangla / English) */}
             <button
               onClick={toggleLanguage}
-              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl border text-xs font-bold transition-all shadow-md cursor-pointer ${
+              className={`flex items-center gap-2 h-[34px] px-3.5 rounded-xl border text-xs font-bold transition-all shadow-md cursor-pointer ${
                 theme === "light"
                   ? "bg-white hover:bg-slate-50 border-cyan-500/35 text-slate-800 hover:text-cyan-600 shadow-slate-200"
                   : "bg-[#0a2847] hover:bg-[#0f3c69] border-cyan-500/35 text-white hover:text-cyan-300 shadow-black/30"
@@ -262,7 +262,7 @@ export function Navbar() {
             </button>
 
             {/* Live Dhaka Time Status */}
-            <div className={`hidden xl:flex items-center gap-2 px-3.5 py-2 rounded-xl border text-xs font-bold shadow-md ${
+            <div className={`hidden xl:flex items-center gap-2 h-[34px] px-3.5 rounded-xl border text-xs font-bold shadow-md ${
               theme === "light"
                 ? "bg-emerald-500/10 border-emerald-500/25 text-emerald-700 shadow-slate-200"
                 : "bg-emerald-500/15 border-emerald-500/30 text-emerald-300 shadow-black/20"
@@ -287,7 +287,7 @@ export function Navbar() {
           <div className="flex items-center gap-1.5 lg:hidden">
             <button
               onClick={toggleTheme}
-              className={`p-2 rounded-lg border transition-all cursor-pointer ${
+              className={`w-9 h-9 flex items-center justify-center rounded-lg border transition-all cursor-pointer ${
                 theme === "light"
                   ? "bg-white border-cyan-500/30 text-slate-700"
                   : "bg-[#0a2847] border-cyan-500/30 text-amber-300"
@@ -299,7 +299,7 @@ export function Navbar() {
 
             <button
               onClick={toggleLanguage}
-              className={`px-2.5 py-1.5 rounded-lg border text-xs font-bold transition-all cursor-pointer ${
+              className={`h-9 px-2.5 flex items-center justify-center rounded-lg border text-xs font-bold transition-all cursor-pointer ${
                 theme === "light"
                   ? "bg-white border-cyan-500/30 text-cyan-700"
                   : "bg-[#0a2847] border-cyan-500/30 text-cyan-300"
@@ -310,14 +310,14 @@ export function Navbar() {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`p-2 rounded-lg border transition-all cursor-pointer ${
+              className={`w-9 h-9 flex items-center justify-center rounded-lg border transition-all cursor-pointer ${
                 theme === "light"
                   ? "bg-white border-cyan-500/30 text-slate-800"
                   : "bg-[#0a2847] border-cyan-500/30 text-cyan-300 hover:text-white"
               }`}
               aria-label="Toggle Menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
