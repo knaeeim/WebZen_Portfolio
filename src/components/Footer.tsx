@@ -11,16 +11,20 @@ import {
 } from "lucide-react";
 
 import { useLanguage } from "@/context/LanguageContext";
+import { useSite } from "@/context/SiteContext";
 
 export function Footer() {
   const { language } = useLanguage();
+  const { data } = useSite();
+  const { contact, footer } = data;
   const isBn = language === "bn";
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const usefulLinks = isBn
+  // Nav links: Use custom CMS links if defined, otherwise fallback to defaults
+  const fallbackUsefulLinks = isBn
     ? [
         { label: "সার্ভিস", href: "#services" },
         { label: "সমাধান", href: "#services" },
@@ -38,12 +42,47 @@ export function Footer() {
         { label: "Contact", href: "#contact" },
       ];
 
+  const usefulLinks = (footer?.navLinks && footer.navLinks.length > 0)
+    ? footer.navLinks.map((link) => ({
+        label: isBn && link.labelBn ? link.labelBn : link.label,
+        href: link.url,
+      }))
+    : fallbackUsefulLinks;
+
   const socialLinks = [
-    { name: "GitHub", href: "https://github.com/webzen-bd", label: "GH" },
-    { name: "LinkedIn", href: "https://linkedin.com/company/webzen-bangladesh", label: "IN" },
-    { name: "Twitter", href: "https://twitter.com/webzen_bd", label: "X" },
-    { name: "Dribbble", href: "https://dribbble.com", label: "DR" },
+    { name: "GitHub", href: contact?.socials?.github || "https://github.com/webzen-bd", label: "GH" },
+    { name: "LinkedIn", href: contact?.socials?.linkedin || "https://linkedin.com/company/webzen-bangladesh", label: "IN" },
+    { name: "Twitter", href: contact?.socials?.twitter || "https://twitter.com/webzen_bd", label: "X" },
+    { name: "Facebook", href: contact?.socials?.facebook || "https://facebook.com/webzenbangladesh", label: "FB" },
   ];
+
+  // Dynamic Contact info with fallback to contact or defaults
+  const contactAddress = isBn
+    ? (footer?.addressBn || contact?.addressBn || "ক্রিস্টাল আইসিটি টাওয়ার, গুলশান-২, ঢাকা-১২১২, বাংলাদেশ")
+    : (footer?.address || contact?.address || "Crystal ICT Tower, Gulshan-2, Dhaka-1212, Bangladesh");
+
+  const contactPhone = footer?.phone || contact?.phone || "+880 1886-932936";
+  const contactEmail = footer?.email || contact?.email || "hello@webzenbd.com";
+
+  const contactTitle = isBn
+    ? (footer?.contactTitleBn || "সরাসরি যোগাযোগ")
+    : (footer?.contactTitle || "Contact Us");
+
+  const buttonText = isBn
+    ? (footer?.buttonTextBn || "মেসেজ পাঠান")
+    : (footer?.buttonText || "Send a Message");
+
+  const buttonUrl = footer?.buttonUrl || "#contact";
+
+  const agencyBio = isBn
+    ? (footer?.bioBn || "Webzen BD একটি প্রিমিয়াম ফুল-স্ট্যাক ডিজিটাল এজেন্সি। আমরা আল্ট্রা-ফাস্ট ওয়েব অ্যাপ্লিকেশন, কাস্টম এন্টারপ্রাইজ সফটওয়্যার ও আধুনিক UI/UX আর্কিটেকচার তৈরি করি।")
+    : (footer?.bio || "Webzen BD is an elite full-stack digital agency crafting ultra-fast web applications, custom enterprise dashboards, and bespoke UI/UX architecture.");
+
+  const copyrightText = isBn
+    ? (footer?.copyrightTextBn || "সর্বস্বত্ব সংরক্ষিত।")
+    : (footer?.copyrightText || "All rights reserved.");
+
+  const bottomLocation = footer?.bottomLocationText || "Designed & Engineered in Dhaka";
 
   return (
     <footer className="relative bg-[#0B0B0E] border-t border-white/[0.08] text-neutral-300 pt-10 pb-8 overflow-hidden z-10">
@@ -68,9 +107,7 @@ export function Footer() {
             </Link>
 
             <p className={`text-sm text-neutral-400 font-normal leading-relaxed max-w-sm ${isBn ? "font-bangla-body" : ""}`}>
-              {isBn
-                ? "Webzen BD একটি প্রিমিয়াম ফুল-স্ট্যাক ডিজিটাল এজেন্সি। আমরা আল্ট্রা-ফাস্ট ওয়েব অ্যাপ্লিকেশন, কাস্টম এন্টারপ্রাইজ সফটওয়্যার ও আধুনিক UI/UX আর্কিটেকচার তৈরি করি।"
-                : "Webzen BD is an elite full-stack digital agency crafting ultra-fast web applications, custom enterprise dashboards, and bespoke UI/UX architecture."}
+              {agencyBio}
             </p>
 
             {/* Social Media Icons */}
@@ -93,7 +130,7 @@ export function Footer() {
           {/* Middle Column: Useful Links */}
           <div className="lg:col-span-3 space-y-4">
             <h4 className={`text-xs sm:text-sm tracking-[0.2em] uppercase text-white ${isBn ? "font-bangla-ui font-bold" : "font-display font-black"}`}>
-              {isBn ? "প্রয়োজনীয় লিংক" : "Useful Links"}
+              {isBn ? (footer?.navLinksTitleBn || "প্রয়োজনীয় লিংক") : (footer?.navLinksTitle || "Useful Links")}
             </h4>
             <ul className="space-y-2.5">
               {usefulLinks.map((link) => (
@@ -113,7 +150,7 @@ export function Footer() {
           {/* Right Column: Contact Us featuring Dhaka location, phone number, email */}
           <div className="lg:col-span-4 space-y-4">
             <h4 className={`text-xs sm:text-sm tracking-[0.2em] uppercase text-white ${isBn ? "font-bangla-ui font-bold" : "font-display font-black"}`}>
-              {isBn ? "সরাসরি যোগাযোগ" : "Contact Us"}
+              {contactTitle}
             </h4>
 
             <div className="space-y-3.5 text-sm text-neutral-400">
@@ -121,7 +158,7 @@ export function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-[#06B6D4] shrink-0 mt-1" />
                 <span className={`leading-relaxed ${isBn ? "font-bangla-body" : ""}`}>
-                  {isBn ? "ক্রিস্টাল আইসিটি টাওয়ার, গুলশান-২, ঢাকা-১২১২, বাংলাদেশ" : "Crystal ICT Tower, Gulshan-2, Dhaka-1212, Bangladesh"}
+                  {contactAddress}
                 </span>
               </div>
 
@@ -129,10 +166,10 @@ export function Footer() {
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-[#06B6D4] shrink-0" />
                 <a 
-                  href="tel:+8801886932936" 
+                  href={`tel:${contactPhone.replace(/\s+/g, '')}`} 
                   className="hover:text-white transition-colors"
                 >
-                  +880 1886-932936
+                  {contactPhone}
                 </a>
               </div>
 
@@ -140,19 +177,19 @@ export function Footer() {
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-[#06B6D4] shrink-0" />
                 <a 
-                  href="mailto:hello@webzenbd.com" 
+                  href={`mailto:${contactEmail}`} 
                   className="hover:text-white transition-colors"
                 >
-                  hello@webzenbd.com
+                  {contactEmail}
                 </a>
               </div>
             </div>
 
             {/* Quick Action Pill */}
             <div className="pt-2">
-              <a href="#contact">
+              <a href={buttonUrl}>
                 <button className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 hover:border-white/30 text-xs font-bold text-white bg-white/[0.03] hover:bg-white/[0.08] transition-all cursor-pointer ${isBn ? "font-bangla-ui" : ""}`}>
-                  <span>{isBn ? "মেসেজ পাঠান" : "Send a Message"}</span>
+                  <span>{buttonText}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-[#06B6D4]" />
                 </button>
               </a>
@@ -164,12 +201,12 @@ export function Footer() {
         {/* Bottom Bar: Copyright & Back to Top */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
           <div>
-            © {new Date().getFullYear()} WEBZEN BD (webzenbd.com). All rights reserved.
+            © {new Date().getFullYear()} {data.companyName || "WEBZEN BD"} ({data.companyName ? data.companyName.toLowerCase().replace(/\s+/g, '') + ".com" : "webzenbd.com"}). {copyrightText}
           </div>
 
           <div className="flex items-center gap-6">
             <span className="text-neutral-500">
-              Designed & Engineered in Dhaka
+              {bottomLocation}
             </span>
 
             <button

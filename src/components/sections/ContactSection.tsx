@@ -199,12 +199,14 @@ export function ContactSection() {
               <div className="space-y-3 text-xs sm:text-sm text-neutral-400">
                 <div className="flex items-start gap-2.5">
                   <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.addressLabel}</div>
-                  <span className="text-neutral-200">{contact.address}</span>
+                  <span className={`text-neutral-200 ${isBn ? "font-bangla-body" : ""}`}>
+                    {isBn && contact.addressBn ? contact.addressBn : contact.address}
+                  </span>
                 </div>
 
                 <div className="flex items-center gap-2.5">
                   <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.phoneLabel}</div>
-                  <a href={`tel:${contact.phone}`} className="text-[#06B6D4] hover:underline">
+                  <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="text-[#06B6D4] hover:underline">
                     {contact.phone}
                   </a>
                 </div>
@@ -218,7 +220,9 @@ export function ContactSection() {
 
                 <div className="flex items-start gap-2.5">
                   <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.hoursLabel}</div>
-                  <span className="text-neutral-300">{contact.officeHours}</span>
+                  <span className={`text-neutral-300 ${isBn ? "font-bangla-body" : ""}`}>
+                    {isBn && contact.officeHoursBn ? contact.officeHoursBn : contact.officeHours}
+                  </span>
                 </div>
               </div>
 

@@ -145,8 +145,10 @@ export interface SiteContact {
   phone: string;
   whatsapp: string;
   address: string;
+  addressBn?: string;
   locationCity: string;
   officeHours: string;
+  officeHoursBn?: string;
   googleMapEmbedUrl: string;
   socials: {
     github: string;
@@ -180,6 +182,15 @@ export interface FooterConfig {
   solutionsTitle?: string;
   solutionsTitleBn?: string;
   solutionsLinks?: FooterLinkItem[];
+  contactTitle?: string;
+  contactTitleBn?: string;
+  address?: string;
+  addressBn?: string;
+  phone?: string;
+  email?: string;
+  buttonText?: string;
+  buttonTextBn?: string;
+  buttonUrl?: string;
   helpTitle?: string;
   helpTitleBn?: string;
   helpDesc?: string;

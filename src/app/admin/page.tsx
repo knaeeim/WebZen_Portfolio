@@ -38,6 +38,8 @@ import {
   Star,
   Heart,
   Phone, 
+  MapPin,
+  Mail,
   CheckCircle2,
   ExternalLink,
   ChevronRight,
@@ -1925,8 +1927,15 @@ export default function AdminPage() {
                   <span>Company Headquarters & Channels</span>
                 </h2>
                 <p className="text-xs text-slate-400 mt-1">
-                  Update official address in Dhaka, phone, direct WhatsApp integration, and operating hours.
+                  Update official address in Dhaka, phone, direct WhatsApp integration, and operating hours. These details are dynamically reflected in the website contact section and the footer.
                 </p>
+              </div>
+
+              <div className="p-3.5 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-xs text-cyan-200 flex items-center gap-2.5">
+                <MapPin className="w-4 h-4 text-cyan-400 shrink-0" />
+                <span>
+                  💡 <strong>টিপস:</strong> এখান থেকে ঠিকানা, ফোন এবং ইমেইল আপডেট করলে তা স্বয়ংক্রিয়ভাবে ওয়েবসাইটের <strong>Contact Us</strong> সেকশন এবং <strong>Footer</strong>-এ আপডেট হয়ে যাবে। এছাড়াও &apos;Footer CMS&apos; ট্যাব থেকে চাইলে ফুটারের জন্য নির্দিষ্ট কন্টাক্ট ইনফোও সেট করতে পারবেন।
+                </span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1953,15 +1962,30 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div>
-                <label className="text-xs font-semibold text-slate-300 block mb-1.5">
-                  Dhaka Office Physical Address
-                </label>
-                <Input
-                  value={data.contact.address}
-                  onChange={(e) => updateContact({ address: e.target.value })}
-                  className="bg-white/[0.04] border-white/10 text-white text-xs"
-                />
+              {/* Physical Addresses (EN & BN) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                    Dhaka Office Physical Address (English)
+                  </label>
+                  <Input
+                    value={data.contact.address}
+                    onChange={(e) => updateContact({ address: e.target.value })}
+                    placeholder="e.g. Crystal ICT Tower, Gulshan-2, Dhaka-1212, Bangladesh"
+                    className="bg-white/[0.04] border-white/10 text-white text-xs"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                    Dhaka Office Physical Address (বাংলা)
+                  </label>
+                  <Input
+                    value={data.contact.addressBn ?? ""}
+                    onChange={(e) => updateContact({ addressBn: e.target.value })}
+                    placeholder="যেমন: ক্রিস্টাল আইসিটি টাওয়ার, গুলশান-২, ঢাকা-১২১২, বাংলাদেশ"
+                    className="bg-white/[0.04] border-white/10 text-white text-xs"
+                  />
+                </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -1999,19 +2023,34 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div>
-                <label className="text-xs font-semibold text-slate-300 block mb-1.5">
-                  Office Operating Hours
-                </label>
-                <Input
-                  value={data.contact.officeHours}
-                  onChange={(e) => updateContact({ officeHours: e.target.value })}
-                  className="bg-white/[0.04] border-white/10 text-white text-xs"
-                />
+              {/* Operating Hours (EN & BN) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                    Office Operating Hours (English)
+                  </label>
+                  <Input
+                    value={data.contact.officeHours}
+                    onChange={(e) => updateContact({ officeHours: e.target.value })}
+                    placeholder="e.g. Sun – Thu: 9:30 AM – 7:00 PM (BST)"
+                    className="bg-white/[0.04] border-white/10 text-white text-xs"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                    Office Operating Hours (বাংলা)
+                  </label>
+                  <Input
+                    value={data.contact.officeHoursBn ?? ""}
+                    onChange={(e) => updateContact({ officeHoursBn: e.target.value })}
+                    placeholder="যেমন: রবি – বৃহঃ সকাল ৯:৩০ – সন্ধ্যা ৭:০০ (BST)"
+                    className="bg-white/[0.04] border-white/10 text-white text-xs"
+                  />
+                </div>
               </div>
 
               <Button
-                onClick={() => showNotification("Company info updated successfully!")}
+                onClick={() => showNotification("Company & Contact info updated successfully!")}
                 className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs h-10 px-6 rounded-xl"
               >
                 Save Contact Information
@@ -2344,7 +2383,172 @@ export default function AdminPage() {
               </div>
             </div>
 
-            {/* 3. Core Solutions Links (Add, Delete, Edit) */}
+            {/* 3. Footer Contact Column (CONTACT US - Location, Phone, Email, CTA Button) */}
+            <div className="glass-card rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                    <MapPin className="w-5 h-5 text-cyan-400" />
+                    <span>Footer Contact Details (Contact Us কলাম)</span>
+                    <Badge variant="outline" className="bg-cyan-500/10 text-cyan-400 border-cyan-500/20 text-[10px]">
+                      Live in Footer
+                    </Badge>
+                  </h3>
+                  <p className="text-xs text-slate-400 mt-1">
+                    ফুটারের ডানপাশের কলামে প্রদর্শিত অফিস ঠিকানা, ফোন নাম্বার, ইমেইল ও &quot;Send a Message&quot; বাটন পরিবর্তন করুন।
+                  </p>
+                </div>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    updateFooter({
+                      address: data.contact.address,
+                      addressBn: data.contact.addressBn,
+                      phone: data.contact.phone,
+                      email: data.contact.email,
+                    });
+                    showNotification("Synced from Company & Contact settings!");
+                  }}
+                  className="border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 text-xs rounded-xl shrink-0"
+                >
+                  <RotateCcw className="w-3.5 h-3.5 mr-1.5" />
+                  কোর কন্টাক্ট থেকে কপি করুন
+                </Button>
+              </div>
+
+              {/* Column Header Titles */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                    Section Header (English)
+                  </label>
+                  <Input
+                    value={data.footer?.contactTitle ?? "Contact Us"}
+                    onChange={(e) => updateFooter({ contactTitle: e.target.value })}
+                    placeholder="e.g. Contact Us"
+                    className="bg-white/[0.04] border-white/10 text-white text-xs"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                    Section Header (বাংলা)
+                  </label>
+                  <Input
+                    value={data.footer?.contactTitleBn ?? "সরাসরি যোগাযোগ"}
+                    onChange={(e) => updateFooter({ contactTitleBn: e.target.value })}
+                    placeholder="যেমন: সরাসরি যোগাযোগ"
+                    className="bg-white/[0.04] border-white/10 text-white text-xs"
+                  />
+                </div>
+              </div>
+
+              {/* Physical Addresses (EN & BN) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs font-semibold text-slate-300 flex items-center gap-1.5 mb-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>Office Physical Address (English)</span>
+                  </label>
+                  <Textarea
+                    rows={2}
+                    value={data.footer?.address ?? (data.contact.address || "Crystal ICT Tower, Gulshan-2, Dhaka-1212, Bangladesh")}
+                    onChange={(e) => updateFooter({ address: e.target.value })}
+                    placeholder="e.g. Crystal ICT Tower, Gulshan-2, Dhaka-1212, Bangladesh"
+                    className="bg-white/[0.04] border-white/10 text-white text-xs resize-none"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-slate-300 flex items-center gap-1.5 mb-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>Office Physical Address (বাংলা)</span>
+                  </label>
+                  <Textarea
+                    rows={2}
+                    value={data.footer?.addressBn ?? (data.contact.addressBn || "ক্রিস্টাল আইসিটি টাওয়ার, গুলশান-২, ঢাকা-১২১২, বাংলাদেশ")}
+                    onChange={(e) => updateFooter({ addressBn: e.target.value })}
+                    placeholder="যেমন: ক্রিস্টাল আইসিটি টাওয়ার, গুলশান-২, ঢাকা-১২১২, বাংলাদেশ"
+                    className="bg-white/[0.04] border-white/10 text-white text-xs resize-none"
+                  />
+                </div>
+              </div>
+
+              {/* Phone & Email */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs font-semibold text-slate-300 flex items-center gap-1.5 mb-1.5">
+                    <Phone className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>Contact Phone Number</span>
+                  </label>
+                  <Input
+                    value={data.footer?.phone ?? (data.contact.phone || "+880 1886-932936")}
+                    onChange={(e) => updateFooter({ phone: e.target.value })}
+                    placeholder="e.g. +880 1886-932936"
+                    className="bg-white/[0.04] border-white/10 text-white text-xs"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-slate-300 flex items-center gap-1.5 mb-1.5">
+                    <Mail className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>Contact Email Address</span>
+                  </label>
+                  <Input
+                    value={data.footer?.email ?? (data.contact.email || "hello@webzenbd.com")}
+                    onChange={(e) => updateFooter({ email: e.target.value })}
+                    placeholder="e.g. hello@webzenbd.com"
+                    className="bg-white/[0.04] border-white/10 text-white text-xs"
+                  />
+                </div>
+              </div>
+
+              {/* CTA Button Settings (Send a Message ↗) */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+                <div>
+                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                    Action Button Label (English)
+                  </label>
+                  <Input
+                    value={data.footer?.buttonText ?? "Send a Message"}
+                    onChange={(e) => updateFooter({ buttonText: e.target.value })}
+                    placeholder="e.g. Send a Message"
+                    className="bg-white/[0.04] border-white/10 text-white text-xs"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                    Action Button Label (বাংলা)
+                  </label>
+                  <Input
+                    value={data.footer?.buttonTextBn ?? "মেসেজ পাঠান"}
+                    onChange={(e) => updateFooter({ buttonTextBn: e.target.value })}
+                    placeholder="যেমন: মেসেজ পাঠান"
+                    className="bg-white/[0.04] border-white/10 text-white text-xs"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                    Action Button Link / Target
+                  </label>
+                  <Input
+                    value={data.footer?.buttonUrl ?? "#contact"}
+                    onChange={(e) => updateFooter({ buttonUrl: e.target.value })}
+                    placeholder="e.g. #contact or /contact"
+                    className="bg-white/[0.04] border-white/10 text-white text-xs"
+                  />
+                </div>
+              </div>
+
+              <Button
+                type="button"
+                onClick={() => showNotification("Footer contact details saved successfully!")}
+                className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs h-10 px-6 rounded-xl"
+              >
+                Save Footer Contact
+              </Button>
+            </div>
+
+            {/* 4. Core Solutions Links (Add, Delete, Edit) */}
             <div className="glass-card rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>

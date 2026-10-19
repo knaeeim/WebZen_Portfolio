@@ -392,12 +392,14 @@ export const initialSiteData: SiteData = {
   ],
 
   contact: {
-    email: "contact@webzen.com.bd",
+    email: "hello@webzenbd.com",
     phone: "+880 1886-932936",
     whatsapp: "+8801886932936",
-    address: "Level 8, Crystal ICT Tower, Gulshan-2, Dhaka-1212, Bangladesh",
+    address: "Crystal ICT Tower, Gulshan-2, Dhaka-1212, Bangladesh",
+    addressBn: "ক্রিস্টাল আইসিটি টাওয়ার, গুলশান-২, ঢাকা-১২১২, বাংলাদেশ",
     locationCity: "Dhaka, Bangladesh",
     officeHours: "Sun – Thu: 9:30 AM – 7:00 PM (BST)",
+    officeHoursBn: "রবি – বৃহঃ সকাল ৯:৩০ – সন্ধ্যা ৭:০০ (BST)",
     googleMapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14604.423985557732!2d90.40728952541467!3d23.79703796440263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c70c15ea1de1%3A0x97856381e88fb311!2sGulshan%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd",
     socials: {
       github: "https://github.com/webzen-bd",
@@ -460,6 +462,15 @@ export const initialSiteData: SiteData = {
       { id: "sol-4", label: "AI Chatbots & Automation", labelBn: "অটোমেশন ও AI চ্যাটবট", url: "#services" },
       { id: "sol-5", label: "Cloud Server Deployment", labelBn: "ক্লাউড সার্ভার ও মেইনটেন্যান্স", url: "#services" },
     ],
+    contactTitle: "Contact Us",
+    contactTitleBn: "সরাসরি যোগাযোগ",
+    address: "Crystal ICT Tower, Gulshan-2, Dhaka-1212, Bangladesh",
+    addressBn: "ক্রিস্টাল আইসিটি টাওয়ার, গুলশান-২, ঢাকা-১২১২, বাংলাদেশ",
+    phone: "+880 1886-932936",
+    email: "hello@webzenbd.com",
+    buttonText: "Send a Message",
+    buttonTextBn: "মেসেজ পাঠান",
+    buttonUrl: "#contact",
     helpTitle: "Direct Consultation",
     helpTitleBn: "সরাসরি পরামর্শ",
     helpDesc: "Have a specific project idea or urgent technical requirement? Talk directly to our technical lead.",
@@ -468,7 +479,7 @@ export const initialSiteData: SiteData = {
     helpButtonTextBn: "হোয়াটসঅ্যাপে চ্যাট",
     copyrightText: "All rights reserved.",
     copyrightTextBn: "সর্বস্বত্ব সংরক্ষিত।",
-    bottomLocationText: "Gulshan-2, Dhaka, Bangladesh",
+    bottomLocationText: "Designed & Engineered in Dhaka",
   },
 
   seo: {
