@@ -58,9 +58,12 @@ export function Footer() {
           
           {/* Left Column: WEBZEN BD logo, brief agency bio, and social media icons */}
           <div className="lg:col-span-5 space-y-6">
-            <Link href="/" className="inline-block">
+            <Link href="/" className="inline-flex items-center gap-2.5 group">
+              <div className="relative w-8 h-8 rounded-xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-[#F59E0B]/50 transition-all p-0.5 shadow-[0_0_12px_rgba(245,158,11,0.2)]">
+                <img src="/logo.png" alt="WebZen Logo" className="w-full h-full object-contain rounded-lg" />
+              </div>
               <span className="font-display font-black text-2xl tracking-wider text-white">
-                WEBZEN<span className="text-[#F59E0B] font-black ml-1.5 drop-shadow-[0_0_12px_rgba(245,158,11,0.5)]">BD</span>
+                WEBZEN<span className="text-[#F59E0B] font-black ml-1 drop-shadow-[0_0_12px_rgba(245,158,11,0.5)]">BD</span>
               </span>
             </Link>
 

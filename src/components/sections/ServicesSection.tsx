@@ -136,9 +136,21 @@ export function ServicesSection() {
               ))}
             </div>
 
-            {/* Dark Pill Button with a Border ("LEARN MORE ↗") */}
+            {/* Dark Pill Button with a Border ("LEARN MORE ↗") with Smooth Scroll */}
             <div className="pt-1">
-              <a href="#projects">
+              <a 
+                href="#projects"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.querySelector("#projects");
+                  if (target) {
+                    const navHeight = 72;
+                    const targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                    window.scrollTo({ top: targetPos, behavior: "smooth" });
+                    window.history.pushState(null, "", "#projects");
+                  }
+                }}
+              >
                 <motion.button 
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
@@ -151,7 +163,7 @@ export function ServicesSection() {
             </div>
           </motion.div>
 
-          {/* Right Column: Rich Glowing Isometric 3D Composition */}
+          {/* Right Column: Bespoke Interactive Product Suite & Engineering Matrix */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -162,40 +174,93 @@ export function ServicesSection() {
             {/* Ambient backlight glow */}
             <div className="absolute inset-0 bg-gradient-to-tr from-[#EC4899]/25 via-[#F59E0B]/20 to-transparent blur-[80px] rounded-full scale-90 pointer-events-none" />
 
-            {/* Main composition card */}
-            <div className="relative w-full rounded-3xl overflow-hidden border border-white/10 bg-[#121217]/80 backdrop-blur-2xl shadow-[0_30px_80px_rgba(0,0,0,0.8)] group hover:border-white/20 transition-all duration-500 p-2 sm:p-2.5">
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
-                <img
-                  src="/images/services-isometric-3d.jpg"
-                  alt="Webzen BD Engineering & 3D Interactive Architecture"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                
-                {/* Floating Micro-Badges for Depth */}
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 }}
-                  className="absolute top-4 left-4 bg-black/65 backdrop-blur-md border border-white/15 rounded-full px-3.5 py-1.5 flex items-center gap-2 shadow-lg"
-                >
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-[11px] font-bold text-white tracking-wide font-mono">Next.js 16 + React 19</span>
-                </motion.div>
-
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4 }}
-                  className="absolute bottom-4 right-4 bg-black/65 backdrop-blur-md border border-white/15 rounded-full px-3.5 py-1.5 flex items-center gap-2 shadow-lg"
-                >
-                  <span className={`text-[11px] font-bold text-white tracking-wide ${isBn ? "font-bangla-ui" : ""}`}>
-                    {isBn ? "৯৯.৯% আপটাইম SLA" : "99.9% Uptime SLA"}
-                  </span>
-                  <span className="w-2 h-2 rounded-full bg-[#F59E0B]" />
-                </motion.div>
+            {/* Bespoke Interactive Software Interface Card */}
+            <div className="relative w-full rounded-3xl overflow-hidden border border-white/10 bg-[#121217]/90 backdrop-blur-2xl shadow-[0_30px_80px_rgba(0,0,0,0.8)] group hover:border-white/20 transition-all duration-500 p-5 sm:p-6">
+              
+              {/* Window Controls & Live System Indicator */}
+              <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
+                </div>
+                <div className="flex items-center gap-2 text-[10px] font-mono text-neutral-400 bg-white/[0.04] px-3 py-1 rounded-full border border-white/5">
+                  <span className="w-2 h-2 rounded-full bg-[#F59E0B] animate-pulse" />
+                  <span>WEBZEN ARCHITECTURE SUITE</span>
+                </div>
               </div>
+
+              {/* Interactive Live Architecture Modules */}
+              <div className="pt-5 space-y-4">
+                
+                {/* Module 1: E-Commerce & bKash Instant Engine */}
+                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-[#F59E0B]/30 transition-all duration-300">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                      <span className={`text-xs font-bold text-white ${isBn ? "font-bangla-ui" : "font-display"}`}>
+                        {isBn ? "ই-কমার্স ও বিকাশ অটোমেটেড গেটওয়ে" : "E-Commerce & bKash Gateway"}
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-mono text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-md border border-emerald-400/20">
+                      LIVE • 0.3s TTFB
+                    </span>
+                  </div>
+                  <p className={`text-xs text-neutral-400 ${isBn ? "font-bangla-body" : ""}`}>
+                    {isBn 
+                      ? "ইনস্ট্যান্ট পেমেন্ট ভেরিফিকেশন, রিয়েল-টাইম এসএমএস নোটিফিকেশন ও অটোমেটিক ইনভয়েস।" 
+                      : "Direct payment reconciliation, automated SMS receipts & real-time webhook triggers."}
+                  </p>
+                </div>
+
+                {/* Module 2: Telehealth & Booking Pipeline */}
+                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-[#EC4899]/30 transition-all duration-300">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-[#EC4899]" />
+                      <span className={`text-xs font-bold text-white ${isBn ? "font-bangla-ui" : "font-display"}`}>
+                        {isBn ? "টেলিমেডিসিন ও ডক্টর স্লট বুকিং" : "Telehealth & Clinic Scheduling"}
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-mono text-[#EC4899] bg-[#EC4899]/10 px-2 py-0.5 rounded-md border border-[#EC4899]/20">
+                      SOCKET SYNC
+                    </span>
+                  </div>
+                  <p className={`text-xs text-neutral-400 ${isBn ? "font-bangla-body" : ""}`}>
+                    {isBn 
+                      ? "৩ ধাপে অনলাইন সিরিয়াল, ডাক্তারের সময়সূচী ড্যাশবোর্ড ও রোগীর মেডিকেল হিস্ট্রি পোর্টাল।" 
+                      : "Multi-slot appointment sync, doctor availability matrix & cloud patient records."}
+                  </p>
+                </div>
+
+                {/* Module 3: Enterprise Cloud & Custom Dashboards */}
+                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-[#F59E0B]/30 transition-all duration-300">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-[#F59E0B]" />
+                      <span className={`text-xs font-bold text-white ${isBn ? "font-bangla-ui" : "font-display"}`}>
+                        {isBn ? "এন্টারপ্রাইজ ক্লাউড ও অ্যানালিটিক্স" : "Enterprise Cloud Analytics"}
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-mono text-[#F59E0B] bg-[#F59E0B]/10 px-2 py-0.5 rounded-md border border-[#F59E0B]/20">
+                      99.99% UPTIME
+                    </span>
+                  </div>
+                  <p className={`text-xs text-neutral-400 ${isBn ? "font-bangla-body" : ""}`}>
+                    {isBn 
+                      ? "৫০,০০০+ কনকারেন্ট কানেকশন ক্যাপাবিলিটি, ডায়নামিক ডেটা ফিল্টারিং ও রোল-বেসড সিকিউরিটি।" 
+                      : "50,000+ concurrent connection throughput, role-based access & encrypted databases."}
+                  </p>
+                </div>
+
+              </div>
+
+              {/* Bottom Engineering Tagline */}
+              <div className="mt-4 pt-3.5 border-t border-white/[0.06] flex items-center justify-between text-[11px] text-neutral-500 font-mono">
+                <span>Next.js 16 • React 19 • Node • MongoDB</span>
+                <span className="text-neutral-400 font-bold">100% Bespoke Code</span>
+              </div>
+
             </div>
           </motion.div>
 

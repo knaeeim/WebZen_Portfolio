@@ -97,7 +97,19 @@ export function ProjectsSection() {
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <a href="#contact">
+            <a 
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                const target = document.querySelector("#contact");
+                if (target) {
+                  const navHeight = 72;
+                  const targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                  window.scrollTo({ top: targetPos, behavior: "smooth" });
+                  window.history.pushState(null, "", "#contact");
+                }
+              }}
+            >
               <motion.button 
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}

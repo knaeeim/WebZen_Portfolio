@@ -172,7 +172,22 @@ export function PricingSection() {
 
               {/* Action */}
               <div className="mt-8 pt-6 border-t border-white/[0.08]">
-                <a href={plan.ctaLink || "#contact"}>
+                <a 
+                  href={plan.ctaLink || "#contact"}
+                  onClick={(e) => {
+                    const href = plan.ctaLink || "#contact";
+                    if (href.startsWith("#")) {
+                      e.preventDefault();
+                      const target = document.querySelector(href);
+                      if (target) {
+                        const navHeight = 72;
+                        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                        window.scrollTo({ top: targetPos, behavior: "smooth" });
+                        window.history.pushState(null, "", href);
+                      }
+                    }
+                  }}
+                >
                   <button
                     className={`w-full py-4 rounded-full font-extrabold text-xs tracking-[0.16em] uppercase transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer ${
                       plan.popular

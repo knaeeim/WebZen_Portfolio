@@ -88,27 +88,95 @@ export function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Centerpiece: Striking 3D Abstract Digital Artwork/Sculpture */}
+          {/* Centerpiece: Bespoke WebZen Digital Architecture Flagship Console */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.88 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.95, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, scale: 0.92, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 flex justify-center items-center relative order-1 lg:order-2"
           >
             {/* Multi-layered halo backlighting */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#EC4899]/25 via-[#F59E0B]/20 to-transparent blur-[70px] sm:blur-[100px] rounded-full scale-90 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#EC4899]/25 via-[#F59E0B]/20 to-transparent blur-[80px] rounded-full scale-90 pointer-events-none" />
 
-            {/* Outer subtle glowing ring */}
-            <div className="relative w-[260px] xs:w-[300px] sm:w-[390px] lg:w-[430px] aspect-square rounded-full flex items-center justify-center p-3">
-              <div className="absolute inset-0 rounded-full border border-white/10 border-dashed animate-[spin_60s_linear_infinite] opacity-40 pointer-events-none" />
+            {/* Bespoke Interactive Glassmorphism Engine Console */}
+            <div className="relative w-full max-w-[480px] rounded-3xl bg-[#121217]/90 backdrop-blur-2xl border border-white/10 p-5 sm:p-6 shadow-[0_25px_70px_rgba(0,0,0,0.8)] hover:border-white/20 transition-all duration-500 group">
               
-              <div className="relative w-full h-full rounded-3xl overflow-hidden animate-float">
-                <img
-                  src="/images/hero-3d-sculpture.jpg"
-                  alt="Webzen BD Abstract 3D Digital Sculpture"
-                  className="w-full h-full object-cover rounded-2xl drop-shadow-[0_25px_60px_rgba(0,0,0,0.9)]"
-                />
+              {/* macOS Window Bar Header */}
+              <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
+                <div className="flex items-center gap-2">
+                  <span className="w-3 h-3 rounded-full bg-[#FF5F56] shadow-[0_0_8px_rgba(255,95,86,0.6)]" />
+                  <span className="w-3 h-3 rounded-full bg-[#FFBD2E] shadow-[0_0_8px_rgba(255,189,46,0.6)]" />
+                  <span className="w-3 h-3 rounded-full bg-[#27C93F] shadow-[0_0_8px_rgba(39,201,63,0.6)]" />
+                </div>
+                
+                {/* Live Node Badge */}
+                <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 border border-white/10 text-[10px] font-mono text-neutral-300">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>DHAKA CORE NODE • 18ms</span>
+                </div>
               </div>
+
+              {/* Console Centerpiece: Official WebZen Logo & Core Architecture */}
+              <div className="py-7 flex flex-col items-center justify-center relative">
+                {/* Circular Ambient Pulse Rings */}
+                <div className="absolute w-44 h-44 rounded-full border border-dashed border-white/10 animate-[spin_40s_linear_infinite]" />
+                <div className="absolute w-56 h-56 rounded-full border border-white/5 animate-[spin_60s_linear_infinite_reverse]" />
+                
+                {/* Center WebZen Official Logo Emblem */}
+                <div className="relative z-10 flex flex-col items-center">
+                  <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl p-1 bg-gradient-to-tr from-[#EC4899] via-[#EF4444] to-[#F59E0B] shadow-[0_0_35px_rgba(245,158,11,0.35)] animate-float">
+                    <div className="w-full h-full rounded-[14px] overflow-hidden bg-[#0B0B0E] p-2 flex items-center justify-center">
+                      <img
+                        src="/logo.png"
+                        alt="WebZen Official Logo"
+                        className="w-full h-full object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="mt-3.5 text-center">
+                    <div className="font-display font-black text-sm sm:text-base tracking-widest text-white uppercase">
+                      WEBZEN DIGITAL CORE
+                    </div>
+                    <div className="text-[11px] text-[#F59E0B] font-mono tracking-wider mt-0.5 font-semibold">
+                      ENGINEERED FOR SCALE
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating Architectural Feature Badges */}
+                <div className="absolute -left-2 top-8 bg-black/70 backdrop-blur-md border border-white/10 rounded-xl px-3 py-1.5 shadow-lg hidden sm:flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#EC4899]" />
+                  <span className="text-[10px] font-mono font-bold text-neutral-200">Next.js 16 + Turbopack</span>
+                </div>
+
+                <div className="absolute -right-2 top-14 bg-black/70 backdrop-blur-md border border-white/10 rounded-xl px-3 py-1.5 shadow-lg hidden sm:flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B]" />
+                  <span className="text-[10px] font-mono font-bold text-neutral-200">bKash Instant Gateway</span>
+                </div>
+
+                <div className="absolute -bottom-1 left-4 bg-black/70 backdrop-blur-md border border-white/10 rounded-xl px-3 py-1.5 shadow-lg hidden sm:flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  <span className="text-[10px] font-mono font-bold text-neutral-200">99.99% Uptime SLA</span>
+                </div>
+              </div>
+
+              {/* Live Terminal Output Box */}
+              <div className="mt-2 rounded-2xl bg-black/75 border border-white/[0.08] p-3.5 font-mono text-left">
+                <div className="flex items-center justify-between text-[10px] text-neutral-500 pb-1.5 mb-1.5 border-b border-white/5">
+                  <span>TERMINAL OUTPUT</span>
+                  <span className="text-[#F59E0B]">READY</span>
+                </div>
+                <div className="text-xs space-y-1">
+                  <div className="text-neutral-400">
+                    <span className="text-[#EC4899]">$</span> webzen deploy --production
+                  </div>
+                  <div className="text-emerald-400 font-semibold text-[11px]">
+                    ✓ Ultra-fast digital architecture compiled in 0.4s
+                  </div>
+                </div>
+              </div>
+
             </div>
           </motion.div>
 
@@ -129,9 +197,21 @@ export function HeroSection() {
                 }
               </p>
 
-              {/* Solid White Pill-Shaped CTA Button */}
+              {/* Solid White Pill-Shaped CTA Button with Smooth Scroll */}
               <div>
-                <a href="#contact">
+                <a 
+                  href="#contact" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const target = document.querySelector("#contact");
+                    if (target) {
+                      const navHeight = 72;
+                      const targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                      window.scrollTo({ top: targetPos, behavior: "smooth" });
+                      window.history.pushState(null, "", "#contact");
+                    }
+                  }}
+                >
                   <motion.button 
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
