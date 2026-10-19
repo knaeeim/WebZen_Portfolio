@@ -129,14 +129,14 @@ export function CalculatorSection() {
                     <button
                       key={type.id}
                       onClick={() => setProjectType(type.id)}
-                      className={`p-3.5 rounded-2xl text-left border transition-all duration-200 flex flex-col justify-between ${
+                      className={`p-4 rounded-2xl text-left border-2 transition-all duration-200 flex flex-col justify-between cursor-pointer ${
                         projectType === type.id
-                          ? "bg-cyan-950/40 border-cyan-400 text-white shadow-md shadow-cyan-500/10"
-                          : "bg-white/[0.02] border-white/10 text-slate-300 hover:border-white/20 hover:bg-white/[0.04]"
+                          ? "bg-[#0a2847] border-cyan-400 text-white shadow-lg shadow-cyan-500/25 scale-[1.02]"
+                          : "bg-[#0a2847]/70 border-cyan-500/25 text-slate-100 hover:border-cyan-400/60 hover:bg-[#0a2847]"
                       }`}
                     >
-                      <span className="font-semibold text-xs leading-snug">{type.name}</span>
-                      <span className="text-[10px] text-cyan-400/80 mt-1 font-mono">
+                      <span className="font-bold text-xs sm:text-sm leading-snug">{type.name}</span>
+                      <span className="text-[11px] text-cyan-300 mt-1 font-mono font-semibold">
                         {language === "bn" ? "শুরু:" : "Base:"} ৳{type.baseBdt.toLocaleString()} / ${type.baseUsd}
                       </span>
                     </button>
@@ -156,25 +156,25 @@ export function CalculatorSection() {
                       <div
                         key={f.id}
                         onClick={() => toggleFeature(f.id)}
-                        className={`p-3 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
+                        className={`p-3.5 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
                           isChecked
-                            ? "bg-cyan-500/10 border-cyan-500/40 text-white"
-                            : "bg-white/[0.02] border-white/10 text-slate-300 hover:border-white/20"
+                            ? "bg-cyan-500/15 border-cyan-400/60 text-white shadow-sm shadow-cyan-500/20"
+                            : "bg-[#0a2847]/60 border-cyan-500/20 text-slate-200 hover:border-cyan-400/40"
                         }`}
                       >
                         <div className="flex items-center gap-3">
                           <div
                             className={`w-4 h-4 rounded flex items-center justify-center border transition-colors ${
                               isChecked
-                                ? "bg-cyan-500 border-cyan-400 text-slate-950"
+                                ? "bg-cyan-400 border-cyan-300 text-slate-950"
                                 : "border-slate-500 bg-transparent"
                             }`}
                           >
                             {isChecked && <Check className="w-3 h-3 stroke-[3]" />}
                           </div>
-                          <span className="text-xs font-medium">{f.name}</span>
+                          <span className="text-xs sm:text-sm font-semibold">{f.name}</span>
                         </div>
-                        <span className="text-[11px] font-mono text-cyan-400 shrink-0 ml-2">
+                        <span className="text-xs font-mono font-bold text-cyan-300 shrink-0 ml-2">
                           +৳{f.bdt.toLocaleString()}
                         </span>
                       </div>
@@ -193,10 +193,10 @@ export function CalculatorSection() {
                     <button
                       key={key}
                       onClick={() => setTimelineUrgency(key)}
-                      className={`p-3 rounded-xl text-center border text-xs font-medium transition-all ${
+                      className={`p-3.5 rounded-xl text-center border-2 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                         timelineUrgency === key
-                          ? "bg-cyan-500 text-slate-950 font-bold border-cyan-400 shadow-md shadow-cyan-500/20"
-                          : "bg-white/[0.02] border-white/10 text-slate-300 hover:border-white/20"
+                          ? "bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 text-slate-950 font-extrabold border-white/50 shadow-md shadow-cyan-500/25"
+                          : "bg-[#0a2847] border-cyan-500/30 text-slate-100 hover:border-cyan-400 hover:text-white"
                       }`}
                     >
                       {item.label}
@@ -267,9 +267,9 @@ export function CalculatorSection() {
               {/* Action Button */}
               <div className="mt-8 pt-4">
                 <a href="#contact">
-                  <Button className="w-full bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 hover:from-cyan-300 hover:to-sky-200 text-slate-950 font-extrabold h-12 text-xs rounded-xl shadow-lg shadow-cyan-500/25 border border-white/40 group transition-all">
+                  <Button className="w-full bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 hover:from-cyan-300 hover:to-sky-200 text-slate-950 font-extrabold h-13 text-sm sm:text-base rounded-2xl shadow-xl shadow-cyan-500/30 border-2 border-white/60 group transition-all cursor-pointer">
                     <span>{t.ctaBtn}</span>
-                    <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1 stroke-[2.5]" />
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 transition-transform group-hover:translate-x-1.5 stroke-[2.5]" />
                   </Button>
                 </a>
                 <p className="text-[10px] text-center text-slate-400 mt-2">

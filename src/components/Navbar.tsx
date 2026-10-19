@@ -136,14 +136,14 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Nav Links (Dynamic from Section Manager) */}
-          <nav className="hidden lg:flex items-center gap-1 bg-white/[0.03] border border-white/[0.08] rounded-full px-3.5 py-1.5 backdrop-blur-md">
+          {/* Desktop Nav Links (Dynamic from Section Manager) - Solid Luminous Pill */}
+          <nav className="hidden lg:flex items-center gap-1.5 bg-[#0a2847]/85 border border-cyan-500/30 rounded-full px-4 py-1.5 backdrop-blur-xl shadow-lg shadow-black/40">
             {/* Primary Direct Links */}
             {directLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-xs font-medium text-slate-300 hover:text-cyan-400 px-3 py-1.5 rounded-full transition-all hover:bg-white/[0.05]"
+                className="text-xs sm:text-[13px] font-bold text-slate-100 hover:text-cyan-300 px-3.5 py-1.5 rounded-full transition-all hover:bg-cyan-500/15"
               >
                 {link.label}
               </a>
@@ -156,17 +156,17 @@ export function Navbar() {
                   type="button"
                   onClick={() => setOthersOpen(!othersOpen)}
                   onMouseEnter={() => setOthersOpen(true)}
-                  className={`inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-full transition-all ${
+                  className={`inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-bold px-3.5 py-1.5 rounded-full transition-all ${
                     othersOpen
-                      ? "bg-white/[0.08] text-cyan-400"
-                      : "text-slate-300 hover:text-cyan-400 hover:bg-white/[0.05]"
+                      ? "bg-cyan-500/20 text-cyan-300"
+                      : "text-slate-100 hover:text-cyan-300 hover:bg-cyan-500/15"
                   }`}
                   aria-expanded={othersOpen}
                 >
                   <span>{language === "bn" ? "অন্যান্য" : "Others"}</span>
                   <ChevronDown
                     className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                      othersOpen ? "rotate-180 text-cyan-400" : "text-slate-400"
+                      othersOpen ? "rotate-180 text-cyan-400" : "text-slate-300"
                     }`}
                   />
                 </button>
@@ -175,9 +175,9 @@ export function Navbar() {
                 {othersOpen && (
                   <div
                     onMouseLeave={() => setOthersOpen(false)}
-                    className="absolute top-full right-0 mt-2.5 w-44 rounded-2xl bg-[#07203d]/95 border border-cyan-500/20 p-2 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150 z-50"
+                    className="absolute top-full right-0 mt-2.5 w-48 rounded-2xl bg-[#07203d]/98 border border-cyan-500/30 p-2 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150 z-50"
                   >
-                    <div className="px-2.5 py-1.5 text-[10px] font-mono uppercase tracking-wider text-slate-400 border-b border-white/5 mb-1">
+                    <div className="px-3 py-1.5 text-[11px] font-mono uppercase tracking-wider text-cyan-300/80 border-b border-white/10 mb-1">
                       {language === "bn" ? "অতিরিক্ত সেকশন" : "More Sections"}
                     </div>
                     {overflowLinks.map((link) => (
@@ -185,10 +185,10 @@ export function Navbar() {
                         key={link.href}
                         href={link.href}
                         onClick={() => setOthersOpen(false)}
-                        className="flex items-center justify-between px-3 py-2 text-xs font-medium text-slate-300 hover:text-cyan-300 hover:bg-cyan-500/10 rounded-xl transition-all group"
+                        className="flex items-center justify-between px-3 py-2 text-xs font-semibold text-slate-200 hover:text-cyan-300 hover:bg-cyan-500/15 rounded-xl transition-all group"
                       >
                         <span>{link.label}</span>
-                        <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-cyan-400" />
+                        <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-cyan-400" />
                       </a>
                     ))}
                   </div>
@@ -203,27 +203,27 @@ export function Navbar() {
             {/* Language Switcher (Bangla / English) */}
             <button
               onClick={toggleLanguage}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 text-xs font-semibold text-slate-200 hover:text-cyan-400 transition-all"
+              className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#0a2847] hover:bg-[#0f3c69] border border-cyan-500/35 text-xs font-bold text-white hover:text-cyan-300 transition-all shadow-md shadow-black/30 cursor-pointer"
               title="Switch Language / ভাষা পরিবর্তন করুন"
             >
-              <Globe className="w-3.5 h-3.5 text-cyan-400" />
+              <Globe className="w-4 h-4 text-cyan-400" />
               <span>{language === "bn" ? "English" : "বাংলা"}</span>
             </button>
 
             {/* Live Dhaka Time Status */}
-            <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-400">
+            <div className="hidden xl:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-xs font-bold text-emerald-300 shadow-md shadow-black/20">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block" />
               <span>{t.dhakaTime}: {dhakaTime || "..."}</span>
             </div>
 
-            {/* Primary Action Button */}
+            {/* Primary Action Button - Prominent CTA */}
             <a href="#contact">
               <Button
                 size="sm"
-                className="bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 hover:from-cyan-300 hover:to-sky-200 text-slate-950 font-extrabold text-xs h-9 px-4 shadow-md shadow-cyan-500/25 border border-white/40 rounded-lg group"
+                className="bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 hover:from-cyan-300 hover:to-sky-200 text-slate-950 font-extrabold text-xs sm:text-sm h-10 px-5 shadow-lg shadow-cyan-500/30 border border-white/50 rounded-xl group transition-all cursor-pointer"
               >
                 <span>{t.hireUs}</span>
-                <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 stroke-[2.5]" />
+                <ArrowUpRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 stroke-[2.5]" />
               </Button>
             </a>
           </div>

@@ -140,10 +140,10 @@ export function ContactSection() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center w-full gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition-colors shadow-lg shadow-emerald-500/20 mt-2"
+                className="inline-flex items-center justify-center w-full gap-2 px-5 py-3 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-extrabold text-xs sm:text-sm transition-all shadow-lg shadow-emerald-500/25 border border-white/40 mt-2 cursor-pointer"
               >
                 <span>{t.whatsappBtn}</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-4 h-4 stroke-[2.5]" />
               </a>
             </div>
 
@@ -370,7 +370,7 @@ export function ContactSection() {
                   <Button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 hover:from-cyan-300 hover:to-sky-200 text-slate-950 font-extrabold h-12 text-xs rounded-xl shadow-lg shadow-cyan-500/25 border border-white/40 group transition-all cursor-pointer disabled:opacity-70"
+                    className="w-full bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 hover:from-cyan-300 hover:to-sky-200 text-slate-950 font-extrabold h-13 text-sm sm:text-base rounded-2xl shadow-xl shadow-cyan-500/30 border-2 border-white/60 group transition-all cursor-pointer disabled:opacity-70"
                   >
                     {loading ? (
                       <span className="flex items-center gap-2">

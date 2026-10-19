@@ -164,9 +164,9 @@ export function Footer() {
               href={whatsappUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-semibold hover:bg-emerald-500/30 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs sm:text-sm font-bold hover:bg-emerald-500/30 transition-all shadow-sm"
             >
-              <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+              <MessageCircle className="w-4 h-4 text-emerald-400" />
               <span>{helpBtnText}</span>
             </a>
           </div>
@@ -183,7 +183,7 @@ export function Footer() {
             <span className="text-slate-400">{locationText}</span>
             <button
               onClick={scrollToTop}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 hover:border-cyan-500/40 text-slate-300 hover:text-white transition-colors"
+              className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#0a2847] border border-cyan-500/30 hover:border-cyan-400 text-slate-100 hover:text-white transition-all shadow-md shadow-black/30 cursor-pointer text-xs font-semibold"
             >
               <span>{t.backToTop}</span>
               <ArrowUp className="w-3.5 h-3.5 text-cyan-400" />

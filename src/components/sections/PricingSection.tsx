@@ -43,23 +43,23 @@ export function PricingSection() {
           </p>
 
           {/* Currency Switcher */}
-          <div className="mt-6 inline-flex items-center p-1 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-md">
+          <div className="mt-6 inline-flex items-center p-1.5 rounded-2xl bg-[#0a2847] border border-cyan-500/35 backdrop-blur-xl shadow-lg shadow-black/40">
             <button
               onClick={() => setCurrency("bdt")}
-              className={`px-5 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`px-6 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer ${
                 currency === "bdt"
-                  ? "bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20"
-                  : "text-slate-400 hover:text-white"
+                  ? "bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 text-slate-950 shadow-md shadow-cyan-500/30 border border-white/50"
+                  : "text-slate-200 hover:text-white"
               }`}
             >
               {t.currencyBdt}
             </button>
             <button
               onClick={() => setCurrency("usd")}
-              className={`px-5 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`px-6 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer ${
                 currency === "usd"
-                  ? "bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20"
-                  : "text-slate-400 hover:text-white"
+                  ? "bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 text-slate-950 shadow-md shadow-cyan-500/30 border border-white/50"
+                  : "text-slate-200 hover:text-white"
               }`}
             >
               {t.currencyUsd}
@@ -132,14 +132,14 @@ export function PricingSection() {
               <div className="mt-8 pt-6 border-t border-white/[0.08]">
                 <a href={plan.ctaLink || "#contact"}>
                   <Button
-                    className={`w-full font-extrabold text-xs h-11 rounded-xl group transition-all ${
+                    className={`w-full font-extrabold text-xs sm:text-sm h-12 rounded-xl group transition-all cursor-pointer ${
                       plan.popular
-                        ? "bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 text-slate-950 hover:from-cyan-300 hover:to-sky-200 shadow-lg shadow-cyan-500/25 border border-white/40"
-                        : "bg-white/[0.05] hover:bg-white/10 text-white border border-white/10"
+                        ? "bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 text-slate-950 hover:from-cyan-300 hover:to-sky-200 shadow-xl shadow-cyan-500/30 border-2 border-white/60"
+                        : "bg-[#0a2847] hover:bg-[#0f3c69] text-white border-2 border-cyan-500/40 hover:border-cyan-300 shadow-lg shadow-black/40"
                     }`}
                   >
                     <span>{plan.ctaText}</span>
-                    <ArrowRight className="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1.5 stroke-[2.5]" />
                   </Button>
                 </a>
               </div>

@@ -75,15 +75,15 @@ export function ProjectsSection() {
         </div>
 
         {/* Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2 mb-12">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 mb-12">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 ${
+              className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
                 activeCategory === cat.id
-                  ? "bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/20 scale-105"
-                  : "bg-white/[0.04] text-slate-300 hover:bg-white/[0.08] hover:text-white border border-white/5"
+                  ? "bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 text-slate-950 shadow-lg shadow-cyan-500/25 border border-white/40 scale-105"
+                  : "bg-[#0a2847] text-white hover:bg-[#0f3c69] hover:text-cyan-300 border border-cyan-500/30 shadow-md shadow-black/30"
               }`}
             >
               {cat.label}
@@ -173,10 +173,10 @@ export function ProjectsSection() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/35 text-xs sm:text-sm font-bold text-cyan-300 hover:text-white transition-all shadow-sm"
                       >
                         <span>{t.caseStudyBtn}</span>
-                        <ArrowUpRight className="w-3.5 h-3.5" />
+                        <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
                       </a>
                     ) : (
                       <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold text-amber-400/90 bg-amber-400/10 px-2.5 py-1 rounded-full border border-amber-400/20">

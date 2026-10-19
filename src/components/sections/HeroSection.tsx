@@ -81,59 +81,59 @@ export function HeroSection() {
           {t.description}
         </motion.p>
 
-        {/* Action CTAs: Full-width primary + 2 equal secondary buttons on mobile with high visibility & contrast */}
+        {/* Action CTAs: Full-width primary + 2 equal secondary buttons on mobile, grand tactile buttons on PC */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...smoothTransition, delay: 0.25 }}
-          className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3.5 w-full max-w-md sm:max-w-none mx-auto px-1 sm:px-0"
+          className="mt-6 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-md sm:max-w-none mx-auto px-1 sm:px-0"
         >
           {/* Primary Action Button - Ultra-radiant Cyan/Sky with sharp black text and vivid neon glow */}
           <a href="#contact" className="w-full sm:w-auto">
             <Button
-              className="w-full sm:w-auto bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 hover:from-cyan-300 hover:to-sky-200 text-slate-950 font-extrabold px-6 sm:px-7 h-12 text-sm sm:text-xs rounded-xl shadow-[0_0_30px_rgba(0,242,254,0.42)] hover:shadow-[0_0_42px_rgba(0,242,254,0.65)] border border-white/60 active:scale-[0.98] group transition-all"
+              className="w-full sm:w-auto bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 hover:from-cyan-300 hover:to-sky-200 text-slate-950 font-extrabold px-6 sm:px-8 h-12 sm:h-14 text-sm sm:text-base rounded-2xl shadow-[0_0_35px_rgba(0,242,254,0.45)] hover:shadow-[0_0_50px_rgba(0,242,254,0.7)] border-2 border-white/70 active:scale-[0.98] group transition-all cursor-pointer"
             >
               <span className="tracking-wide">{t.primaryCta}</span>
-              <ArrowRight className="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1 stroke-[2.5]" />
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-1.5 sm:ml-2 transition-transform group-hover:translate-x-1.5 stroke-[2.5]" />
             </Button>
           </a>
 
           {/* Secondary Action Buttons - Solid high-contrast navy cards with bright accent borders & pure white text */}
-          <div className="grid grid-cols-2 sm:flex items-center gap-2.5 sm:gap-3.5 w-full sm:w-auto">
+          <div className="grid grid-cols-2 sm:flex items-center gap-2.5 sm:gap-4 w-full sm:w-auto">
             <a href="#projects" className="w-full sm:w-auto">
               <Button
-                className="w-full sm:w-auto bg-[#0a2847] hover:bg-[#0f3c69] border-2 border-cyan-400/60 hover:border-cyan-300 text-white font-bold px-3 sm:px-6 h-12 text-xs rounded-xl shadow-lg shadow-black/50 active:scale-[0.98] transition-all group"
+                className="w-full sm:w-auto bg-[#0a2847] hover:bg-[#0f3c69] border-2 border-cyan-400/80 hover:border-cyan-300 text-white font-bold px-3 sm:px-7 h-12 sm:h-14 text-xs sm:text-sm md:text-[15px] rounded-2xl shadow-xl shadow-black/50 hover:shadow-cyan-500/25 active:scale-[0.98] transition-all group cursor-pointer"
               >
-                <Code2 className="w-4 h-4 mr-1.5 text-cyan-300 group-hover:rotate-12 transition-transform shrink-0 stroke-[2.5]" />
+                <Code2 className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 text-cyan-300 group-hover:rotate-12 transition-transform shrink-0 stroke-[2.5]" />
                 <span className="truncate">{t.secondaryCta}</span>
               </Button>
             </a>
 
             <a href="#calculator" className="w-full sm:w-auto">
               <Button
-                className="w-full sm:w-auto bg-[#0a2847] hover:bg-[#0f3c69] border-2 border-amber-400/70 hover:border-amber-300 text-white font-bold h-12 px-3 sm:px-5 text-xs rounded-xl shadow-lg shadow-black/50 active:scale-[0.98] transition-all group"
+                className="w-full sm:w-auto bg-[#0a2847] hover:bg-[#0f3c69] border-2 border-amber-400/80 hover:border-amber-300 text-white font-bold h-12 sm:h-14 px-3 sm:px-7 text-xs sm:text-sm md:text-[15px] rounded-2xl shadow-xl shadow-black/50 hover:shadow-amber-500/25 active:scale-[0.98] transition-all group cursor-pointer"
               >
-                <Zap className="w-4 h-4 mr-1.5 text-amber-400 fill-amber-400/40 group-hover:scale-110 transition-transform shrink-0" />
+                <Zap className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 text-amber-400 fill-amber-400/40 group-hover:scale-110 transition-transform shrink-0" />
                 <span className="truncate">{t.calculatorCta}</span>
               </Button>
             </a>
           </div>
         </motion.div>
 
-        {/* Highlight Value Pills: Clean flex-wrap grid on mobile, no cut-off overflow */}
+        {/* Highlight Value Pills: Clean flex-wrap grid on mobile, enhanced contrast on PC */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ ...smoothTransition, delay: 0.35 }}
           className="mt-8 sm:mt-12 pt-5 sm:pt-6 border-t border-white/[0.08] max-w-5xl sm:max-w-6xl w-full mx-auto"
         >
-          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 px-1">
+          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 px-1">
             {highlightPills.map((pill) => (
               <span
                 key={pill}
-                className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-lg bg-white/[0.03] border border-white/[0.08] text-[11px] sm:text-xs font-medium text-slate-300 hover:border-cyan-500/40 hover:text-cyan-300 transition-colors cursor-default whitespace-nowrap"
+                className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-[#0a2847]/80 border border-cyan-500/30 text-xs sm:text-sm font-semibold text-slate-200 hover:border-cyan-400/60 hover:text-cyan-300 transition-colors cursor-default whitespace-nowrap shadow-sm shadow-black/30"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400/80 shrink-0" />
+                <span className="w-2 h-2 rounded-full bg-cyan-400 shrink-0 animate-pulse" />
                 {pill}
               </span>
             ))}

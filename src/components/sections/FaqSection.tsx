@@ -65,11 +65,11 @@ export function FaqSection() {
                     {faq.question}
                   </span>
                   <div
-                    className={`w-8 h-8 rounded-full bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                      isOpen ? "rotate-180 bg-cyan-500/20 border-cyan-500/40 text-cyan-300" : "text-slate-400"
+                    className={`w-9 h-9 rounded-full bg-[#0a2847] border border-cyan-500/35 flex items-center justify-center shrink-0 transition-transform duration-300 shadow-sm ${
+                      isOpen ? "rotate-180 bg-cyan-500/25 border-cyan-400 text-cyan-300 shadow-md shadow-cyan-500/20" : "text-cyan-400"
                     }`}
                   >
-                    <ChevronDown className="w-4 h-4" />
+                    <ChevronDown className="w-4 h-4 stroke-[2.5]" />
                   </div>
                 </button>
 
