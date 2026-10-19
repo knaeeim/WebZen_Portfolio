@@ -3,12 +3,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import { useSite } from "@/context/SiteContext";
 
 export function StatsSection() {
   const { language } = useLanguage();
+  const { data } = useSite();
   const isBn = language === "bn";
 
-  const metrics = isBn
+  const fallbackMetrics = isBn
     ? [
         { value: "১০০+", label: "হ্যাপি ক্লায়েন্ট" },
         { value: "২৫০+", label: "লাইভ ওয়েবসাইট" },
@@ -21,6 +23,15 @@ export function StatsSection() {
         { value: "99.9%", label: "Uptime Rate" },
         { value: "24/7", label: "Tech Support" },
       ];
+
+  const metrics = (data?.stats && data.stats.length > 0)
+    ? data.stats.slice(0, 4).map((s) => ({
+        value: isBn
+          ? (s.valueTextBn || (s.valueText ? s.valueText.replace(/[0-9]/g, (d) => "০১২৩৪৫৬৭৮৯"[+d]) : `${s.value}${s.suffix || ""}`.replace(/[0-9]/g, (d) => "০১২৩৪৫৬৭৮৯"[+d])))
+          : (s.valueText || `${s.value}${s.suffix || ""}`),
+        label: isBn && s.labelBn ? s.labelBn : s.label,
+      }))
+    : fallbackMetrics;
 
   return (
     <section id="metrics" className="relative w-full py-2 sm:py-4 my-0 overflow-hidden scroll-mt-20 z-10">

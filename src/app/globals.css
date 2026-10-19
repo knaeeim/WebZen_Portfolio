@@ -392,9 +392,9 @@ html:not(.dark) .bg-dots-pattern {
   font-family: var(--font-display);
 }
 
-/* Bespoke WebZen Logo Gradients: Sky Blue (#38BDF8) to Electric Cyan (#06B6D4) to Mint Teal (#10B981) */
+/* Bespoke Theme Gradients with Live CSS Variable Support */
 .text-gradient-hero {
-  background: linear-gradient(135deg, #38BDF8 0%, #06B6D4 45%, #10B981 100%);
+  background: linear-gradient(135deg, var(--theme-accent-start, #38BDF8) 0%, var(--theme-accent, #06B6D4) 45%, var(--theme-accent-end, #10B981) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

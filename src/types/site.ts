@@ -17,15 +17,26 @@ export interface HeroContent {
   badge: string;
   badgeHighlight: string;
   titlePart1: string;
+  titlePart1Bn?: string;
   titleGradient: string;
+  titleGradientBn?: string;
   titlePart2: string;
   description: string;
+  descriptionBn?: string;
   primaryCtaText: string;
+  primaryCtaTextBn?: string;
   primaryCtaLink: string;
   secondaryCtaText: string;
   secondaryCtaLink: string;
+  card1Value?: string;
+  card1Label?: string;
+  card1LabelBn?: string;
+  card2Value?: string;
+  card2Label?: string;
+  card2LabelBn?: string;
   stats: { label: string; value: string; suffix?: string }[];
   highlightTags: string[];
+  highlightTagsBn?: string[];
 }
 
 export interface StatItem {
@@ -33,15 +44,21 @@ export interface StatItem {
   value: number;
   suffix: string;
   label: string;
-  description: string;
-  icon: string;
+  labelBn?: string;
+  valueText?: string;
+  valueTextBn?: string;
+  description?: string;
+  icon?: string;
 }
 
 export interface ServiceItem {
   id: string;
   title: string;
+  titleBn?: string;
   subtitle: string;
+  subtitleBn?: string;
   description: string;
+  descriptionBn?: string;
   icon: string;
   tags: string[];
   deliverables: string[];
@@ -73,18 +90,24 @@ export interface ProcessStep {
   title: string;
   description: string;
   icon: string;
-  duration: string;
+  duration?: string;
 }
 
 export interface PricingPlan {
   id: string;
   name: string;
+  nameBn?: string;
   priceBdt: string;
   priceUsd: string;
   period: string;
+  periodBn?: string;
   description: string;
+  descriptionBn?: string;
   features: string[];
+  featuresBn?: string[];
   popular?: boolean;
+  badge?: string;
+  badgeBn?: string;
   ctaText: string;
   ctaLink: string;
 }
@@ -132,11 +155,16 @@ export interface SectionItem {
 }
 
 export interface ThemeConfig {
-  preset: 'cyber-zen' | 'emerald-matrix' | 'solar-flare' | 'obsidian-glow' | 'aurora-violet';
+  preset: 'cyber-zen' | 'emerald-matrix' | 'azure-sky' | 'aurora-violet' | 'solar-amber' | 'solar-flare' | 'crimson-rose' | 'obsidian-glow' | 'custom' | string;
   accentColor: string;
-  glowIntensity: 'subtle' | 'medium' | 'high';
+  accentGradientStart?: string;
+  accentGradientEnd?: string;
+  backgroundTone: 'obsidian' | 'pitch-black' | 'midnight-navy' | 'deep-slate' | string;
+  glowIntensity: 'off' | 'subtle' | 'medium' | 'high' | 'none' | string;
   enableParticles: boolean;
-  borderRadius: 'sm' | 'md' | 'lg' | 'full';
+  enableAmbientGlow?: boolean;
+  enableSpotlight?: boolean;
+  borderRadius: 'sm' | 'md' | 'lg' | 'full' | 'rounded-lg' | 'rounded-2xl' | 'rounded-3xl' | string;
   darkNav: boolean;
 }
 

@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteProvider } from "@/context/SiteContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { ThemeSynchronizer } from "@/components/ThemeSynchronizer";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 const anekBangla = Anek_Bangla({
@@ -88,6 +89,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-[#0B0B0E] text-neutral-100 antialiased selection:bg-[#06B6D4] selection:text-black transition-colors duration-300">
         <SiteProvider>
+          <ThemeSynchronizer />
           <ThemeProvider>
             <LanguageProvider>
               <TooltipProvider>{children}</TooltipProvider>

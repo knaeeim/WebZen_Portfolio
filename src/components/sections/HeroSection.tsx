@@ -4,9 +4,12 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, CheckCircle2, Terminal, Code2, Activity, RefreshCw } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useSite } from "@/context/SiteContext";
 
 export function HeroSection() {
   const { language } = useLanguage();
+  const { data } = useSite();
+  const hero = data?.hero;
   const isBn = language === "bn";
   const [activeTab, setActiveTab] = useState<"terminal" | "architecture" | "telemetry">("terminal");
   const [isRunning, setIsRunning] = useState(false);
@@ -15,6 +18,34 @@ export function HeroSection() {
     setIsRunning(true);
     setTimeout(() => setIsRunning(false), 800);
   };
+
+  const titlePart1 = isBn
+    ? (hero?.titlePart1Bn || hero?.titlePart1 || "ডিজিটাল প্রোডাক্ট")
+    : (hero?.titlePart1 || "Digital Product");
+
+  const titleGradient = isBn
+    ? (hero?.titleGradientBn || hero?.titleGradient || "স্টুডিও।")
+    : (hero?.titleGradient || "Studio.");
+
+  const card1Value = hero?.card1Value || (isBn ? "১৫০+" : "150+");
+  const card1Label = isBn
+    ? (hero?.card1LabelBn || hero?.card1Label || "সফল প্রজেক্ট ডেলিভারি")
+    : (hero?.card1Label || "Projects Delivered");
+
+  const card2Value = hero?.card2Value || (isBn ? "৯৯%" : "99%");
+  const card2Label = isBn
+    ? (hero?.card2LabelBn || hero?.card2Label || "ক্লায়েন্ট সন্তুষ্টি রেট")
+    : (hero?.card2Label || "Client Satisfaction");
+
+  const description = isBn
+    ? (hero?.descriptionBn || hero?.description || "আমরা অত্যাধুনিক ডিজিটাল প্রোডাক্ট, হাই-পারফরম্যান্স ওয়েব আর্কিটেকচার এবং নজরকাড়া UI/UX অভিজ্ঞতা তৈরি করি যা আপনার ব্যবসায় রূপান্তর আনবে।")
+    : (hero?.description || "We engineer mission-critical digital products, ultra-responsive web applications, and intuitive user experiences designed to scale enterprise workflows.");
+
+  const ctaText = isBn
+    ? (hero?.primaryCtaTextBn || hero?.primaryCtaText || "প্রজেক্ট শুরু করুন")
+    : (hero?.primaryCtaText || "GET STARTED");
+
+  const ctaLink = hero?.primaryCtaLink || "#contact";
 
   return (
     <section 
@@ -38,12 +69,12 @@ export function HeroSection() {
           >
             {/* Line 1: Pure White */}
             <span className="block text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[98px] text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
-              {isBn ? "ডিজিটাল প্রোডাক্ট" : "Digital Product"}
+              {titlePart1}
             </span>
 
-            {/* Line 2: Pink-to-Gold Gradient */}
+            {/* Line 2: Gradient */}
             <span className="block text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[98px] text-gradient-hero mt-1 sm:mt-2 py-1">
-              {isBn ? "স্টুডিও।" : "Studio."}
+              {titleGradient}
             </span>
           </motion.h1>
         </div>
@@ -58,7 +89,7 @@ export function HeroSection() {
             transition={{ duration: 0.85, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-3 flex flex-row lg:flex-col gap-3.5 sm:gap-4 justify-center lg:justify-start order-2 lg:order-1"
           >
-            {/* Card 1: 150+ Projects Delivered */}
+            {/* Card 1: Projects Delivered */}
             <motion.div 
               whileHover={{ y: -4, scale: 1.02 }}
               transition={{ duration: 0.2 }}
@@ -69,14 +100,14 @@ export function HeroSection() {
                 <Sparkles className="w-4 h-4 text-[#06B6D4]/80 group-hover:rotate-12 transition-transform" />
               </div>
               <div className={`text-2xl sm:text-3xl lg:text-4xl text-white font-black tracking-tight ${isBn ? "font-bangla-display" : "font-display"}`}>
-                {isBn ? "১৫০+" : "150+"}
+                {card1Value}
               </div>
               <div className={`text-xs sm:text-sm text-neutral-400 font-medium tracking-wide mt-1 ${isBn ? "font-bangla-ui" : ""}`}>
-                {isBn ? "সফল প্রজেক্ট ডেলিভারি" : "Projects Delivered"}
+                {card1Label}
               </div>
             </motion.div>
 
-            {/* Card 2: 99% Client Satisfaction */}
+            {/* Card 2: Client Satisfaction */}
             <motion.div 
               whileHover={{ y: -4, scale: 1.02 }}
               transition={{ duration: 0.2 }}
@@ -87,10 +118,10 @@ export function HeroSection() {
                 <CheckCircle2 className="w-4 h-4 text-[#10B981]/80 group-hover:scale-110 transition-transform" />
               </div>
               <div className={`text-2xl sm:text-3xl lg:text-4xl text-white font-black tracking-tight ${isBn ? "font-bangla-display" : "font-display"}`}>
-                {isBn ? "৯৯%" : "99%"}
+                {card2Value}
               </div>
               <div className={`text-xs sm:text-sm text-neutral-400 font-medium tracking-wide mt-1 ${isBn ? "font-bangla-ui" : ""}`}>
-                {isBn ? "ক্লায়েন্ট সন্তুষ্টি রেট" : "Client Satisfaction"}
+                {card2Label}
               </div>
             </motion.div>
           </motion.div>
@@ -279,24 +310,23 @@ export function HeroSection() {
               <div className="w-10 h-0.5 bg-gradient-to-r from-[#0EA5E9] via-[#06B6D4] to-[#10B981] rounded-full hidden lg:block" />
               
               <p className={`text-sm sm:text-base text-neutral-300 leading-relaxed font-normal ${isBn ? "font-bangla-body" : ""}`}>
-                {isBn 
-                  ? "আমরা অত্যাধুনিক ডিজিটাল প্রোডাক্ট, হাই-পারফরম্যান্স ওয়েব আর্কিটেকচার এবং নজরকাড়া UI/UX অভিজ্ঞতা তৈরি করি যা আপনার ব্যবসায় রূপান্তর আনবে।"
-                  : "We engineer mission-critical digital products, ultra-responsive web applications, and intuitive user experiences designed to scale enterprise workflows."
-                }
+                {description}
               </p>
 
               {/* Solid White Pill-Shaped CTA Button with Smooth Scroll */}
               <div>
                 <a 
-                  href="#contact" 
+                  href={ctaLink} 
                   onClick={(e) => {
-                    e.preventDefault();
-                    const target = document.querySelector("#contact");
-                    if (target) {
-                      const navHeight = 72;
-                      const targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-                      window.scrollTo({ top: targetPos, behavior: "smooth" });
-                      window.history.pushState(null, "", "#contact");
+                    if (ctaLink.startsWith("#")) {
+                      e.preventDefault();
+                      const target = document.querySelector(ctaLink);
+                      if (target) {
+                        const navHeight = 72;
+                        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                        window.scrollTo({ top: targetPos, behavior: "smooth" });
+                        window.history.pushState(null, "", ctaLink);
+                      }
                     }
                   }}
                 >
@@ -305,7 +335,7 @@ export function HeroSection() {
                     whileTap={{ scale: 0.97 }}
                     className={`bg-white hover:bg-neutral-200 text-black font-extrabold text-xs sm:text-sm tracking-[0.14em] uppercase px-7 py-3.5 sm:px-8 sm:py-4 rounded-full transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.25)] hover:shadow-[0_0_40px_rgba(255,255,255,0.45)] flex items-center gap-2 group cursor-pointer ${isBn ? "font-bangla-ui" : ""}`}
                   >
-                    <span>{isBn ? "প্রজেক্ট শুরু করুন" : "GET STARTED"}</span>
+                    <span>{ctaText}</span>
                     <ArrowRight className="w-4 h-4 text-black transition-transform group-hover:translate-x-1" />
                   </motion.button>
                 </a>

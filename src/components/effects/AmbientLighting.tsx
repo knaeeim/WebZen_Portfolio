@@ -1,37 +1,73 @@
 "use client";
 
 import React from "react";
+import { useSite } from "@/context/SiteContext";
 
 export function AmbientLighting() {
+  const { data } = useSite();
+  const theme = data?.theme;
+
+  if (theme && (theme.enableAmbientGlow === false || theme.glowIntensity === "off")) {
+    return null;
+  }
+
+  const accent = theme?.accentColor || "#06B6D4";
+  const start = theme?.accentGradientStart || "#0EA5E9";
+  const end = theme?.accentGradientEnd || "#10B981";
+
+  const multiplier = 
+    theme?.glowIntensity === "subtle" ? 0.5 :
+    theme?.glowIntensity === "high" ? 1.8 : 1.0;
+
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {/* Top Left Azure Blue Subtle Glow */}
+      {/* Top Left Gradient Glow */}
       <div 
-        className="absolute -top-[10%] -left-[10%] w-[500px] sm:w-[700px] h-[500px] sm:h-[700px] rounded-full bg-[#0EA5E9]/[0.07] blur-[160px] sm:blur-[200px] pointer-events-none"
+        className="absolute -top-[10%] -left-[10%] w-[500px] sm:w-[700px] h-[500px] sm:h-[700px] rounded-full blur-[160px] sm:blur-[200px] pointer-events-none transition-all duration-700"
+        style={{
+          backgroundColor: start,
+          opacity: 0.07 * multiplier,
+        }}
         aria-hidden="true" 
       />
 
-      {/* Top Right Oceanic Cyan Subtle Glow */}
+      {/* Top Right Accent Subtle Glow */}
       <div 
-        className="absolute top-[5%] -right-[10%] w-[450px] sm:w-[650px] h-[450px] sm:h-[650px] rounded-full bg-[#06B6D4]/[0.06] blur-[160px] sm:blur-[190px] pointer-events-none"
+        className="absolute top-[5%] -right-[10%] w-[450px] sm:w-[650px] h-[450px] sm:h-[650px] rounded-full blur-[160px] sm:blur-[190px] pointer-events-none transition-all duration-700"
+        style={{
+          backgroundColor: accent,
+          opacity: 0.06 * multiplier,
+        }}
         aria-hidden="true" 
       />
 
-      {/* Mid Left Tropical Teal Ambient */}
+      {/* Mid Left Secondary Glow */}
       <div 
-        className="absolute top-[45%] -left-[15%] w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] rounded-full bg-[#10B981]/[0.05] blur-[160px] pointer-events-none"
+        className="absolute top-[45%] -left-[15%] w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] rounded-full blur-[160px] pointer-events-none transition-all duration-700"
+        style={{
+          backgroundColor: end,
+          opacity: 0.05 * multiplier,
+        }}
         aria-hidden="true" 
       />
 
-      {/* Mid Right Azure Blue Ambient */}
+      {/* Mid Right Subtle Ambient */}
       <div 
-        className="absolute top-[60%] -right-[15%] w-[500px] sm:w-[700px] h-[500px] sm:h-[700px] rounded-full bg-[#0EA5E9]/[0.05] blur-[170px] pointer-events-none"
+        className="absolute top-[60%] -right-[15%] w-[500px] sm:w-[700px] h-[500px] sm:h-[700px] rounded-full blur-[170px] pointer-events-none transition-all duration-700"
+        style={{
+          backgroundColor: start,
+          opacity: 0.05 * multiplier,
+        }}
         aria-hidden="true" 
       />
 
-      {/* Bottom Center Mint-Turquoise Subtle Reflection */}
+      {/* Bottom Center Reflection */}
       <div 
-        className="absolute bottom-[2%] left-1/2 -translate-x-1/2 w-[600px] sm:w-[900px] h-[350px] rounded-full bg-[#14B8A6]/[0.04] blur-[170px] pointer-events-none"
+        className="absolute bottom-[2%] left-1/2 -translate-x-1/2 w-[600px] sm:w-[900px] h-[350px] rounded-full blur-[170px] pointer-events-none transition-all duration-700"
+        style={{
+          backgroundColor: accent,
+          opacity: 0.04 * multiplier,
+        }}
         aria-hidden="true" 
       />
 

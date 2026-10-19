@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import { useSite } from "@/context/SiteContext";
 
 const EN_ITEMS = [
   "Web Application",
@@ -24,8 +25,18 @@ const BN_ITEMS = [
 
 export function RibbonMarquee() {
   const { language } = useLanguage();
+  const { data } = useSite();
   const isBn = language === "bn";
-  const source = isBn ? BN_ITEMS : EN_ITEMS;
+
+  const customTags = isBn
+    ? (data?.hero?.highlightTagsBn && data.hero.highlightTagsBn.length > 0
+        ? data.hero.highlightTagsBn
+        : (data?.hero?.highlightTags && data.hero.highlightTags.length > 0 ? data.hero.highlightTags : BN_ITEMS))
+    : (data?.hero?.highlightTags && data.hero.highlightTags.length > 0
+        ? data.hero.highlightTags
+        : EN_ITEMS);
+
+  const source = customTags;
   
   // Quadruple items to guarantee endless looping
   const items = [...source, ...source, ...source, ...source];

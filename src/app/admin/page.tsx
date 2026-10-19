@@ -55,7 +55,10 @@ import {
   LogOut,
   PanelBottom,
   Share2,
-  Globe
+  Globe,
+  BarChart3,
+  Sliders,
+  Wand2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -85,6 +88,7 @@ export default function AdminPage() {
     addSection,
     deleteSection,
     updateSection,
+    updateStats,
     addService,
     updateService,
     deleteService,
@@ -106,6 +110,7 @@ export default function AdminPage() {
     updatePassword,
     updateFooter,
     updateSeo,
+    saveAllNow,
     resetToDefaults,
     exportDataToJson,
     importDataFromJson,
@@ -115,6 +120,23 @@ export default function AdminPage() {
 
   const [activeTab, setActiveTab] = useState("sections");
   const [notification, setNotification] = useState<string | null>(null);
+  const [isExplicitSaving, setIsExplicitSaving] = useState(false);
+
+  const handleSectionSave = async (sectionName?: string) => {
+    setIsExplicitSaving(true);
+    try {
+      const success = await saveAllNow();
+      if (success) {
+        showNotification(`${sectionName ? `"${sectionName}"` : "সমস্ত ডেটা"} সফলভাবে সেভ এবং ক্লাউডে সিংক হয়েছে!`);
+      } else {
+        showNotification(`${sectionName ? `"${sectionName}"` : "পরিবর্তনসমূহ"} লোকাল স্টোরেজে সংরক্ষিত হয়েছে`);
+      }
+    } catch (e) {
+      showNotification("সেভ করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।");
+    } finally {
+      setIsExplicitSaving(false);
+    }
+  };
 
   // Authentication State
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -882,6 +904,22 @@ export default function AdminPage() {
             <span className="hidden md:inline">Lock Studio</span>
           </Button>
 
+          {/* Master Explicit Save All Button */}
+          <Button
+            size="sm"
+            onClick={() => handleSectionSave("All Settings")}
+            disabled={isExplicitSaving}
+            className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs h-8 px-3 gap-1.5 shadow-lg shadow-emerald-500/25 border border-emerald-400/40 transition-all hover:scale-105 active:scale-95"
+            title="সব পরিবর্তন সেভ করুন ও ক্লাউডে সিংক করুন"
+          >
+            {isExplicitSaving ? (
+              <Loader2 className="w-3.5 h-3.5 animate-spin text-slate-950" />
+            ) : (
+              <CheckCircle2 className="w-3.5 h-3.5 text-slate-950" />
+            )}
+            <span className="font-extrabold">{isExplicitSaving ? "সেভ হচ্ছে..." : "Save All (সব সেভ)"}</span>
+          </Button>
+
           <Link href="/" target="_blank">
             <Button
               size="sm"
@@ -910,6 +948,10 @@ export default function AdminPage() {
               <TabsTrigger value="hero" className="text-xs font-semibold px-3 py-2 rounded-xl data-[state=active]:bg-cyan-500 data-[state=active]:text-slate-950">
                 <Sparkles className="w-3.5 h-3.5 mr-1.5" />
                 Hero & Billboard
+              </TabsTrigger>
+              <TabsTrigger value="stats" className="text-xs font-semibold px-3 py-2 rounded-xl data-[state=active]:bg-cyan-500 data-[state=active]:text-slate-950">
+                <BarChart3 className="w-3.5 h-3.5 mr-1.5" />
+                Key Metrics ({data.stats?.length || 4})
               </TabsTrigger>
               <TabsTrigger value="services" className="text-xs font-semibold px-3 py-2 rounded-xl data-[state=active]:bg-cyan-500 data-[state=active]:text-slate-950">
                 <FileText className="w-3.5 h-3.5 mr-1.5" />
@@ -1077,6 +1119,17 @@ export default function AdminPage() {
                 ))}
               </div>
 
+              <div className="pt-4 border-t border-white/10 flex justify-end">
+                <Button
+                  onClick={() => handleSectionSave("Sections Architecture")}
+                  disabled={isExplicitSaving}
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs h-10 px-6 rounded-xl gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  {isExplicitSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
+                  <span>Save Sections Order & Visibility (সেকশন বিন্যাস সেভ করুন)</span>
+                </Button>
+              </div>
+
             </div>
           </TabsContent>
 
@@ -1085,16 +1138,28 @@ export default function AdminPage() {
           {/* ========================================================================= */}
           <TabsContent value="hero" className="space-y-6">
             <div className="glass-card rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
-              <div>
-                <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-cyan-400" />
-                  <span>Hero Section Billboard Content</span>
-                </h2>
-                <p className="text-xs text-slate-400 mt-1">
-                  Edit main headline, gradient highlight, secondary text, badges, and CTA action buttons.
-                </p>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
+                <div>
+                  <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                    <Sparkles className="w-5 h-5 text-cyan-400" />
+                    <span>Hero Section Billboard Content</span>
+                  </h2>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Manage bilingual headline, gradient words, agency pitch, CTA buttons, floating cards, and Ribbon Marquee tags.
+                  </p>
+                </div>
+
+                <Button
+                  onClick={() => handleSectionSave("Hero Billboard")}
+                  disabled={isExplicitSaving}
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs h-9 px-4 rounded-xl gap-1.5 shadow-lg shadow-emerald-500/20"
+                >
+                  {isExplicitSaving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <CheckCircle2 className="w-3.5 h-3.5" />}
+                  <span>Save Hero Section (হিরো সেভ করুন)</span>
+                </Button>
               </div>
 
+              {/* Badges */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-xs font-semibold text-slate-300 block mb-1.5">
@@ -1119,120 +1184,440 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div>
-                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">
-                    Title Part 1
-                  </label>
-                  <Input
-                    value={data.hero.titlePart1}
-                    onChange={(e) => updateHero({ titlePart1: e.target.value })}
-                    className="bg-white/[0.04] border-white/10 text-white text-xs"
-                  />
+              {/* Headline - English & Bengali */}
+              <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 space-y-4">
+                <h4 className="text-xs font-bold text-cyan-400 uppercase tracking-wider">
+                  Main Headline Architecture (English & বাংলা)
+                </h4>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div>
+                    <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                      Headline Part 1 (English)
+                    </label>
+                    <Input
+                      value={data.hero.titlePart1}
+                      onChange={(e) => updateHero({ titlePart1: e.target.value })}
+                      placeholder="e.g. Digital Product"
+                      className="bg-white/[0.04] border-white/10 text-white text-xs"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                      Gradient Keyword (English)
+                    </label>
+                    <Input
+                      value={data.hero.titleGradient}
+                      onChange={(e) => updateHero({ titleGradient: e.target.value })}
+                      placeholder="e.g. Studio."
+                      className="bg-white/[0.04] border-white/10 text-cyan-400 font-bold text-xs"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                      Headline Part 2 (Optional)
+                    </label>
+                    <Input
+                      value={data.hero.titlePart2 || ""}
+                      onChange={(e) => updateHero({ titlePart2: e.target.value })}
+                      placeholder="Optional trailing text"
+                      className="bg-white/[0.04] border-white/10 text-white text-xs"
+                    />
+                  </div>
                 </div>
 
-                <div>
-                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">
-                    Title Gradient Word(s)
-                  </label>
-                  <Input
-                    value={data.hero.titleGradient}
-                    onChange={(e) => updateHero({ titleGradient: e.target.value })}
-                    className="bg-white/[0.04] border-white/10 text-cyan-400 font-bold text-xs"
-                  />
-                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                  <div>
+                    <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                      হেডলাইন অংশ ১ (বাংলা)
+                    </label>
+                    <Input
+                      value={data.hero.titlePart1Bn || ""}
+                      onChange={(e) => updateHero({ titlePart1Bn: e.target.value })}
+                      placeholder="যেমন: ডিজিটাল প্রোডাক্ট"
+                      className="bg-white/[0.04] border-white/10 text-white text-xs font-bangla-ui"
+                    />
+                  </div>
 
-                <div>
-                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">
-                    Title Part 2
-                  </label>
-                  <Input
-                    value={data.hero.titlePart2}
-                    onChange={(e) => updateHero({ titlePart2: e.target.value })}
-                    className="bg-white/[0.04] border-white/10 text-white text-xs"
-                  />
+                  <div>
+                    <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                      গ্রেডিয়েন্ট কি-ওয়ার্ড (বাংলা)
+                    </label>
+                    <Input
+                      value={data.hero.titleGradientBn || ""}
+                      onChange={(e) => updateHero({ titleGradientBn: e.target.value })}
+                      placeholder="যেমন: স্টুডিও।"
+                      className="bg-white/[0.04] border-white/10 text-cyan-400 font-bold text-xs font-bangla-ui"
+                    />
+                  </div>
                 </div>
               </div>
 
-              <div>
-                <label className="text-xs font-semibold text-slate-300 block mb-1.5">
-                  Hero Pitch Description
-                </label>
-                <Textarea
-                  rows={3}
-                  value={data.hero.description}
-                  onChange={(e) => updateHero({ description: e.target.value })}
-                  className="bg-white/[0.04] border-white/10 text-white text-xs"
-                />
-              </div>
-
+              {/* Description - English & Bengali */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-xs font-semibold text-slate-300 block mb-1.5">
-                    Primary CTA Text
+                    Hero Pitch Description (English)
                   </label>
-                  <Input
-                    value={data.hero.primaryCtaText}
-                    onChange={(e) => updateHero({ primaryCtaText: e.target.value })}
-                    className="bg-white/[0.04] border-white/10 text-white text-xs"
+                  <Textarea
+                    rows={3}
+                    value={data.hero.description}
+                    onChange={(e) => updateHero({ description: e.target.value })}
+                    className="bg-white/[0.04] border-white/10 text-white text-xs leading-relaxed"
                   />
                 </div>
                 <div>
                   <label className="text-xs font-semibold text-slate-300 block mb-1.5">
-                    Primary CTA Link Target
+                    হিরো বিবরণ (বাংলা)
                   </label>
-                  <Input
-                    value={data.hero.primaryCtaLink}
-                    onChange={(e) => updateHero({ primaryCtaLink: e.target.value })}
-                    className="bg-white/[0.04] border-white/10 text-white text-xs"
+                  <Textarea
+                    rows={3}
+                    value={data.hero.descriptionBn || ""}
+                    onChange={(e) => updateHero({ descriptionBn: e.target.value })}
+                    placeholder="বাংলা বিবরণ..."
+                    className="bg-white/[0.04] border-white/10 text-white text-xs font-bangla-body leading-relaxed"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* CTA Buttons */}
+              <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 space-y-4">
+                <h4 className="text-xs font-bold text-cyan-400 uppercase tracking-wider">
+                  Call-To-Action (CTA) Buttons
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div>
+                    <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                      Primary CTA (English)
+                    </label>
+                    <Input
+                      value={data.hero.primaryCtaText}
+                      onChange={(e) => updateHero({ primaryCtaText: e.target.value })}
+                      placeholder="e.g. GET STARTED"
+                      className="bg-white/[0.04] border-white/10 text-white text-xs"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                      প্রাইমারি বাটন (বাংলা)
+                    </label>
+                    <Input
+                      value={data.hero.primaryCtaTextBn || ""}
+                      onChange={(e) => updateHero({ primaryCtaTextBn: e.target.value })}
+                      placeholder="যেমন: প্রজেক্ট শুরু করুন"
+                      className="bg-white/[0.04] border-white/10 text-white text-xs font-bangla-ui"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                      Primary Link Target
+                    </label>
+                    <Input
+                      value={data.hero.primaryCtaLink}
+                      onChange={(e) => updateHero({ primaryCtaLink: e.target.value })}
+                      placeholder="#contact"
+                      className="bg-white/[0.04] border-white/10 text-white text-xs font-mono"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                      Secondary CTA Text
+                    </label>
+                    <Input
+                      value={data.hero.secondaryCtaText}
+                      onChange={(e) => updateHero({ secondaryCtaText: e.target.value })}
+                      className="bg-white/[0.04] border-white/10 text-white text-xs"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                      Secondary CTA Link Target
+                    </label>
+                    <Input
+                      value={data.hero.secondaryCtaLink}
+                      onChange={(e) => updateHero({ secondaryCtaLink: e.target.value })}
+                      className="bg-white/[0.04] border-white/10 text-white text-xs font-mono"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Stat Badges on Hero Banner */}
+              <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 space-y-4">
+                <h4 className="text-xs font-bold text-cyan-400 uppercase tracking-wider">
+                  Hero Floating Stat Badges (Overlay on Visual Banner)
+                </h4>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Card 1 */}
+                  <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/10 space-y-2.5">
+                    <span className="text-[11px] font-bold text-white block">Floating Card 1 (Bottom Left)</span>
+                    <div className="grid grid-cols-3 gap-2">
+                      <div>
+                        <label className="text-[10px] text-slate-400 font-semibold block mb-1">Value</label>
+                        <Input
+                          value={data.hero.card1Value || "150+"}
+                          onChange={(e) => updateHero({ card1Value: e.target.value })}
+                          placeholder="150+"
+                          className="bg-white/[0.04] border-white/10 text-white text-xs font-mono"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[10px] text-slate-400 font-semibold block mb-1">Label (EN)</label>
+                        <Input
+                          value={data.hero.card1Label || "Projects Delivered"}
+                          onChange={(e) => updateHero({ card1Label: e.target.value })}
+                          placeholder="Projects Delivered"
+                          className="bg-white/[0.04] border-white/10 text-white text-xs"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[10px] text-slate-400 font-semibold block mb-1">লেবেল (BN)</label>
+                        <Input
+                          value={data.hero.card1LabelBn || "সফল প্রজেক্ট ডেলিভারি"}
+                          onChange={(e) => updateHero({ card1LabelBn: e.target.value })}
+                          placeholder="সফল প্রজেক্ট ডেলিভারি"
+                          className="bg-white/[0.04] border-white/10 text-white text-xs font-bangla-ui"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card 2 */}
+                  <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/10 space-y-2.5">
+                    <span className="text-[11px] font-bold text-white block">Floating Card 2 (Top Right)</span>
+                    <div className="grid grid-cols-3 gap-2">
+                      <div>
+                        <label className="text-[10px] text-slate-400 font-semibold block mb-1">Value</label>
+                        <Input
+                          value={data.hero.card2Value || "99%"}
+                          onChange={(e) => updateHero({ card2Value: e.target.value })}
+                          placeholder="99%"
+                          className="bg-white/[0.04] border-white/10 text-white text-xs font-mono"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[10px] text-slate-400 font-semibold block mb-1">Label (EN)</label>
+                        <Input
+                          value={data.hero.card2Label || "Client Satisfaction"}
+                          onChange={(e) => updateHero({ card2Label: e.target.value })}
+                          placeholder="Client Satisfaction"
+                          className="bg-white/[0.04] border-white/10 text-white text-xs"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[10px] text-slate-400 font-semibold block mb-1">লেবেল (BN)</label>
+                        <Input
+                          value={data.hero.card2LabelBn || "ক্লায়েন্ট সন্তুষ্টি রেট"}
+                          onChange={(e) => updateHero({ card2LabelBn: e.target.value })}
+                          placeholder="ক্লায়েন্ট সন্তুষ্টি রেট"
+                          className="bg-white/[0.04] border-white/10 text-white text-xs font-bangla-ui"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Ribbon Marquee Tags */}
+              <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 space-y-3">
+                <h4 className="text-xs font-bold text-cyan-400 uppercase tracking-wider">
+                  Ribbon Marquee Continuous Ticker Tags
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                      English Ticker Tags (comma separated)
+                    </label>
+                    <Input
+                      value={(data.hero.highlightTags || []).join(", ")}
+                      onChange={(e) =>
+                        updateHero({
+                          highlightTags: e.target.value.split(",").map((t) => t.trim()).filter(Boolean),
+                        })
+                      }
+                      placeholder="e.g. Next.js 16+, TypeScript, Full-Stack, bKash Gateway"
+                      className="bg-white/[0.04] border-white/10 text-white text-xs font-mono"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                      বাংলা টিকার ট্যাগ (কমা দিয়ে আলাদা করুন)
+                    </label>
+                    <Input
+                      value={(data.hero.highlightTagsBn || []).join(", ")}
+                      onChange={(e) =>
+                        updateHero({
+                          highlightTagsBn: e.target.value.split(",").map((t) => t.trim()).filter(Boolean),
+                        })
+                      }
+                      placeholder="যেমন: নেক্সট.জেএস ১৬+, টাইপস্ক্রিপ্ট, বিকাশ অটোমেশন, ৯৯.৯% আপটাইম"
+                      className="bg-white/[0.04] border-white/10 text-white text-xs font-bangla-ui"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-2">
+                <Button
+                  onClick={() => handleSectionSave("Hero Billboard")}
+                  disabled={isExplicitSaving}
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs h-10 px-6 rounded-xl gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  {isExplicitSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
+                  <span>Save Hero Section (হিরো সেকশন সেভ করুন)</span>
+                </Button>
+              </div>
+            </div>
+          </TabsContent>
+
+          {/* ========================================================================= */}
+          {/* TAB: KEY METRICS & STATS CMS                                             */}
+          {/* ========================================================================= */}
+          <TabsContent value="stats" className="space-y-6">
+            <div className="glass-card rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
                 <div>
-                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">
-                    Secondary CTA Text
-                  </label>
-                  <Input
-                    value={data.hero.secondaryCtaText}
-                    onChange={(e) => updateHero({ secondaryCtaText: e.target.value })}
-                    className="bg-white/[0.04] border-white/10 text-white text-xs"
-                  />
+                  <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                    <BarChart3 className="w-5 h-5 text-cyan-400" />
+                    <span>Key Metrics & Performance Bar</span>
+                  </h2>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Customize the 4 horizontal highlight metrics shown on the homepage (Happy Clients, Live Websites, Uptime Rate, Tech Support).
+                  </p>
                 </div>
-                <div>
-                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">
-                    Secondary CTA Link Target
-                  </label>
-                  <Input
-                    value={data.hero.secondaryCtaLink}
-                    onChange={(e) => updateHero({ secondaryCtaLink: e.target.value })}
-                    className="bg-white/[0.04] border-white/10 text-white text-xs"
-                  />
-                </div>
+
+                <Button
+                  onClick={() => handleSectionSave("Key Metrics")}
+                  disabled={isExplicitSaving}
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs h-9 px-4 rounded-xl gap-1.5 shadow-lg shadow-emerald-500/20"
+                >
+                  {isExplicitSaving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <CheckCircle2 className="w-3.5 h-3.5" />}
+                  <span>Save Key Metrics (মেট্রিক্স সেভ করুন)</span>
+                </Button>
               </div>
 
-              <div>
-                <label className="text-xs font-semibold text-slate-300 block mb-1.5">
-                  Highlight Tech Tags (comma separated)
-                </label>
-                <Input
-                  value={data.hero.highlightTags.join(", ")}
-                  onChange={(e) =>
-                    updateHero({
-                      highlightTags: e.target.value.split(",").map((t) => t.trim()).filter(Boolean),
-                    })
-                  }
-                  className="bg-white/[0.04] border-white/10 text-white text-xs font-mono"
-                />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {((data.stats && data.stats.length >= 4) ? data.stats.slice(0, 4) : [
+                  { id: "stat-1", label: "Happy Clients", labelBn: "হ্যাপি ক্লায়েন্ট", value: 100, suffix: "+", valueText: "100+", valueTextBn: "১০০+" },
+                  { id: "stat-2", label: "Live Websites", labelBn: "লাইভ ওয়েবসাইট", value: 250, suffix: "+", valueText: "250+", valueTextBn: "২৫০+" },
+                  { id: "stat-3", label: "Uptime Rate", labelBn: "আপটাইম রেট", value: 99.9, suffix: "%", valueText: "99.9%", valueTextBn: "৯৯.৯%" },
+                  { id: "stat-4", label: "Tech Support", labelBn: "টেকনিক্যাল সাপোর্ট", value: 24, suffix: "/7", valueText: "24/7", valueTextBn: "২৪/৭" },
+                ]).map((stat, idx) => (
+                  <div key={stat.id || idx} className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3">
+                    <div className="flex items-center justify-between pb-2 border-b border-white/5">
+                      <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider">
+                        Metric #{idx + 1}
+                      </span>
+                      <span className="text-[11px] font-mono text-slate-400 bg-white/[0.04] px-2 py-0.5 rounded">
+                        Preview: {stat.valueText || `${stat.value}${stat.suffix || ""}`} — {stat.label}
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <label className="text-[11px] font-semibold text-slate-300 block mb-1">
+                          Value Text (English)
+                        </label>
+                        <Input
+                          value={stat.valueText || `${stat.value}${stat.suffix || ""}`}
+                          onChange={(e) => {
+                            const currentStats = (data.stats && data.stats.length >= 4) ? [...data.stats] : [
+                              { id: "stat-1", label: "Happy Clients", labelBn: "হ্যাপি ক্লায়েন্ট", value: 100, suffix: "+", valueText: "100+", valueTextBn: "১০০+" },
+                              { id: "stat-2", label: "Live Websites", labelBn: "লাইভ ওয়েবসাইট", value: 250, suffix: "+", valueText: "250+", valueTextBn: "২৫০+" },
+                              { id: "stat-3", label: "Uptime Rate", labelBn: "আপটাইম রেট", value: 99.9, suffix: "%", valueText: "99.9%", valueTextBn: "৯৯.৯%" },
+                              { id: "stat-4", label: "Tech Support", labelBn: "টেকনিক্যাল সাপোর্ট", value: 24, suffix: "/7", valueText: "24/7", valueTextBn: "২৪/৭" },
+                            ];
+                            currentStats[idx] = { ...currentStats[idx], valueText: e.target.value };
+                            updateStats(currentStats);
+                          }}
+                          placeholder="e.g. 100+"
+                          className="bg-white/[0.04] border-white/10 text-white font-mono text-xs"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[11px] font-semibold text-slate-300 block mb-1">
+                          মান টেক্সট (বাংলা)
+                        </label>
+                        <Input
+                          value={stat.valueTextBn || ""}
+                          onChange={(e) => {
+                            const currentStats = (data.stats && data.stats.length >= 4) ? [...data.stats] : [
+                              { id: "stat-1", label: "Happy Clients", labelBn: "হ্যাপি ক্লায়েন্ট", value: 100, suffix: "+", valueText: "100+", valueTextBn: "১০০+" },
+                              { id: "stat-2", label: "Live Websites", labelBn: "লাইভ ওয়েবসাইট", value: 250, suffix: "+", valueText: "250+", valueTextBn: "২৫০+" },
+                              { id: "stat-3", label: "Uptime Rate", labelBn: "আপটাইম রেট", value: 99.9, suffix: "%", valueText: "99.9%", valueTextBn: "৯৯.৯%" },
+                              { id: "stat-4", label: "Tech Support", labelBn: "টেকনিক্যাল সাপোর্ট", value: 24, suffix: "/7", valueText: "24/7", valueTextBn: "২৪/৭" },
+                            ];
+                            currentStats[idx] = { ...currentStats[idx], valueTextBn: e.target.value };
+                            updateStats(currentStats);
+                          }}
+                          placeholder="যেমন: ১০০+"
+                          className="bg-white/[0.04] border-white/10 text-white text-xs font-bangla-ui"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <label className="text-[11px] font-semibold text-slate-300 block mb-1">
+                          Label (English)
+                        </label>
+                        <Input
+                          value={stat.label}
+                          onChange={(e) => {
+                            const currentStats = (data.stats && data.stats.length >= 4) ? [...data.stats] : [
+                              { id: "stat-1", label: "Happy Clients", labelBn: "হ্যাপি ক্লায়েন্ট", value: 100, suffix: "+", valueText: "100+", valueTextBn: "১০০+" },
+                              { id: "stat-2", label: "Live Websites", labelBn: "লাইভ ওয়েবসাইট", value: 250, suffix: "+", valueText: "250+", valueTextBn: "২৫০+" },
+                              { id: "stat-3", label: "Uptime Rate", labelBn: "আপটাইম রেট", value: 99.9, suffix: "%", valueText: "99.9%", valueTextBn: "৯৯.৯%" },
+                              { id: "stat-4", label: "Tech Support", labelBn: "টেকনিক্যাল সাপোর্ট", value: 24, suffix: "/7", valueText: "24/7", valueTextBn: "২৪/৭" },
+                            ];
+                            currentStats[idx] = { ...currentStats[idx], label: e.target.value };
+                            updateStats(currentStats);
+                          }}
+                          placeholder="e.g. Happy Clients"
+                          className="bg-white/[0.04] border-white/10 text-white text-xs"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[11px] font-semibold text-slate-300 block mb-1">
+                          লেবেল (বাংলা)
+                        </label>
+                        <Input
+                          value={stat.labelBn || ""}
+                          onChange={(e) => {
+                            const currentStats = (data.stats && data.stats.length >= 4) ? [...data.stats] : [
+                              { id: "stat-1", label: "Happy Clients", labelBn: "হ্যাপি ক্লায়েন্ট", value: 100, suffix: "+", valueText: "100+", valueTextBn: "১০০+" },
+                              { id: "stat-2", label: "Live Websites", labelBn: "লাইভ ওয়েবসাইট", value: 250, suffix: "+", valueText: "250+", valueTextBn: "২৫০+" },
+                              { id: "stat-3", label: "Uptime Rate", labelBn: "আপটাইম রেট", value: 99.9, suffix: "%", valueText: "99.9%", valueTextBn: "৯৯.৯%" },
+                              { id: "stat-4", label: "Tech Support", labelBn: "টেকনিক্যাল সাপোর্ট", value: 24, suffix: "/7", valueText: "24/7", valueTextBn: "২৪/৭" },
+                            ];
+                            currentStats[idx] = { ...currentStats[idx], labelBn: e.target.value };
+                            updateStats(currentStats);
+                          }}
+                          placeholder="যেমন: হ্যাপি ক্লায়েন্ট"
+                          className="bg-white/[0.04] border-white/10 text-white text-xs font-bangla-ui"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
 
-              <Button
-                onClick={() => showNotification("Hero section updated successfully!")}
-                className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs h-10 px-6 rounded-xl"
-              >
-                Save Hero Settings
-              </Button>
+              <div className="pt-2">
+                <Button
+                  onClick={() => handleSectionSave("Key Metrics")}
+                  disabled={isExplicitSaving}
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs h-10 px-6 rounded-xl gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  {isExplicitSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
+                  <span>Save Key Metrics (মেট্রিক্স সেভ করুন)</span>
+                </Button>
+              </div>
             </div>
           </TabsContent>
 
@@ -1267,12 +1652,12 @@ export default function AdminPage() {
                 {data.services.map((srv) => (
                   <div
                     key={srv.id}
-                    className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3"
+                    className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3.5"
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
-                          <label className="text-[10px] text-slate-400 uppercase font-bold">Service Title</label>
+                          <label className="text-[10px] text-slate-400 uppercase font-bold">Service Title (EN)</label>
                           <Input
                             value={srv.title}
                             onChange={(e) => updateService(srv.id, { title: e.target.value })}
@@ -1280,11 +1665,12 @@ export default function AdminPage() {
                           />
                         </div>
                         <div>
-                          <label className="text-[10px] text-slate-400 uppercase font-bold">Subtitle</label>
+                          <label className="text-[10px] text-slate-400 uppercase font-bold">সার্ভিস টাইটেল (বাংলা)</label>
                           <Input
-                            value={srv.subtitle}
-                            onChange={(e) => updateService(srv.id, { subtitle: e.target.value })}
-                            className="bg-white/[0.04] border-white/10 text-white text-xs h-9 mt-1"
+                            value={srv.titleBn || ""}
+                            onChange={(e) => updateService(srv.id, { titleBn: e.target.value })}
+                            placeholder="যেমন: কাস্টম ফুল-স্ট্যাক ওয়েব অ্যাপস"
+                            className="bg-white/[0.04] border-white/10 text-white text-xs h-9 mt-1 font-bangla-ui"
                           />
                         </div>
                       </div>
@@ -1303,14 +1689,46 @@ export default function AdminPage() {
                       </button>
                     </div>
 
-                    <div>
-                      <label className="text-[10px] text-slate-400 uppercase font-bold">Description</label>
-                      <Textarea
-                        rows={2}
-                        value={srv.description}
-                        onChange={(e) => updateService(srv.id, { description: e.target.value })}
-                        className="bg-white/[0.04] border-white/10 text-white text-xs mt-1"
-                      />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div>
+                        <label className="text-[10px] text-slate-400 uppercase font-bold">Subtitle / Tagline (EN)</label>
+                        <Input
+                          value={srv.subtitle}
+                          onChange={(e) => updateService(srv.id, { subtitle: e.target.value })}
+                          className="bg-white/[0.04] border-white/10 text-white text-xs h-9 mt-1"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[10px] text-slate-400 uppercase font-bold">সাবটাইটেল (বাংলা)</label>
+                        <Input
+                          value={srv.subtitleBn || ""}
+                          onChange={(e) => updateService(srv.id, { subtitleBn: e.target.value })}
+                          placeholder="বাংলা সাবটাইটেল"
+                          className="bg-white/[0.04] border-white/10 text-white text-xs h-9 mt-1 font-bangla-ui"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div>
+                        <label className="text-[10px] text-slate-400 uppercase font-bold">Description (English)</label>
+                        <Textarea
+                          rows={2}
+                          value={srv.description}
+                          onChange={(e) => updateService(srv.id, { description: e.target.value })}
+                          className="bg-white/[0.04] border-white/10 text-white text-xs mt-1 leading-relaxed"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[10px] text-slate-400 uppercase font-bold">বিবরণ (বাংলা)</label>
+                        <Textarea
+                          rows={2}
+                          value={srv.descriptionBn || ""}
+                          onChange={(e) => updateService(srv.id, { descriptionBn: e.target.value })}
+                          placeholder="বাংলা বিবরণ..."
+                          className="bg-white/[0.04] border-white/10 text-white text-xs mt-1 font-bangla-body leading-relaxed"
+                        />
+                      </div>
                     </div>
 
                     <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
@@ -1328,6 +1746,17 @@ export default function AdminPage() {
                     </div>
                   </div>
                 ))}
+              </div>
+
+              <div className="pt-4 border-t border-white/10 flex justify-end">
+                <Button
+                  onClick={() => handleSectionSave("Engineering Services")}
+                  disabled={isExplicitSaving}
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs h-10 px-6 rounded-xl gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  {isExplicitSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
+                  <span>Save Services (সার্ভিস সেভ করুন)</span>
+                </Button>
               </div>
 
             </div>
@@ -1586,6 +2015,17 @@ export default function AdminPage() {
                 ))}
               </div>
 
+              <div className="pt-4 border-t border-white/10 flex justify-end">
+                <Button
+                  onClick={() => handleSectionSave("Showcase Projects")}
+                  disabled={isExplicitSaving}
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs h-10 px-6 rounded-xl gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  {isExplicitSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
+                  <span>Save Showcase Projects (প্রজেক্ট শোকেস সেভ করুন)</span>
+                </Button>
+              </div>
+
             </div>
           </TabsContent>
 
@@ -1594,29 +2034,72 @@ export default function AdminPage() {
           {/* ========================================================================= */}
           <TabsContent value="pricing" className="space-y-6">
             <div className="glass-card rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
-              <div>
-                <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                  <BadgePercent className="w-5 h-5 text-cyan-400" />
-                  <span>Configure Investment Packages</span>
-                </h2>
-                <p className="text-xs text-slate-400 mt-1">
-                  Update BDT and USD prices, descriptions, and feature lists.
-                </p>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
+                <div>
+                  <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                    <BadgePercent className="w-5 h-5 text-cyan-400" />
+                    <span>Configure Investment Packages</span>
+                  </h2>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Update BDT and USD prices, bilingual descriptions, custom badges, and feature checklists.
+                  </p>
+                </div>
+
+                <Button
+                  onClick={() => handleSectionSave("Pricing Packages")}
+                  disabled={isExplicitSaving}
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs h-9 px-4 rounded-xl gap-1.5 shadow-lg shadow-emerald-500/20"
+                >
+                  {isExplicitSaving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <CheckCircle2 className="w-3.5 h-3.5" />}
+                  <span>Save Pricing Plans (প্রাইসিং সেভ করুন)</span>
+                </Button>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {data.pricing.map((plan) => (
                   <div
                     key={plan.id}
-                    className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3"
+                    className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3.5 hover:border-white/20 transition-colors"
                   >
-                    <div>
-                      <label className="text-[10px] text-slate-400 uppercase font-bold">Plan Name</label>
-                      <Input
-                        value={plan.name}
-                        onChange={(e) => updatePricing(plan.id, { name: e.target.value })}
-                        className="bg-white/[0.04] border-white/10 text-white font-bold text-xs h-9 mt-1"
-                      />
+                    <div className="grid grid-cols-2 gap-2">
+                      <div>
+                        <label className="text-[10px] text-slate-400 uppercase font-bold">Plan Name (EN)</label>
+                        <Input
+                          value={plan.name}
+                          onChange={(e) => updatePricing(plan.id, { name: e.target.value })}
+                          className="bg-white/[0.04] border-white/10 text-white font-bold text-xs h-9 mt-1"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[10px] text-slate-400 uppercase font-bold">প্যাকেজ নাম (BN)</label>
+                        <Input
+                          value={plan.nameBn || ""}
+                          onChange={(e) => updatePricing(plan.id, { nameBn: e.target.value })}
+                          placeholder="বাংলা নাম"
+                          className="bg-white/[0.04] border-white/10 text-white font-bold text-xs h-9 mt-1 font-bangla-ui"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2">
+                      <div>
+                        <label className="text-[10px] text-slate-400 uppercase font-bold">Badge Text (EN)</label>
+                        <Input
+                          value={plan.badge || ""}
+                          onChange={(e) => updatePricing(plan.id, { badge: e.target.value })}
+                          placeholder="e.g. Most Popular"
+                          className="bg-white/[0.04] border-white/10 text-white text-xs h-9 mt-1"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[10px] text-slate-400 uppercase font-bold">ব্যাজ (BN)</label>
+                        <Input
+                          value={plan.badgeBn || ""}
+                          onChange={(e) => updatePricing(plan.id, { badgeBn: e.target.value })}
+                          placeholder="যেমন: সবচেয়ে জনপ্রিয়"
+                          className="bg-white/[0.04] border-white/10 text-white text-xs h-9 mt-1 font-bangla-ui"
+                        />
+                      </div>
                     </div>
 
                     <div className="grid grid-cols-2 gap-2">
@@ -1638,8 +2121,28 @@ export default function AdminPage() {
                       </div>
                     </div>
 
+                    <div className="grid grid-cols-2 gap-2">
+                      <div>
+                        <label className="text-[10px] text-slate-400 uppercase font-bold">Billing Period (EN)</label>
+                        <Input
+                          value={plan.period || "per project"}
+                          onChange={(e) => updatePricing(plan.id, { period: e.target.value })}
+                          className="bg-white/[0.04] border-white/10 text-slate-300 text-xs h-9 mt-1"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[10px] text-slate-400 uppercase font-bold">বিলিং সময়কাল (BN)</label>
+                        <Input
+                          value={plan.periodBn || ""}
+                          onChange={(e) => updatePricing(plan.id, { periodBn: e.target.value })}
+                          placeholder="যেমন: এককালীন"
+                          className="bg-white/[0.04] border-white/10 text-slate-300 text-xs h-9 mt-1 font-bangla-ui"
+                        />
+                      </div>
+                    </div>
+
                     <div>
-                      <label className="text-[10px] text-slate-400 uppercase font-bold">Description</label>
+                      <label className="text-[10px] text-slate-400 uppercase font-bold">Description (English)</label>
                       <Textarea
                         rows={2}
                         value={plan.description}
@@ -1649,11 +2152,22 @@ export default function AdminPage() {
                     </div>
 
                     <div>
+                      <label className="text-[10px] text-slate-400 uppercase font-bold">বিবরণ (বাংলা)</label>
+                      <Textarea
+                        rows={2}
+                        value={plan.descriptionBn || ""}
+                        onChange={(e) => updatePricing(plan.id, { descriptionBn: e.target.value })}
+                        placeholder="বাংলা বিবরণ..."
+                        className="bg-white/[0.04] border-white/10 text-white text-xs mt-1 font-bangla-body"
+                      />
+                    </div>
+
+                    <div>
                       <label className="text-[10px] text-slate-400 uppercase font-bold">
-                        Features (one per line)
+                        Features List (English - one per line)
                       </label>
                       <Textarea
-                        rows={5}
+                        rows={4}
                         value={plan.features.join("\n")}
                         onChange={(e) =>
                           updatePricing(plan.id, {
@@ -1664,7 +2178,24 @@ export default function AdminPage() {
                       />
                     </div>
 
-                    <div className="flex items-center justify-between pt-2">
+                    <div>
+                      <label className="text-[10px] text-slate-400 uppercase font-bold">
+                        ফিচার তালিকা (বাংলা - প্রতি লাইনে একটি)
+                      </label>
+                      <Textarea
+                        rows={4}
+                        value={(plan.featuresBn || []).join("\n")}
+                        onChange={(e) =>
+                          updatePricing(plan.id, {
+                            featuresBn: e.target.value.split("\n").filter(Boolean),
+                          })
+                        }
+                        placeholder="প্রতি লাইনে একটি ফিচার..."
+                        className="bg-white/[0.04] border-white/10 text-white text-xs mt-1 font-bangla-body"
+                      />
+                    </div>
+
+                    <div className="flex items-center justify-between pt-2 border-t border-white/5">
                       <span className="text-xs text-slate-300">Popular Highlight:</span>
                       <Switch
                         checked={plan.popular || false}
@@ -1675,12 +2206,16 @@ export default function AdminPage() {
                 ))}
               </div>
 
-              <Button
-                onClick={() => showNotification("Pricing packages updated!")}
-                className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs h-10 px-6 rounded-xl"
-              >
-                Save Pricing Changes
-              </Button>
+              <div className="pt-2">
+                <Button
+                  onClick={() => handleSectionSave("Pricing Packages")}
+                  disabled={isExplicitSaving}
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs h-10 px-6 rounded-xl gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  {isExplicitSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
+                  <span>Save Pricing Changes (প্রাইসিং সেভ করুন)</span>
+                </Button>
+              </div>
             </div>
           </TabsContent>
 
@@ -1907,12 +2442,16 @@ export default function AdminPage() {
                 ))}
               </div>
 
-              <Button
-                onClick={() => showNotification("All client testimonials saved!")}
-                className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs h-10 px-6 rounded-xl"
-              >
-                Save All Testimonial Changes
-              </Button>
+              <div className="pt-2">
+                <Button
+                  onClick={() => handleSectionSave("Testimonials")}
+                  disabled={isExplicitSaving}
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs h-10 px-6 rounded-xl gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  {isExplicitSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
+                  <span>Save All Testimonials (টেস্টিমোনিয়াল সেভ করুন)</span>
+                </Button>
+              </div>
             </div>
           </TabsContent>
 
@@ -1921,14 +2460,25 @@ export default function AdminPage() {
           {/* ========================================================================= */}
           <TabsContent value="contact" className="space-y-6">
             <div className="glass-card rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
-              <div>
-                <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                  <Phone className="w-5 h-5 text-cyan-400" />
-                  <span>Company Headquarters & Channels</span>
-                </h2>
-                <p className="text-xs text-slate-400 mt-1">
-                  Update official address in Dhaka, phone, direct WhatsApp integration, and operating hours. These details are dynamically reflected in the website contact section and the footer.
-                </p>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
+                <div>
+                  <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                    <Phone className="w-5 h-5 text-cyan-400" />
+                    <span>Company Headquarters & Channels</span>
+                  </h2>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Update official address in Dhaka, phone, direct WhatsApp integration, and operating hours.
+                  </p>
+                </div>
+
+                <Button
+                  onClick={() => handleSectionSave("Company & Contact")}
+                  disabled={isExplicitSaving}
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs h-9 px-4 rounded-xl gap-1.5 shadow-lg shadow-emerald-500/20"
+                >
+                  {isExplicitSaving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <CheckCircle2 className="w-3.5 h-3.5" />}
+                  <span>Save Contact Details (কন্টাক্ট সেভ করুন)</span>
+                </Button>
               </div>
 
               <div className="p-3.5 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-xs text-cyan-200 flex items-center gap-2.5">
@@ -2049,105 +2599,379 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <Button
-                onClick={() => showNotification("Company & Contact info updated successfully!")}
-                className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs h-10 px-6 rounded-xl"
-              >
-                Save Contact Information
-              </Button>
+              <div className="pt-2">
+                <Button
+                  onClick={() => handleSectionSave("Company & Contact")}
+                  disabled={isExplicitSaving}
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs h-10 px-6 rounded-xl gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  {isExplicitSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
+                  <span>Save Contact Details (কন্টাক্ট সেভ করুন)</span>
+                </Button>
+              </div>
             </div>
           </TabsContent>
 
           {/* ========================================================================= */}
-          {/* TAB 8: THEME & DESIGN CUSTOMIZER                                          */}
+          {/* TAB 8: THEME & DESIGN CUSTOMIZER (SUPERPOWERS)                            */}
           {/* ========================================================================= */}
           <TabsContent value="theme" className="space-y-6">
             <div className="glass-card rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
-              <div>
-                <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                  <Palette className="w-5 h-5 text-cyan-400" />
-                  <span>Design System & Aesthetics Studio</span>
-                </h2>
-                <p className="text-xs text-slate-400 mt-1">
-                  Change color schemes, particle behavior, and visual accents dynamically across the site.
-                </p>
+              
+              {/* Header with Save Button */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
+                <div>
+                  <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                    <Palette className="w-5 h-5 text-cyan-400" />
+                    <span>Theme & Visual Engine Superpowers</span>
+                  </h2>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Live dynamic theming: customize color accents, background obsidian tones, ambient mesh glows, particle physics, and border curves.
+                  </p>
+                </div>
+
+                <Button
+                  onClick={() => handleSectionSave("Theme & Visuals")}
+                  disabled={isExplicitSaving}
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs h-9 px-4 rounded-xl gap-1.5 shadow-lg shadow-emerald-500/20"
+                >
+                  {isExplicitSaving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <CheckCircle2 className="w-3.5 h-3.5" />}
+                  <span>Save & Apply Theme (থিম সেভ করুন)</span>
+                </Button>
               </div>
 
-              {/* Theme Presets */}
+              {/* 1. Theme Color Scheme Presets */}
               <div>
-                <label className="text-xs font-bold text-slate-300 block mb-3 uppercase tracking-wider">
-                  Color Scheme Presets
+                <label className="text-xs font-bold text-slate-300 block mb-3 uppercase tracking-wider flex items-center justify-between">
+                  <span>Curated Color Presets</span>
+                  <span className="text-[10px] text-cyan-400 normal-case font-mono">
+                    Active: {data.theme.preset || "cyber-zen"}
+                  </span>
                 </label>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                   {[
-                    { id: "cyber-zen", name: "Cyber Zen", desc: "Neon Cyan & Electric Blue (Default)", color: "#00f2fe" },
-                    { id: "emerald-matrix", name: "Emerald Matrix", desc: "Vibrant Mint & Cyber Lime", color: "#10b981" },
-                    { id: "solar-flare", name: "Solar Flare", desc: "Sunset Amber & Crimson Neon", color: "#f59e0b" },
-                    { id: "aurora-violet", name: "Aurora Violet", desc: "Ultra Violet & Electric Purple", color: "#a855f7" },
-                    { id: "obsidian-glow", name: "Obsidian Titanium", desc: "Sleek Chrome & Minimalist White", color: "#ffffff" },
+                    { id: "cyber-zen", name: "Cyber Zen", desc: "Electric Cyan, Azure & Mint (WebZen Default)", color: "#06B6D4", start: "#0EA5E9", end: "#10B981" },
+                    { id: "emerald-matrix", name: "Emerald Matrix", desc: "Vibrant Mint & Cyber Lime", color: "#10B981", start: "#059669", end: "#34D399" },
+                    { id: "azure-sky", name: "Azure Sky", desc: "Deep Sky Azure & Pacific Blue", color: "#0EA5E9", start: "#0284C7", end: "#38BDF8" },
+                    { id: "solar-flare", name: "Solar Flare", desc: "Sunset Amber & Radiant Gold", color: "#F59E0B", start: "#EA580C", end: "#FBBF24" },
+                    { id: "aurora-violet", name: "Aurora Violet", desc: "Deep Violet & Neon Amethyst", color: "#A855F7", start: "#7C3AED", end: "#C084FC" },
+                    { id: "crimson-rose", name: "Crimson Rose", desc: "Electric Ruby & Rose Quartz", color: "#EF4444", start: "#DC2626", end: "#F43F5E" },
+                    { id: "obsidian-glow", name: "Obsidian Titanium", desc: "Monochrome Chrome & Crisp Titanium", color: "#E2E8F0", start: "#94A3B8", end: "#FFFFFF" },
+                    { id: "custom", name: "Custom Palette", desc: "Custom User Colors (Use Pickers Below)", color: data.theme.accentColor || "#06B6D4", start: data.theme.accentGradientStart || "#0EA5E9", end: data.theme.accentGradientEnd || "#10B981" },
                   ].map((preset) => (
                     <button
                       key={preset.id}
+                      type="button"
                       onClick={() => {
-                        updateTheme({ preset: preset.id as any });
+                        updateTheme({
+                          preset: preset.id as any,
+                          accentColor: preset.color,
+                          accentGradientStart: preset.start,
+                          accentGradientEnd: preset.end,
+                        });
                         showNotification(`Theme preset changed to ${preset.name}`);
                       }}
-                      className={`p-4 rounded-2xl border text-left transition-all ${
+                      className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
                         data.theme.preset === preset.id
-                          ? "bg-white/[0.08] border-cyan-400 shadow-lg shadow-cyan-500/10 scale-[1.02]"
+                          ? "bg-white/[0.08] border-cyan-400 shadow-lg shadow-cyan-500/15 ring-1 ring-cyan-400/40 scale-[1.02]"
+                          : "bg-white/[0.02] border-white/10 hover:border-white/20 hover:bg-white/[0.04]"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <span
+                          className="w-4 h-4 rounded-full shadow-sm"
+                          style={{
+                            background: `linear-gradient(135deg, ${preset.start}, ${preset.color}, ${preset.end})`,
+                          }}
+                        />
+                        <span className="font-bold text-xs text-white">{preset.name}</span>
+                      </div>
+                      <p className="text-[10px] text-slate-400 leading-snug line-clamp-2">{preset.desc}</p>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* 2. Granular Color Pickers (Admin Superpower) */}
+              <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 space-y-4">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-xs font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-2">
+                    <Sliders className="w-4 h-4 text-cyan-400" />
+                    <span>Granular Color Studio (Superpower)</span>
+                  </h4>
+                  <span className="text-[10px] text-slate-400">
+                    Fine-tune any hex color or click the color swatch
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {/* Primary Accent */}
+                  <div className="p-3 rounded-xl bg-white/[0.03] border border-white/10 space-y-2">
+                    <label className="text-[11px] font-semibold text-slate-300 block">
+                      Primary Accent Color
+                    </label>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="color"
+                        value={data.theme.accentColor || "#06B6D4"}
+                        onChange={(e) => updateTheme({ accentColor: e.target.value, preset: "custom" })}
+                        className="w-9 h-9 rounded-lg border border-white/20 bg-transparent cursor-pointer p-0.5"
+                      />
+                      <Input
+                        value={data.theme.accentColor || "#06B6D4"}
+                        onChange={(e) => updateTheme({ accentColor: e.target.value, preset: "custom" })}
+                        placeholder="#06B6D4"
+                        className="bg-white/[0.04] border-white/10 text-white font-mono text-xs h-9"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Gradient Start */}
+                  <div className="p-3 rounded-xl bg-white/[0.03] border border-white/10 space-y-2">
+                    <label className="text-[11px] font-semibold text-slate-300 block">
+                      Gradient Start Word(s)
+                    </label>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="color"
+                        value={data.theme.accentGradientStart || "#0EA5E9"}
+                        onChange={(e) => updateTheme({ accentGradientStart: e.target.value, preset: "custom" })}
+                        className="w-9 h-9 rounded-lg border border-white/20 bg-transparent cursor-pointer p-0.5"
+                      />
+                      <Input
+                        value={data.theme.accentGradientStart || "#0EA5E9"}
+                        onChange={(e) => updateTheme({ accentGradientStart: e.target.value, preset: "custom" })}
+                        placeholder="#0EA5E9"
+                        className="bg-white/[0.04] border-white/10 text-white font-mono text-xs h-9"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Gradient End */}
+                  <div className="p-3 rounded-xl bg-white/[0.03] border border-white/10 space-y-2">
+                    <label className="text-[11px] font-semibold text-slate-300 block">
+                      Gradient End Word(s)
+                    </label>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="color"
+                        value={data.theme.accentGradientEnd || "#10B981"}
+                        onChange={(e) => updateTheme({ accentGradientEnd: e.target.value, preset: "custom" })}
+                        className="w-9 h-9 rounded-lg border border-white/20 bg-transparent cursor-pointer p-0.5"
+                      />
+                      <Input
+                        value={data.theme.accentGradientEnd || "#10B981"}
+                        onChange={(e) => updateTheme({ accentGradientEnd: e.target.value, preset: "custom" })}
+                        placeholder="#10B981"
+                        className="bg-white/[0.04] border-white/10 text-white font-mono text-xs h-9"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 3. Background Obsidian Tone Selector */}
+              <div>
+                <label className="text-xs font-bold text-slate-300 block mb-2 uppercase tracking-wider">
+                  Site Background Obsidian Tone
+                </label>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  {[
+                    { id: "#0B0B0E", name: "Deep Obsidian", desc: "Default WebZen Slate (#0B0B0E)" },
+                    { id: "#000000", name: "Pure Jet Black", desc: "OLED Blackout (#000000)" },
+                    { id: "#080D1A", name: "Midnight Navy", desc: "Deep Indigo Space (#080D1A)" },
+                    { id: "#0F141C", name: "Carbon Slate", desc: "Architectural Dark (#0F141C)" },
+                  ].map((bg) => (
+                    <button
+                      key={bg.id}
+                      type="button"
+                      onClick={() => {
+                        updateTheme({ backgroundTone: bg.id });
+                        showNotification(`Background tone set to ${bg.name}`);
+                      }}
+                      className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
+                        (data.theme.backgroundTone || "#0B0B0E") === bg.id
+                          ? "bg-white/[0.08] border-cyan-400 shadow-md ring-1 ring-cyan-400/40"
                           : "bg-white/[0.02] border-white/10 hover:border-white/20"
                       }`}
                     >
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex items-center gap-2 mb-1">
                         <span
-                          className="w-3.5 h-3.5 rounded-full"
-                          style={{ backgroundColor: preset.color }}
+                          className="w-3.5 h-3.5 rounded-full border border-white/20"
+                          style={{ backgroundColor: bg.id }}
                         />
-                        <span className="font-bold text-sm text-white">{preset.name}</span>
+                        <span className="font-bold text-xs text-white">{bg.name}</span>
                       </div>
-                      <p className="text-[11px] text-slate-400 leading-snug">{preset.desc}</p>
+                      <p className="text-[10px] text-slate-400">{bg.desc}</p>
                     </button>
                   ))}
                 </div>
               </div>
 
-              {/* Particle Background Toggle */}
-              <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-between">
-                <div>
-                  <h4 className="text-sm font-bold text-white">Interactive Particle Background</h4>
-                  <p className="text-xs text-slate-400">
-                    Physics-based floating nodes connecting with glowing lines on 60fps canvas.
-                  </p>
+              {/* 4. Glow Intensity & Visual Engine Toggles */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                {/* Atmosphere FX Switches */}
+                <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 space-y-3">
+                  <h4 className="text-xs font-bold text-cyan-400 uppercase tracking-wider mb-2">
+                    Atmosphere & FX Engines
+                  </h4>
+
+                  <div className="flex items-center justify-between py-1">
+                    <div>
+                      <span className="text-xs font-semibold text-white block">Interactive Particle Physics</span>
+                      <span className="text-[10px] text-slate-400">Floating connected nodes on 60fps canvas</span>
+                    </div>
+                    <Switch
+                      checked={data.theme.enableParticles ?? true}
+                      onCheckedChange={(checked) => updateTheme({ enableParticles: checked })}
+                    />
+                  </div>
+
+                  <div className="flex items-center justify-between py-1 border-t border-white/5">
+                    <div>
+                      <span className="text-xs font-semibold text-white block">Dynamic Ambient Mesh Glow</span>
+                      <span className="text-[10px] text-slate-400">Soft blurred backdrop light matching active theme</span>
+                    </div>
+                    <Switch
+                      checked={data.theme.enableAmbientGlow ?? true}
+                      onCheckedChange={(checked) => updateTheme({ enableAmbientGlow: checked })}
+                    />
+                  </div>
+
+                  <div className="flex items-center justify-between py-1 border-t border-white/5">
+                    <div>
+                      <span className="text-xs font-semibold text-white block">Interactive Cursor Spotlight</span>
+                      <span className="text-[10px] text-slate-400">Soft radial cursor aura tracking mouse</span>
+                    </div>
+                    <Switch
+                      checked={data.theme.enableSpotlight ?? true}
+                      onCheckedChange={(checked) => updateTheme({ enableSpotlight: checked })}
+                    />
+                  </div>
                 </div>
-                <Switch
-                  checked={data.theme.enableParticles}
-                  onCheckedChange={(checked) => {
-                    updateTheme({ enableParticles: checked });
-                    showNotification(`Particle background ${checked ? "enabled" : "disabled"}`);
+
+                {/* Glow & Blur Intensity */}
+                <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 space-y-3">
+                  <h4 className="text-xs font-bold text-cyan-400 uppercase tracking-wider mb-2">
+                    Ambient Glow Intensity
+                  </h4>
+                  <div className="grid grid-cols-4 gap-2">
+                    {(["none", "subtle", "medium", "high"] as const).map((level) => (
+                      <button
+                        key={level}
+                        type="button"
+                        onClick={() => updateTheme({ glowIntensity: level })}
+                        className={`py-2 rounded-xl border text-xs font-semibold capitalize transition-all cursor-pointer ${
+                          data.theme.glowIntensity === level
+                            ? "bg-cyan-500 text-slate-950 font-bold border-cyan-400"
+                            : "bg-white/[0.02] border-white/10 text-slate-300 hover:bg-white/[0.04]"
+                        }`}
+                      >
+                        {level}
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="pt-2 border-t border-white/5">
+                    <h4 className="text-xs font-bold text-cyan-400 uppercase tracking-wider mb-2">
+                      Card Border Curvature Style
+                    </h4>
+                    <div className="grid grid-cols-3 gap-2">
+                      {[
+                        { id: "rounded-lg", label: "Modern Sharp" },
+                        { id: "rounded-2xl", label: "Sleek Glass" },
+                        { id: "rounded-3xl", label: "Pill Curved" },
+                      ].map((curve) => (
+                        <button
+                          key={curve.id}
+                          type="button"
+                          onClick={() => updateTheme({ borderRadius: curve.id as any })}
+                          className={`py-1.5 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${
+                            (data.theme.borderRadius || "rounded-2xl") === curve.id
+                              ? "bg-cyan-500 text-slate-950 font-bold border-cyan-400"
+                              : "bg-white/[0.02] border-white/10 text-slate-300 hover:bg-white/[0.04]"
+                          }`}
+                        >
+                          {curve.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 5. Live Interactive Sandbox Preview */}
+              <div
+                className="p-5 rounded-3xl border border-white/15 relative overflow-hidden space-y-3 transition-colors duration-500"
+                style={{
+                  backgroundColor: data.theme.backgroundTone || "#0B0B0E",
+                }}
+              >
+                <div
+                  className="absolute top-0 right-0 w-64 h-64 rounded-full blur-[80px] pointer-events-none opacity-40 transition-all duration-500"
+                  style={{
+                    backgroundColor: data.theme.accentColor || "#06B6D4",
                   }}
                 />
+                
+                <div className="flex items-center justify-between relative z-10">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-bold uppercase tracking-wider text-white">
+                    <span
+                      className="w-2 h-2 rounded-full animate-pulse"
+                      style={{ backgroundColor: data.theme.accentColor || "#06B6D4" }}
+                    />
+                    <span>Live Theme Sandbox Preview</span>
+                  </div>
+                  <span className="text-[10px] text-slate-400 font-mono">
+                    HEX: {data.theme.accentColor || "#06B6D4"}
+                  </span>
+                </div>
+
+                <h3
+                  className="text-2xl font-black tracking-tight relative z-10"
+                  style={{
+                    background: `linear-gradient(to right, ${data.theme.accentGradientStart || "#0EA5E9"}, ${data.theme.accentColor || "#06B6D4"}, ${data.theme.accentGradientEnd || "#10B981"})`,
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  Bespoke Digital Product Studio
+                </h3>
+
+                <p className="text-xs text-slate-400 relative z-10 max-w-lg">
+                  This preview dynamically uses your selected theme background tone, primary accent, and gradient stops in real-time.
+                </p>
+
+                <div className="flex items-center gap-3 pt-2 relative z-10">
+                  <button
+                    type="button"
+                    className="px-4 py-2 rounded-xl text-xs font-bold text-slate-950 transition-all shadow-md"
+                    style={{
+                      backgroundColor: data.theme.accentColor || "#06B6D4",
+                    }}
+                  >
+                    Primary Button
+                  </button>
+                  <button
+                    type="button"
+                    className="px-4 py-2 rounded-xl text-xs font-bold text-white border border-white/20 bg-white/[0.04]"
+                  >
+                    Secondary Outline
+                  </button>
+                </div>
               </div>
 
-              {/* Glow Intensity */}
-              <div>
-                <label className="text-xs font-bold text-slate-300 block mb-2 uppercase tracking-wider">
-                  Glow & Blur Intensity
-                </label>
-                <div className="grid grid-cols-3 gap-3">
-                  {(["subtle", "medium", "high"] as const).map((level) => (
-                    <button
-                      key={level}
-                      onClick={() => updateTheme({ glowIntensity: level })}
-                      className={`py-2.5 rounded-xl border text-xs font-semibold capitalize transition-all ${
-                        data.theme.glowIntensity === level
-                          ? "bg-cyan-500 text-slate-950 font-bold border-cyan-400"
-                          : "bg-white/[0.02] border-white/10 text-slate-300"
-                      }`}
-                    >
-                      {level}
-                    </button>
-                  ))}
-                </div>
+              {/* Master Save Theme Button */}
+              <div className="pt-2">
+                <Button
+                  onClick={() => handleSectionSave("Theme & Visuals")}
+                  disabled={isExplicitSaving}
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs h-10 px-6 rounded-xl gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  {isExplicitSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
+                  <span>Save & Apply Theme Superpowers (থিম সেটিংস সেভ করুন)</span>
+                </Button>
               </div>
 
             </div>
@@ -2830,6 +3654,17 @@ export default function AdminPage() {
                   className="bg-white/[0.04] border-white/10 text-white text-xs"
                 />
               </div>
+
+              <div className="pt-2 flex justify-end">
+                <Button
+                  onClick={() => handleSectionSave("Footer CMS")}
+                  disabled={isExplicitSaving}
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs h-10 px-6 rounded-xl gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  {isExplicitSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
+                  <span>Save Footer CMS (ফুটার সেটিংস সেভ করুন)</span>
+                </Button>
+              </div>
             </div>
 
           </TabsContent>
@@ -3012,6 +3847,17 @@ export default function AdminPage() {
                   </div>
                 </div>
 
+              </div>
+
+              <div className="pt-2 flex justify-end">
+                <Button
+                  onClick={() => handleSectionSave("SEO & Social OG")}
+                  disabled={isExplicitSaving}
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs h-10 px-6 rounded-xl gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  {isExplicitSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
+                  <span>Save SEO & Social Settings (এসইও সেভ করুন)</span>
+                </Button>
               </div>
 
             </div>

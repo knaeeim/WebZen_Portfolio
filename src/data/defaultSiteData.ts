@@ -8,60 +8,91 @@ export const initialSiteData: SiteData = {
   hero: {
     badge: "⚡ WebZen Engineering",
     badgeHighlight: "Dhaka & Global",
-    titlePart1: "Architecting",
-    titleGradient: "Digital Excellence",
+    titlePart1: "Digital Product",
+    titlePart1Bn: "ডিজিটাল প্রোডাক্ট",
+    titleGradient: "Studio.",
+    titleGradientBn: "স্টুডিও।",
     titlePart2: "For Modern Brands",
-    description: "We build ultra-fast web applications, autonomous AI workflows, and resilient cloud platforms engineered for scale and speed.",
-    primaryCtaText: "Start Your Project",
+    description: "We engineer mission-critical digital products, ultra-responsive web applications, and intuitive user experiences designed to scale enterprise workflows.",
+    descriptionBn: "আমরা অত্যাধুনিক ডিজিটাল প্রোডাক্ট, হাই-পারফরম্যান্স ওয়েব আর্কিটেকচার এবং নজরকাড়া UI/UX অভিজ্ঞতা তৈরি করি যা আপনার ব্যবসায় রূপান্তর আনবে।",
+    primaryCtaText: "GET STARTED",
+    primaryCtaTextBn: "প্রজেক্ট শুরু করুন",
     primaryCtaLink: "#contact",
     secondaryCtaText: "View Case Studies",
     secondaryCtaLink: "#projects",
+    card1Value: "150+",
+    card1Label: "Projects Delivered",
+    card1LabelBn: "সফল প্রজেক্ট ডেলিভারি",
+    card2Value: "99%",
+    card2Label: "Client Satisfaction",
+    card2LabelBn: "ক্লায়েন্ট সন্তুষ্টি রেট",
     stats: [
-      { label: "Client Retention", value: "99.4%" },
-      { label: "Shipped Projects", value: "140+" },
+      { label: "Projects Delivered", value: "150+" },
+      { label: "Client Satisfaction", value: "99%" },
       { label: "Uptime SLA", value: "99.99%" },
     ],
     highlightTags: [
-      "Next.js 16",
-      "React 19",
-      "AI Automations",
-      "FinTech BD",
-      "Cloud Scale"
+      "Web Application",
+      "MERN Stack",
+      "UI/UX Design",
+      "Custom Dashboard",
+      "E-Commerce",
+      "API Architecture"
+    ],
+    highlightTagsBn: [
+      "ওয়েব অ্যাপ্লিকেশন",
+      "MERN স্ট্যাক",
+      "UI/UX ডিজাইন",
+      "কাস্টম ড্যাশবোর্ড",
+      "ই-কমার্স সল্যুশন",
+      "API আর্কিটেকচার"
     ]
   },
 
   stats: [
     {
       id: "stat-1",
-      value: 140,
+      value: 100,
       suffix: "+",
-      label: "Shipped Projects",
-      description: "From rapid MVPs to high-concurrency enterprise platforms.",
-      icon: "Rocket"
+      valueText: "100+",
+      valueTextBn: "১০০+",
+      label: "Happy Clients",
+      labelBn: "হ্যাপি ক্লায়েন্ট",
+      description: "Trusted partners across Bangladesh and international markets.",
+      icon: "Users"
     },
     {
       id: "stat-2",
-      value: 99.4,
-      suffix: "%",
-      label: "Retention Rate",
-      description: "Trusted long-term engineering partners worldwide.",
-      icon: "HeartHandshake"
+      value: 250,
+      suffix: "+",
+      valueText: "250+",
+      valueTextBn: "২৫০+",
+      label: "Live Websites",
+      labelBn: "লাইভ ওয়েবসাইট",
+      description: "Delivering fast, scalable, and responsive digital architectures.",
+      icon: "Globe"
     },
     {
       id: "stat-3",
-      value: 18,
-      suffix: "+",
-      label: "Countries Served",
-      description: "Delivering across Bangladesh, USA, UK, UAE & Australia.",
-      icon: "Globe"
+      value: 99.9,
+      suffix: "%",
+      valueText: "99.9%",
+      valueTextBn: "৯৯.৯%",
+      label: "Uptime Rate",
+      labelBn: "আপটাইম রেট",
+      description: "Zero-downtime performance and enterprise-grade reliability.",
+      icon: "Server"
     },
     {
       id: "stat-4",
       value: 24,
       suffix: "/7",
-      label: "SLA Support",
-      description: "Active uptime monitoring and zero-downtime deployments.",
-      icon: "ShieldCheck"
+      valueText: "24/7",
+      valueTextBn: "২৪/৭",
+      label: "Tech Support",
+      labelBn: "টেকনিক্যাল সাপোর্ট",
+      description: "Direct priority assistance and rapid engineer response.",
+      icon: "Clock"
     }
   ],
 
@@ -426,9 +457,14 @@ export const initialSiteData: SiteData = {
 
   theme: {
     preset: "cyber-zen",
-    accentColor: "#00f2fe",
-    glowIntensity: "high",
+    accentColor: "#06B6D4",
+    accentGradientStart: "#38BDF8",
+    accentGradientEnd: "#10B981",
+    backgroundTone: "obsidian",
+    glowIntensity: "medium",
     enableParticles: true,
+    enableAmbientGlow: true,
+    enableSpotlight: true,
     borderRadius: "lg",
     darkNav: true
   },

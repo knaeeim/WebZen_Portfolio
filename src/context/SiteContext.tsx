@@ -73,6 +73,9 @@ interface SiteContextType {
   // SEO & Social OpenGraph
   updateSeo: (updates: Partial<SeoConfig>) => void;
 
+  // Immediate Save to Storage & Cloud
+  saveAllNow: (explicitData?: SiteData) => Promise<boolean>;
+
   // Import / Export / Reset
   resetToDefaults: () => void;
   exportDataToJson: () => string;
@@ -181,6 +184,39 @@ export function SiteProvider({ children }: { children: React.ReactNode }) {
         setIsSyncing(false);
       }
     }, 400);
+  };
+
+  const saveAllNow = async (explicitData?: SiteData): Promise<boolean> => {
+    const payload = explicitData || data;
+    setData(payload);
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+    } catch (e) {
+      console.error("Failed to save to localStorage:", e);
+    }
+
+    if (syncTimeoutRef.current) {
+      clearTimeout(syncTimeoutRef.current);
+    }
+
+    setIsSyncing(true);
+    try {
+      const res = await fetch("/api/site-data", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (res.ok) {
+        setIsCloudSynced(true);
+        return true;
+      }
+      return false;
+    } catch (err) {
+      console.warn("Failed to sync to MongoDB:", err);
+      return false;
+    } finally {
+      setIsSyncing(false);
+    }
   };
 
   const updateSiteData = (partial: Partial<SiteData>) => {
@@ -465,6 +501,7 @@ export function SiteProvider({ children }: { children: React.ReactNode }) {
         deleteFaq,
         updateFooter,
         updateSeo,
+        saveAllNow,
         updatePassword,
         resetToDefaults,
         exportDataToJson,

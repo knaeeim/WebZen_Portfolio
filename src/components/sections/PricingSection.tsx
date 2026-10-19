@@ -18,9 +18,17 @@ export function PricingSection() {
   const { language } = useLanguage();
   const t = translations[language].pricing;
   const [currency, setCurrency] = useState<"bdt" | "usd">("bdt");
-
-  const plans = t.plans || data.pricing;
   const isBn = language === "bn";
+
+  const rawPlans: any[] = (data?.pricing && data.pricing.length > 0) ? data.pricing : (t.plans || []);
+  const plans = rawPlans.map((p: any) => ({
+    ...p,
+    name: isBn && p.nameBn ? p.nameBn : p.name,
+    description: isBn && p.descriptionBn ? p.descriptionBn : p.description,
+    period: isBn && p.periodBn ? p.periodBn : p.period,
+    features: isBn && p.featuresBn && p.featuresBn.length > 0 ? p.featuresBn : (p.features || []),
+    badgeText: isBn && p.badgeBn ? p.badgeBn : (p.badge || t.mostPopular),
+  }));
 
   return (
     <section id="pricing" className="relative py-10 sm:py-14 overflow-hidden scroll-mt-20">
@@ -127,7 +135,7 @@ export function PricingSection() {
               {plan.popular && (
                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
                   <span className={`text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full bg-gradient-to-r from-[#0EA5E9] via-[#06B6D4] to-[#10B981] text-black shadow-lg ${isBn ? "font-bangla-ui" : ""}`}>
-                    {t.mostPopular}
+                    {plan.badgeText || t.mostPopular}
                   </span>
                 </div>
               )}
@@ -160,7 +168,7 @@ export function PricingSection() {
                     {t.whatsIncluded}
                   </p>
                   <ul className="space-y-3">
-                    {plan.features.map((feat, fIdx) => (
+                    {plan.features.map((feat: string, fIdx: number) => (
                       <li key={fIdx} className="flex items-start gap-3 text-xs sm:text-sm text-neutral-300">
                         <Check className="w-4 h-4 text-[#06B6D4] shrink-0 mt-0.5" />
                         <span>{feat}</span>

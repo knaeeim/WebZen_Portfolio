@@ -4,12 +4,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Check } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useSite } from "@/context/SiteContext";
 
 export function ServicesSection() {
   const { language } = useLanguage();
+  const { data } = useSite();
   const isBn = language === "bn";
 
-  const checklist = isBn
+  const fallbackChecklist = isBn
     ? [
         {
           title: "কাস্টম ফুল-স্ট্যাক ওয়েব অ্যাপস",
@@ -38,6 +40,13 @@ export function ServicesSection() {
           desc: "Custom analytics portals, payment integrations (bKash, Stripe), and real-time architectures.",
         },
       ];
+
+  const checklist = (data?.services && data.services.length > 0)
+    ? data.services.slice(0, 3).map((s) => ({
+        title: isBn && s.titleBn ? s.titleBn : s.title,
+        desc: isBn && s.descriptionBn ? s.descriptionBn : s.description,
+      }))
+    : fallbackChecklist;
 
   return (
     <section id="services" className="relative py-10 sm:py-14 overflow-hidden scroll-mt-20">

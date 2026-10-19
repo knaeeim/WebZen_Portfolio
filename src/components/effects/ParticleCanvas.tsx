@@ -22,8 +22,10 @@ export function ParticleCanvas() {
     radius: 120,
   });
 
-  const enabled = data.theme.enableParticles;
-  const preset = data.theme.preset;
+  const theme = data.theme;
+  const enabled = theme?.enableParticles ?? true;
+  const preset = theme?.preset || "cyber-zen";
+  const accentColor = theme?.accentColor || "#06B6D4";
 
   useEffect(() => {
     if (!enabled) return;
@@ -58,8 +60,10 @@ export function ParticleCanvas() {
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseleave", handleMouseLeave);
 
-    // Color palette based on WebZen logo (Azure Sky Blue, Electric Cyan, Mint Teal)
-    const colors = ["#38bdf8", "#0ea5e9", "#06b6d4", "#14b8a6", "#10b981"];
+    const accent = theme?.accentColor || "#06b6d4";
+    const start = theme?.accentGradientStart || "#38bdf8";
+    const end = theme?.accentGradientEnd || "#10b981";
+    const colors = [start, accent, end, "#ffffff"];
 
     const particleCount = Math.min(Math.floor((width * height) / 20000), 65);
     const particles: Particle[] = [];
