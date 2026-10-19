@@ -266,20 +266,30 @@ export function HeroSection() {
 
               </div>
 
-              {/* Floating Architectural Feature Badges outside the console */}
-              <div className="absolute -left-3 top-8 bg-black/80 backdrop-blur-md border border-white/10 rounded-xl px-3 py-1.5 shadow-lg hidden sm:flex items-center gap-2 z-20">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#0EA5E9]" />
-                <span className="text-[10px] font-mono font-bold text-neutral-200">Next.js 16 + Turbopack</span>
+              {/* Four Outer Corner Architectural Badges (Cleanly anchored outside the four corners without overlapping any text/tabs) */}
+              
+              {/* Top-Left Corner: Next.js 16+ Turbopack */}
+              <div className="absolute -top-4 -left-2 sm:-left-4 bg-[#0B0B0E]/90 backdrop-blur-md border border-white/15 hover:border-[#0EA5E9]/50 rounded-full px-3.5 py-1.5 shadow-[0_10px_25px_rgba(0,0,0,0.8)] hidden sm:flex items-center gap-2 z-30 transition-all hover:scale-105">
+                <span className="w-2 h-2 rounded-full bg-[#0EA5E9] shadow-[0_0_8px_rgba(14,165,233,0.8)]" />
+                <span className="text-[10px] sm:text-[11px] font-mono font-bold text-neutral-200">Next.js 16+ Turbopack</span>
               </div>
 
-              <div className="absolute -right-3 top-16 bg-black/80 backdrop-blur-md border border-white/10 rounded-xl px-3 py-1.5 shadow-lg hidden sm:flex items-center gap-2 z-20">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#06B6D4]" />
-                <span className="text-[10px] font-mono font-bold text-neutral-200">bKash Instant Gateway</span>
+              {/* Top-Right Corner: bKash Instant Gateway */}
+              <div className="absolute -top-4 -right-2 sm:-right-4 bg-[#0B0B0E]/90 backdrop-blur-md border border-white/15 hover:border-[#06B6D4]/50 rounded-full px-3.5 py-1.5 shadow-[0_10px_25px_rgba(0,0,0,0.8)] hidden sm:flex items-center gap-2 z-30 transition-all hover:scale-105">
+                <span className="w-2 h-2 rounded-full bg-[#06B6D4] shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
+                <span className="text-[10px] sm:text-[11px] font-mono font-bold text-neutral-200">bKash Instant Gateway</span>
               </div>
 
-              <div className="absolute -bottom-2 left-6 bg-black/80 backdrop-blur-md border border-white/10 rounded-xl px-3 py-1.5 shadow-lg hidden sm:flex items-center gap-2 z-20">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                <span className="text-[10px] font-mono font-bold text-neutral-200">99.99% Uptime SLA</span>
+              {/* Bottom-Left Corner: 99.99% Uptime SLA */}
+              <div className="absolute -bottom-4 -left-2 sm:-left-4 bg-[#0B0B0E]/90 backdrop-blur-md border border-white/15 hover:border-[#10B981]/50 rounded-full px-3.5 py-1.5 shadow-[0_10px_25px_rgba(0,0,0,0.8)] hidden sm:flex items-center gap-2 z-30 transition-all hover:scale-105">
+                <span className="w-2 h-2 rounded-full bg-[#10B981] shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+                <span className="text-[10px] sm:text-[11px] font-mono font-bold text-neutral-200">99.99% Uptime SLA</span>
+              </div>
+
+              {/* Bottom-Right Corner: Dhaka Core • 18ms TTFB */}
+              <div className="absolute -bottom-4 -right-2 sm:-right-4 bg-[#0B0B0E]/90 backdrop-blur-md border border-white/15 hover:border-[#38BDF8]/50 rounded-full px-3.5 py-1.5 shadow-[0_10px_25px_rgba(0,0,0,0.8)] hidden sm:flex items-center gap-2 z-30 transition-all hover:scale-105">
+                <span className="w-2 h-2 rounded-full bg-[#38BDF8] shadow-[0_0_8px_rgba(56,189,248,0.8)] animate-pulse" />
+                <span className="text-[10px] sm:text-[11px] font-mono font-bold text-neutral-200">Dhaka Core • 18ms TTFB</span>
               </div>
 
             </div>
