@@ -308,43 +308,59 @@ export const initialSiteData: SiteData = {
   testimonials: [
     {
       id: "test-1",
-      name: "Tanvir Rahman",
-      role: "CTO",
-      company: "FinVertex Solutions",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      name: "Dr. Abrar Chowdhury",
+      nameBn: "ডা. আবরার চৌধুরী",
+      role: "Founder & CMO",
+      roleBn: "ফাউন্ডার ও চিফ মেডিকেল অফিসার",
+      company: "CarePulse BD",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
       rating: 5,
+      reaction: "❤️",
       location: "Dhaka, Bangladesh",
-      content: "WebZen completely transformed our digital presence. The speed, smoothness of animations, and architectural cleanliness exceeded our expectations."
+      content: "Webzen BD built our medical teleconsultation platform with real-time slot booking and bKash automated reconciliation. Daily patient bookings skyrocketed by 340% within 60 days.",
+      contentBn: "Webzen BD আমাদের মেডিকেল টেলিমেডিসিন প্ল্যাটফর্ম ও রিয়েল-টাইম সিরিয়াল বুকিং সিস্টেম তৈরি করে দেয়। এর পারফরম্যান্স এতটাই মসৃণ যে মাত্র ৬০ দিনে আমাদের দৈনিক পেশেন্ট বুকিং ৩৪০% বৃদ্ধি পেয়েছে।"
     },
     {
       id: "test-2",
-      name: "Sarah Jenkins",
-      role: "Managing Director",
-      company: "Nexus Partners",
-      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80",
+      name: "Sarah Rahman",
+      nameBn: "সারাহ রহমান",
+      role: "VP of Product",
+      roleBn: "ভিপি অব প্রোডাক্ট",
+      company: "Apex Retail Technologies",
+      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80",
       rating: 5,
-      location: "Sydney, Australia",
-      content: "Communication was prompt, deliverables were always on schedule, and the final web platform is exceptionally fast and elegant."
+      reaction: "🔥",
+      location: "Dhaka, Bangladesh",
+      content: "The engineering fidelity of Webzen BD is unmatched in Dhaka. Next.js 16 and custom headless checkout dropped page load to 0.4 seconds, and checkout conversions doubled immediately.",
+      contentBn: "ঢাকার সফটওয়্যার ইন্ডাস্ট্রিতে Webzen BD-র কোডিং স্ট্যান্ডার্ড ও স্পিড অতুলনীয়। Next.js 16 দিয়ে তারা আমাদের অনলাইন শপ পুনর্নির্মাণ করার পর পেজ লোড টাইম মাত্র ০.৪ সেকেন্ডে নেমে এসেছে!"
     },
     {
       id: "test-3",
-      name: "Mahmudul Hasan",
-      role: "Founder & CEO",
-      company: "BongoWear BD",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
+      name: "Tanvir Hasan",
+      nameBn: "তানভীর হাসান",
+      role: "CTO",
+      roleBn: "সিটিও",
+      company: "FinFlow Global Solutions",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
       rating: 5,
+      reaction: "🚀",
       location: "Dhaka, Bangladesh",
-      content: "Our conversion rate surged after launching our headless store with WebZen. The bKash and card checkout flow is completely seamless."
+      content: "Working with Webzen BD felt like having a Silicon Valley engineering team right here in Dhaka. Their architecture handled over 50,000 concurrent socket connections without breaking a sweat.",
+      contentBn: "Webzen BD-র সাথে কাজ করে মনে হয়েছে সিলিকন ভ্যালির একদল দক্ষ ইঞ্জিনিয়ার আমাদের প্রজেক্টে কাজ করছে। আমাদের ফিন্যান্সিয়াল ড্যাশবোর্ডে ৫০,০০০ কনকারেন্ট কানেকশন কোনো ল্যাগ ছাড়াই চলছে।"
     },
     {
       id: "test-4",
       name: "Alexander Vance",
-      role: "VP of Product",
+      nameBn: "আলেকজান্ডার ভ্যান্স",
+      role: "VP of Engineering",
+      roleBn: "ভিপি অব ইঞ্জিনিয়ারিং",
       company: "CloudCore Systems",
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80",
       rating: 5,
+      reaction: "⚡",
       location: "San Francisco, USA",
-      content: "Mastery of modern Next.js and shadcn is top-tier. Animations are buttery smooth without CPU lag. Truly outstanding craftsmanship."
+      content: "Mastery of modern Next.js and shadcn is top-tier. Animations are buttery smooth without CPU lag. Truly outstanding craftsmanship.",
+      contentBn: "মডার্ন নেক্সট.জেএস এবং ফ্রন্টএন্ড আর্কিটেকচারে তাদের দক্ষতা বিশ্বমানের। কোনো সিপিইউ ল্যাগ ছাড়াই অ্যানিমেশনগুলো বাটারি-স্মুথ চলে।"
     }
   ],
 

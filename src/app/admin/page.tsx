@@ -35,6 +35,8 @@ import {
   FolderGit2, 
   BadgePercent, 
   MessageSquare, 
+  Star,
+  Heart,
   Phone, 
   CheckCircle2,
   ExternalLink,
@@ -263,6 +265,25 @@ export default function AdminPage() {
   const [uploadingProjectId, setUploadingProjectId] = useState<string | null>(null);
   const [modalUploading, setModalUploading] = useState(false);
 
+  // Testimonial management states
+  const [addTestimonialOpen, setAddTestimonialOpen] = useState(false);
+  const [uploadingTestimonialId, setUploadingTestimonialId] = useState<string | null>(null);
+  const [modalTestimonialUploading, setModalTestimonialUploading] = useState(false);
+  const [newTestimonialData, setNewTestimonialData] = useState<TestimonialItem>({
+    id: "",
+    name: "",
+    nameBn: "",
+    role: "",
+    roleBn: "",
+    company: "",
+    location: "Dhaka, Bangladesh",
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+    rating: 5,
+    reaction: "❤️",
+    content: "",
+    contentBn: "",
+  });
+
   // Category management states
   const [newCategoryName, setNewCategoryName] = useState("");
   const [newCategoryBn, setNewCategoryBn] = useState("");
@@ -409,6 +430,85 @@ export default function AdminPage() {
   const showNotification = (msg: string) => {
     setNotification(msg);
     setTimeout(() => setNotification(null), 3000);
+  };
+
+  const handleTestimonialAvatarUpload = async (testId: string, e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    try {
+      setUploadingTestimonialId(testId);
+      const url = await uploadCoverFile(file);
+      updateTestimonial(testId, { avatar: url });
+      showNotification("Client avatar uploaded & saved successfully!");
+    } catch (err) {
+      console.warn("Upload fallback to DataURL:", err);
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (typeof reader.result === "string") {
+          updateTestimonial(testId, { avatar: reader.result });
+          showNotification("Client avatar saved successfully!");
+        }
+      };
+      reader.readAsDataURL(file);
+    } finally {
+      setUploadingTestimonialId(null);
+      e.target.value = "";
+    }
+  };
+
+  const handleNewTestimonialAvatarUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    try {
+      setModalTestimonialUploading(true);
+      const url = await uploadCoverFile(file);
+      setNewTestimonialData((prev) => ({ ...prev, avatar: url }));
+      showNotification("Client photo uploaded successfully!");
+    } catch (err) {
+      console.warn("Upload fallback to DataURL:", err);
+      const reader = new FileReader();
+      reader.onload = () => {
+        const res = reader.result;
+        if (typeof res === "string") {
+          setNewTestimonialData((prev) => ({ ...prev, avatar: res }));
+          showNotification("Client photo loaded!");
+        }
+      };
+      reader.readAsDataURL(file);
+    } finally {
+      setModalTestimonialUploading(false);
+      e.target.value = "";
+    }
+  };
+
+  const handleCreateTestimonial = () => {
+    if (!newTestimonialData.name.trim() || !newTestimonialData.content.trim()) {
+      showNotification("Please provide client name and review content");
+      return;
+    }
+    const newId = `test-${Date.now()}`;
+    addTestimonial({
+      ...newTestimonialData,
+      id: newId,
+    });
+    setAddTestimonialOpen(false);
+    setNewTestimonialData({
+      id: "",
+      name: "",
+      nameBn: "",
+      role: "",
+      roleBn: "",
+      company: "",
+      location: "Dhaka, Bangladesh",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+      rating: 5,
+      reaction: "❤️",
+      content: "",
+      contentBn: "",
+    });
+    showNotification("New client testimonial added successfully!");
   };
 
   // Footer CMS link states
@@ -1587,69 +1687,230 @@ export default function AdminPage() {
           {/* ========================================================================= */}
           <TabsContent value="testimonials" className="space-y-6">
             <div className="glass-card rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                   <h2 className="text-xl font-bold text-white flex items-center gap-2">
                     <MessageSquare className="w-5 h-5 text-cyan-400" />
-                    <span>Client Testimonials CMS</span>
+                    <span>Client Testimonials & Reviews CMS</span>
                   </h2>
                   <p className="text-xs text-slate-400 mt-1">
-                    Manage client reviews, client photos, designations, and ratings.
+                    Manage client reviews, client photos, ratings, reaction emojis, designations, and localized content.
                   </p>
                 </div>
+
+                <Button
+                  onClick={() => setAddTestimonialOpen(true)}
+                  className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs h-9 px-4 rounded-xl flex items-center gap-2 shrink-0"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Add New Testimonial</span>
+                </Button>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                 {data.testimonials.map((test) => (
                   <div
                     key={test.id}
-                    className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3"
+                    className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-4 hover:border-white/20 transition-colors"
                   >
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="grid grid-cols-2 gap-2 flex-1">
-                        <div>
-                          <label className="text-[10px] text-slate-400 uppercase font-bold">Client Name</label>
-                          <Input
-                            value={test.name}
-                            onChange={(e) => updateTestimonial(test.id, { name: e.target.value })}
-                            className="bg-white/[0.04] border-white/10 text-white text-xs h-9 mt-1"
+                    {/* Top Row: Client Photo / Avatar & Actions */}
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-3 flex-1 min-w-0">
+                        {/* Avatar Preview with Hover Upload Overlay */}
+                        <div className="relative w-14 h-14 rounded-full overflow-hidden bg-neutral-800 border-2 border-white/15 shrink-0 group">
+                          <img
+                            src={test.avatar || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"}
+                            alt={test.name}
+                            className="w-full h-full object-cover"
+                          />
+                          <label
+                            htmlFor={`avatar-upload-${test.id}`}
+                            className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center cursor-pointer text-white"
+                          >
+                            {uploadingTestimonialId === test.id ? (
+                              <Loader2 className="w-4 h-4 animate-spin text-cyan-400" />
+                            ) : (
+                              <Upload className="w-4 h-4 text-cyan-400" />
+                            )}
+                          </label>
+                          <input
+                            type="file"
+                            id={`avatar-upload-${test.id}`}
+                            accept="image/*"
+                            className="hidden"
+                            onChange={(e) => handleTestimonialAvatarUpload(test.id, e)}
                           />
                         </div>
-                        <div>
-                          <label className="text-[10px] text-slate-400 uppercase font-bold">Role & Company</label>
+
+                        {/* Photo URL & Upload Button */}
+                        <div className="flex-1 min-w-0 space-y-1">
+                          <div className="flex items-center justify-between">
+                            <span className="text-[10px] text-slate-400 uppercase font-bold">Client Photo</span>
+                            <label
+                              htmlFor={`avatar-upload-${test.id}`}
+                              className="text-[10px] text-cyan-400 hover:text-cyan-300 font-semibold cursor-pointer flex items-center gap-1"
+                            >
+                              <Upload className="w-3 h-3" />
+                              <span>{uploadingTestimonialId === test.id ? "Uploading..." : "Upload Photo"}</span>
+                            </label>
+                          </div>
                           <Input
-                            value={test.role}
-                            onChange={(e) => updateTestimonial(test.id, { role: e.target.value })}
-                            className="bg-white/[0.04] border-white/10 text-white text-xs h-9 mt-1"
+                            placeholder="Image URL..."
+                            value={test.avatar}
+                            onChange={(e) => updateTestimonial(test.id, { avatar: e.target.value })}
+                            className="bg-white/[0.04] border-white/10 text-white text-[11px] h-8"
                           />
                         </div>
                       </div>
 
+                      {/* Delete Testimonial */}
                       <button
                         onClick={() => {
-                          if (confirm(`Delete testimonial from ${test.name}?`)) {
+                          if (confirm(`Delete testimonial from "${test.name}"?`)) {
                             deleteTestimonial(test.id);
                             showNotification("Testimonial removed");
                           }
                         }}
-                        className="p-1.5 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20 mt-4"
+                        className="p-2 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20 hover:bg-rose-500/20 transition-colors"
+                        title="Delete Review"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
                     </div>
 
+                    {/* Client Identity Fields */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      <div>
+                        <label className="text-[10px] text-slate-400 uppercase font-bold">Client Name (English)</label>
+                        <Input
+                          value={test.name}
+                          onChange={(e) => updateTestimonial(test.id, { name: e.target.value })}
+                          className="bg-white/[0.04] border-white/10 text-white text-xs h-8 mt-1"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[10px] text-slate-400 uppercase font-bold">Client Name (বাংলা)</label>
+                        <Input
+                          placeholder="বাংলা নাম (ঐচ্ছিক)"
+                          value={test.nameBn || ""}
+                          onChange={(e) => updateTestimonial(test.id, { nameBn: e.target.value })}
+                          className="bg-white/[0.04] border-white/10 text-white text-xs h-8 mt-1"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                      <div>
+                        <label className="text-[10px] text-slate-400 uppercase font-bold">Role / Title</label>
+                        <Input
+                          placeholder="e.g. CTO / Founder"
+                          value={test.role}
+                          onChange={(e) => updateTestimonial(test.id, { role: e.target.value })}
+                          className="bg-white/[0.04] border-white/10 text-white text-xs h-8 mt-1"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[10px] text-slate-400 uppercase font-bold">Company</label>
+                        <Input
+                          placeholder="e.g. CarePulse BD"
+                          value={test.company || ""}
+                          onChange={(e) => updateTestimonial(test.id, { company: e.target.value })}
+                          className="bg-white/[0.04] border-white/10 text-white text-xs h-8 mt-1"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[10px] text-slate-400 uppercase font-bold">Location</label>
+                        <Input
+                          placeholder="e.g. Dhaka, Bangladesh"
+                          value={test.location || ""}
+                          onChange={(e) => updateTestimonial(test.id, { location: e.target.value })}
+                          className="bg-white/[0.04] border-white/10 text-white text-xs h-8 mt-1"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Star Rating & Reaction Emoji */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-2.5 rounded-xl bg-black/40 border border-white/5">
+                      <div>
+                        <label className="text-[10px] text-slate-400 uppercase font-bold block mb-1">
+                          Star Rating ({test.rating || 5}/5)
+                        </label>
+                        <div className="flex items-center gap-1">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <button
+                              key={star}
+                              type="button"
+                              onClick={() => updateTestimonial(test.id, { rating: star })}
+                              className="p-1 hover:scale-110 transition-transform"
+                            >
+                              <Star
+                                className={`w-4 h-4 ${
+                                  star <= (test.rating || 5)
+                                    ? "fill-[#F59E0B] text-[#F59E0B]"
+                                    : "text-slate-600"
+                                }`}
+                              />
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="text-[10px] text-slate-400 uppercase font-bold block mb-1">
+                          Reaction Badge: <span className="text-white text-sm ml-1">{test.reaction || "❤️"}</span>
+                        </label>
+                        <div className="flex items-center gap-1.5">
+                          {["❤️", "🔥", "🚀", "⚡", "💎"].map((emoji) => (
+                            <button
+                              key={emoji}
+                              type="button"
+                              onClick={() => updateTestimonial(test.id, { reaction: emoji })}
+                              className={`w-7 h-7 rounded-lg text-xs flex items-center justify-center transition-all ${
+                                (test.reaction || "❤️") === emoji
+                                  ? "bg-white/20 border border-white/30 scale-105"
+                                  : "bg-white/5 hover:bg-white/10"
+                              }`}
+                            >
+                              {emoji}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Review Text: English */}
                     <div>
-                      <label className="text-[10px] text-slate-400 uppercase font-bold">Review Text</label>
+                      <label className="text-[10px] text-slate-400 uppercase font-bold">Review Text (English)</label>
                       <Textarea
                         rows={3}
                         value={test.content}
                         onChange={(e) => updateTestimonial(test.id, { content: e.target.value })}
                         className="bg-white/[0.04] border-white/10 text-white text-xs mt-1"
+                        placeholder="Client testimonial content..."
+                      />
+                    </div>
+
+                    {/* Review Text: Bengali */}
+                    <div>
+                      <label className="text-[10px] text-slate-400 uppercase font-bold">Review Text (বাংলা - ঐচ্ছিক)</label>
+                      <Textarea
+                        rows={2}
+                        value={test.contentBn || ""}
+                        onChange={(e) => updateTestimonial(test.id, { contentBn: e.target.value })}
+                        className="bg-white/[0.04] border-white/10 text-white text-xs mt-1 font-bangla-ui"
+                        placeholder="বাংলা রিভিউ টেক্সট..."
                       />
                     </div>
                   </div>
                 ))}
               </div>
+
+              <Button
+                onClick={() => showNotification("All client testimonials saved!")}
+                className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs h-10 px-6 rounded-xl"
+              >
+                Save All Testimonial Changes
+              </Button>
             </div>
           </TabsContent>
 
@@ -3022,6 +3283,211 @@ export default function AdminPage() {
             </Button>
             <Button onClick={handleImport} className="bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs">
               Import & Apply Now
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* ========================================================================= */}
+      {/* MODAL: ADD NEW CLIENT TESTIMONIAL                                         */}
+      {/* ========================================================================= */}
+      <Dialog open={addTestimonialOpen} onOpenChange={setAddTestimonialOpen}>
+        <DialogContent className="bg-[#090d1c] border-white/15 text-white max-w-xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-lg font-bold text-white flex items-center gap-2">
+              <MessageSquare className="w-5 h-5 text-cyan-400" />
+              <span>Add New Client Testimonial</span>
+            </DialogTitle>
+            <DialogDescription className="text-xs text-slate-400">
+              Create a new client review with photo, star rating, reaction badge, and localized text.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-4 py-2">
+            {/* Client Avatar Upload / URL */}
+            <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2.5">
+              <label className="text-xs font-semibold text-slate-300 block">Client Photo / Avatar</label>
+              <div className="flex items-center gap-4">
+                <div className="w-16 h-16 rounded-full overflow-hidden bg-neutral-800 border-2 border-white/15 shrink-0">
+                  <img
+                    src={newTestimonialData.avatar || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"}
+                    alt="Preview"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                <div className="flex-1 space-y-2">
+                  <div className="flex items-center gap-2">
+                    <label htmlFor="modal-test-avatar-upload" className="cursor-pointer">
+                      <div className="px-3 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/30 text-cyan-300 text-xs font-semibold flex items-center gap-1.5">
+                        {modalTestimonialUploading ? (
+                          <>
+                            <Loader2 className="w-3.5 h-3.5 animate-spin text-cyan-400" />
+                            <span>Uploading...</span>
+                          </>
+                        ) : (
+                          <>
+                            <Upload className="w-3.5 h-3.5 text-cyan-400" />
+                            <span>Upload Client Photo</span>
+                          </>
+                        )}
+                      </div>
+                    </label>
+                    <input
+                      id="modal-test-avatar-upload"
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={handleNewTestimonialAvatarUpload}
+                    />
+                  </div>
+
+                  <Input
+                    value={newTestimonialData.avatar}
+                    onChange={(e) => setNewTestimonialData({ ...newTestimonialData, avatar: e.target.value })}
+                    placeholder="Or enter image URL (https://... or /uploads/...)"
+                    className="bg-white/[0.04] border-white/10 text-white text-xs h-8 font-mono"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Client Names */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label className="text-xs font-semibold text-slate-300 block mb-1">Client Name (English) *</label>
+                <Input
+                  value={newTestimonialData.name}
+                  onChange={(e) => setNewTestimonialData({ ...newTestimonialData, name: e.target.value })}
+                  placeholder="e.g. Dr. Abrar Chowdhury"
+                  className="bg-white/[0.04] border-white/10 text-white text-xs"
+                />
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold text-slate-300 block mb-1">Client Name (বাংলা - ঐচ্ছিক)</label>
+                <Input
+                  value={newTestimonialData.nameBn || ""}
+                  onChange={(e) => setNewTestimonialData({ ...newTestimonialData, nameBn: e.target.value })}
+                  placeholder="e.g. ডা. আবরার চৌধুরী"
+                  className="bg-white/[0.04] border-white/10 text-white text-xs"
+                />
+              </div>
+            </div>
+
+            {/* Role, Company, Location */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div>
+                <label className="text-xs font-semibold text-slate-300 block mb-1">Role / Designation</label>
+                <Input
+                  value={newTestimonialData.role}
+                  onChange={(e) => setNewTestimonialData({ ...newTestimonialData, role: e.target.value })}
+                  placeholder="e.g. Founder & CMO"
+                  className="bg-white/[0.04] border-white/10 text-white text-xs"
+                />
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold text-slate-300 block mb-1">Company Name</label>
+                <Input
+                  value={newTestimonialData.company}
+                  onChange={(e) => setNewTestimonialData({ ...newTestimonialData, company: e.target.value })}
+                  placeholder="e.g. CarePulse BD"
+                  className="bg-white/[0.04] border-white/10 text-white text-xs"
+                />
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold text-slate-300 block mb-1">City / Country</label>
+                <Input
+                  value={newTestimonialData.location}
+                  onChange={(e) => setNewTestimonialData({ ...newTestimonialData, location: e.target.value })}
+                  placeholder="e.g. Dhaka, Bangladesh"
+                  className="bg-white/[0.04] border-white/10 text-white text-xs"
+                />
+              </div>
+            </div>
+
+            {/* Rating & Reaction */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-3 rounded-2xl bg-white/[0.03] border border-white/10">
+              <div>
+                <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                  Star Rating ({newTestimonialData.rating}/5)
+                </label>
+                <div className="flex items-center gap-1.5">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      key={star}
+                      type="button"
+                      onClick={() => setNewTestimonialData({ ...newTestimonialData, rating: star })}
+                      className="p-1 hover:scale-110 transition-transform"
+                    >
+                      <Star
+                        className={`w-5 h-5 ${
+                          star <= newTestimonialData.rating
+                            ? "fill-[#F59E0B] text-[#F59E0B]"
+                            : "text-slate-600"
+                        }`}
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                  Reaction Badge: <span className="text-white font-bold ml-1">{newTestimonialData.reaction || "❤️"}</span>
+                </label>
+                <div className="flex items-center gap-2">
+                  {["❤️", "🔥", "🚀", "⚡", "💎"].map((emoji) => (
+                    <button
+                      key={emoji}
+                      type="button"
+                      onClick={() => setNewTestimonialData({ ...newTestimonialData, reaction: emoji })}
+                      className={`w-8 h-8 rounded-xl text-sm flex items-center justify-center transition-all ${
+                        (newTestimonialData.reaction || "❤️") === emoji
+                          ? "bg-white/20 border border-white/30 scale-105"
+                          : "bg-white/5 hover:bg-white/10"
+                      }`}
+                    >
+                      {emoji}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* English Review */}
+            <div>
+              <label className="text-xs font-semibold text-slate-300 block mb-1">Review Content (English) *</label>
+              <Textarea
+                rows={3}
+                value={newTestimonialData.content}
+                onChange={(e) => setNewTestimonialData({ ...newTestimonialData, content: e.target.value })}
+                placeholder="What did the client say about WebZen BD..."
+                className="bg-white/[0.04] border-white/10 text-white text-xs"
+              />
+            </div>
+
+            {/* Bengali Review */}
+            <div>
+              <label className="text-xs font-semibold text-slate-300 block mb-1">Review Content (বাংলা - ঐচ্ছিক)</label>
+              <Textarea
+                rows={2}
+                value={newTestimonialData.contentBn || ""}
+                onChange={(e) => setNewTestimonialData({ ...newTestimonialData, contentBn: e.target.value })}
+                placeholder="বাংলা রিভিউ টেক্সট..."
+                className="bg-white/[0.04] border-white/10 text-white text-xs font-bangla-ui"
+              />
+            </div>
+          </div>
+
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setAddTestimonialOpen(false)} className="border-white/10 text-xs">
+              Cancel
+            </Button>
+            <Button onClick={handleCreateTestimonial} className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs">
+              Save Testimonial
             </Button>
           </DialogFooter>
         </DialogContent>

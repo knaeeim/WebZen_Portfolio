@@ -4,70 +4,28 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Star, Heart } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useSite } from "@/context/SiteContext";
 
 export function TestimonialsSection() {
   const { language } = useLanguage();
+  const { data } = useSite();
   const isBn = language === "bn";
 
-  const testimonials = isBn
-    ? [
-        {
-          avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
-          reaction: "❤️",
-          rating: 5,
-          review:
-            "Webzen BD আমাদের মেডিকেল টেলিমেডিসিন প্ল্যাটফর্ম ও রিয়েল-টাইম সিরিয়াল বুকিং সিস্টেম তৈরি করে দেয়। এর পারফরম্যান্স এতটাই মসৃণ যে মাত্র ৬০ দিনে আমাদের দৈনিক পেশেন্ট বুকিং ৩৪০% বৃদ্ধি পেয়েছে।",
-          name: "ডা. আবরার চৌধুরী",
-          designation: "ফাউন্ডার ও চিফ মেডিকেল অফিসার, কেয়ারপালস বিডি",
-        },
-        {
-          avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80",
-          reaction: "🔥",
-          rating: 5,
-          review:
-            "ঢাকার সফটওয়্যার ইন্ডাস্ট্রিতে Webzen BD-র কোডিং স্ট্যান্ডার্ড ও স্পিড অতুলনীয়। Next.js 16 দিয়ে তারা আমাদের অনলাইন শপ পুনর্নির্মাণ করার পর পেজ লোড টাইম মাত্র ০.৪ সেকেন্ডে নেমে এসেছে!",
-          name: "সারাহ রহমান",
-          designation: "ভিপি অব প্রোডাক্ট, অ্যাপেক্স রিটেইল টেকনোলজিস",
-        },
-        {
-          avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
-          reaction: "🚀",
-          rating: 5,
-          review:
-            "Webzen BD-র সাথে কাজ করে মনে হয়েছে সিলিকন ভ্যালির একদল দক্ষ ইঞ্জিনিয়ার আমাদের প্রজেক্টে কাজ করছে। আমাদের ফিন্যান্সিয়াল ড্যাশবোর্ডে ৫০,০০০ কনকারেন্ট কানেকশন কোনো ল্যাগ ছাড়াই চলছে।",
-          name: "তানভীর হাসান",
-          designation: "সিটিও, ফিনফ্লো গ্লোবাল সল্যুশনস",
-        },
-      ]
-    : [
-        {
-          avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
-          reaction: "❤️",
-          rating: 5,
-          review:
-            "Webzen BD built our medical teleconsultation platform with real-time slot booking and bKash automated reconciliation. The performance is silky-smooth, zero downtime, and our daily patient bookings skyrocketed by 340% within 60 days.",
-          name: "Dr. Abrar Chowdhury",
-          designation: "Founder & Chief Medical Officer, CarePulse BD",
-        },
-        {
-          avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80",
-          reaction: "🔥",
-          rating: 5,
-          review:
-            "The engineering fidelity of Webzen BD is unmatched in Dhaka. They revamped our D2C e-commerce platform with Next.js 16 and custom headless checkout. Average page load dropped to 0.4 seconds, and checkout conversions doubled immediately.",
-          name: "Sarah Rahman",
-          designation: "VP of Product, Apex Retail Technologies",
-        },
-        {
-          avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
-          reaction: "🚀",
-          rating: 5,
-          review:
-            "Working with Webzen BD felt like having a Silicon Valley engineering team right here in Dhaka. Their architecture for our financial dashboard handled over 50,000 concurrent socket connections without breaking a sweat. Absolute rockstars.",
-          name: "Tanvir Hasan",
-          designation: "CTO, FinFlow Global Solutions",
-        },
-      ];
+  const rawTestimonials = (data?.testimonials && data.testimonials.length > 0) ? data.testimonials : [];
+
+  const testimonials = rawTestimonials.map((t, idx) => ({
+    id: t.id,
+    avatar: t.avatar || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+    reaction: t.reaction || (idx % 3 === 0 ? "❤️" : idx % 3 === 1 ? "🔥" : "🚀"),
+    rating: t.rating || 5,
+    review: (isBn && t.contentBn) ? t.contentBn : (t.content || ""),
+    name: (isBn && t.nameBn) ? t.nameBn : (t.name || "Client"),
+    designation: [
+      (isBn && t.roleBn) ? t.roleBn : t.role,
+      t.company,
+      t.location
+    ].filter(Boolean).join(", "),
+  }));
 
   return (
     <section id="testimonials" className="relative py-10 sm:py-14 overflow-hidden scroll-mt-20">
@@ -79,7 +37,7 @@ export function TestimonialsSection() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Title: "Our happy Customers" Centered */}
+        {/* Section Title: "Our Happy Customers" Centered with Capital 'H' */}
         <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -106,7 +64,7 @@ export function TestimonialsSection() {
                 আমাদের সন্তুষ্ট <span className="text-gradient-hero">গ্রাহকদের মন্তব্য</span>
               </>
             ) : (
-              "Our happy Customers"
+              "Our Happy Customers"
             )}
           </motion.h2>
         </div>

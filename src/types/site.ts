@@ -98,6 +98,10 @@ export interface TestimonialItem {
   content: string;
   rating: number;
   location: string;
+  reaction?: string;
+  nameBn?: string;
+  roleBn?: string;
+  contentBn?: string;
 }
 
 export interface FaqItem {

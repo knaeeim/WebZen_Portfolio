@@ -25,14 +25,14 @@ export function Navbar() {
 
   const navLinks = language === "bn" ? [
     { label: "সার্ভিস", href: "#services" },
-    { label: "সমাধান", href: "#services" },
     { label: "পোর্টফোলিও", href: "#projects" },
+    { label: "রিভিউ", href: "#testimonials" },
     { label: "প্যাকেজ", href: "#pricing" },
     { label: "পরিসংখ্যান", href: "#metrics" },
   ] : [
     { label: "SERVICES", href: "#services" },
-    { label: "SOLUTIONS", href: "#services" },
     { label: "PORTFOLIO", href: "#projects" },
+    { label: "REVIEWS", href: "#testimonials" },
     { label: "PRICING", href: "#pricing" },
     { label: "ABOUT", href: "#metrics" },
   ];

@@ -1,13 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Sparkles, CheckCircle2, Terminal, Code2, Activity, RefreshCw } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function HeroSection() {
   const { language } = useLanguage();
   const isBn = language === "bn";
+  const [activeTab, setActiveTab] = useState<"terminal" | "architecture" | "telemetry">("terminal");
+  const [isRunning, setIsRunning] = useState(false);
+
+  const handleRerun = () => {
+    setIsRunning(true);
+    setTimeout(() => setIsRunning(false), 800);
+  };
 
   return (
     <section 
@@ -31,17 +38,17 @@ export function HeroSection() {
           >
             {/* Line 1: Pure White */}
             <span className="block text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[98px] text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
-              {isBn ? "ফুল-স্ট্যাক ডিজিটাল" : "Full-Stack Digital"}
+              {isBn ? "ডিজিটাল প্রোডাক্ট" : "Digital Product"}
             </span>
 
             {/* Line 2: Pink-to-Gold Gradient */}
             <span className="block text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[98px] text-gradient-hero mt-1 sm:mt-2 py-1">
-              {isBn ? "এজেন্সি।" : "Agency."}
+              {isBn ? "স্টুডিও।" : "Studio."}
             </span>
           </motion.h1>
         </div>
 
-        {/* Hero Composition: Left Floating Cards | Center 3D Sculpture | Right Editorial Block */}
+        {/* Hero Composition: Left Floating Cards | Center Terminal Console | Right Editorial Block */}
         <div className="mt-8 sm:mt-12 lg:mt-14 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-6 items-center">
           
           {/* Left: Two Stacked Glassmorphism Cards */}
@@ -88,7 +95,7 @@ export function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Centerpiece: Bespoke WebZen Digital Architecture Flagship Console */}
+          {/* Centerpiece: Ultra-Realistic Interactive Terminal & Code Console */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.92, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -98,83 +105,181 @@ export function HeroSection() {
             {/* Multi-layered halo backlighting */}
             <div className="absolute inset-0 bg-gradient-to-tr from-[#EC4899]/25 via-[#F59E0B]/20 to-transparent blur-[80px] rounded-full scale-90 pointer-events-none" />
 
-            {/* Bespoke Interactive Glassmorphism Engine Console */}
-            <div className="relative w-full max-w-[480px] rounded-3xl bg-[#121217]/90 backdrop-blur-2xl border border-white/10 p-5 sm:p-6 shadow-[0_25px_70px_rgba(0,0,0,0.8)] hover:border-white/20 transition-all duration-500 group">
+            {/* Bespoke Interactive Glassmorphism Terminal Console */}
+            <div className="relative w-full max-w-[500px] rounded-3xl bg-[#101015]/95 backdrop-blur-2xl border border-white/[0.12] p-4 sm:p-5 shadow-[0_25px_70px_rgba(0,0,0,0.85)] hover:border-white/20 transition-all duration-500 group">
               
-              {/* macOS Window Bar Header */}
-              <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
-                <div className="flex items-center gap-2">
+              {/* macOS Window Bar Header & Tabs */}
+              <div className="flex items-center justify-between pb-3.5 border-b border-white/[0.08]">
+                {/* Traffic Light Dots */}
+                <div className="flex items-center gap-1.5 sm:gap-2">
                   <span className="w-3 h-3 rounded-full bg-[#FF5F56] shadow-[0_0_8px_rgba(255,95,86,0.6)]" />
                   <span className="w-3 h-3 rounded-full bg-[#FFBD2E] shadow-[0_0_8px_rgba(255,189,46,0.6)]" />
                   <span className="w-3 h-3 rounded-full bg-[#27C93F] shadow-[0_0_8px_rgba(39,201,63,0.6)]" />
                 </div>
                 
+                {/* Interactive Console Tabs */}
+                <div className="flex items-center gap-1 bg-black/60 p-1 rounded-xl border border-white/5">
+                  <button
+                    onClick={() => setActiveTab("terminal")}
+                    className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10px] font-mono transition-all ${
+                      activeTab === "terminal"
+                        ? "bg-white/10 text-white font-bold shadow-sm"
+                        : "text-neutral-400 hover:text-neutral-200"
+                    }`}
+                  >
+                    <Terminal className="w-3 h-3 text-[#EC4899]" />
+                    <span>terminal.zsh</span>
+                  </button>
+
+                  <button
+                    onClick={() => setActiveTab("architecture")}
+                    className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10px] font-mono transition-all ${
+                      activeTab === "architecture"
+                        ? "bg-white/10 text-white font-bold shadow-sm"
+                        : "text-neutral-400 hover:text-neutral-200"
+                    }`}
+                  >
+                    <Code2 className="w-3 h-3 text-[#F59E0B]" />
+                    <span>stack.ts</span>
+                  </button>
+
+                  <button
+                    onClick={() => setActiveTab("telemetry")}
+                    className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10px] font-mono transition-all ${
+                      activeTab === "telemetry"
+                        ? "bg-white/10 text-white font-bold shadow-sm"
+                        : "text-neutral-400 hover:text-neutral-200"
+                    }`}
+                  >
+                    <Activity className="w-3 h-3 text-emerald-400" />
+                    <span>status.json</span>
+                  </button>
+                </div>
+
                 {/* Live Node Badge */}
-                <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 border border-white/10 text-[10px] font-mono text-neutral-300">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>DHAKA CORE NODE • 18ms</span>
+                <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 border border-white/10 text-[9px] font-mono text-neutral-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>18ms</span>
                 </div>
               </div>
 
-              {/* Console Centerpiece: Official WebZen Logo & Core Architecture */}
-              <div className="py-7 flex flex-col items-center justify-center relative">
-                {/* Circular Ambient Pulse Rings */}
-                <div className="absolute w-44 h-44 rounded-full border border-dashed border-white/10 animate-[spin_40s_linear_infinite]" />
-                <div className="absolute w-56 h-56 rounded-full border border-white/5 animate-[spin_60s_linear_infinite_reverse]" />
+              {/* Console Body */}
+              <div className="mt-3.5 rounded-2xl bg-black/85 border border-white/[0.08] p-4 font-mono text-xs text-left relative overflow-hidden min-h-[260px] flex flex-col justify-between">
                 
-                {/* Center WebZen Official Logo Emblem */}
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl p-1 bg-gradient-to-tr from-[#EC4899] via-[#EF4444] to-[#F59E0B] shadow-[0_0_35px_rgba(245,158,11,0.35)] animate-float">
-                    <div className="w-full h-full rounded-[14px] overflow-hidden bg-[#0B0B0E] p-2 flex items-center justify-center">
-                      <img
-                        src="/logo.png"
-                        alt="WebZen Official Logo"
-                        className="w-full h-full object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]"
-                      />
+                {/* TAB 1: Live Interactive Terminal */}
+                {activeTab === "terminal" && (
+                  <div className="space-y-1.5 text-[11px] sm:text-xs">
+                    <div className="text-neutral-500 text-[10px] flex items-center justify-between pb-1.5 mb-1 border-b border-white/5">
+                      <span>WEBZEN HIGH-VELOCITY CORE // PRODUCTION</span>
+                      <button 
+                        onClick={handleRerun}
+                        className="text-[#F59E0B] hover:text-[#fbbf24] flex items-center gap-1 text-[10px] cursor-pointer"
+                      >
+                        <RefreshCw className={`w-2.5 h-2.5 ${isRunning ? "animate-spin" : ""}`} />
+                        <span>{isRunning ? "BUILDING..." : "RE-DEPLOY"}</span>
+                      </button>
+                    </div>
+
+                    <div className="text-neutral-300">
+                      <span className="text-[#EC4899] font-bold">~ $</span> webzen deploy --env=production --region=dhaka
+                    </div>
+                    <div className="text-neutral-400 text-[10.5px] pl-3">
+                      ⚡ Turbopack v16.4.2 engine initialized [413ms]
+                    </div>
+                    <div className="text-neutral-400 text-[10.5px] pl-3">
+                      ✔ TypeScript strict checking passed with 0 errors
+                    </div>
+                    <div className="text-neutral-400 text-[10.5px] pl-3">
+                      ✔ bKash & Nagad instant merchant gateway hooked
+                    </div>
+                    <div className="text-neutral-400 text-[10.5px] pl-3">
+                      ✔ Clustered Edge CDN distributed (Dhaka Node • 18ms)
+                    </div>
+                    <div className="text-emerald-400 font-semibold text-[11px] pl-3 pt-0.5">
+                      🚀 LIVE at https://webzenbd.com [99.99% SLA]
+                    </div>
+                    <div className="text-neutral-300 flex items-center gap-1.5 pt-1">
+                      <span className="text-[#F59E0B] font-bold">webzen@dhaka-node:~$</span>
+                      <span className="text-emerald-400">status --live</span>
+                      <span className="w-2 h-3.5 bg-emerald-400 animate-pulse ml-0.5" />
                     </div>
                   </div>
+                )}
 
-                  <div className="mt-3.5 text-center">
-                    <div className="font-display font-black text-sm sm:text-base tracking-widest text-white uppercase">
-                      WEBZEN DIGITAL CORE
+                {/* TAB 2: TypeScript Stack Configuration */}
+                {activeTab === "architecture" && (
+                  <div className="space-y-1 text-[11px] sm:text-xs text-neutral-300 leading-relaxed">
+                    <div className="text-neutral-500 text-[10px] pb-1.5 mb-1 border-b border-white/5">
+                      <span>src/config/webzen-stack.ts</span>
                     </div>
-                    <div className="text-[11px] text-[#F59E0B] font-mono tracking-wider mt-0.5 font-semibold">
-                      ENGINEERED FOR SCALE
+                    <div><span className="text-purple-400">export const</span> <span className="text-blue-300">WebZenEngine</span> = &#123;</div>
+                    <div className="pl-4"><span className="text-neutral-400">runtime:</span> <span className="text-emerald-300">&quot;Next.js 16 (Turbopack)&quot;</span>,</div>
+                    <div className="pl-4"><span className="text-neutral-400">language:</span> <span className="text-emerald-300">&quot;TypeScript Strict&quot;</span>,</div>
+                    <div className="pl-4"><span className="text-neutral-400">payments:</span> [<span className="text-[#EC4899]">&quot;bKash&quot;</span>, <span className="text-[#F59E0B]">&quot;Nagad&quot;</span>, <span className="text-cyan-300">&quot;Stripe&quot;</span>],</div>
+                    <div className="pl-4"><span className="text-neutral-400">database:</span> <span className="text-emerald-300">&quot;MongoDB Atlas + Redis&quot;</span>,</div>
+                    <div className="pl-4"><span className="text-neutral-400">edgeNode:</span> <span className="text-emerald-300">&quot;Dhaka Core (18ms TTFB)&quot;</span>,</div>
+                    <div className="pl-4"><span className="text-neutral-400">uptimeSLA:</span> <span className="text-[#F59E0B]">&quot;99.99% Guaranteed&quot;</span>,</div>
+                    <div>&#125; <span className="text-purple-400">as const</span>;</div>
+                  </div>
+                )}
+
+                {/* TAB 3: Real-Time Telemetry JSON */}
+                {activeTab === "telemetry" && (
+                  <div className="space-y-1 text-[11px] sm:text-xs text-neutral-300 leading-relaxed font-mono">
+                    <div className="text-neutral-500 text-[10px] pb-1.5 mb-1 border-b border-white/5 flex items-center justify-between">
+                      <span>REAL-TIME SYSTEM METRICS</span>
+                      <span className="text-emerald-400">● 100% HEALTHY</span>
                     </div>
+                    <pre className="text-[10.5px] sm:text-[11px] text-neutral-300 leading-tight overflow-x-auto">
+{`{
+  "datacenter": "Dhaka Core BGD-01",
+  "httpStatus": 200,
+  "ttfbLatency": "18.4ms",
+  "activeConnections": "14,820",
+  "memoryFootprint": "42MB",
+  "sslHandshake": "TLS 1.3 Strict",
+  "lighthouseScore": {
+    "performance": 99,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100
+  }
+}`}
+                    </pre>
+                  </div>
+                )}
+
+                {/* Terminal Bottom Telemetry Bar */}
+                <div className="pt-2 border-t border-white/5 flex items-center justify-between text-[10px] text-neutral-400 font-mono mt-2">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>DAEMON: RUNNING</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[#EC4899]">ZSH</span>
+                    <span className="text-neutral-600">|</span>
+                    <span className="text-neutral-400">UTF-8</span>
+                    <span className="text-neutral-600">|</span>
+                    <span className="text-[#F59E0B]">DHAKA-01</span>
                   </div>
                 </div>
 
-                {/* Floating Architectural Feature Badges */}
-                <div className="absolute -left-2 top-8 bg-black/70 backdrop-blur-md border border-white/10 rounded-xl px-3 py-1.5 shadow-lg hidden sm:flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#EC4899]" />
-                  <span className="text-[10px] font-mono font-bold text-neutral-200">Next.js 16 + Turbopack</span>
-                </div>
-
-                <div className="absolute -right-2 top-14 bg-black/70 backdrop-blur-md border border-white/10 rounded-xl px-3 py-1.5 shadow-lg hidden sm:flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B]" />
-                  <span className="text-[10px] font-mono font-bold text-neutral-200">bKash Instant Gateway</span>
-                </div>
-
-                <div className="absolute -bottom-1 left-4 bg-black/70 backdrop-blur-md border border-white/10 rounded-xl px-3 py-1.5 shadow-lg hidden sm:flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                  <span className="text-[10px] font-mono font-bold text-neutral-200">99.99% Uptime SLA</span>
-                </div>
               </div>
 
-              {/* Live Terminal Output Box */}
-              <div className="mt-2 rounded-2xl bg-black/75 border border-white/[0.08] p-3.5 font-mono text-left">
-                <div className="flex items-center justify-between text-[10px] text-neutral-500 pb-1.5 mb-1.5 border-b border-white/5">
-                  <span>TERMINAL OUTPUT</span>
-                  <span className="text-[#F59E0B]">READY</span>
-                </div>
-                <div className="text-xs space-y-1">
-                  <div className="text-neutral-400">
-                    <span className="text-[#EC4899]">$</span> webzen deploy --production
-                  </div>
-                  <div className="text-emerald-400 font-semibold text-[11px]">
-                    ✓ Ultra-fast digital architecture compiled in 0.4s
-                  </div>
-                </div>
+              {/* Floating Architectural Feature Badges outside the console */}
+              <div className="absolute -left-3 top-8 bg-black/80 backdrop-blur-md border border-white/10 rounded-xl px-3 py-1.5 shadow-lg hidden sm:flex items-center gap-2 z-20">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#EC4899]" />
+                <span className="text-[10px] font-mono font-bold text-neutral-200">Next.js 16 + Turbopack</span>
+              </div>
+
+              <div className="absolute -right-3 top-16 bg-black/80 backdrop-blur-md border border-white/10 rounded-xl px-3 py-1.5 shadow-lg hidden sm:flex items-center gap-2 z-20">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B]" />
+                <span className="text-[10px] font-mono font-bold text-neutral-200">bKash Instant Gateway</span>
+              </div>
+
+              <div className="absolute -bottom-2 left-6 bg-black/80 backdrop-blur-md border border-white/10 rounded-xl px-3 py-1.5 shadow-lg hidden sm:flex items-center gap-2 z-20">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                <span className="text-[10px] font-mono font-bold text-neutral-200">99.99% Uptime SLA</span>
               </div>
 
             </div>
