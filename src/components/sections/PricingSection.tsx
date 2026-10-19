@@ -30,26 +30,26 @@ export function PricingSection() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
             <Zap className="w-3.5 h-3.5" />
             <span>{t.badge}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-normal leading-[1.35] sm:leading-[1.3] pb-1">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-normal leading-[1.35] sm:leading-[1.3] pb-1">
             <span className="inline-block">{t.heading}</span>{" "}
             <span className="text-gradient-cyan inline-block mx-1.5">{t.headingGradient}</span>
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-slate-300">
+          <p className="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-300">
             {t.subheading}
           </p>
 
           {/* Currency Switcher */}
-          <div className="mt-6 inline-flex items-center p-1.5 rounded-2xl bg-[#0a2847] border border-cyan-500/35 backdrop-blur-xl shadow-lg shadow-black/40">
+          <div className="mt-6 inline-flex items-center p-1.5 rounded-2xl bg-white dark:bg-[#0a2847] border border-cyan-500/25 dark:border-cyan-500/35 backdrop-blur-xl shadow-lg shadow-slate-200 dark:shadow-black/40">
             <button
               onClick={() => setCurrency("bdt")}
               className={`px-6 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer ${
                 currency === "bdt"
                   ? "bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 text-slate-950 shadow-md shadow-cyan-500/30 border border-white/50"
-                  : "text-slate-200 hover:text-white"
+                  : "text-slate-600 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-white"
               }`}
             >
               {t.currencyBdt}
@@ -59,7 +59,7 @@ export function PricingSection() {
               className={`px-6 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer ${
                 currency === "usd"
                   ? "bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 text-slate-950 shadow-md shadow-cyan-500/30 border border-white/50"
-                  : "text-slate-200 hover:text-white"
+                  : "text-slate-600 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-white"
               }`}
             >
               {t.currencyUsd}
@@ -78,8 +78,8 @@ export function PricingSection() {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const, delay: idx * 0.1 }}
               className={`glass-card rounded-3xl p-8 relative flex flex-col justify-between border ${
                 plan.popular
-                  ? "border-cyan-400/60 bg-gradient-to-b from-cyan-950/20 to-transparent shadow-2xl shadow-cyan-500/10 lg:-translate-y-3"
-                  : "border-white/10"
+                  ? "border-cyan-500/60 dark:border-cyan-400/60 bg-gradient-to-b from-cyan-500/10 dark:from-cyan-950/20 to-transparent shadow-2xl shadow-cyan-500/10 lg:-translate-y-3"
+                  : "border-cyan-500/15 dark:border-white/10"
               }`}
             >
               {plan.popular && (
@@ -91,36 +91,36 @@ export function PricingSection() {
               )}
 
               <div>
-                <h3 className="text-xl font-bold text-white mb-2">{plan.name}</h3>
-                <p className="text-xs text-slate-400 min-h-[32px] leading-relaxed">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{plan.name}</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 min-h-[32px] leading-relaxed">
                   {plan.description}
                 </p>
 
                 {/* Price Display */}
-                <div className="mt-6 mb-6 pb-6 border-b border-white/[0.08]">
+                <div className="mt-6 mb-6 pb-6 border-b border-slate-200 dark:border-white/[0.08]">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                    <span className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
                       {currency === "bdt" ? plan.priceBdt : plan.priceUsd}
                     </span>
-                    <span className="text-xs text-slate-400 font-mono">
+                    <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">
                       / {plan.period}
                     </span>
                   </div>
-                  <p className="text-[11px] text-amber-300/85 mt-2 flex items-center gap-1 font-medium">
-                    <Info className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <p className="text-[11px] text-amber-800 dark:text-amber-300/85 mt-2 flex items-center gap-1 font-medium">
+                    <Info className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
                     <span>{t.hostingCardNote}</span>
                   </p>
                 </div>
 
                 {/* Features List */}
                 <div className="space-y-3">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-300">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300">
                     {t.whatsIncluded}
                   </p>
                   <ul className="space-y-2.5">
                     {plan.features.map((feat, fIdx) => (
-                      <li key={fIdx} className="flex items-start gap-2.5 text-xs text-slate-200">
-                        <Check className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                      <li key={fIdx} className="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-200">
+                        <Check className="w-4 h-4 text-cyan-600 dark:text-cyan-400 shrink-0 mt-0.5" />
                         <span>{feat}</span>
                       </li>
                     ))}
@@ -129,13 +129,13 @@ export function PricingSection() {
               </div>
 
               {/* Action */}
-              <div className="mt-8 pt-6 border-t border-white/[0.08]">
+              <div className="mt-8 pt-6 border-t border-slate-200 dark:border-white/[0.08]">
                 <a href={plan.ctaLink || "#contact"}>
                   <Button
                     className={`w-full font-extrabold text-xs sm:text-sm h-12 rounded-xl group transition-all cursor-pointer ${
                       plan.popular
                         ? "bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 text-slate-950 hover:from-cyan-300 hover:to-sky-200 shadow-xl shadow-cyan-500/30 border-2 border-white/60"
-                        : "bg-[#0a2847] hover:bg-[#0f3c69] text-white border-2 border-cyan-500/40 hover:border-cyan-300 shadow-lg shadow-black/40"
+                        : "bg-white dark:bg-[#0a2847] hover:bg-slate-50 dark:hover:bg-[#0f3c69] text-slate-900 dark:text-white border-2 border-cyan-600 dark:border-cyan-500/40 hover:border-cyan-500 dark:hover:border-cyan-300 shadow-lg shadow-cyan-500/10 dark:shadow-black/40"
                     }`}
                   >
                     <span>{plan.ctaText}</span>
@@ -153,22 +153,22 @@ export function PricingSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mt-12 rounded-2xl p-6 sm:p-7 border border-cyan-500/20 bg-gradient-to-r from-cyan-950/25 via-blue-950/20 to-[#080d1e] flex flex-col md:flex-row items-start md:items-center justify-between gap-5 shadow-lg shadow-black/40"
+          className="mt-12 rounded-2xl p-6 sm:p-7 border border-cyan-500/20 bg-slate-50 dark:bg-gradient-to-r dark:from-cyan-950/25 dark:via-blue-950/20 dark:to-[#080d1e] flex flex-col md:flex-row items-start md:items-center justify-between gap-5 shadow-lg shadow-slate-200 dark:shadow-black/40"
         >
           <div className="flex items-start gap-4">
-            <div className="w-11 h-11 rounded-2xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-400 flex items-center justify-center shrink-0 mt-0.5">
+            <div className="w-11 h-11 rounded-2xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0 mt-0.5">
               <Server className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2.5 flex-wrap">
-                <h4 className="text-sm sm:text-base font-bold text-white">
+                <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
                   {t.hostingNoticeTitle}
                 </h4>
-                <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 font-semibold uppercase tracking-wider">
+                <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-700 dark:text-amber-300 font-semibold uppercase tracking-wider">
                   {t.hostingNoticeBadge}
                 </span>
               </div>
-              <p className="text-xs sm:text-[13px] text-slate-300 mt-1.5 leading-relaxed max-w-3xl">
+              <p className="text-xs sm:text-[13px] text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed max-w-3xl">
                 {t.hostingNoticeDesc}
               </p>
             </div>

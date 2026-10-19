@@ -83,17 +83,17 @@ export function Footer() {
   const locationBadge = footer?.locationBadge || "Dhaka";
 
   return (
-    <footer className="relative bg-[#041726] border-t border-cyan-500/15 text-slate-400 pt-20 pb-12 overflow-hidden">
+    <footer className="relative bg-slate-100/90 dark:bg-[#031326] border-t border-cyan-500/20 text-slate-600 dark:text-slate-400 pt-20 pb-12 overflow-hidden transition-colors duration-300">
       {/* Subtle Logo-matched bottom glow */}
       <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[600px] h-[250px] bg-gradient-to-t from-cyan-400/20 via-[#009fe3]/15 to-transparent blur-[120px] rounded-full pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-white/[0.08]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-slate-200 dark:border-white/[0.08]">
           
           {/* Col 1 & 2: Brand & Bio (2 cols) */}
           <div className="lg:col-span-2 space-y-5">
             <div className="flex items-center gap-3">
-              <div className="relative w-10 h-10 rounded-xl overflow-hidden shrink-0 shadow-lg shadow-cyan-500/15 border border-white/10">
+              <div className="relative w-10 h-10 rounded-xl overflow-hidden shrink-0 shadow-lg shadow-cyan-500/15 border border-cyan-500/20 dark:border-white/10">
                 <img
                   src="/logo.png"
                   alt="WebZen Bangladesh"
@@ -101,34 +101,34 @@ export function Footer() {
                 />
               </div>
               <div>
-                <span className="font-bold text-lg text-white tracking-tight">
+                <span className="font-bold text-lg text-slate-900 dark:text-white tracking-tight">
                   {companyName}
                 </span>
-                <span className="ml-2 text-[10px] px-2 py-0.5 rounded-full font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                <span className="ml-2 text-[10px] px-2 py-0.5 rounded-full font-semibold bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20">
                   {locationBadge}
                 </span>
               </div>
             </div>
 
-            <p className="text-xs text-slate-300 leading-relaxed max-w-sm">
+            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed max-w-sm">
               {bioText}
             </p>
 
-            <div className="flex items-center gap-2 text-xs text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
               <span>{statusText}</span>
             </div>
           </div>
 
           {/* Col 3: Navigation */}
           <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
               {navTitle}
             </h4>
             <ul className="space-y-2.5 text-xs">
               {navLinks.map((item) => (
                 <li key={item.id}>
-                  <a href={item.url} className="hover:text-cyan-400 transition-colors">
+                  <a href={item.url} className="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
                     {language === "bn" ? (item.labelBn || item.label) : item.label}
                   </a>
                 </li>
@@ -138,13 +138,13 @@ export function Footer() {
 
           {/* Col 4: Solutions */}
           <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
               {solutionsTitle}
             </h4>
             <ul className="space-y-2.5 text-xs">
               {solutionsLinks.map((item) => (
                 <li key={item.id}>
-                  <a href={item.url} className="hover:text-cyan-400 transition-colors">
+                  <a href={item.url} className="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
                     {language === "bn" ? (item.labelBn || item.label) : item.label}
                   </a>
                 </li>
@@ -154,19 +154,19 @@ export function Footer() {
 
           {/* Col 5: Customer Assistance */}
           <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
               {helpTitle}
             </h4>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
               {helpDesc}
             </p>
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs sm:text-sm font-bold hover:bg-emerald-500/30 transition-all shadow-sm"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500/15 dark:bg-emerald-500/20 border border-emerald-500/30 dark:border-emerald-400/40 text-emerald-700 dark:text-emerald-300 text-xs sm:text-sm font-bold hover:bg-emerald-500/25 dark:hover:bg-emerald-500/30 transition-all shadow-sm"
             >
-              <MessageCircle className="w-4 h-4 text-emerald-400" />
+              <MessageCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               <span>{helpBtnText}</span>
             </a>
           </div>
@@ -175,18 +175,18 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
             <span>© {new Date().getFullYear()} {companyName}. {copyrightText}</span>
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="text-slate-400">{locationText}</span>
+            <span className="text-slate-500 dark:text-slate-400">{locationText}</span>
             <button
               onClick={scrollToTop}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#0a2847] border border-cyan-500/30 hover:border-cyan-400 text-slate-100 hover:text-white transition-all shadow-md shadow-black/30 cursor-pointer text-xs font-semibold"
+              className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white dark:bg-[#0a2847] border border-cyan-500/30 hover:border-cyan-500 text-slate-700 dark:text-slate-100 hover:text-cyan-600 dark:hover:text-white transition-all shadow-md shadow-slate-200 dark:shadow-black/30 cursor-pointer text-xs font-semibold"
             >
               <span>{t.backToTop}</span>
-              <ArrowUp className="w-3.5 h-3.5 text-cyan-400" />
+              <ArrowUp className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
             </button>
           </div>
         </div>

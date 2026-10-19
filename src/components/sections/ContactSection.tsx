@@ -107,15 +107,15 @@ export function ContactSection() {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
             <MessageCircle className="w-3.5 h-3.5" />
             <span>{t.badge}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-normal leading-[1.35] sm:leading-[1.3] pb-1">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-normal leading-[1.35] sm:leading-[1.3] pb-1">
             <span className="inline-block">{t.heading}</span>{" "}
             <span className="text-gradient-cyan inline-block mx-1.5">{t.headingGradient}</span>
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-slate-300">
+          <p className="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-300">
             {t.subheading}
           </p>
         </div>
@@ -126,14 +126,14 @@ export function ContactSection() {
           <div className="lg:col-span-5 space-y-6">
             
             {/* Quick WhatsApp Action Card */}
-            <div className="glass-card rounded-3xl p-6 border border-emerald-500/30 bg-gradient-to-br from-emerald-950/20 to-transparent">
+            <div className="glass-card rounded-3xl p-6 border border-emerald-500/30 bg-emerald-500/10 dark:bg-gradient-to-br dark:from-emerald-950/20 dark:to-transparent">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
                   <MessageCircle className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-white">{t.whatsappTitle}</h4>
-                  <p className="text-xs text-slate-400">{t.whatsappSub}</p>
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white">{t.whatsappTitle}</h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-400">{t.whatsappSub}</p>
                 </div>
               </div>
               <a
@@ -148,48 +148,48 @@ export function ContactSection() {
             </div>
 
             {/* Dhaka Headquarters Card */}
-            <div className="glass-card rounded-3xl p-6 border border-white/10 space-y-4">
-              <h3 className="text-base font-bold text-white flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-cyan-400" />
+            <div className="glass-card rounded-3xl p-6 border border-cyan-500/15 dark:border-white/10 space-y-4">
+              <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                 <span>{t.dhakaHq}</span>
               </h3>
 
-              <div className="space-y-3 text-xs text-slate-300">
+              <div className="space-y-3 text-xs text-slate-600 dark:text-slate-300">
                 <div className="flex items-start gap-2.5">
-                  <div className="font-semibold text-slate-400 w-16 shrink-0">{t.addressLabel}</div>
-                  <span className="text-slate-200">{contact.address}</span>
+                  <div className="font-semibold text-slate-500 dark:text-slate-400 w-16 shrink-0">{t.addressLabel}</div>
+                  <span className="text-slate-800 dark:text-slate-200">{contact.address}</span>
                 </div>
 
                 <div className="flex items-center gap-2.5">
-                  <div className="font-semibold text-slate-400 w-16 shrink-0">{t.phoneLabel}</div>
-                  <a href={`tel:${contact.phone}`} className="text-cyan-400 hover:underline">
+                  <div className="font-semibold text-slate-500 dark:text-slate-400 w-16 shrink-0">{t.phoneLabel}</div>
+                  <a href={`tel:${contact.phone}`} className="text-cyan-600 dark:text-cyan-400 hover:underline">
                     {contact.phone}
                   </a>
                 </div>
 
                 <div className="flex items-center gap-2.5">
-                  <div className="font-semibold text-slate-400 w-16 shrink-0">{t.emailLabel}</div>
-                  <a href={`mailto:${contact.email}`} className="text-cyan-400 hover:underline">
+                  <div className="font-semibold text-slate-500 dark:text-slate-400 w-16 shrink-0">{t.emailLabel}</div>
+                  <a href={`mailto:${contact.email}`} className="text-cyan-600 dark:text-cyan-400 hover:underline">
                     {contact.email}
                   </a>
                 </div>
 
                 <div className="flex items-start gap-2.5">
-                  <div className="font-semibold text-slate-400 w-16 shrink-0">{t.hoursLabel}</div>
-                  <span className="text-slate-300">{contact.officeHours}</span>
+                  <div className="font-semibold text-slate-500 dark:text-slate-400 w-16 shrink-0">{t.hoursLabel}</div>
+                  <span className="text-slate-700 dark:text-slate-300">{contact.officeHours}</span>
                 </div>
               </div>
 
               {/* Security promise */}
-              <div className="pt-4 border-t border-white/[0.08] flex items-center gap-2 text-[11px] text-slate-400">
-                <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0" />
+              <div className="pt-4 border-t border-slate-200 dark:border-white/[0.08] flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+                <ShieldCheck className="w-4 h-4 text-cyan-600 dark:text-cyan-400 shrink-0" />
                 <span>{t.securityPromise}</span>
               </div>
             </div>
 
             {/* Social Channels */}
-            <div className="glass-card rounded-3xl p-6 border border-white/10">
-              <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
+            <div className="glass-card rounded-3xl p-6 border border-cyan-500/15 dark:border-white/10">
+              <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">
                 {language === "bn" ? "আমাদের সোশ্যাল মিডিয়া ও চ্যানেল" : "Official Channels & Repositories"}
               </h4>
               <div className="flex flex-wrap gap-2 text-xs">
@@ -199,7 +199,7 @@ export function ContactSection() {
                     href={url}
                     target="_blank"
                     rel="noreferrer"
-                    className="capitalize px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 hover:text-cyan-300 hover:border-cyan-500/30 transition-colors"
+                    className="capitalize px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-300 hover:border-cyan-500/30 transition-colors"
                   >
                     {platform}
                   </a>
@@ -218,17 +218,17 @@ export function ContactSection() {
                   animate={{ opacity: 1, scale: 1 }}
                   className="text-center py-12 space-y-4"
                 >
-                  <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white">{t.formSuccessTitle}</h3>
-                  <p className="text-slate-300 text-sm max-w-md mx-auto">
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white">{t.formSuccessTitle}</h3>
+                  <p className="text-slate-600 dark:text-slate-300 text-sm max-w-md mx-auto">
                     {t.formSuccessDesc}
                   </p>
                   <Button
                     onClick={() => setSubmitted(false)}
                     variant="outline"
-                    className="border-white/20 text-slate-200 text-xs mt-4 cursor-pointer"
+                    className="border-slate-300 dark:border-white/20 text-slate-700 dark:text-slate-200 text-xs mt-4 cursor-pointer"
                   >
                     {t.formAnotherBtn}
                   </Button>
@@ -237,7 +237,7 @@ export function ContactSection() {
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                         {t.nameLabel}
                       </label>
                       <Input
@@ -245,12 +245,12 @@ export function ContactSection() {
                         value={formState.name}
                         onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                         placeholder={t.namePlaceholder}
-                        className="bg-white/[0.04] border-white/10 text-white placeholder:text-slate-500 text-xs h-11 rounded-xl focus:border-cyan-400"
+                        className="bg-slate-50 dark:bg-white/[0.04] border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-xs h-11 rounded-xl focus:border-cyan-500"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                         {t.emailLabelForm}
                       </label>
                       <Input
@@ -259,32 +259,32 @@ export function ContactSection() {
                         value={formState.email}
                         onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                         placeholder="yourname@company.com"
-                        className="bg-white/[0.04] border-white/10 text-white placeholder:text-slate-500 text-xs h-11 rounded-xl focus:border-cyan-400"
+                        className="bg-slate-50 dark:bg-white/[0.04] border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-xs h-11 rounded-xl focus:border-cyan-500"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                         {t.phoneLabelForm}
                       </label>
                       <Input
                         value={formState.phone}
                         onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
                         placeholder="+880 17XX-XXXXXX"
-                        className="bg-white/[0.04] border-white/10 text-white placeholder:text-slate-500 text-xs h-11 rounded-xl focus:border-cyan-400"
+                        className="bg-slate-50 dark:bg-white/[0.04] border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-xs h-11 rounded-xl focus:border-cyan-500"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                         {t.projectTypeLabel}
                       </label>
                       <select
                         value={formState.projectType}
                         onChange={(e) => setFormState({ ...formState, projectType: e.target.value })}
-                        className="w-full bg-[#0d1326] border border-white/10 text-white text-xs h-11 px-3 rounded-xl focus:border-cyan-400 focus:outline-none"
+                        className="w-full bg-slate-50 dark:bg-[#0d1326] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white text-xs h-11 px-3 rounded-xl focus:border-cyan-500 focus:outline-none"
                       >
                         {language === "bn" ? (
                           <>
@@ -310,13 +310,13 @@ export function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                       {t.budgetLabel}
                     </label>
                     <select
                       value={formState.budget}
                       onChange={(e) => setFormState({ ...formState, budget: e.target.value })}
-                      className="w-full bg-[#0d1326] border border-white/10 text-white text-xs h-11 px-3 rounded-xl focus:border-cyan-400 focus:outline-none"
+                      className="w-full bg-slate-50 dark:bg-[#0d1326] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white text-xs h-11 px-3 rounded-xl focus:border-cyan-500 focus:outline-none"
                     >
                       {language === "bn" ? (
                         <>
@@ -336,8 +336,8 @@ export function ContactSection() {
                         </>
                       )}
                     </select>
-                    <p className="text-[11px] text-slate-400 mt-1.5 flex items-center gap-1.5 font-normal">
-                      <span className="text-amber-400 font-semibold">*</span>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1.5 flex items-center gap-1.5 font-normal">
+                      <span className="text-amber-500 dark:text-amber-400 font-semibold">*</span>
                       <span>
                         {language === "bn"
                           ? "উল্লেখ্য: সার্ভার হোস্টিং ও ডাটাবেজ স্টোরেজ খরচ ক্লায়েন্টকে সরাসরি প্রোভাইডারকে পরিশোধ করতে হবে (আমরা ফ্রিতে সেটআপ করে দেব)।"
@@ -347,7 +347,7 @@ export function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                       {t.messageLabel}
                     </label>
                     <Textarea
@@ -356,7 +356,7 @@ export function ContactSection() {
                       value={formState.message}
                       onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                       placeholder={t.messagePlaceholder}
-                      className="bg-white/[0.04] border-white/10 text-white placeholder:text-slate-500 text-xs rounded-xl focus:border-cyan-400 resize-none"
+                      className="bg-slate-50 dark:bg-white/[0.04] border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-xs rounded-xl focus:border-cyan-500 resize-none"
                     />
                   </div>
 

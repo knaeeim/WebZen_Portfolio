@@ -18,15 +18,23 @@ import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { CustomSection } from "@/components/sections/CustomSection";
+import { useTheme } from "@/context/ThemeContext";
 import Link from "next/link";
 import { Settings, Sparkles } from "lucide-react";
 
 export default function Home() {
   const { data, isLoaded } = useSite();
+  const { theme } = useTheme();
 
   if (!isLoaded) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#08213d] to-[#051c2d] flex items-center justify-center">
+      <div
+        className={`min-h-screen flex items-center justify-center transition-colors duration-300 ${
+          theme === "light"
+            ? "bg-gradient-to-b from-[#f0f9ff] to-[#f8fafc] text-slate-800"
+            : "bg-gradient-to-b from-[#031326] to-[#020e1a] text-slate-100"
+        }`}
+      >
         <div className="flex flex-col items-center gap-4">
           <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-2xl shadow-cyan-500/25 border border-white/15 animate-pulse">
             <img src="/logo.png" alt="WebZen Bangladesh" className="w-full h-full object-cover" />
@@ -74,7 +82,13 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-[#08213d] via-[#051c2d] to-[#04202c] text-slate-100 flex flex-col selection:bg-cyan-400 selection:text-slate-950">
+    <div
+      className={`relative min-h-screen flex flex-col transition-colors duration-300 ${
+        theme === "light"
+          ? "bg-gradient-to-b from-[#f0f9ff] via-[#f8fafc] to-[#e0f7fa] text-slate-900 selection:bg-cyan-500 selection:text-white"
+          : "bg-gradient-to-b from-[#031326] via-[#020e1a] to-[#02151d] text-slate-100 selection:bg-cyan-400 selection:text-slate-950"
+      }`}
+    >
       {/* Visual background layers */}
       <ParticleCanvas />
       <MouseSpotlight />

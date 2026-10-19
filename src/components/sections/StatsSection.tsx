@@ -65,7 +65,7 @@ export function StatsSection() {
   };
 
   return (
-    <section id="stats" className="relative py-16 border-y border-white/[0.06] bg-white/[0.01] scroll-mt-24">
+    <section id="stats" className="relative py-16 border-y border-cyan-500/15 dark:border-white/[0.06] bg-cyan-500/[0.02] dark:bg-white/[0.01] scroll-mt-24">
       {/* Anchor alias for #metrics */}
       <div id="metrics" className="absolute -top-24 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -82,22 +82,22 @@ export function StatsSection() {
               <div className="absolute top-0 right-0 w-24 h-24 bg-cyan-500/5 rounded-full blur-2xl group-hover:bg-cyan-500/15 transition-all" />
               
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-cyan-500/40 transition-all">
+                <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-white/[0.05] border border-cyan-500/20 dark:border-white/10 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-cyan-500/40 transition-all">
                   {getIcon(stat.icon)}
                 </div>
                 
                 <div>
-                  <div className="text-3xl font-extrabold text-white tracking-tight flex items-baseline gap-0.5">
+                  <div className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight flex items-baseline gap-0.5">
                     <span>{stat.value}</span>
-                    <span className="text-cyan-400 font-bold">{stat.suffix}</span>
+                    <span className="text-cyan-600 dark:text-cyan-400 font-bold">{stat.suffix}</span>
                   </div>
-                  <div className="text-xs font-semibold text-slate-200 mt-0.5">
+                  <div className="text-xs font-semibold text-slate-700 dark:text-slate-200 mt-0.5">
                     {stat.label}
                   </div>
                 </div>
               </div>
 
-              <p className="text-xs text-slate-400 mt-4 leading-relaxed font-normal">
+              <p className="text-xs text-slate-600 dark:text-slate-400 mt-4 leading-relaxed font-normal">
                 {stat.description}
               </p>
             </motion.div>

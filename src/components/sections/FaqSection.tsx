@@ -34,15 +34,15 @@ export function FaqSection() {
         
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-4">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>{t.badge}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-normal leading-[1.35] sm:leading-[1.3] pb-1">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-normal leading-[1.35] sm:leading-[1.3] pb-1">
             <span className="inline-block">{t.heading}</span>{" "}
             <span className="text-gradient-cyan inline-block mx-1.5">{t.headingGradient}</span>
           </h2>
-          <p className="mt-4 text-base text-slate-300">
+          <p className="mt-4 text-base text-slate-600 dark:text-slate-300">
             {t.subheading}
           </p>
         </div>
@@ -54,19 +54,19 @@ export function FaqSection() {
             return (
               <div
                 key={faq.id || idx}
-                className="glass-card rounded-2xl border border-white/10 overflow-hidden transition-all duration-300"
+                className="glass-card rounded-2xl border border-cyan-500/15 dark:border-white/10 overflow-hidden transition-all duration-300"
               >
                 <button
                   onClick={() => toggleFaq(faq.id)}
                   className="w-full p-6 text-left flex items-center justify-between gap-4 group cursor-pointer"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-base sm:text-lg font-semibold text-white group-hover:text-cyan-400 transition-colors">
+                  <span className="text-base sm:text-lg font-semibold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
                     {faq.question}
                   </span>
                   <div
-                    className={`w-9 h-9 rounded-full bg-[#0a2847] border border-cyan-500/35 flex items-center justify-center shrink-0 transition-transform duration-300 shadow-sm ${
-                      isOpen ? "rotate-180 bg-cyan-500/25 border-cyan-400 text-cyan-300 shadow-md shadow-cyan-500/20" : "text-cyan-400"
+                    className={`w-9 h-9 rounded-full bg-white dark:bg-[#0a2847] border border-cyan-500/30 flex items-center justify-center shrink-0 transition-transform duration-300 shadow-sm ${
+                      isOpen ? "rotate-180 bg-cyan-500/15 dark:bg-cyan-500/25 border-cyan-500 text-cyan-600 dark:text-cyan-300 shadow-md shadow-cyan-500/20" : "text-cyan-600 dark:text-cyan-400"
                     }`}
                   >
                     <ChevronDown className="w-4 h-4 stroke-[2.5]" />
@@ -81,7 +81,7 @@ export function FaqSection() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="px-6 pb-6 text-slate-300 text-sm leading-relaxed border-t border-white/[0.04] pt-4 font-normal">
+                      <div className="px-6 pb-6 text-slate-600 dark:text-slate-300 text-sm leading-relaxed border-t border-slate-200 dark:border-white/[0.04] pt-4 font-normal">
                         {faq.answer}
                       </div>
                     </motion.div>

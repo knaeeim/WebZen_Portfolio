@@ -40,13 +40,13 @@ export function HeroSection() {
           initial={{ opacity: 0, y: -15, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={smoothTransition}
-          className="inline-flex flex-wrap sm:flex-nowrap items-center justify-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-3.5 rounded-full bg-white/[0.04] border border-cyan-500/30 backdrop-blur-xl mb-4 sm:mb-6 group hover:border-cyan-400/60 transition-all cursor-default shadow-lg shadow-cyan-500/5 max-w-full"
+          className="inline-flex flex-wrap sm:flex-nowrap items-center justify-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-3.5 rounded-full bg-white/80 dark:bg-white/[0.04] border border-cyan-500/30 backdrop-blur-xl mb-4 sm:mb-6 group hover:border-cyan-400/60 transition-all cursor-default shadow-lg shadow-cyan-500/5 max-w-full"
         >
           <span className="flex h-2 w-2 rounded-full bg-cyan-400 animate-ping shrink-0" />
-          <span className="text-[11px] sm:text-xs font-semibold text-slate-200">
+          <span className="text-[11px] sm:text-xs font-semibold text-slate-700 dark:text-slate-200">
             {t.badge}
           </span>
-          <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-300 border border-cyan-500/30 shrink-0">
+          <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-600 dark:text-cyan-300 border border-cyan-500/30 shrink-0">
             {t.badgeHighlight}
           </span>
         </motion.div>
@@ -56,7 +56,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...smoothTransition, delay: 0.1 }}
-          className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white max-w-4xl mx-auto leading-[1.3] sm:leading-[1.22] tracking-normal pb-2 px-1 text-balance"
+          className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white max-w-4xl mx-auto leading-[1.3] sm:leading-[1.22] tracking-normal pb-2 px-1 text-balance"
         >
           <span>{t.titlePart1}</span>{" "}
           <span className="text-gradient-cyan drop-shadow-sm inline-block py-0.5">
@@ -66,7 +66,7 @@ export function HeroSection() {
             <>
               {" "}
               <br className="hidden sm:inline" />
-              <span className="text-slate-100 inline-block mt-1 sm:mt-0">{t.titlePart2}</span>
+              <span className="text-slate-800 dark:text-slate-100 inline-block mt-1 sm:mt-0">{t.titlePart2}</span>
             </>
           ) : null}
         </motion.h1>
@@ -76,7 +76,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...smoothTransition, delay: 0.18 }}
-          className="mt-3.5 sm:mt-5 text-sm sm:text-base md:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal px-2 sm:px-0"
+          className="mt-3.5 sm:mt-5 text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal px-2 sm:px-0"
         >
           {t.description}
         </motion.p>
@@ -98,22 +98,22 @@ export function HeroSection() {
             </Button>
           </a>
 
-          {/* Secondary Action Buttons - Solid high-contrast navy cards with bright accent borders & pure white text */}
+          {/* Secondary Action Buttons - Tactile contrast cards adapting to light & dark modes */}
           <div className="grid grid-cols-2 sm:flex items-center gap-2.5 sm:gap-4 w-full sm:w-auto">
             <a href="#projects" className="w-full sm:w-auto">
               <Button
-                className="w-full sm:w-auto bg-[#0a2847] hover:bg-[#0f3c69] border-2 border-cyan-400/80 hover:border-cyan-300 text-white font-bold px-3 sm:px-7 h-12 sm:h-14 text-xs sm:text-sm md:text-[15px] rounded-2xl shadow-xl shadow-black/50 hover:shadow-cyan-500/25 active:scale-[0.98] transition-all group cursor-pointer"
+                className="w-full sm:w-auto bg-white dark:bg-[#0a2847] hover:bg-slate-50 dark:hover:bg-[#0f3c69] border-2 border-cyan-600 dark:border-cyan-400/80 hover:border-cyan-500 text-slate-900 dark:text-white font-bold px-3 sm:px-7 h-12 sm:h-14 text-xs sm:text-sm md:text-[15px] rounded-2xl shadow-xl shadow-cyan-500/10 dark:shadow-black/50 hover:shadow-cyan-500/25 active:scale-[0.98] transition-all group cursor-pointer"
               >
-                <Code2 className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 text-cyan-300 group-hover:rotate-12 transition-transform shrink-0 stroke-[2.5]" />
+                <Code2 className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 text-cyan-600 dark:text-cyan-300 group-hover:rotate-12 transition-transform shrink-0 stroke-[2.5]" />
                 <span className="truncate">{t.secondaryCta}</span>
               </Button>
             </a>
 
             <a href="#calculator" className="w-full sm:w-auto">
               <Button
-                className="w-full sm:w-auto bg-[#0a2847] hover:bg-[#0f3c69] border-2 border-amber-400/80 hover:border-amber-300 text-white font-bold h-12 sm:h-14 px-3 sm:px-7 text-xs sm:text-sm md:text-[15px] rounded-2xl shadow-xl shadow-black/50 hover:shadow-amber-500/25 active:scale-[0.98] transition-all group cursor-pointer"
+                className="w-full sm:w-auto bg-white dark:bg-[#0a2847] hover:bg-slate-50 dark:hover:bg-[#0f3c69] border-2 border-amber-500 dark:border-amber-400/80 hover:border-amber-400 text-slate-900 dark:text-white font-bold h-12 sm:h-14 px-3 sm:px-7 text-xs sm:text-sm md:text-[15px] rounded-2xl shadow-xl shadow-amber-500/10 dark:shadow-black/50 hover:shadow-amber-500/25 active:scale-[0.98] transition-all group cursor-pointer"
               >
-                <Zap className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 text-amber-400 fill-amber-400/40 group-hover:scale-110 transition-transform shrink-0" />
+                <Zap className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 text-amber-500 dark:text-amber-400 fill-amber-400/40 group-hover:scale-110 transition-transform shrink-0" />
                 <span className="truncate">{t.calculatorCta}</span>
               </Button>
             </a>
@@ -125,15 +125,15 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ ...smoothTransition, delay: 0.35 }}
-          className="mt-8 sm:mt-12 pt-5 sm:pt-6 border-t border-white/[0.08] max-w-5xl sm:max-w-6xl w-full mx-auto"
+          className="mt-8 sm:mt-12 pt-5 sm:pt-6 border-t border-slate-200 dark:border-white/[0.08] max-w-5xl sm:max-w-6xl w-full mx-auto"
         >
           <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 px-1">
             {highlightPills.map((pill) => (
               <span
                 key={pill}
-                className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-[#0a2847]/80 border border-cyan-500/30 text-xs sm:text-sm font-semibold text-slate-200 hover:border-cyan-400/60 hover:text-cyan-300 transition-colors cursor-default whitespace-nowrap shadow-sm shadow-black/30"
+                className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-white/90 dark:bg-[#0a2847]/80 border border-cyan-500/30 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-300 transition-colors cursor-default whitespace-nowrap shadow-sm shadow-slate-200 dark:shadow-black/30"
               >
-                <span className="w-2 h-2 rounded-full bg-cyan-400 shrink-0 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-cyan-500 dark:bg-cyan-400 shrink-0 animate-pulse" />
                 {pill}
               </span>
             ))}
@@ -150,12 +150,12 @@ export function HeroSection() {
           {quickStats.map((item, idx) => (
             <div
               key={idx}
-              className="glass-card rounded-xl sm:rounded-2xl p-2.5 sm:p-3.5 text-center border border-white/10 flex flex-col justify-center"
+              className="glass-card rounded-xl sm:rounded-2xl p-2.5 sm:p-3.5 text-center border border-cyan-500/15 dark:border-white/10 flex flex-col justify-center"
             >
-              <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight">
+              <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
                 <span className="text-gradient-cyan">{item.value}</span>
               </div>
-              <div className="text-[10px] sm:text-xs text-slate-400 mt-0.5 font-medium leading-tight line-clamp-1">
+              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-medium leading-tight line-clamp-1">
                 {item.label}
               </div>
             </div>

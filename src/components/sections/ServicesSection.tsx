@@ -63,15 +63,15 @@ export function ServicesSection() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
             <Sparkles className="w-3.5 h-3.5" />
             <span>{t.badge}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-normal leading-[1.35] sm:leading-[1.3] pb-1">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-normal leading-[1.35] sm:leading-[1.3] pb-1">
             <span className="inline-block">{t.heading}</span>{" "}
             <span className="text-gradient-cyan inline-block mx-1.5">{t.headingGradient}</span>
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-slate-300">
+          <p className="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-300">
             {t.subheading}
           </p>
         </div>
@@ -87,13 +87,13 @@ export function ServicesSection() {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const, delay: index * 0.08 }}
               className={`glass-card rounded-3xl p-8 relative flex flex-col justify-between group transition-all duration-300 border ${
                 service.featured 
-                  ? "border-cyan-500/30 hover:border-cyan-400/60 shadow-lg shadow-cyan-500/5" 
-                  : "border-white/10 hover:border-white/20"
+                  ? "border-cyan-500/40 hover:border-cyan-500 shadow-lg shadow-cyan-500/5" 
+                  : "border-cyan-500/15 dark:border-white/10 hover:border-cyan-500/30 dark:hover:border-white/20"
               }`}
             >
               {service.featured && (
                 <div className="absolute top-6 right-6">
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-300 border border-cyan-500/30">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30">
                     {language === "bn" ? "জনপ্রিয় সেবা" : "Popular"}
                   </span>
                 </div>
@@ -101,32 +101,32 @@ export function ServicesSection() {
 
               <div>
                 {/* Icon */}
-                <div className="w-14 h-14 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-cyan-500/40 transition-transform">
+                <div className="w-14 h-14 rounded-2xl bg-slate-100 dark:bg-white/[0.04] border border-cyan-500/20 dark:border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-cyan-500/40 transition-transform">
                   {getServiceIconByIndex(index)}
                 </div>
 
                 {/* Subtitle & Title */}
-                <span className="text-xs font-semibold text-cyan-400/90 tracking-wide uppercase">
+                <span className="text-xs font-semibold text-cyan-600 dark:text-cyan-400/90 tracking-wide uppercase">
                   {service.subtitle}
                 </span>
-                <h3 className="text-xl font-bold text-white mt-1 group-hover:text-cyan-300 transition-colors">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors">
                   {service.title}
                 </h3>
 
                 {/* Description */}
-                <p className="mt-3 text-sm text-slate-300 leading-relaxed font-normal">
+                <p className="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
                   {service.description}
                 </p>
 
                 {/* Deliverables */}
-                <div className="mt-6 pt-5 border-t border-white/[0.08]">
-                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
+                <div className="mt-6 pt-5 border-t border-slate-200 dark:border-white/[0.08]">
+                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">
                     {t.deliverablesLabel}
                   </p>
                   <ul className="space-y-2">
                     {service.deliverables.map((item, dIdx) => (
-                      <li key={dIdx} className="flex items-center gap-2 text-xs text-slate-200">
-                        <Check className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                      <li key={dIdx} className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-200">
+                        <Check className="w-3.5 h-3.5 text-cyan-500 dark:text-cyan-400 shrink-0" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -135,12 +135,12 @@ export function ServicesSection() {
               </div>
 
               {/* Bottom Tags & Action */}
-              <div className="mt-8 pt-5 border-t border-white/[0.06] flex items-center justify-between">
+              <div className="mt-8 pt-5 border-t border-slate-200 dark:border-white/[0.06] flex items-center justify-between">
                 <div className="flex flex-wrap gap-1.5 max-w-[70%]">
                   {service.tags.map((tag, tIdx) => (
                     <span
                       key={tIdx}
-                      className="text-[10px] px-2 py-0.5 rounded-md bg-white/[0.04] text-slate-300 border border-white/5"
+                      className="text-[10px] px-2 py-0.5 rounded-md bg-slate-100 dark:bg-white/[0.04] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/5"
                     >
                       {tag}
                     </span>
@@ -149,7 +149,7 @@ export function ServicesSection() {
 
                 <a
                   href="#contact"
-                  className="w-9 h-9 rounded-xl bg-white/[0.05] hover:bg-cyan-500 hover:text-slate-950 text-slate-300 flex items-center justify-center transition-all group-hover:bg-cyan-500 group-hover:text-slate-950"
+                  className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-white/[0.05] hover:bg-cyan-500 hover:text-slate-950 text-slate-700 dark:text-slate-300 flex items-center justify-center transition-all group-hover:bg-cyan-500 group-hover:text-slate-950 cursor-pointer"
                   aria-label={`Inquire about ${service.title}`}
                 >
                   <ArrowUpRight className="w-4 h-4 transition-transform group-hover:scale-110" />
@@ -160,19 +160,19 @@ export function ServicesSection() {
         </div>
 
         {/* Bottom Banner */}
-        <div className="mt-16 glass-card rounded-3xl p-8 border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-16 glass-card rounded-3xl p-8 border border-cyan-500/20 dark:border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0">
+            <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-500 dark:text-cyan-400 shrink-0">
               <Sparkles className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-lg font-bold text-white">{t.customScopeTitle}</h4>
-              <p className="text-xs text-slate-300">{t.customScopeDesc}</p>
+              <h4 className="text-lg font-bold text-slate-900 dark:text-white">{t.customScopeTitle}</h4>
+              <p className="text-xs text-slate-600 dark:text-slate-300">{t.customScopeDesc}</p>
             </div>
           </div>
 
           <a href="#calculator">
-            <Button className="bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 text-slate-950 font-extrabold px-6 text-xs h-10 rounded-xl shadow-md shadow-cyan-500/25 border border-white/40 group transition-all">
+            <Button className="bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 text-slate-950 font-extrabold px-6 text-xs h-10 rounded-xl shadow-md shadow-cyan-500/25 border border-white/40 group transition-all cursor-pointer">
               {t.calculateBtn}
             </Button>
           </a>

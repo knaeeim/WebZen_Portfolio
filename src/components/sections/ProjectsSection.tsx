@@ -47,29 +47,29 @@ export function ProjectsSection() {
       : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="projects" className="relative py-28 overflow-hidden bg-black/20 scroll-mt-24">
+    <section id="projects" className="relative py-28 overflow-hidden bg-cyan-500/[0.02] dark:bg-black/20 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-semibold uppercase tracking-wider mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-600 dark:text-purple-400 text-xs font-semibold uppercase tracking-wider mb-3">
               <FolderGit2 className="w-3.5 h-3.5" />
               <span>{t.badge}</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-normal leading-[1.35] sm:leading-[1.3] pb-1">
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-normal leading-[1.35] sm:leading-[1.3] pb-1">
               <span className="inline-block">{t.heading}</span>{" "}
               <span className="text-gradient-cyan inline-block mx-1.5">{t.headingGradient}</span>
             </h2>
-            <p className="mt-3 text-sm text-slate-300 max-w-xl">
+            <p className="mt-3 text-sm text-slate-600 dark:text-slate-300 max-w-xl">
               {t.subheading}
             </p>
           </div>
 
           <a href="#contact">
-            <Button variant="outline" className="border-white/15 text-slate-200 text-xs gap-2">
+            <Button variant="outline" className="border-slate-300 dark:border-white/15 text-slate-700 dark:text-slate-200 text-xs gap-2 cursor-pointer">
               <span>{t.discussBtn}</span>
-              <ArrowUpRight className="w-4 h-4 text-cyan-400" />
+              <ArrowUpRight className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
             </Button>
           </a>
         </div>
@@ -83,7 +83,7 @@ export function ProjectsSection() {
               className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
                 activeCategory === cat.id
                   ? "bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 text-slate-950 shadow-lg shadow-cyan-500/25 border border-white/40 scale-105"
-                  : "bg-[#0a2847] text-white hover:bg-[#0f3c69] hover:text-cyan-300 border border-cyan-500/30 shadow-md shadow-black/30"
+                  : "bg-white dark:bg-[#0a2847] text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-[#0f3c69] hover:text-cyan-600 dark:hover:text-cyan-300 border border-slate-200 dark:border-cyan-500/30 shadow-md shadow-slate-200 dark:shadow-black/30"
               }`}
             >
               {cat.label}
@@ -102,7 +102,7 @@ export function ProjectsSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4 }}
-                className="glass-card rounded-3xl overflow-hidden border border-white/10 group flex flex-col justify-between"
+                className="glass-card rounded-3xl overflow-hidden border border-cyan-500/15 dark:border-white/10 group flex flex-col justify-between"
               >
                 <div>
                   {/* Image Container with zoom */}
@@ -130,23 +130,23 @@ export function ProjectsSection() {
 
                   {/* Content Container */}
                   <div className="p-6">
-                    <div className="text-[11px] uppercase tracking-wider text-slate-400 font-semibold mb-1">
+                    <div className="text-[11px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold mb-1">
                       {t.clientLabel} {project.client}
                     </div>
 
-                    <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
                       {project.title}
                     </h3>
 
-                    <p className="mt-3 text-xs text-slate-300 line-clamp-3 leading-relaxed font-normal">
+                    <p className="mt-3 text-xs text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed font-normal">
                       {project.description}
                     </p>
 
                     {/* Metrics Badge */}
                     {project.metrics && (
-                      <div className="mt-4 p-2.5 rounded-xl bg-cyan-950/30 border border-cyan-500/20 flex items-center gap-2">
-                        <TrendingUp className="w-4 h-4 text-cyan-400 shrink-0" />
-                        <span className="text-[11px] font-semibold text-cyan-200">
+                      <div className="mt-4 p-2.5 rounded-xl bg-cyan-500/10 dark:bg-cyan-950/30 border border-cyan-500/20 flex items-center gap-2">
+                        <TrendingUp className="w-4 h-4 text-cyan-600 dark:text-cyan-400 shrink-0" />
+                        <span className="text-[11px] font-semibold text-cyan-800 dark:text-cyan-200">
                           {project.metrics}
                         </span>
                       </div>
@@ -156,12 +156,12 @@ export function ProjectsSection() {
 
                 {/* Bottom Tags & Link */}
                 <div className="p-6 pt-0">
-                  <div className="pt-4 border-t border-white/[0.08] flex items-center justify-between gap-2">
+                  <div className="pt-4 border-t border-slate-200 dark:border-white/[0.08] flex items-center justify-between gap-2">
                     <div className="flex flex-wrap gap-1">
                       {project.tags.slice(0, 3).map((tag, tIdx) => (
                         <span
                           key={tIdx}
-                          className="text-[10px] px-2 py-0.5 rounded bg-white/[0.04] text-slate-400 font-mono"
+                          className="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-white/[0.04] text-slate-600 dark:text-slate-400 font-mono"
                         >
                           {tag}
                         </span>
@@ -173,14 +173,14 @@ export function ProjectsSection() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/35 text-xs sm:text-sm font-bold text-cyan-300 hover:text-white transition-all shadow-sm"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/35 text-xs sm:text-sm font-bold text-cyan-700 dark:text-cyan-300 hover:text-slate-950 dark:hover:text-white transition-all shadow-sm"
                       >
                         <span>{t.caseStudyBtn}</span>
                         <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
                       </a>
                     ) : (
-                      <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold text-amber-400/90 bg-amber-400/10 px-2.5 py-1 rounded-full border border-amber-400/20">
-                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                      <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold text-amber-600 dark:text-amber-400/90 bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/20">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500 dark:bg-amber-400 animate-pulse" />
                         <span>{language === "bn" ? "কাজ চলমান" : "In Progress"}</span>
                       </span>
                     )}

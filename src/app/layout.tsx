@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Anek_Bangla } from "next/font/google";
 import "./globals.css";
 import { SiteProvider } from "@/context/SiteContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
@@ -79,6 +80,7 @@ export default function RootLayout({
     <html
       lang="bn"
       className={`${geistSans.variable} ${geistMono.variable} ${anekBangla.variable} h-full dark`}
+      suppressHydrationWarning
     >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -95,11 +97,13 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#061a33] text-slate-100 antialiased selection:bg-cyan-400 selection:text-slate-950">
+      <body className="min-h-full flex flex-col bg-[#030e17] text-slate-100 dark:bg-[#030e17] dark:text-slate-100 antialiased selection:bg-cyan-400 selection:text-slate-950 transition-colors duration-300">
         <SiteProvider>
-          <LanguageProvider>
-            <TooltipProvider>{children}</TooltipProvider>
-          </LanguageProvider>
+          <ThemeProvider>
+            <LanguageProvider>
+              <TooltipProvider>{children}</TooltipProvider>
+            </LanguageProvider>
+          </ThemeProvider>
         </SiteProvider>
       </body>
     </html>

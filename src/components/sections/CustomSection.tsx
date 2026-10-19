@@ -35,17 +35,17 @@ export function CustomSection({ section }: { section: SectionItem }) {
             }`}
           >
             {content.subheading && (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold uppercase tracking-wider">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>{content.subheading}</span>
               </span>
             )}
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               {content.heading}
             </h2>
 
-            <p className="text-base text-slate-300 leading-relaxed max-w-2xl font-normal">
+            <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl font-normal">
               {content.body}
             </p>
 

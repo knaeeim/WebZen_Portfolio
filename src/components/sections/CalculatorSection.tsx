@@ -99,15 +99,15 @@ export function CalculatorSection() {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
             <Calculator className="w-3.5 h-3.5" />
             <span>{t.badge}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-normal leading-[1.35] sm:leading-[1.3] pb-1">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-normal leading-[1.35] sm:leading-[1.3] pb-1">
             <span className="inline-block">{t.heading}</span>{" "}
             <span className="text-gradient-cyan inline-block mx-1.5">{t.headingGradient}</span>
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-slate-300">
+          <p className="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-300">
             {t.subheading}
           </p>
         </div>
@@ -121,7 +121,7 @@ export function CalculatorSection() {
               
               {/* Step 1: Project Type */}
               <div>
-                <label className="text-xs uppercase font-bold tracking-wider text-cyan-400 block mb-3">
+                <label className="text-xs uppercase font-bold tracking-wider text-cyan-600 dark:text-cyan-400 block mb-3">
                   {t.step1}
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -131,12 +131,12 @@ export function CalculatorSection() {
                       onClick={() => setProjectType(type.id)}
                       className={`p-4 rounded-2xl text-left border-2 transition-all duration-200 flex flex-col justify-between cursor-pointer ${
                         projectType === type.id
-                          ? "bg-[#0a2847] border-cyan-400 text-white shadow-lg shadow-cyan-500/25 scale-[1.02]"
-                          : "bg-[#0a2847]/70 border-cyan-500/25 text-slate-100 hover:border-cyan-400/60 hover:bg-[#0a2847]"
+                          ? "bg-cyan-50 dark:bg-[#0a2847] border-cyan-500 text-slate-900 dark:text-white shadow-lg shadow-cyan-500/20 scale-[1.02]"
+                          : "bg-white dark:bg-[#0a2847]/70 border-slate-200 dark:border-cyan-500/25 text-slate-800 dark:text-slate-100 hover:border-cyan-400/60 hover:bg-slate-50 dark:hover:bg-[#0a2847]"
                       }`}
                     >
                       <span className="font-bold text-xs sm:text-sm leading-snug">{type.name}</span>
-                      <span className="text-[11px] text-cyan-300 mt-1 font-mono font-semibold">
+                      <span className="text-[11px] text-cyan-700 dark:text-cyan-300 mt-1 font-mono font-semibold">
                         {language === "bn" ? "শুরু:" : "Base:"} ৳{type.baseBdt.toLocaleString()} / ${type.baseUsd}
                       </span>
                     </button>
@@ -146,7 +146,7 @@ export function CalculatorSection() {
 
               {/* Step 2: Features Checklist */}
               <div>
-                <label className="text-xs uppercase font-bold tracking-wider text-cyan-400 block mb-3">
+                <label className="text-xs uppercase font-bold tracking-wider text-cyan-600 dark:text-cyan-400 block mb-3">
                   {t.step2}
                 </label>
                 <div className="space-y-2">
@@ -158,23 +158,23 @@ export function CalculatorSection() {
                         onClick={() => toggleFeature(f.id)}
                         className={`p-3.5 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
                           isChecked
-                            ? "bg-cyan-500/15 border-cyan-400/60 text-white shadow-sm shadow-cyan-500/20"
-                            : "bg-[#0a2847]/60 border-cyan-500/20 text-slate-200 hover:border-cyan-400/40"
+                            ? "bg-cyan-500/10 dark:bg-cyan-500/15 border-cyan-500 text-slate-900 dark:text-white shadow-sm shadow-cyan-500/10"
+                            : "bg-white dark:bg-[#0a2847]/60 border-slate-200 dark:border-cyan-500/20 text-slate-700 dark:text-slate-200 hover:border-cyan-400/40"
                         }`}
                       >
                         <div className="flex items-center gap-3">
                           <div
                             className={`w-4 h-4 rounded flex items-center justify-center border transition-colors ${
                               isChecked
-                                ? "bg-cyan-400 border-cyan-300 text-slate-950"
-                                : "border-slate-500 bg-transparent"
+                                ? "bg-cyan-500 dark:bg-cyan-400 border-cyan-500 text-white dark:text-slate-950"
+                                : "border-slate-300 dark:border-slate-500 bg-transparent"
                             }`}
                           >
                             {isChecked && <Check className="w-3 h-3 stroke-[3]" />}
                           </div>
                           <span className="text-xs sm:text-sm font-semibold">{f.name}</span>
                         </div>
-                        <span className="text-xs font-mono font-bold text-cyan-300 shrink-0 ml-2">
+                        <span className="text-xs font-mono font-bold text-cyan-700 dark:text-cyan-300 shrink-0 ml-2">
                           +৳{f.bdt.toLocaleString()}
                         </span>
                       </div>
@@ -185,7 +185,7 @@ export function CalculatorSection() {
 
               {/* Step 3: Urgency */}
               <div>
-                <label className="text-xs uppercase font-bold tracking-wider text-cyan-400 block mb-3">
+                <label className="text-xs uppercase font-bold tracking-wider text-cyan-600 dark:text-cyan-400 block mb-3">
                   {t.step3}
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -196,7 +196,7 @@ export function CalculatorSection() {
                       className={`p-3.5 rounded-xl text-center border-2 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                         timelineUrgency === key
                           ? "bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 text-slate-950 font-extrabold border-white/50 shadow-md shadow-cyan-500/25"
-                          : "bg-[#0a2847] border-cyan-500/30 text-slate-100 hover:border-cyan-400 hover:text-white"
+                          : "bg-white dark:bg-[#0a2847] border-slate-200 dark:border-cyan-500/30 text-slate-800 dark:text-slate-100 hover:border-cyan-400 hover:text-cyan-700 dark:hover:text-white"
                       }`}
                     >
                       {item.label}
@@ -208,58 +208,58 @@ export function CalculatorSection() {
             </div>
 
             {/* Right Summary Panel (5 cols) */}
-            <div className="lg:col-span-5 bg-gradient-to-b from-[#091122] to-[#050914] p-6 sm:p-8 rounded-2xl border border-cyan-500/30 flex flex-col justify-between shadow-xl">
+            <div className="lg:col-span-5 bg-slate-50 dark:bg-gradient-to-b dark:from-[#091122] dark:to-[#050914] p-6 sm:p-8 rounded-2xl border border-cyan-500/25 dark:border-cyan-500/30 flex flex-col justify-between shadow-xl">
               <div>
-                <div className="flex items-center justify-between pb-4 border-b border-white/10">
-                  <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-white/10">
+                  <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                     {t.summaryHeading}
                   </span>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold">
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 font-semibold">
                     {t.estimateReady}
                   </span>
                 </div>
 
                 {/* Primary Price Display */}
                 <div className="mt-6">
-                  <div className="text-[11px] uppercase tracking-wider text-slate-400">
+                  <div className="text-[11px] uppercase tracking-wider text-slate-500 dark:text-slate-400">
                     {t.estimatedTotal}
                   </div>
-                  <div className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mt-1">
+                  <div className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-1">
                     <span className="text-gradient-cyan">৳ {totalBdt.toLocaleString()}</span>
                   </div>
-                  <div className="text-xs text-slate-400 mt-1 font-mono">
+                  <div className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-mono">
                     ≈ ${totalUsd.toLocaleString()} USD ({t.globalClients})
                   </div>
 
                   {/* Hosting Disclaimer Callout */}
-                  <div className="mt-3.5 p-3 rounded-xl bg-amber-950/25 border border-amber-500/30 text-[11px] text-amber-200/90 flex items-start gap-2 leading-relaxed">
-                    <Info className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                  <div className="mt-3.5 p-3 rounded-xl bg-amber-500/10 dark:bg-amber-950/25 border border-amber-500/30 text-[11px] text-amber-900 dark:text-amber-200/90 flex items-start gap-2 leading-relaxed">
+                    <Info className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
                     <span>{t.hostingNotice}</span>
                   </div>
                 </div>
 
                 {/* Scope breakdown details */}
-                <div className="mt-6 space-y-2.5 pt-6 border-t border-white/10 text-xs">
-                  <div className="flex justify-between text-slate-300">
+                <div className="mt-6 space-y-2.5 pt-6 border-t border-slate-200 dark:border-white/10 text-xs">
+                  <div className="flex justify-between text-slate-600 dark:text-slate-300">
                     <span>{t.baseArch}</span>
-                    <span className="font-semibold text-white">{currentType.name}</span>
+                    <span className="font-semibold text-slate-900 dark:text-white">{currentType.name}</span>
                   </div>
-                  <div className="flex justify-between text-slate-300">
+                  <div className="flex justify-between text-slate-600 dark:text-slate-300">
                     <span>{t.selectedModules}</span>
-                    <span className="font-semibold text-cyan-400">{selectedFeatures.length} {language === "bn" ? "টি মডিউল" : "Modules"}</span>
+                    <span className="font-semibold text-cyan-600 dark:text-cyan-400">{selectedFeatures.length} {language === "bn" ? "টি মডিউল" : "Modules"}</span>
                   </div>
-                  <div className="flex justify-between text-slate-300">
+                  <div className="flex justify-between text-slate-600 dark:text-slate-300">
                     <span>{t.hostingScope}</span>
-                    <span className="font-semibold text-amber-300 text-right">{t.hostingClientPaid}</span>
+                    <span className="font-semibold text-amber-700 dark:text-amber-300 text-right">{t.hostingClientPaid}</span>
                   </div>
-                  <div className="flex justify-between text-slate-300">
+                  <div className="flex justify-between text-slate-600 dark:text-slate-300">
                     <span>{t.targetDelivery}</span>
-                    <span className="font-semibold text-emerald-400">{currentType.time}</span>
+                    <span className="font-semibold text-emerald-700 dark:text-emerald-400">{currentType.time}</span>
                   </div>
                 </div>
 
-                <div className="mt-6 p-3 rounded-xl bg-cyan-950/20 border border-cyan-500/20 text-[11px] text-slate-300 flex items-start gap-2">
-                  <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                <div className="mt-6 p-3 rounded-xl bg-cyan-500/10 dark:bg-cyan-950/20 border border-cyan-500/20 text-[11px] text-slate-700 dark:text-slate-300 flex items-start gap-2">
+                  <ShieldCheck className="w-4 h-4 text-cyan-600 dark:text-cyan-400 shrink-0 mt-0.5" />
                   <span>{t.guarantee}</span>
                 </div>
               </div>
@@ -272,7 +272,7 @@ export function CalculatorSection() {
                     <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 transition-transform group-hover:translate-x-1.5 stroke-[2.5]" />
                   </Button>
                 </a>
-                <p className="text-[10px] text-center text-slate-400 mt-2">
+                <p className="text-[10px] text-center text-slate-500 dark:text-slate-400 mt-2">
                   {t.noCommitment}
                 </p>
               </div>
