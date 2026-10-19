@@ -105,23 +105,23 @@ export function HeroSection() {
             {/* Multi-layered halo backlighting */}
             <div className="absolute inset-0 bg-gradient-to-tr from-[#0EA5E9]/[0.12] via-[#06B6D4]/[0.08] to-transparent blur-[80px] rounded-full scale-90 pointer-events-none" />
 
-            {/* Bespoke Interactive Glassmorphism Terminal Console */}
-            <div className="relative w-full max-w-[500px] rounded-3xl bg-[#101015]/95 backdrop-blur-2xl border border-white/[0.12] p-4 sm:p-5 shadow-[0_25px_70px_rgba(0,0,0,0.85)] hover:border-white/20 transition-all duration-500 group">
+            {/* Bespoke Interactive Glassmorphism Terminal Console (Unified Single Window) */}
+            <div className="relative w-full max-w-[500px] rounded-2xl sm:rounded-3xl bg-[#0c0d12]/95 backdrop-blur-2xl border border-white/[0.12] shadow-[0_25px_70px_rgba(0,0,0,0.85)] hover:border-white/20 transition-all duration-500 overflow-hidden flex flex-col group">
               
-              {/* macOS Window Bar Header & Tabs */}
-              <div className="flex items-center justify-between pb-3.5 border-b border-white/[0.08]">
+              {/* macOS Window Titlebar Header (INSIDE the terminal box at the very top) */}
+              <div className="bg-[#14151c] px-3 sm:px-4 py-2.5 sm:py-3 border-b border-white/[0.08] flex items-center justify-between">
                 {/* Traffic Light Dots */}
-                <div className="flex items-center gap-1.5 sm:gap-2">
-                  <span className="w-3 h-3 rounded-full bg-[#FF5F56] shadow-[0_0_8px_rgba(255,95,86,0.6)]" />
-                  <span className="w-3 h-3 rounded-full bg-[#FFBD2E] shadow-[0_0_8px_rgba(255,189,46,0.6)]" />
-                  <span className="w-3 h-3 rounded-full bg-[#27C93F] shadow-[0_0_8px_rgba(39,201,63,0.6)]" />
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FF5F56] shadow-[0_0_8px_rgba(255,95,86,0.6)]" />
+                  <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FFBD2E] shadow-[0_0_8px_rgba(255,189,46,0.6)]" />
+                  <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27C93F] shadow-[0_0_8px_rgba(39,201,63,0.6)]" />
                 </div>
                 
-                {/* Interactive Console Tabs */}
-                <div className="flex items-center gap-1 bg-black/60 p-1 rounded-xl border border-white/5">
+                {/* Interactive Console Tabs (Inside the Window Titlebar) */}
+                <div className="flex items-center gap-0.5 sm:gap-1 bg-black/60 p-0.5 sm:p-1 rounded-xl border border-white/5">
                   <button
                     onClick={() => setActiveTab("terminal")}
-                    className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10px] font-mono transition-all ${
+                    className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 rounded-lg text-[9.5px] sm:text-[10px] font-mono transition-all cursor-pointer ${
                       activeTab === "terminal"
                         ? "bg-white/10 text-white font-bold shadow-sm"
                         : "text-neutral-400 hover:text-neutral-200"
@@ -133,7 +133,7 @@ export function HeroSection() {
 
                   <button
                     onClick={() => setActiveTab("architecture")}
-                    className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10px] font-mono transition-all ${
+                    className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 rounded-lg text-[9.5px] sm:text-[10px] font-mono transition-all cursor-pointer ${
                       activeTab === "architecture"
                         ? "bg-white/10 text-white font-bold shadow-sm"
                         : "text-neutral-400 hover:text-neutral-200"
@@ -145,7 +145,7 @@ export function HeroSection() {
 
                   <button
                     onClick={() => setActiveTab("telemetry")}
-                    className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10px] font-mono transition-all ${
+                    className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 rounded-lg text-[9.5px] sm:text-[10px] font-mono transition-all cursor-pointer ${
                       activeTab === "telemetry"
                         ? "bg-white/10 text-white font-bold shadow-sm"
                         : "text-neutral-400 hover:text-neutral-200"
@@ -157,14 +157,14 @@ export function HeroSection() {
                 </div>
 
                 {/* Live Node Badge */}
-                <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 border border-white/10 text-[9px] font-mono text-neutral-300">
+                <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 border border-white/10 text-[9px] font-mono text-neutral-300 shrink-0">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                   <span>18ms</span>
                 </div>
               </div>
 
-              {/* Console Body */}
-              <div className="mt-3.5 rounded-2xl bg-black/85 border border-white/[0.08] p-4 font-mono text-xs text-left relative overflow-hidden min-h-[260px] flex flex-col justify-between">
+              {/* Console Body Screen (Seamlessly inside the window) */}
+              <div className="p-3.5 sm:p-5 font-mono text-xs text-left relative overflow-hidden min-h-[260px] sm:min-h-[280px] flex flex-col justify-between bg-black/75 flex-1">
                 
                 {/* TAB 1: Live Interactive Terminal */}
                 {activeTab === "terminal" && (
