@@ -24,9 +24,9 @@ export function StatsSection() {
 
   return (
     <section id="metrics" className="relative w-full py-2 sm:py-4 my-0 overflow-hidden scroll-mt-20 z-10">
-      {/* Warm Ambient Glow Behind the Strip */}
+      {/* Ambient Glow Behind the Strip - Soft Logo Gradient */}
       <div 
-        className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[160px] bg-gradient-to-r from-[#F59E0B]/15 via-[#EC4899]/15 to-[#EF4444]/15 blur-[90px] pointer-events-none" 
+        className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[160px] bg-gradient-to-r from-[#0EA5E9]/[0.08] via-[#06B6D4]/[0.06] to-[#10B981]/[0.06] blur-[100px] pointer-events-none" 
         aria-hidden="true" 
       />
 

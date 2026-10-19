@@ -23,7 +23,7 @@ export function HeroSection() {
     >
       {/* Subtle diffused radial mesh glows in background */}
       <div 
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[850px] h-[300px] sm:h-[450px] bg-gradient-to-r from-[#EC4899]/15 via-[#EF4444]/10 to-[#F59E0B]/15 blur-[150px] rounded-full pointer-events-none -z-10" 
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[850px] h-[300px] sm:h-[450px] bg-gradient-to-r from-[#0EA5E9]/[0.08] via-[#06B6D4]/[0.06] to-[#10B981]/[0.06] blur-[160px] rounded-full pointer-events-none -z-10" 
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
@@ -65,8 +65,8 @@ export function HeroSection() {
               className="flex-1 lg:flex-none bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:border-white/20 transition-all duration-300 group"
             >
               <div className="flex items-center justify-between mb-2 sm:mb-3">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#F59E0B] shadow-[0_0_10px_#F59E0B]" />
-                <Sparkles className="w-4 h-4 text-[#F59E0B]/70 group-hover:rotate-12 transition-transform" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#06B6D4] shadow-[0_0_10px_#06B6D4]" />
+                <Sparkles className="w-4 h-4 text-[#06B6D4]/80 group-hover:rotate-12 transition-transform" />
               </div>
               <div className={`text-2xl sm:text-3xl lg:text-4xl text-white font-black tracking-tight ${isBn ? "font-bangla-display" : "font-display"}`}>
                 {isBn ? "১৫০+" : "150+"}
@@ -83,8 +83,8 @@ export function HeroSection() {
               className="flex-1 lg:flex-none bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:border-white/20 transition-all duration-300 group"
             >
               <div className="flex items-center justify-between mb-2 sm:mb-3">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#EC4899] shadow-[0_0_10px_#EC4899]" />
-                <CheckCircle2 className="w-4 h-4 text-[#EC4899]/70 group-hover:scale-110 transition-transform" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#10B981] shadow-[0_0_10px_#10B981]" />
+                <CheckCircle2 className="w-4 h-4 text-[#10B981]/80 group-hover:scale-110 transition-transform" />
               </div>
               <div className={`text-2xl sm:text-3xl lg:text-4xl text-white font-black tracking-tight ${isBn ? "font-bangla-display" : "font-display"}`}>
                 {isBn ? "৯৯%" : "99%"}
@@ -103,7 +103,7 @@ export function HeroSection() {
             className="lg:col-span-6 flex justify-center items-center relative order-1 lg:order-2"
           >
             {/* Multi-layered halo backlighting */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#EC4899]/25 via-[#F59E0B]/20 to-transparent blur-[80px] rounded-full scale-90 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#0EA5E9]/[0.12] via-[#06B6D4]/[0.08] to-transparent blur-[80px] rounded-full scale-90 pointer-events-none" />
 
             {/* Bespoke Interactive Glassmorphism Terminal Console */}
             <div className="relative w-full max-w-[500px] rounded-3xl bg-[#101015]/95 backdrop-blur-2xl border border-white/[0.12] p-4 sm:p-5 shadow-[0_25px_70px_rgba(0,0,0,0.85)] hover:border-white/20 transition-all duration-500 group">
@@ -127,7 +127,7 @@ export function HeroSection() {
                         : "text-neutral-400 hover:text-neutral-200"
                     }`}
                   >
-                    <Terminal className="w-3 h-3 text-[#EC4899]" />
+                    <Terminal className="w-3 h-3 text-[#0EA5E9]" />
                     <span>terminal.zsh</span>
                   </button>
 
@@ -139,7 +139,7 @@ export function HeroSection() {
                         : "text-neutral-400 hover:text-neutral-200"
                     }`}
                   >
-                    <Code2 className="w-3 h-3 text-[#F59E0B]" />
+                    <Code2 className="w-3 h-3 text-[#06B6D4]" />
                     <span>stack.ts</span>
                   </button>
 
@@ -173,7 +173,7 @@ export function HeroSection() {
                       <span>WEBZEN HIGH-VELOCITY CORE // PRODUCTION</span>
                       <button 
                         onClick={handleRerun}
-                        className="text-[#F59E0B] hover:text-[#fbbf24] flex items-center gap-1 text-[10px] cursor-pointer"
+                        className="text-[#06B6D4] hover:text-[#38BDF8] flex items-center gap-1 text-[10px] cursor-pointer"
                       >
                         <RefreshCw className={`w-2.5 h-2.5 ${isRunning ? "animate-spin" : ""}`} />
                         <span>{isRunning ? "BUILDING..." : "RE-DEPLOY"}</span>
@@ -181,7 +181,7 @@ export function HeroSection() {
                     </div>
 
                     <div className="text-neutral-300">
-                      <span className="text-[#EC4899] font-bold">~ $</span> webzen deploy --env=production --region=dhaka
+                      <span className="text-[#0EA5E9] font-bold">~ $</span> webzen deploy --env=production --region=dhaka
                     </div>
                     <div className="text-neutral-400 text-[10.5px] pl-3">
                       ⚡ Turbopack v16.4.2 engine initialized [413ms]
@@ -199,7 +199,7 @@ export function HeroSection() {
                       🚀 LIVE at https://webzenbd.com [99.99% SLA]
                     </div>
                     <div className="text-neutral-300 flex items-center gap-1.5 pt-1">
-                      <span className="text-[#F59E0B] font-bold">webzen@dhaka-node:~$</span>
+                      <span className="text-[#06B6D4] font-bold">webzen@dhaka-node:~$</span>
                       <span className="text-emerald-400">status --live</span>
                       <span className="w-2 h-3.5 bg-emerald-400 animate-pulse ml-0.5" />
                     </div>
@@ -215,10 +215,10 @@ export function HeroSection() {
                     <div><span className="text-purple-400">export const</span> <span className="text-blue-300">WebZenEngine</span> = &#123;</div>
                     <div className="pl-4"><span className="text-neutral-400">runtime:</span> <span className="text-emerald-300">&quot;Next.js 16 (Turbopack)&quot;</span>,</div>
                     <div className="pl-4"><span className="text-neutral-400">language:</span> <span className="text-emerald-300">&quot;TypeScript Strict&quot;</span>,</div>
-                    <div className="pl-4"><span className="text-neutral-400">payments:</span> [<span className="text-[#EC4899]">&quot;bKash&quot;</span>, <span className="text-[#F59E0B]">&quot;Nagad&quot;</span>, <span className="text-cyan-300">&quot;Stripe&quot;</span>],</div>
+                    <div className="pl-4"><span className="text-neutral-400">payments:</span> [<span className="text-[#0EA5E9]">&quot;bKash&quot;</span>, <span className="text-[#06B6D4]">&quot;Nagad&quot;</span>, <span className="text-[#10B981]">&quot;Stripe&quot;</span>],</div>
                     <div className="pl-4"><span className="text-neutral-400">database:</span> <span className="text-emerald-300">&quot;MongoDB Atlas + Redis&quot;</span>,</div>
                     <div className="pl-4"><span className="text-neutral-400">edgeNode:</span> <span className="text-emerald-300">&quot;Dhaka Core (18ms TTFB)&quot;</span>,</div>
-                    <div className="pl-4"><span className="text-neutral-400">uptimeSLA:</span> <span className="text-[#F59E0B]">&quot;99.99% Guaranteed&quot;</span>,</div>
+                    <div className="pl-4"><span className="text-neutral-400">uptimeSLA:</span> <span className="text-[#06B6D4]">&quot;99.99% Guaranteed&quot;</span>,</div>
                     <div>&#125; <span className="text-purple-400">as const</span>;</div>
                   </div>
                 )}
@@ -256,11 +256,11 @@ export function HeroSection() {
                     <span>DAEMON: RUNNING</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-[#EC4899]">ZSH</span>
+                    <span className="text-[#0EA5E9]">ZSH</span>
                     <span className="text-neutral-600">|</span>
                     <span className="text-neutral-400">UTF-8</span>
                     <span className="text-neutral-600">|</span>
-                    <span className="text-[#F59E0B]">DHAKA-01</span>
+                    <span className="text-[#06B6D4]">DHAKA-01</span>
                   </div>
                 </div>
 
@@ -268,12 +268,12 @@ export function HeroSection() {
 
               {/* Floating Architectural Feature Badges outside the console */}
               <div className="absolute -left-3 top-8 bg-black/80 backdrop-blur-md border border-white/10 rounded-xl px-3 py-1.5 shadow-lg hidden sm:flex items-center gap-2 z-20">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#EC4899]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#0EA5E9]" />
                 <span className="text-[10px] font-mono font-bold text-neutral-200">Next.js 16 + Turbopack</span>
               </div>
 
               <div className="absolute -right-3 top-16 bg-black/80 backdrop-blur-md border border-white/10 rounded-xl px-3 py-1.5 shadow-lg hidden sm:flex items-center gap-2 z-20">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#06B6D4]" />
                 <span className="text-[10px] font-mono font-bold text-neutral-200">bKash Instant Gateway</span>
               </div>
 
@@ -293,7 +293,7 @@ export function HeroSection() {
             className="lg:col-span-3 flex flex-col justify-center items-start text-left order-3"
           >
             <div className="space-y-4 sm:space-y-5 max-w-sm mx-auto lg:mx-0">
-              <div className="w-10 h-0.5 bg-gradient-to-r from-[#EC4899] to-[#F59E0B] rounded-full hidden lg:block" />
+              <div className="w-10 h-0.5 bg-gradient-to-r from-[#0EA5E9] via-[#06B6D4] to-[#10B981] rounded-full hidden lg:block" />
               
               <p className={`text-sm sm:text-base text-neutral-300 leading-relaxed font-normal ${isBn ? "font-bangla-body" : ""}`}>
                 {isBn 

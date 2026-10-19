@@ -47,9 +47,9 @@ export function RibbonMarquee() {
                 {item}
               </span>
               
-              {/* Glowing Coral-Red 4-point Star (✦) */}
+              {/* Soft Cyan 4-point Star (✦) matching logo */}
               <span 
-                className="mx-5 sm:mx-8 text-[#EF4444] text-sm sm:text-base select-none inline-block drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]"
+                className="mx-5 sm:mx-8 text-[#06B6D4] text-sm sm:text-base select-none inline-block drop-shadow-[0_0_6px_rgba(6,182,212,0.5)]"
                 aria-hidden="true"
               >
                 ✦

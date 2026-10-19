@@ -24,9 +24,9 @@ export function PricingSection() {
 
   return (
     <section id="pricing" className="relative py-10 sm:py-14 overflow-hidden scroll-mt-20">
-      {/* Background ambient corner glow */}
+      {/* Background ambient corner glow - Soft & Gentle */}
       <div 
-        className="absolute top-1/2 -left-[10%] w-[450px] h-[450px] bg-[#EC4899]/[0.06] blur-[140px] pointer-events-none" 
+        className="absolute top-1/2 -left-[10%] w-[450px] h-[450px] bg-[#0EA5E9]/[0.05] blur-[150px] pointer-events-none" 
         aria-hidden="true" 
       />
 
@@ -41,7 +41,7 @@ export function PricingSection() {
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 mb-3"
           >
-            <Zap className="w-3.5 h-3.5 text-[#F59E0B]" />
+            <Zap className="w-3.5 h-3.5 text-[#06B6D4]" />
             <span className={`text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-300 ${isBn ? "font-bangla-ui" : ""}`}>
               {isBn ? "স্বচ্ছ প্যাকেজ ও মূল্যতালিকা" : "TRANSPARENT PRICING"}
             </span>
@@ -120,13 +120,13 @@ export function PricingSection() {
               whileHover={{ y: -6 }}
               className={`rounded-3xl p-6 sm:p-8 relative flex flex-col justify-between transition-all duration-300 ${
                 plan.popular
-                  ? "bg-[#16161D] border-2 border-[#F59E0B]/50 shadow-[0_20px_60px_rgba(245,158,11,0.15)] lg:-translate-y-2"
+                  ? "bg-[#16161D] border-2 border-[#06B6D4]/40 shadow-[0_20px_60px_rgba(6,182,212,0.12)] lg:-translate-y-2"
                   : "bg-[#131318] border border-white/[0.08] hover:border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                  <span className={`text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full bg-gradient-to-r from-[#EC4899] to-[#F59E0B] text-black shadow-lg ${isBn ? "font-bangla-ui" : ""}`}>
+                  <span className={`text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full bg-gradient-to-r from-[#0EA5E9] via-[#06B6D4] to-[#10B981] text-black shadow-lg ${isBn ? "font-bangla-ui" : ""}`}>
                     {t.mostPopular}
                   </span>
                 </div>
@@ -148,8 +148,8 @@ export function PricingSection() {
                       / {plan.period}
                     </span>
                   </div>
-                  <p className="text-[11px] text-[#F59E0B]/80 mt-2 flex items-center gap-1.5 font-medium">
-                    <Info className="w-3.5 h-3.5 text-[#F59E0B] shrink-0" />
+                  <p className="text-[11px] text-[#06B6D4]/90 mt-2 flex items-center gap-1.5 font-medium">
+                    <Info className="w-3.5 h-3.5 text-[#06B6D4] shrink-0" />
                     <span>{t.hostingCardNote}</span>
                   </p>
                 </div>
@@ -162,7 +162,7 @@ export function PricingSection() {
                   <ul className="space-y-3">
                     {plan.features.map((feat, fIdx) => (
                       <li key={fIdx} className="flex items-start gap-3 text-xs sm:text-sm text-neutral-300">
-                        <Check className="w-4 h-4 text-[#F59E0B] shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-[#06B6D4] shrink-0 mt-0.5" />
                         <span>{feat}</span>
                       </li>
                     ))}
@@ -213,7 +213,7 @@ export function PricingSection() {
           className="mt-14 rounded-3xl p-6 sm:p-8 border border-white/[0.08] bg-[#141419] flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
         >
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 text-[#F59E0B] flex items-center justify-center shrink-0 mt-0.5">
+            <div className="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 text-[#06B6D4] flex items-center justify-center shrink-0 mt-0.5">
               <Server className="w-6 h-6" />
             </div>
             <div>
@@ -221,7 +221,7 @@ export function PricingSection() {
                 <h4 className="font-display font-extrabold text-base sm:text-lg text-white">
                   {t.hostingNoticeTitle}
                 </h4>
-                <span className="text-[10px] font-bold px-3 py-0.5 rounded-full bg-[#F59E0B]/10 border border-[#F59E0B]/30 text-[#F59E0B] uppercase tracking-wider">
+                <span className="text-[10px] font-bold px-3 py-0.5 rounded-full bg-[#06B6D4]/10 border border-[#06B6D4]/30 text-[#06B6D4] uppercase tracking-wider">
                   {t.hostingNoticeBadge}
                 </span>
               </div>
@@ -233,7 +233,7 @@ export function PricingSection() {
 
           <div className="shrink-0 self-stretch md:self-center flex items-center">
             <div className="text-xs font-bold text-white bg-white/[0.04] border border-white/10 px-5 py-2.5 rounded-full inline-flex items-center gap-2 w-full md:w-auto justify-center">
-              <Check className="w-4 h-4 text-[#F59E0B] shrink-0" />
+              <Check className="w-4 h-4 text-[#10B981] shrink-0" />
               <span>{t.hostingSetupFree}</span>
             </div>
           </div>

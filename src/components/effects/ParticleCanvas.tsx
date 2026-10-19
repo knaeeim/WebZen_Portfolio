@@ -58,21 +58,21 @@ export function ParticleCanvas() {
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseleave", handleMouseLeave);
 
-    // Color palette based on theme preset (Warm sunset amber, magenta pink, coral red)
-    const colors = ["#f59e0b", "#ec4899", "#ef4444", "#f97316", "#fbbf24"];
+    // Color palette based on WebZen logo (Azure Sky Blue, Electric Cyan, Mint Teal)
+    const colors = ["#38bdf8", "#0ea5e9", "#06b6d4", "#14b8a6", "#10b981"];
 
-    const particleCount = Math.min(Math.floor((width * height) / 18000), 75);
+    const particleCount = Math.min(Math.floor((width * height) / 20000), 65);
     const particles: Particle[] = [];
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        size: Math.random() * 2 + 0.8,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        size: Math.random() * 1.8 + 0.6,
         color: colors[Math.floor(Math.random() * colors.length)],
-        alpha: Math.random() * 0.5 + 0.2,
+        alpha: Math.random() * 0.35 + 0.12,
       });
     }
 

@@ -102,9 +102,9 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="relative py-10 sm:py-14 overflow-hidden scroll-mt-20">
-      {/* Background ambient glow */}
+      {/* Background ambient glow - Soft & Gentle */}
       <div 
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] bg-[#F59E0B]/[0.08] blur-[140px] rounded-full pointer-events-none" 
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] bg-[#06B6D4]/[0.05] blur-[150px] rounded-full pointer-events-none" 
         aria-hidden="true" 
       />
 
@@ -119,7 +119,7 @@ export function ContactSection() {
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 mb-3"
           >
-            <span className="w-2 h-2 rounded-full bg-[#F59E0B]" />
+            <span className="w-2 h-2 rounded-full bg-[#06B6D4]" />
             <span className={`text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-300 ${isBn ? "font-bangla-ui" : ""}`}>
               {isBn ? "প্রজেক্ট আলোচনা" : "INITIATE PROJECT"}
             </span>
@@ -168,7 +168,7 @@ export function ContactSection() {
           >
             
             {/* Quick WhatsApp Action Card */}
-            <div className="bg-[#141419] rounded-3xl p-6 sm:p-7 border border-white/[0.08] hover:border-[#F59E0B]/40 transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+            <div className="bg-[#141419] rounded-3xl p-6 sm:p-7 border border-white/[0.08] hover:border-[#06B6D4]/40 transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
               <div className="flex items-center gap-3.5 mb-3">
                 <div className="w-11 h-11 rounded-2xl bg-[#25D366]/15 border border-[#25D366]/30 text-[#25D366] flex items-center justify-center">
                   <MessageCircle className="w-5 h-5" />
@@ -192,7 +192,7 @@ export function ContactSection() {
             {/* Dhaka Headquarters Card */}
             <div className="bg-[#141419] rounded-3xl p-6 sm:p-7 border border-white/[0.08] space-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
               <h3 className="font-display font-extrabold text-base text-white flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-[#F59E0B]" />
+                <MapPin className="w-4 h-4 text-[#06B6D4]" />
                 <span>{t.dhakaHq}</span>
               </h3>
 
@@ -204,14 +204,14 @@ export function ContactSection() {
 
                 <div className="flex items-center gap-2.5">
                   <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.phoneLabel}</div>
-                  <a href={`tel:${contact.phone}`} className="text-[#F59E0B] hover:underline">
+                  <a href={`tel:${contact.phone}`} className="text-[#06B6D4] hover:underline">
                     {contact.phone}
                   </a>
                 </div>
 
                 <div className="flex items-center gap-2.5">
                   <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.emailLabel}</div>
-                  <a href={`mailto:${contact.email}`} className="text-[#F59E0B] hover:underline">
+                  <a href={`mailto:${contact.email}`} className="text-[#06B6D4] hover:underline">
                     {contact.email}
                   </a>
                 </div>
@@ -224,7 +224,7 @@ export function ContactSection() {
 
               {/* Security promise */}
               <div className="pt-4 border-t border-white/[0.06] flex items-center gap-2 text-xs text-neutral-400">
-                <ShieldCheck className="w-4 h-4 text-[#F59E0B] shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-[#06B6D4] shrink-0" />
                 <span>{t.securityPromise}</span>
               </div>
             </div>

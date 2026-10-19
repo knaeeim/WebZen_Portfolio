@@ -55,18 +55,18 @@
   --card-foreground: #FFFFFF;
   --popover: #121216;
   --popover-foreground: #FFFFFF;
-  --primary: #F59E0B;
+  --primary: #06B6D4;
   --primary-foreground: #0B0B0E;
   --secondary: #18181E;
   --secondary-foreground: #F5F5F7;
   --muted: #1A1A22;
   --muted-foreground: #A1A1AA;
-  --accent: #EC4899;
+  --accent: #0EA5E9;
   --accent-foreground: #FFFFFF;
   --destructive: #EF4444;
   --border: rgba(255, 255, 255, 0.08);
   --input: rgba(255, 255, 255, 0.12);
-  --ring: #F59E0B;
+  --ring: #06B6D4;
   --radius: 0.75rem;
 
   --font-sans: var(--font-jakarta), var(--font-anek-bangla), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -74,9 +74,9 @@
   --font-bengali: var(--font-anek-bangla), sans-serif;
   --font-english: var(--font-jakarta), var(--font-syne), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-  --accent-orange: #F59E0B;
-  --accent-pink: #EC4899;
-  --accent-coral: #EF4444;
+  --accent-cyan: #06B6D4;
+  --accent-blue: #0EA5E9;
+  --accent-teal: #10B981;
 }
 
 html.light,
@@ -87,18 +87,22 @@ html:not(.dark) {
   --card-foreground: #FFFFFF;
   --popover: #121216;
   --popover-foreground: #FFFFFF;
-  --primary: #F59E0B;
+  --primary: #06B6D4;
   --primary-foreground: #0B0B0E;
   --secondary: #18181E;
   --secondary-foreground: #F5F5F7;
   --muted: #1A1A22;
   --muted-foreground: #A1A1AA;
-  --accent: #EC4899;
+  --accent: #0EA5E9;
   --accent-foreground: #FFFFFF;
   --destructive: #EF4444;
   --border: rgba(255, 255, 255, 0.08);
   --input: rgba(255, 255, 255, 0.12);
-  --ring: #F59E0B;
+  --ring: #06B6D4;
+
+  --accent-cyan: #06B6D4;
+  --accent-blue: #0EA5E9;
+  --accent-teal: #10B981;
 }
 
 html {
@@ -388,15 +392,15 @@ html:not(.dark) .bg-dots-pattern {
   font-family: var(--font-display);
 }
 
-/* Bespoke Agency Gradients: Magenta-pink (#EC4899) to warm amber-gold (#F59E0B) */
+/* Bespoke WebZen Logo Gradients: Sky Blue (#38BDF8) to Electric Cyan (#06B6D4) to Mint Teal (#10B981) */
 .text-gradient-hero {
-  background: linear-gradient(135deg, #EC4899 0%, #F43F5E 35%, #F59E0B 100%);
+  background: linear-gradient(135deg, #38BDF8 0%, #06B6D4 45%, #10B981 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-fire {
-  background: linear-gradient(135deg, #EC4899 0%, #EF4444 50%, #F59E0B 100%);
+  background: linear-gradient(135deg, #0EA5E9 0%, #06B6D4 50%, #14B8A6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -422,9 +426,9 @@ html:not(.dark) .bg-dots-pattern {
   animation-play-state: paused;
 }
 
-/* Ambient glow utilities */
+/* Ambient glow utilities matching logo with subtle intensity */
 .glow-warm-ambient {
-  box-shadow: 0 0 80px -10px rgba(245, 158, 11, 0.15), 0 0 100px -20px rgba(236, 72, 153, 0.15);
+  box-shadow: 0 0 80px -10px rgba(6, 182, 212, 0.12), 0 0 100px -20px rgba(16, 185, 129, 0.10);
 }
 
 body {

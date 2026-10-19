@@ -86,7 +86,7 @@ export default function RootLayout({
         <link rel="icon" href="/logo.png" type="image/png" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
       </head>
-      <body className="min-h-full flex flex-col bg-[#0B0B0E] text-neutral-100 antialiased selection:bg-[#EC4899] selection:text-white transition-colors duration-300">
+      <body className="min-h-full flex flex-col bg-[#0B0B0E] text-neutral-100 antialiased selection:bg-[#06B6D4] selection:text-black transition-colors duration-300">
         <SiteProvider>
           <ThemeProvider>
             <LanguageProvider>

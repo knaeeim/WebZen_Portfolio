@@ -47,9 +47,9 @@ export function Footer() {
 
   return (
     <footer className="relative bg-[#0B0B0E] border-t border-white/[0.08] text-neutral-300 pt-10 pb-8 overflow-hidden z-10">
-      {/* Background ambient corner glow */}
+      {/* Background ambient corner glow - Soft & Gentle */}
       <div 
-        className="absolute bottom-0 right-0 w-[450px] h-[250px] bg-[#F59E0B]/[0.05] blur-[140px] pointer-events-none" 
+        className="absolute bottom-0 right-0 w-[450px] h-[250px] bg-[#06B6D4]/[0.04] blur-[150px] pointer-events-none" 
         aria-hidden="true" 
       />
 
@@ -59,11 +59,11 @@ export function Footer() {
           {/* Left Column: WEBZEN BD logo, brief agency bio, and social media icons */}
           <div className="lg:col-span-5 space-y-6">
             <Link href="/" className="inline-flex items-center gap-2.5 group">
-              <div className="relative w-8 h-8 rounded-xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-[#F59E0B]/50 transition-all p-0.5 shadow-[0_0_12px_rgba(245,158,11,0.2)]">
+              <div className="relative w-8 h-8 rounded-xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-[#06B6D4]/50 transition-all p-0.5 shadow-[0_0_12px_rgba(6,182,212,0.2)]">
                 <img src="/logo.png" alt="WebZen Logo" className="w-full h-full object-contain rounded-lg" />
               </div>
               <span className="font-display font-black text-2xl tracking-wider text-white">
-                WEBZEN<span className="text-[#F59E0B] font-black ml-1 drop-shadow-[0_0_12px_rgba(245,158,11,0.5)]">BD</span>
+                WEBZEN<span className="text-[#06B6D4] font-black ml-1 drop-shadow-[0_0_10px_rgba(6,182,212,0.4)]">BD</span>
               </span>
             </Link>
 
@@ -81,7 +81,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-white/[0.04] border border-white/10 hover:border-[#F59E0B]/50 hover:bg-white/[0.08] flex items-center justify-center text-xs font-mono font-bold text-neutral-300 hover:text-white transition-all duration-300 group shadow-sm hover:shadow-[0_0_15px_rgba(245,158,11,0.2)]"
+                  className="w-10 h-10 rounded-full bg-white/[0.04] border border-white/10 hover:border-[#06B6D4]/50 hover:bg-white/[0.08] flex items-center justify-center text-xs font-mono font-bold text-neutral-300 hover:text-white transition-all duration-300 group shadow-sm hover:shadow-[0_0_15px_rgba(6,182,212,0.2)]"
                   title={social.name}
                 >
                   <span className="group-hover:scale-110 transition-transform">{social.label}</span>
@@ -102,7 +102,7 @@ export function Footer() {
                     href={link.href}
                     className={`text-sm text-neutral-400 hover:text-white transition-colors flex items-center gap-1.5 group ${isBn ? "font-bangla-ui" : ""}`}
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-neutral-600 group-hover:bg-[#F59E0B] transition-colors" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-neutral-600 group-hover:bg-[#06B6D4] transition-colors" />
                     <span>{link.label}</span>
                   </a>
                 </li>
@@ -119,7 +119,7 @@ export function Footer() {
             <div className="space-y-3.5 text-sm text-neutral-400">
               {/* Location */}
               <div className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-[#F59E0B] shrink-0 mt-1" />
+                <MapPin className="w-4 h-4 text-[#06B6D4] shrink-0 mt-1" />
                 <span className={`leading-relaxed ${isBn ? "font-bangla-body" : ""}`}>
                   {isBn ? "ক্রিস্টাল আইসিটি টাওয়ার, গুলশান-২, ঢাকা-১২১২, বাংলাদেশ" : "Crystal ICT Tower, Gulshan-2, Dhaka-1212, Bangladesh"}
                 </span>
@@ -127,7 +127,7 @@ export function Footer() {
 
               {/* Phone */}
               <div className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-[#F59E0B] shrink-0" />
+                <Phone className="w-4 h-4 text-[#06B6D4] shrink-0" />
                 <a 
                   href="tel:+8801886932936" 
                   className="hover:text-white transition-colors"
@@ -138,7 +138,7 @@ export function Footer() {
 
               {/* Email */}
               <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-[#F59E0B] shrink-0" />
+                <Mail className="w-4 h-4 text-[#06B6D4] shrink-0" />
                 <a 
                   href="mailto:hello@webzenbd.com" 
                   className="hover:text-white transition-colors"
@@ -153,7 +153,7 @@ export function Footer() {
               <a href="#contact">
                 <button className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 hover:border-white/30 text-xs font-bold text-white bg-white/[0.03] hover:bg-white/[0.08] transition-all cursor-pointer ${isBn ? "font-bangla-ui" : ""}`}>
                   <span>{isBn ? "মেসেজ পাঠান" : "Send a Message"}</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#F59E0B]" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#06B6D4]" />
                 </button>
               </a>
             </div>

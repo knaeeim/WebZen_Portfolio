@@ -24,7 +24,7 @@ export default function Home() {
       <div className="min-h-screen flex items-center justify-center bg-[#0B0B0E] text-neutral-100">
         <div className="flex flex-col items-center gap-4">
           <div className="font-display font-black text-2xl tracking-wider text-white animate-pulse">
-            WEBZEN<span className="text-[#F59E0B] font-black ml-1.5 drop-shadow-[0_0_12px_rgba(245,158,11,0.5)]">BD</span>
+            WEBZEN<span className="text-[#06B6D4] font-black ml-1.5 drop-shadow-[0_0_12px_rgba(6,182,212,0.4)]">BD</span>
           </div>
           <p className="text-xs text-neutral-400 font-mono tracking-widest uppercase">
             Loading Agency Architecture...
@@ -35,7 +35,7 @@ export default function Home() {
   }
 
   return (
-    <div className="relative min-h-screen flex flex-col bg-[#0B0B0E] text-[#F5F5F7] selection:bg-[#EC4899] selection:text-white">
+    <div className="relative min-h-screen flex flex-col bg-[#0B0B0E] text-[#F5F5F7] selection:bg-[#06B6D4] selection:text-black">
       {/* 1. Global Visual Identity & Diffused Radial Mesh Ambient Lighting */}
       <AmbientLighting />
       <ParticleCanvas />
