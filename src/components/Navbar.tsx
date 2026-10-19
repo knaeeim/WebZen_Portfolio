@@ -1,24 +1,43 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import { useSite } from "@/context/SiteContext";
 import { translations } from "@/data/translations";
 import { 
   Menu, 
   X, 
   Globe, 
   ArrowUpRight,
+  ChevronDown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+// Section ID to localized nav label dictionary
+const sectionLabelMap: Record<string, { bn: string; en: string }> = {
+  services: { bn: "সার্ভিস", en: "Services" },
+  projects: { bn: "পোর্টফোলিও", en: "Projects" },
+  techstack: { bn: "টেকনোলজি", en: "Tech Stack" },
+  process: { bn: "কাজের ধাপ", en: "Process" },
+  calculator: { bn: "বাজেট হিসাব", en: "Calculator" },
+  pricing: { bn: "প্যাকেজ ও খরচ", en: "Pricing" },
+  testimonials: { bn: "ক্লায়েন্ট রিভিউ", en: "Reviews" },
+  faq: { bn: "সাধারণ জিজ্ঞাসা", en: "FAQ" },
+  contact: { bn: "যোগাযোগ", en: "Contact" },
+  stats: { bn: "পরিসংখ্যান", en: "Metrics" },
+};
+
 export function Navbar() {
-  const { language, setLanguage, toggleLanguage } = useLanguage();
+  const { language, toggleLanguage } = useLanguage();
+  const { data } = useSite();
   const t = translations[language].nav;
 
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [othersOpen, setOthersOpen] = useState(false);
   const [dhakaTime, setDhakaTime] = useState("");
+  const othersRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,21 +60,44 @@ export function Navbar() {
     updateTime();
     const interval = setInterval(updateTime, 1000);
 
+    const handleClickOutside = (e: MouseEvent) => {
+      if (othersRef.current && !othersRef.current.contains(e.target as Node)) {
+        setOthersOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       clearInterval(interval);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
-  const navLinks = [
-    { label: t.services, href: "#services" },
-    { label: t.projects, href: "#projects" },
-    { label: t.process, href: "#process" },
-    { label: t.calculator, href: "#calculator" },
-    { label: t.pricing, href: "#pricing" },
-    { label: t.testimonials, href: "#testimonials" },
-    { label: t.contact, href: "#contact" },
-  ];
+  // Filter sections dynamically based on Section Manager enabled status (excluding billboard Hero)
+  const activeNavSections = (data?.sections || [])
+    .filter((sec) => sec.enabled && sec.id !== "hero")
+    .sort((a, b) => a.order - b.order);
+
+  // Generate dynamic links
+  const navLinks = activeNavSections.map((sec) => {
+    const defaultLabels = sectionLabelMap[sec.id] || sectionLabelMap[sec.type];
+    const label = defaultLabels
+      ? (language === "bn" ? defaultLabels.bn : defaultLabels.en)
+      : sec.title;
+
+    return {
+      id: sec.id,
+      label,
+      href: `#${sec.id}`,
+    };
+  });
+
+  // Limit direct visible items on desktop to prevent navbar crowding (e.g. max 5 items)
+  const MAX_DIRECT_LINKS = 5;
+  const directLinks = navLinks.slice(0, MAX_DIRECT_LINKS);
+  const overflowLinks = navLinks.slice(MAX_DIRECT_LINKS);
+  const hasOverflow = overflowLinks.length > 0;
 
   return (
     <header
@@ -94,9 +136,10 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-1 bg-white/[0.03] border border-white/[0.08] rounded-full px-4 py-1.5 backdrop-blur-md">
-            {navLinks.map((link) => (
+          {/* Desktop Nav Links (Dynamic from Section Manager) */}
+          <nav className="hidden lg:flex items-center gap-1 bg-white/[0.03] border border-white/[0.08] rounded-full px-3.5 py-1.5 backdrop-blur-md">
+            {/* Primary Direct Links */}
+            {directLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -105,6 +148,53 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
+
+            {/* Overflow "Others / অন্যান্য" Dropdown Menu */}
+            {hasOverflow && (
+              <div ref={othersRef} className="relative">
+                <button
+                  type="button"
+                  onClick={() => setOthersOpen(!othersOpen)}
+                  onMouseEnter={() => setOthersOpen(true)}
+                  className={`inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-full transition-all ${
+                    othersOpen
+                      ? "bg-white/[0.08] text-cyan-400"
+                      : "text-slate-300 hover:text-cyan-400 hover:bg-white/[0.05]"
+                  }`}
+                  aria-expanded={othersOpen}
+                >
+                  <span>{language === "bn" ? "অন্যান্য" : "Others"}</span>
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                      othersOpen ? "rotate-180 text-cyan-400" : "text-slate-400"
+                    }`}
+                  />
+                </button>
+
+                {/* Dropdown Panel */}
+                {othersOpen && (
+                  <div
+                    onMouseLeave={() => setOthersOpen(false)}
+                    className="absolute top-full right-0 mt-2.5 w-44 rounded-2xl bg-[#090d1c]/95 border border-white/10 p-2 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150 z-50"
+                  >
+                    <div className="px-2.5 py-1.5 text-[10px] font-mono uppercase tracking-wider text-slate-400 border-b border-white/5 mb-1">
+                      {language === "bn" ? "অতিরিক্ত সেকশন" : "More Sections"}
+                    </div>
+                    {overflowLinks.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setOthersOpen(false)}
+                        className="flex items-center justify-between px-3 py-2 text-xs font-medium text-slate-300 hover:text-cyan-300 hover:bg-cyan-500/10 rounded-xl transition-all group"
+                      >
+                        <span>{link.label}</span>
+                        <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-cyan-400" />
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </nav>
 
           {/* Right Action Buttons */}
@@ -158,23 +248,25 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer (Reflects active sections dynamically) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[72px] bg-[#05070f]/95 backdrop-blur-2xl border-b border-white/10 p-6 shadow-2xl transition-all">
-          <div className="flex flex-col gap-3">
+        <div className="lg:hidden fixed inset-x-0 top-[72px] bg-[#05070f]/95 backdrop-blur-2xl border-b border-white/10 p-6 shadow-2xl transition-all max-h-[85vh] overflow-y-auto">
+          <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between pb-3 border-b border-white/10 text-xs text-slate-400">
               <span>Status: <span className="text-emerald-400 font-medium">{t.availableStatus}</span></span>
               <span>{t.dhakaTime}: {dhakaTime}</span>
             </div>
 
+            {/* Dynamically List All Enabled Sections in Drawer */}
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-sm font-medium text-slate-200 hover:text-cyan-400 py-2 border-b border-white/5 transition-colors"
+                className="text-sm font-medium text-slate-200 hover:text-cyan-400 py-2.5 border-b border-white/5 transition-colors flex items-center justify-between"
               >
-                {link.label}
+                <span>{link.label}</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-slate-500" />
               </a>
             ))}
 
@@ -191,7 +283,7 @@ export function Navbar() {
               </button>
 
               <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-semibold text-xs justify-center">
+                <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-semibold text-xs justify-center h-10">
                   {t.hireUs}
                 </Button>
               </a>
