@@ -112,7 +112,7 @@ export function ProcessSection() {
   };
 
   return (
-    <section id="process" className="relative py-28 overflow-hidden bg-black/30 border-y border-white/[0.05]">
+    <section id="process" className="relative py-28 overflow-hidden bg-black/30 border-y border-white/[0.05] scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}

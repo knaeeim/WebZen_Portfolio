@@ -54,7 +54,7 @@ export function ServicesSection() {
   };
 
   return (
-    <section id="services" className="relative py-28 overflow-hidden">
+    <section id="services" className="relative py-28 overflow-hidden scroll-mt-24">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-cyan-500/10 blur-[140px] pointer-events-none rounded-full" />
       <div className="absolute bottom-10 right-0 w-96 h-96 bg-purple-600/10 blur-[140px] pointer-events-none rounded-full" />

@@ -25,7 +25,8 @@ const sectionLabelMap: Record<string, { bn: string; en: string }> = {
   testimonials: { bn: "ক্লায়েন্ট রিভিউ", en: "Reviews" },
   faq: { bn: "সাধারণ জিজ্ঞাসা", en: "FAQ" },
   contact: { bn: "যোগাযোগ", en: "Contact" },
-  stats: { bn: "পরিসংখ্যান", en: "Metrics" },
+  stats: { bn: "ম্যাট্রিক্স", en: "Metrics" },
+  metrics: { bn: "ম্যাট্রিক্স", en: "Metrics" },
 };
 
 export function Navbar() {

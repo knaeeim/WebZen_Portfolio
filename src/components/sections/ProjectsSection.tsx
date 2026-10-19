@@ -47,7 +47,7 @@ export function ProjectsSection() {
       : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="projects" className="relative py-28 overflow-hidden bg-black/20">
+    <section id="projects" className="relative py-28 overflow-hidden bg-black/20 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}

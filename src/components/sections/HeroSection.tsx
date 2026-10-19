@@ -28,7 +28,7 @@ export function HeroSection() {
     : ["HealthTech & Booking", "E-Commerce Stores", "Custom Websites", "bKash / Nagad Gateways", "Mobile Apps", "AI Automations"];
 
   return (
-    <section className="relative min-h-[auto] sm:min-h-[88vh] pt-24 xs:pt-28 sm:pt-32 pb-10 sm:pb-16 flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-[auto] sm:min-h-[88vh] pt-24 xs:pt-28 sm:pt-32 pb-10 sm:pb-16 flex items-center justify-center overflow-hidden scroll-mt-24">
       {/* Ambient background glows matching logo palette (Sky Blue to Teal) */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[580px] h-[220px] sm:h-[340px] bg-gradient-to-tr from-[#0284c7]/35 via-[#009fe3]/25 to-[#00b4b8]/30 blur-[90px] sm:blur-[140px] rounded-full pointer-events-none" />
       <div className="absolute top-1/3 right-4 sm:right-10 w-[180px] sm:w-[280px] h-[180px] sm:h-[280px] bg-[#00b4b8]/20 blur-[70px] sm:blur-[100px] rounded-full pointer-events-none" />

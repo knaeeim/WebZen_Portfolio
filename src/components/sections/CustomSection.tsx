@@ -15,7 +15,7 @@ export function CustomSection({ section }: { section: SectionItem }) {
   };
 
   return (
-    <section id={section.id} className="relative py-24 overflow-hidden">
+    <section id={section.id} className="relative py-24 overflow-hidden scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

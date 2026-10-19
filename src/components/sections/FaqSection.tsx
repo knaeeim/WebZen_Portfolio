@@ -29,7 +29,7 @@ export function FaqSection() {
   };
 
   return (
-    <section id="faq" className="relative py-28 overflow-hidden">
+    <section id="faq" className="relative py-28 overflow-hidden scroll-mt-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}

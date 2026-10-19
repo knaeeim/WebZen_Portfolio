@@ -65,7 +65,9 @@ export function StatsSection() {
   };
 
   return (
-    <section className="relative py-16 border-y border-white/[0.06] bg-white/[0.01]">
+    <section id="stats" className="relative py-16 border-y border-white/[0.06] bg-white/[0.01] scroll-mt-24">
+      {/* Anchor alias for #metrics */}
+      <div id="metrics" className="absolute -top-24 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {statItems.map((stat, idx) => (

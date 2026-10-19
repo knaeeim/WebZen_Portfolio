@@ -40,7 +40,7 @@ export function TechStackSection() {
   const currentCategory = categories[activeTab] || categories[0];
 
   return (
-    <section id="techstack" className="relative py-28 overflow-hidden">
+    <section id="techstack" className="relative py-28 overflow-hidden scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}

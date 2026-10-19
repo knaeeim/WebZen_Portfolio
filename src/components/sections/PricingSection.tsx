@@ -25,7 +25,7 @@ export function PricingSection() {
   const plans = t.plans || data.pricing;
 
   return (
-    <section id="pricing" className="relative py-28 overflow-hidden">
+    <section id="pricing" className="relative py-28 overflow-hidden scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
