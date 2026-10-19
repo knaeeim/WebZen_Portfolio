@@ -28,10 +28,10 @@ export function TestimonialsSection() {
   }));
 
   return (
-    <section id="testimonials" className="relative py-10 sm:py-14 overflow-hidden scroll-mt-20">
-      {/* Background ambient lighting - Soft & Gentle */}
+    <section id="testimonials" className="relative py-12 sm:py-16 overflow-hidden scroll-mt-20 bg-[#000000]">
+      {/* Background ambient lighting - Warm Studio Gold */}
       <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-r from-[#0EA5E9]/[0.05] to-[#06B6D4]/[0.05] blur-[150px] rounded-full pointer-events-none" 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-r from-[#FFB800]/[0.05] to-[#EA7814]/[0.05] blur-[150px] rounded-full pointer-events-none" 
         aria-hidden="true" 
       />
 
@@ -46,7 +46,7 @@ export function TestimonialsSection() {
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 mb-3"
           >
-            <Heart className="w-3.5 h-3.5 text-[#06B6D4]" />
+            <Heart className="w-3.5 h-3.5 text-[#FFB800]" />
             <span className={`text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-300 ${isBn ? "font-bangla-ui" : ""}`}>
               {isBn ? "ক্লায়েন্ট সন্তুষ্টি ও রিভিউ" : "CLIENT TESTIMONIALS"}
             </span>
@@ -79,12 +79,12 @@ export function TestimonialsSection() {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.65, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -6 }}
-              className="relative bg-[#16161A] border border-white/[0.08] rounded-3xl p-6 sm:p-7 pt-11 flex flex-col justify-between shadow-[0_20px_50px_rgba(0,0,0,0.6)] hover:border-white/20 transition-all duration-300 group"
+              className="relative bg-[#050505] border border-white/[0.08] rounded-3xl p-6 sm:p-7 pt-11 flex flex-col justify-between shadow-[0_20px_50px_rgba(0,0,0,0.85)] hover:border-[#FFB800]/30 transition-all duration-300 group"
             >
-              {/* Unique Detail: Overlapping the top-center border are two circular badges (client avatar + reaction) */}
+              {/* Overlapping top badges */}
               <div className="absolute -top-7 left-1/2 -translate-x-1/2 flex items-center justify-center">
                 {/* Badge 1: Client Avatar */}
-                <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-full border-2 border-[#16161A] overflow-hidden bg-neutral-800 shadow-[0_8px_20px_rgba(0,0,0,0.7)] shrink-0 group-hover:scale-105 transition-transform">
+                <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-full border-2 border-[#050505] overflow-hidden bg-neutral-900 shadow-[0_8px_20px_rgba(0,0,0,0.8)] shrink-0 group-hover:scale-105 transition-transform group-hover:border-[#FFB800]/50">
                   <img
                     src={item.avatar}
                     alt={item.name}
@@ -92,10 +92,20 @@ export function TestimonialsSection() {
                   />
                 </div>
 
-                {/* Badge 2: Overlapping Heart / Reaction Badge */}
-                <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-[#0EA5E9] to-[#06B6D4] border-2 border-[#16161A] flex items-center justify-center text-xs shadow-lg -ml-3 z-10 select-none animate-pulse">
+                {/* Badge 2: Overlapping Reaction Badge */}
+                <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-[#FFB800] to-[#EA7814] border-2 border-[#050505] flex items-center justify-center text-xs shadow-lg -ml-3 z-10 select-none animate-pulse">
                   <span>{item.reaction}</span>
                 </div>
+              </div>
+
+              {/* 5 Golden Stars */}
+              <div className="flex items-center justify-center gap-1 mb-3 pt-2">
+                {Array.from({ length: 5 }).map((_, sIdx) => (
+                  <Star 
+                    key={sIdx} 
+                    className="w-4 h-4 fill-[#FFB800] text-[#FFB800]" 
+                  />
+                ))}
               </div>
 
               {/* Card Content */}

@@ -4,17 +4,18 @@ import { useEffect } from "react";
 import { useSite } from "@/context/SiteContext";
 
 const PRESET_MAP: Record<string, { accent: string; start: string; end: string }> = {
-  "cyber-zen": { accent: "#06B6D4", start: "#38BDF8", end: "#10B981" },
+  "creative-studio": { accent: "#FFB800", start: "#FFE58F", end: "#EA7814" },
+  "solar-amber": { accent: "#FFB800", start: "#F59E0B", end: "#EA7814" },
+  "cyber-zen": { accent: "#FFB800", start: "#F59E0B", end: "#EA7814" },
   "emerald-matrix": { accent: "#10B981", start: "#34D399", end: "#84CC16" },
   "azure-sky": { accent: "#0EA5E9", start: "#38BDF8", end: "#6366F1" },
   "aurora-violet": { accent: "#A855F7", start: "#D946EF", end: "#38BDF8" },
-  "solar-amber": { accent: "#F59E0B", start: "#F97316", end: "#FBBF24" },
   "crimson-rose": { accent: "#EF4444", start: "#F43F5E", end: "#FB7185" },
 };
 
 const BG_TONE_MAP: Record<string, string> = {
-  "obsidian": "#0B0B0E",
   "pitch-black": "#000000",
+  "obsidian": "#050505",
   "midnight-navy": "#080D1A",
   "deep-slate": "#0F141C",
 };

@@ -55,18 +55,18 @@
   --card-foreground: #FFFFFF;
   --popover: #121216;
   --popover-foreground: #FFFFFF;
-  --primary: #06B6D4;
-  --primary-foreground: #0B0B0E;
-  --secondary: #18181E;
+  --primary: #FFB800;
+  --primary-foreground: #000000;
+  --secondary: #121216;
   --secondary-foreground: #F5F5F7;
   --muted: #1A1A22;
   --muted-foreground: #A1A1AA;
-  --accent: #0EA5E9;
-  --accent-foreground: #FFFFFF;
+  --accent: #F59E0B;
+  --accent-foreground: #000000;
   --destructive: #EF4444;
   --border: rgba(255, 255, 255, 0.08);
   --input: rgba(255, 255, 255, 0.12);
-  --ring: #06B6D4;
+  --ring: #FFB800;
   --radius: 0.75rem;
 
   --font-sans: var(--font-jakarta), var(--font-anek-bangla), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -74,9 +74,12 @@
   --font-bengali: var(--font-anek-bangla), sans-serif;
   --font-english: var(--font-jakarta), var(--font-syne), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-  --accent-cyan: #06B6D4;
-  --accent-blue: #0EA5E9;
-  --accent-teal: #10B981;
+  --accent-cyan: #FFB800;
+  --accent-blue: #F59E0B;
+  --accent-teal: #EA7814;
+  --studio-gold: #FFB800;
+  --studio-amber: #F59E0B;
+  --studio-orange: #EA7814;
 }
 
 html.light,
@@ -394,13 +397,33 @@ html:not(.dark) .bg-dots-pattern {
 
 /* Bespoke Theme Gradients with Live CSS Variable Support */
 .text-gradient-hero {
-  background: linear-gradient(135deg, var(--theme-accent-start, #38BDF8) 0%, var(--theme-accent, #06B6D4) 45%, var(--theme-accent-end, #10B981) 100%);
+  background: linear-gradient(135deg, var(--theme-accent-start, #FFB800) 0%, var(--theme-accent, #F59E0B) 50%, var(--theme-accent-end, #EA7814) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FFE58F 0%, #FFB800 50%, #EA7814 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hollow/Outlined Studio Typography matching the reference poster */
+.text-outline-studio {
+  color: transparent;
+  -webkit-text-stroke: 1.5px #FFB800;
+  text-stroke: 1.5px #FFB800;
+  letter-spacing: 0.08em;
+}
+
+.text-outline-white {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.75);
+  text-stroke: 1.5px rgba(255, 255, 255, 0.75);
+}
+
 .text-gradient-fire {
-  background: linear-gradient(135deg, #0EA5E9 0%, #06B6D4 50%, #14B8A6 100%);
+  background: linear-gradient(135deg, #FFB800 0%, #F59E0B 50%, #EA7814 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

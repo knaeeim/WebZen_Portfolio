@@ -101,10 +101,10 @@ export function ContactSection() {
   const isBn = language === "bn";
 
   return (
-    <section id="contact" className="relative py-10 sm:py-14 overflow-hidden scroll-mt-20">
-      {/* Background ambient glow - Soft & Gentle */}
+    <section id="contact" className="relative py-12 sm:py-16 overflow-hidden scroll-mt-20 bg-[#000000]">
+      {/* Background ambient glow - Studio Gold */}
       <div 
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] bg-[#06B6D4]/[0.05] blur-[150px] rounded-full pointer-events-none" 
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-[#FFB800]/[0.05] blur-[150px] rounded-full pointer-events-none" 
         aria-hidden="true" 
       />
 
@@ -119,7 +119,7 @@ export function ContactSection() {
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 mb-3"
           >
-            <span className="w-2 h-2 rounded-full bg-[#06B6D4]" />
+            <span className="w-2 h-2 rounded-full bg-[#FFB800]" />
             <span className={`text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-300 ${isBn ? "font-bangla-ui" : ""}`}>
               {isBn ? "প্রজেক্ট আলোচনা" : "INITIATE PROJECT"}
             </span>
@@ -168,7 +168,7 @@ export function ContactSection() {
           >
             
             {/* Quick WhatsApp Action Card */}
-            <div className="bg-[#141419] rounded-3xl p-6 sm:p-7 border border-white/[0.08] hover:border-[#06B6D4]/40 transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+            <div className="bg-[#050505] rounded-3xl p-6 sm:p-7 border border-white/[0.08] hover:border-[#FFB800]/40 transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.85)]">
               <div className="flex items-center gap-3.5 mb-3">
                 <div className="w-11 h-11 rounded-2xl bg-[#25D366]/15 border border-[#25D366]/30 text-[#25D366] flex items-center justify-center">
                   <MessageCircle className="w-5 h-5" />
@@ -182,17 +182,22 @@ export function ContactSection() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center w-full gap-2 px-6 py-3.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs tracking-wider uppercase transition-all shadow-lg shadow-emerald-500/20 mt-3 cursor-pointer"
+                className="inline-flex items-center justify-center w-full gap-2.5 px-6 py-3.5 rounded-full text-black font-black text-xs tracking-wider uppercase transition-all shadow-lg mt-3 cursor-pointer"
+                style={{
+                  background: "linear-gradient(135deg, #FFB800 0%, #F59E0B 50%, #EA7814 100%)",
+                }}
               >
                 <span>{t.whatsappBtn}</span>
-                <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                <span className="flex items-center justify-center w-5 h-5 rounded-full bg-black text-[#FFB800]">
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </span>
               </a>
             </div>
 
             {/* Dhaka Headquarters Card */}
-            <div className="bg-[#141419] rounded-3xl p-6 sm:p-7 border border-white/[0.08] space-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+            <div className="bg-[#050505] rounded-3xl p-6 sm:p-7 border border-white/[0.08] space-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.85)]">
               <h3 className="font-display font-extrabold text-base text-white flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-[#06B6D4]" />
+                <MapPin className="w-4 h-4 text-[#FFB800]" />
                 <span>{t.dhakaHq}</span>
               </h3>
 
@@ -206,14 +211,14 @@ export function ContactSection() {
 
                 <div className="flex items-center gap-2.5">
                   <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.phoneLabel}</div>
-                  <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="text-[#06B6D4] hover:underline">
+                  <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="text-[#FFB800] hover:underline">
                     {contact.phone}
                   </a>
                 </div>
 
                 <div className="flex items-center gap-2.5">
                   <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.emailLabel}</div>
-                  <a href={`mailto:${contact.email}`} className="text-[#06B6D4] hover:underline">
+                  <a href={`mailto:${contact.email}`} className="text-[#FFB800] hover:underline">
                     {contact.email}
                   </a>
                 </div>
@@ -401,7 +406,10 @@ export function ContactSection() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-white hover:bg-neutral-200 text-black font-extrabold h-14 text-xs sm:text-sm tracking-[0.18em] uppercase rounded-full shadow-[0_0_30px_rgba(255,255,255,0.25)] hover:shadow-[0_0_40px_rgba(255,255,255,0.45)] group transition-all duration-300 cursor-pointer disabled:opacity-60 flex items-center justify-center gap-2 active:scale-[0.99]"
+                    className="w-full font-black h-14 text-xs sm:text-sm tracking-[0.18em] uppercase rounded-full shadow-[0_0_30px_rgba(255,184,0,0.35)] hover:shadow-[0_0_40px_rgba(255,184,0,0.55)] group transition-all duration-300 cursor-pointer disabled:opacity-60 flex items-center justify-center gap-2.5 active:scale-[0.99] text-black"
+                    style={{
+                      background: "linear-gradient(135deg, #FFB800 0%, #F59E0B 50%, #EA7814 100%)",
+                    }}
                   >
                     {loading ? (
                       <span className="flex items-center gap-2">
@@ -409,9 +417,11 @@ export function ContactSection() {
                         <span>{t.submittingBtn}</span>
                       </span>
                     ) : (
-                      <span className="flex items-center gap-2">
+                      <span className="flex items-center gap-2.5">
                         <span>{t.submitBtn}</span>
-                        <Send className="w-4 h-4 transition-transform group-hover:translate-x-1 text-black" />
+                        <span className="flex items-center justify-center w-7 h-7 rounded-full bg-black text-[#FFB800] group-hover:translate-x-1 transition-transform">
+                          <Send className="w-3.5 h-3.5" />
+                        </span>
                       </span>
                     )}
                   </button>

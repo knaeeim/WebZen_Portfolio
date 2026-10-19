@@ -48,10 +48,10 @@ export function ProjectsSection() {
   const isBn = language === "bn";
 
   return (
-    <section id="projects" className="relative py-10 sm:py-14 overflow-hidden scroll-mt-20">
-      {/* Ambient background glow - Soft & Subtle */}
+    <section id="projects" className="relative py-12 sm:py-16 overflow-hidden scroll-mt-20 bg-[#000000]">
+      {/* Ambient background glow - Warm Studio Gold */}
       <div 
-        className="absolute top-1/3 -right-[15%] w-[500px] h-[450px] bg-[#0EA5E9]/[0.05] blur-[160px] rounded-full pointer-events-none" 
+        className="absolute top-1/3 -right-[15%] w-[500px] h-[500px] bg-[#FFB800]/[0.05] blur-[160px] rounded-full pointer-events-none" 
         aria-hidden="true" 
       />
 
@@ -66,7 +66,7 @@ export function ProjectsSection() {
             transition={{ duration: 0.6 }}
           >
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 mb-3">
-              <FolderGit2 className="w-3.5 h-3.5 text-[#06B6D4]" />
+              <FolderGit2 className="w-3.5 h-3.5 text-[#FFB800]" />
               <span className={`text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-300 ${isBn ? "font-bangla-ui" : ""}`}>
                 {isBn ? "নির্বাচিত পোর্টফোলিও" : "CURATED PORTFOLIO"}
               </span>
@@ -113,10 +113,12 @@ export function ProjectsSection() {
               <motion.button 
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className={`border border-white/20 hover:border-[#06B6D4]/60 text-white bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-md rounded-full px-6 py-3.5 text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(6,182,212,0.18)] flex items-center gap-2 group cursor-pointer ${isBn ? "font-bangla-ui" : ""}`}
+                className={`border border-white/20 hover:border-[#FFB800]/60 text-white bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-md rounded-full px-6 py-3.5 text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(255,184,0,0.25)] flex items-center gap-2.5 group cursor-pointer ${isBn ? "font-bangla-ui" : ""}`}
               >
                 <span>{isBn ? "নতুন প্রজেক্ট নিয়ে আলাপ" : "DISCUSS YOUR PROJECT"}</span>
-                <ArrowUpRight className="w-4 h-4 text-[#06B6D4] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <span className="flex items-center justify-center w-5 h-5 rounded-full bg-black text-[#FFB800] group-hover:translate-x-0.5 transition-transform">
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </span>
               </motion.button>
             </a>
           </motion.div>
@@ -136,8 +138,8 @@ export function ProjectsSection() {
               onClick={() => setActiveCategory(cat.id)}
               className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs font-bold tracking-wider transition-all duration-300 cursor-pointer ${isBn ? "font-bangla-ui" : ""} ${
                 activeCategory === cat.id
-                  ? "bg-white text-black shadow-[0_0_25px_rgba(255,255,255,0.3)] scale-105"
-                  : "bg-[#141419] text-neutral-300 hover:text-white hover:bg-white/[0.08] border border-white/[0.08]"
+                  ? "bg-[#FFB800] text-black shadow-[0_0_25px_rgba(255,184,0,0.4)] scale-105"
+                  : "bg-[#0A0A0E] text-neutral-300 hover:text-white hover:bg-white/[0.08] border border-white/[0.08]"
               }`}
             >
               {cat.label}
@@ -157,7 +159,7 @@ export function ProjectsSection() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.45, delay: (pIdx % 3) * 0.1 }}
                 whileHover={{ y: -6 }}
-                className="bg-[#141419] rounded-3xl overflow-hidden border border-white/[0.08] hover:border-[#06B6D4]/40 transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.6)] group flex flex-col justify-between"
+                className="bg-[#050505] rounded-3xl overflow-hidden border border-white/[0.08] hover:border-[#FFB800]/40 transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.85)] group flex flex-col justify-between"
               >
                 <div>
                   {/* Image Container with zoom */}
@@ -167,18 +169,18 @@ export function ProjectsSection() {
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-95 group-hover:brightness-100"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#141419] via-transparent to-transparent opacity-80" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-80" />
                     
                     {/* Category Badge */}
                     <div className="absolute top-4 left-4">
-                      <span className="text-[11px] font-bold px-3.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-[#06B6D4] border border-white/10">
+                      <span className="text-[11px] font-bold px-3.5 py-1 rounded-full bg-black/80 backdrop-blur-md text-[#FFB800] border border-white/10">
                         {project.category}
                       </span>
                     </div>
 
                     {/* Country Badge */}
-                    <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] font-semibold text-neutral-300 border border-white/10">
-                      <MapPin className="w-3 h-3 text-[#0EA5E9]" />
+                    <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-[10px] font-semibold text-neutral-300 border border-white/10">
+                      <MapPin className="w-3 h-3 text-[#FFB800]" />
                       <span>{project.country}</span>
                     </div>
                   </div>

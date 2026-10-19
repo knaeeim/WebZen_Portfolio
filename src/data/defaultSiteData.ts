@@ -456,16 +456,16 @@ export const initialSiteData: SiteData = {
   ],
 
   theme: {
-    preset: "cyber-zen",
-    accentColor: "#06B6D4",
-    accentGradientStart: "#38BDF8",
-    accentGradientEnd: "#10B981",
-    backgroundTone: "obsidian",
+    preset: "creative-studio",
+    accentColor: "#FFB800",
+    accentGradientStart: "#FFE58F",
+    accentGradientEnd: "#EA7814",
+    backgroundTone: "pitch-black",
     glowIntensity: "medium",
     enableParticles: true,
     enableAmbientGlow: true,
     enableSpotlight: true,
-    borderRadius: "lg",
+    borderRadius: "full",
     darkNav: true
   },
 

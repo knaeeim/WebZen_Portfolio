@@ -49,14 +49,14 @@ export function ServicesSection() {
     : fallbackChecklist;
 
   return (
-    <section id="services" className="relative py-10 sm:py-14 overflow-hidden scroll-mt-20">
-      {/* Background ambient lighting - Soft & Gentle matching WebZen Logo */}
+    <section id="services" className="relative py-12 sm:py-16 overflow-hidden scroll-mt-20 bg-[#000000]">
+      {/* Background ambient lighting - Studio Amber & Warm Gold */}
       <div 
-        className="absolute top-1/2 -left-[10%] w-[450px] h-[450px] bg-[#0EA5E9]/[0.06] blur-[150px] rounded-full pointer-events-none" 
+        className="absolute top-1/2 -left-[10%] w-[500px] h-[500px] bg-[#FFB800]/[0.06] blur-[160px] rounded-full pointer-events-none" 
         aria-hidden="true" 
       />
       <div 
-        className="absolute top-1/3 -right-[10%] w-[450px] h-[450px] bg-[#10B981]/[0.05] blur-[150px] rounded-full pointer-events-none" 
+        className="absolute top-1/3 -right-[10%] w-[500px] h-[500px] bg-[#EA7814]/[0.05] blur-[160px] rounded-full pointer-events-none" 
         aria-hidden="true" 
       />
 
@@ -71,7 +71,7 @@ export function ServicesSection() {
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 mb-3"
           >
-            <span className="w-2 h-2 rounded-full bg-[#06B6D4]" />
+            <span className="w-2 h-2 rounded-full bg-[#FFB800]" />
             <span className={`text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-300 ${isBn ? "font-bangla-ui" : ""}`}>
               {isBn ? "সার্ভিস ও ক্যাপাবিলিটিজ" : "SOLUTIONS & CAPABILITIES"}
             </span>
@@ -128,10 +128,10 @@ export function ServicesSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 + idx * 0.1 }}
                   whileHover={{ x: 4 }}
-                  className="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/15 transition-all duration-300 group"
+                  className="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-[#FFB800]/30 transition-all duration-300 group"
                 >
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#18181F] border border-white/10 flex items-center justify-center shrink-0 group-hover:border-[#06B6D4]/50 transition-colors shadow-inner mt-0.5">
-                    <Check className="w-3.5 h-3.5 text-[#06B6D4]" strokeWidth={3} />
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black border border-white/10 flex items-center justify-center shrink-0 group-hover:border-[#FFB800]/50 transition-colors shadow-inner mt-0.5">
+                    <Check className="w-3.5 h-3.5 text-[#FFB800]" strokeWidth={3} />
                   </div>
                   <div>
                     <h4 className={`text-white text-base tracking-wide group-hover:text-neutral-100 transition-colors ${isBn ? "font-bangla-display font-bold" : "font-display font-bold"}`}>
@@ -145,7 +145,7 @@ export function ServicesSection() {
               ))}
             </div>
 
-            {/* Dark Pill Button with a Border ("LEARN MORE ↗") with Smooth Scroll */}
+            {/* Studio Pill Button ("LEARN MORE ↗") with Smooth Scroll */}
             <div className="pt-1">
               <a 
                 href="#projects"
@@ -163,10 +163,12 @@ export function ServicesSection() {
                 <motion.button 
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  className={`border border-white/20 hover:border-[#06B6D4]/60 text-white hover:text-white bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-md rounded-full px-7 py-3.5 text-xs font-bold tracking-[0.16em] uppercase transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(6,182,212,0.18)] flex items-center gap-2 group cursor-pointer ${isBn ? "font-bangla-ui" : ""}`}
+                  className={`border border-white/20 hover:border-[#FFB800]/60 text-white hover:text-white bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-md rounded-full px-7 py-3.5 text-xs font-bold tracking-[0.16em] uppercase transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(255,184,0,0.25)] flex items-center gap-2.5 group cursor-pointer ${isBn ? "font-bangla-ui" : ""}`}
                 >
                   <span>{isBn ? "বিস্তারিত কাজ দেখুন" : "LEARN MORE"}</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#06B6D4] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-black text-[#FFB800] group-hover:translate-x-0.5 transition-transform">
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </span>
                 </motion.button>
               </a>
             </div>
@@ -180,11 +182,11 @@ export function ServicesSection() {
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 relative flex justify-center items-center"
           >
-            {/* Ambient backlight glow - Soft & Subtle */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#0EA5E9]/12 via-[#06B6D4]/08 to-transparent blur-[80px] rounded-full scale-90 pointer-events-none" />
+            {/* Ambient backlight glow - Warm Studio Gold */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#FFB800]/15 via-[#EA7814]/10 to-transparent blur-[80px] rounded-full scale-90 pointer-events-none" />
 
             {/* Bespoke Interactive Software Interface Card */}
-            <div className="relative w-full rounded-3xl overflow-hidden border border-white/10 bg-[#121217]/90 backdrop-blur-2xl shadow-[0_30px_80px_rgba(0,0,0,0.8)] group hover:border-white/20 transition-all duration-500 p-5 sm:p-6">
+            <div className="relative w-full rounded-3xl overflow-hidden border border-white/10 bg-[#050505]/95 backdrop-blur-2xl shadow-[0_30px_80px_rgba(0,0,0,0.85)] group hover:border-[#FFB800]/30 transition-all duration-500 p-5 sm:p-6">
               
               {/* Window Controls & Live System Indicator */}
               <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
@@ -194,24 +196,24 @@ export function ServicesSection() {
                   <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
                 </div>
                 <div className="flex items-center gap-2 text-[10px] font-mono text-neutral-400 bg-white/[0.04] px-3 py-1 rounded-full border border-white/5">
-                  <span className="w-2 h-2 rounded-full bg-[#06B6D4] animate-pulse" />
-                  <span>WEBZEN ARCHITECTURE SUITE</span>
+                  <span className="w-2 h-2 rounded-full bg-[#FFB800] animate-pulse" />
+                  <span className="text-neutral-300">WEBZEN ARCHITECTURE SUITE</span>
                 </div>
               </div>
 
               {/* Interactive Live Architecture Modules */}
               <div className="pt-5 space-y-4">
                 
-                {/* Module 1: E-Commerce & bKash Instant Engine (Mint Teal) */}
-                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-emerald-500/30 transition-all duration-300">
+                {/* Module 1: E-Commerce & bKash Instant Engine (Studio Gold) */}
+                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-[#FFB800]/40 transition-all duration-300">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                      <span className="w-2 h-2 rounded-full bg-[#FFB800]" />
                       <span className={`text-xs font-bold text-white ${isBn ? "font-bangla-ui" : "font-display"}`}>
                         {isBn ? "ই-কমার্স ও বিকাশ অটোমেটেড গেটওয়ে" : "E-Commerce & bKash Gateway"}
                       </span>
                     </div>
-                    <span className="text-[10px] font-mono text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-md border border-emerald-400/20">
+                    <span className="text-[10px] font-mono text-[#FFB800] bg-[#FFB800]/10 px-2 py-0.5 rounded-md border border-[#FFB800]/20">
                       LIVE • 0.3s TTFB
                     </span>
                   </div>
@@ -222,16 +224,16 @@ export function ServicesSection() {
                   </p>
                 </div>
 
-                {/* Module 2: Telehealth & Booking Pipeline (Azure Blue) */}
-                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-[#0EA5E9]/30 transition-all duration-300">
+                {/* Module 2: Telehealth & Booking Pipeline (Studio Amber) */}
+                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-[#F59E0B]/40 transition-all duration-300">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-[#0EA5E9]" />
+                      <span className="w-2 h-2 rounded-full bg-[#F59E0B]" />
                       <span className={`text-xs font-bold text-white ${isBn ? "font-bangla-ui" : "font-display"}`}>
                         {isBn ? "টেলিমেডিসিন ও ডক্টর স্লট বুকিং" : "Telehealth & Clinic Scheduling"}
                       </span>
                     </div>
-                    <span className="text-[10px] font-mono text-[#0EA5E9] bg-[#0EA5E9]/10 px-2 py-0.5 rounded-md border border-[#0EA5E9]/20">
+                    <span className="text-[10px] font-mono text-[#F59E0B] bg-[#F59E0B]/10 px-2 py-0.5 rounded-md border border-[#F59E0B]/20">
                       SOCKET SYNC
                     </span>
                   </div>
@@ -242,16 +244,16 @@ export function ServicesSection() {
                   </p>
                 </div>
 
-                {/* Module 3: Enterprise Cloud & Custom Dashboards (Electric Cyan) */}
-                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-[#06B6D4]/30 transition-all duration-300">
+                {/* Module 3: Enterprise Cloud & Custom Dashboards (Warm Orange) */}
+                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-[#EA7814]/40 transition-all duration-300">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-[#06B6D4]" />
+                      <span className="w-2 h-2 rounded-full bg-[#EA7814]" />
                       <span className={`text-xs font-bold text-white ${isBn ? "font-bangla-ui" : "font-display"}`}>
                         {isBn ? "এন্টারপ্রাইজ ক্লাউড ও অ্যানালিটিক্স" : "Enterprise Cloud Analytics"}
                       </span>
                     </div>
-                    <span className="text-[10px] font-mono text-[#06B6D4] bg-[#06B6D4]/10 px-2 py-0.5 rounded-md border border-[#06B6D4]/20">
+                    <span className="text-[10px] font-mono text-[#EA7814] bg-[#EA7814]/10 px-2 py-0.5 rounded-md border border-[#EA7814]/20">
                       99.99% UPTIME
                     </span>
                   </div>
