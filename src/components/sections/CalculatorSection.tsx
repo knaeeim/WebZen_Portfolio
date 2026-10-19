@@ -9,7 +9,8 @@ import {
   Check, 
   ArrowRight, 
   ShieldCheck,
-  Info
+  Info,
+  Sparkles
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -266,13 +267,35 @@ export function CalculatorSection() {
 
               {/* Action Button */}
               <div className="mt-8 pt-4">
-                <a href="#contact">
-                  <Button className="w-full bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 hover:from-cyan-300 hover:to-sky-200 text-slate-950 font-extrabold h-13 text-sm sm:text-base rounded-2xl shadow-xl shadow-cyan-500/30 border-2 border-white/60 group transition-all cursor-pointer">
-                    <span>{t.ctaBtn}</span>
-                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 transition-transform group-hover:translate-x-1.5 stroke-[2.5]" />
-                  </Button>
+                <a href="#contact" className="block w-full group">
+                  <div className="relative w-full overflow-hidden rounded-2xl p-[1px] transition-all duration-300 active:scale-[0.99] cursor-pointer shadow-lg hover:shadow-2xl shadow-cyan-600/20 hover:shadow-cyan-500/35 dark:shadow-cyan-500/30">
+                    {/* Glowing border gradient frame */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-sky-500 via-cyan-500 to-teal-400 dark:from-cyan-400 dark:via-sky-300 dark:to-cyan-300 rounded-2xl opacity-90 group-hover:opacity-100 transition-opacity" />
+
+                    {/* Button Body with rich colors & tactile depth */}
+                    <div className="relative flex items-center justify-between w-full px-4 sm:px-6 py-3.5 sm:py-4 rounded-[15px] bg-gradient-to-r from-[#0077b6] via-[#0096c7] to-[#00a896] hover:from-[#006ca7] hover:to-[#009586] dark:from-cyan-400 dark:via-sky-300 dark:to-cyan-300 text-white dark:text-slate-950 transition-all duration-300">
+                      
+                      {/* Top Specular Reflection */}
+                      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 dark:via-white/70 to-transparent pointer-events-none" />
+
+                      {/* Left: Icon + Label */}
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-xl bg-white/20 dark:bg-slate-950/15 backdrop-blur-sm flex items-center justify-center shrink-0 border border-white/30 dark:border-slate-950/20 group-hover:scale-110 transition-transform">
+                          <Sparkles className="w-4 h-4 text-white dark:text-slate-950 stroke-[2.2]" />
+                        </div>
+                        <span className="font-extrabold text-xs sm:text-[15px] tracking-wide text-left drop-shadow-sm">
+                          {t.ctaBtn}
+                        </span>
+                      </div>
+
+                      {/* Right: Circular Arrow Badge with micro-interaction */}
+                      <div className="w-8 h-8 rounded-full bg-white/25 dark:bg-slate-950/15 backdrop-blur-sm flex items-center justify-center shrink-0 border border-white/40 dark:border-slate-950/25 group-hover:bg-white group-hover:text-cyan-700 dark:group-hover:bg-slate-950 dark:group-hover:text-cyan-300 transition-all duration-300 ml-2 sm:ml-3">
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 stroke-[2.5]" />
+                      </div>
+                    </div>
+                  </div>
                 </a>
-                <p className="text-[10px] text-center text-slate-500 dark:text-slate-400 mt-2">
+                <p className="text-[10px] text-center text-slate-500 dark:text-slate-400 mt-2.5">
                   {t.noCommitment}
                 </p>
               </div>

@@ -88,10 +88,10 @@ export function HeroSection() {
           transition={{ ...smoothTransition, delay: 0.25 }}
           className="mt-6 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-md sm:max-w-none mx-auto px-1 sm:px-0"
         >
-          {/* Primary Action Button - Ultra-radiant Cyan/Sky with sharp black text and vivid neon glow */}
+          {/* Primary Action Button - Rich Oceanic gradient in Light mode, ultra-radiant Cyan in Dark mode */}
           <a href="#contact" className="w-full sm:w-auto">
             <Button
-              className="w-full sm:w-auto bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 hover:from-cyan-300 hover:to-sky-200 text-slate-950 font-extrabold px-6 sm:px-8 h-12 sm:h-14 text-sm sm:text-base rounded-2xl shadow-[0_0_35px_rgba(0,242,254,0.45)] hover:shadow-[0_0_50px_rgba(0,242,254,0.7)] border-2 border-white/70 active:scale-[0.98] group transition-all cursor-pointer"
+              className="w-full sm:w-auto bg-gradient-to-r from-[#0077b6] via-[#0096c7] to-[#00a896] hover:from-[#006ca7] hover:to-[#009586] text-white dark:from-cyan-400 dark:via-sky-300 dark:to-cyan-300 dark:text-slate-950 font-extrabold px-6 sm:px-8 h-12 sm:h-14 text-sm sm:text-base rounded-2xl shadow-xl shadow-cyan-600/25 dark:shadow-[0_0_35px_rgba(0,242,254,0.45)] hover:shadow-cyan-600/40 dark:hover:shadow-[0_0_50px_rgba(0,242,254,0.7)] border border-white/40 dark:border-white/70 active:scale-[0.98] group transition-all cursor-pointer"
             >
               <span className="tracking-wide">{t.primaryCta}</span>
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-1.5 sm:ml-2 transition-transform group-hover:translate-x-1.5 stroke-[2.5]" />

@@ -172,7 +172,7 @@ export function ServicesSection() {
           </div>
 
           <a href="#calculator">
-            <Button className="bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 text-slate-950 font-extrabold px-6 text-xs h-10 rounded-xl shadow-md shadow-cyan-500/25 border border-white/40 group transition-all cursor-pointer">
+            <Button className="bg-gradient-to-r from-[#0077b6] via-[#0096c7] to-[#00a896] hover:from-[#006ca7] hover:to-[#009586] text-white dark:from-cyan-400 dark:via-sky-300 dark:to-cyan-300 dark:text-slate-950 font-extrabold px-6 text-xs h-10 rounded-xl shadow-md shadow-cyan-600/20 dark:shadow-cyan-500/25 border border-white/40 group transition-all cursor-pointer">
               {t.calculateBtn}
             </Button>
           </a>
