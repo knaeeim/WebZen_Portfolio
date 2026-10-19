@@ -1,166 +1,132 @@
 "use client";
 
 import React from "react";
-import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/data/translations";
 import { motion } from "framer-motion";
-import { 
-  ArrowRight, 
-  Code2, 
-  Zap,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-
-const smoothTransition = { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const };
+import { ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
 
 export function HeroSection() {
-  const { language } = useLanguage();
-  const t = translations[language].hero;
-
-  const quickStats = [
-    { value: "99.4%", label: t.statsRetention },
-    { value: "140+", label: t.statsShipped },
-    { value: "99.99%", label: t.statsUptime },
-  ];
-
-  const highlightPills = language === "bn"
-    ? ["হেলথটেক ও বুকিং", "অনলাইন শপ (ই-কমার্স)", "কাস্টম ওয়েবসাইট", "বিকাশ ও নগদ গেটওয়ে", "মোবাইল অ্যাপস", "AI অটোমেশন"]
-    : ["HealthTech & Booking", "E-Commerce Stores", "Custom Websites", "bKash / Nagad Gateways", "Mobile Apps", "AI Automations"];
-
   return (
-    <section id="hero" className="relative min-h-[auto] sm:min-h-[88vh] pt-24 xs:pt-28 sm:pt-32 pb-10 sm:pb-16 flex items-center justify-center overflow-hidden scroll-mt-24">
-      {/* Ambient background glows matching logo palette (Sky Blue to Teal) */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[580px] h-[220px] sm:h-[340px] bg-gradient-to-tr from-[#0284c7]/35 via-[#009fe3]/25 to-[#00b4b8]/30 blur-[90px] sm:blur-[140px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/3 right-4 sm:right-10 w-[180px] sm:w-[280px] h-[180px] sm:h-[280px] bg-[#00b4b8]/20 blur-[70px] sm:blur-[100px] rounded-full pointer-events-none" />
+    <section 
+      id="hero" 
+      className="relative min-h-[92vh] pt-32 sm:pt-40 pb-16 sm:pb-24 flex flex-col items-center justify-center overflow-hidden"
+    >
+      {/* Subtle diffused radial mesh glows in background */}
+      <div 
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] h-[350px] sm:h-[500px] bg-gradient-to-r from-[#EC4899]/15 via-[#EF4444]/10 to-[#F59E0B]/15 blur-[160px] rounded-full pointer-events-none -z-10" 
+      />
 
-      <div className="relative max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 text-center z-10 w-full">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
         
-        {/* Animated Badge (Mobile-optimized wrapping & sizing) */}
-        <motion.div
-          initial={{ opacity: 0, y: -15, scale: 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={smoothTransition}
-          className="inline-flex flex-wrap sm:flex-nowrap items-center justify-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-3.5 rounded-full bg-white/80 dark:bg-white/[0.04] border border-cyan-500/30 backdrop-blur-xl mb-4 sm:mb-6 group hover:border-cyan-400/60 transition-all cursor-default shadow-lg shadow-cyan-500/5 max-w-full"
-        >
-          <span className="flex h-2 w-2 rounded-full bg-cyan-400 animate-ping shrink-0" />
-          <span className="text-[11px] sm:text-xs font-semibold text-slate-700 dark:text-slate-200">
-            {t.badge}
-          </span>
-          <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-600 dark:text-cyan-300 border border-cyan-500/30 shrink-0">
-            {t.badgeHighlight}
-          </span>
-        </motion.div>
+        {/* Massive Two-Line Centered Headline */}
+        <div className="text-center max-w-5xl mx-auto">
+          <motion.h1
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="font-display font-black tracking-[-0.03em] leading-[0.98] sm:leading-[0.95]"
+          >
+            {/* Line 1: Pure White */}
+            <span className="block text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[102px] text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
+              Full-Stack Digital
+            </span>
 
-        {/* Main Title (Fluid responsive typography, natural wrapping) */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ ...smoothTransition, delay: 0.1 }}
-          className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white max-w-4xl mx-auto leading-[1.3] sm:leading-[1.22] tracking-normal pb-2 px-1 text-balance"
-        >
-          <span>{t.titlePart1}</span>{" "}
-          <span className="text-gradient-cyan drop-shadow-sm inline-block py-0.5">
-            {t.titleGradient}
-          </span>
-          {t.titlePart2 ? (
-            <>
-              {" "}
-              <br className="hidden sm:inline" />
-              <span className="text-slate-800 dark:text-slate-100 inline-block mt-1 sm:mt-0">{t.titlePart2}</span>
-            </>
-          ) : null}
-        </motion.h1>
+            {/* Line 2: Pink-to-Gold Gradient */}
+            <span className="block text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[102px] text-gradient-hero mt-1 sm:mt-2 py-1">
+              Agency.
+            </span>
+          </motion.h1>
+        </div>
 
-        {/* Subtitle / Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ ...smoothTransition, delay: 0.18 }}
-          className="mt-3.5 sm:mt-5 text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal px-2 sm:px-0"
-        >
-          {t.description}
-        </motion.p>
-
-        {/* Action CTAs: Full-width primary + 2 equal secondary buttons on mobile, grand tactile buttons on PC */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ ...smoothTransition, delay: 0.25 }}
-          className="mt-6 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-md sm:max-w-none mx-auto px-1 sm:px-0"
-        >
-          {/* Primary Action Button - Rich Oceanic gradient in Light mode, ultra-radiant Cyan in Dark mode */}
-          <a href="#contact" className="w-full sm:w-auto">
-            <Button
-              className="w-full sm:w-auto bg-gradient-to-r from-[#0077b6] via-[#0096c7] to-[#00a896] hover:from-[#006ca7] hover:to-[#009586] text-white dark:from-cyan-400 dark:via-sky-300 dark:to-cyan-300 dark:text-slate-950 font-extrabold px-6 sm:px-8 h-12 sm:h-14 text-sm sm:text-base rounded-2xl shadow-xl shadow-cyan-600/25 dark:shadow-[0_0_35px_rgba(0,242,254,0.45)] hover:shadow-cyan-600/40 dark:hover:shadow-[0_0_50px_rgba(0,242,254,0.7)] border border-white/40 dark:border-white/70 active:scale-[0.98] group transition-all cursor-pointer"
-            >
-              <span className="tracking-wide">{t.primaryCta}</span>
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-1.5 sm:ml-2 transition-transform group-hover:translate-x-1.5 stroke-[2.5]" />
-            </Button>
-          </a>
-
-          {/* Secondary Action Buttons - Tactile contrast cards adapting to light & dark modes */}
-          <div className="grid grid-cols-2 sm:flex items-center gap-2.5 sm:gap-4 w-full sm:w-auto">
-            <a href="#projects" className="w-full sm:w-auto">
-              <Button
-                className="w-full sm:w-auto bg-white dark:bg-[#0a2847] hover:bg-slate-50 dark:hover:bg-[#0f3c69] border-2 border-cyan-600 dark:border-cyan-400/80 hover:border-cyan-500 text-slate-900 dark:text-white font-bold px-3 sm:px-7 h-12 sm:h-14 text-xs sm:text-sm md:text-[15px] rounded-2xl shadow-xl shadow-cyan-500/10 dark:shadow-black/50 hover:shadow-cyan-500/25 active:scale-[0.98] transition-all group cursor-pointer"
-              >
-                <Code2 className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 text-cyan-600 dark:text-cyan-300 group-hover:rotate-12 transition-transform shrink-0 stroke-[2.5]" />
-                <span className="truncate">{t.secondaryCta}</span>
-              </Button>
-            </a>
-
-            <a href="#calculator" className="w-full sm:w-auto">
-              <Button
-                className="w-full sm:w-auto bg-white dark:bg-[#0a2847] hover:bg-slate-50 dark:hover:bg-[#0f3c69] border-2 border-amber-500 dark:border-amber-400/80 hover:border-amber-400 text-slate-900 dark:text-white font-bold h-12 sm:h-14 px-3 sm:px-7 text-xs sm:text-sm md:text-[15px] rounded-2xl shadow-xl shadow-amber-500/10 dark:shadow-black/50 hover:shadow-amber-500/25 active:scale-[0.98] transition-all group cursor-pointer"
-              >
-                <Zap className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 text-amber-500 dark:text-amber-400 fill-amber-400/40 group-hover:scale-110 transition-transform shrink-0" />
-                <span className="truncate">{t.calculatorCta}</span>
-              </Button>
-            </a>
-          </div>
-        </motion.div>
-
-        {/* Highlight Value Pills: Clean flex-wrap grid on mobile, enhanced contrast on PC */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ ...smoothTransition, delay: 0.35 }}
-          className="mt-8 sm:mt-12 pt-5 sm:pt-6 border-t border-slate-200 dark:border-white/[0.08] max-w-5xl sm:max-w-6xl w-full mx-auto"
-        >
-          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 px-1">
-            {highlightPills.map((pill) => (
-              <span
-                key={pill}
-                className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-white/90 dark:bg-[#0a2847]/80 border border-cyan-500/30 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-300 transition-colors cursor-default whitespace-nowrap shadow-sm shadow-slate-200 dark:shadow-black/30"
-              >
-                <span className="w-2 h-2 rounded-full bg-cyan-500 dark:bg-cyan-400 shrink-0 animate-pulse" />
-                {pill}
-              </span>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Floating Metrics Bar: 3 compact columns side-by-side on mobile */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ ...smoothTransition, delay: 0.45 }}
-          className="mt-6 sm:mt-8 grid grid-cols-3 gap-2 sm:gap-3.5 max-w-2xl mx-auto"
-        >
-          {quickStats.map((item, idx) => (
-            <div
-              key={idx}
-              className="glass-card rounded-xl sm:rounded-2xl p-2.5 sm:p-3.5 text-center border border-cyan-500/15 dark:border-white/10 flex flex-col justify-center"
-            >
-              <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                <span className="text-gradient-cyan">{item.value}</span>
+        {/* Hero Composition: Left Floating Cards | Center 3D Sculpture | Right Editorial Block */}
+        <div className="mt-12 sm:mt-16 lg:mt-20 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
+          
+          {/* Left: Two Stacked Glassmorphism Cards */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.85, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-3 flex flex-row lg:flex-col gap-4 sm:gap-5 justify-center lg:justify-start order-2 lg:order-1"
+          >
+            {/* Card 1: 150+ Projects Delivered */}
+            <div className="flex-1 lg:flex-none bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-2xl p-5 sm:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:border-white/20 transition-all duration-300 group">
+              <div className="flex items-center justify-between mb-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#F59E0B] shadow-[0_0_10px_#F59E0B]" />
+                <Sparkles className="w-4 h-4 text-[#F59E0B]/70 group-hover:rotate-12 transition-transform" />
               </div>
-              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-medium leading-tight line-clamp-1">
-                {item.label}
+              <div className="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+                150+
+              </div>
+              <div className="text-xs sm:text-sm text-neutral-400 font-medium tracking-wide mt-1">
+                Projects Delivered
               </div>
             </div>
-          ))}
-        </motion.div>
+
+            {/* Card 2: 99% Client Satisfaction */}
+            <div className="flex-1 lg:flex-none bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-2xl p-5 sm:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:border-white/20 transition-all duration-300 group">
+              <div className="flex items-center justify-between mb-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#EC4899] shadow-[0_0_10px_#EC4899]" />
+                <CheckCircle2 className="w-4 h-4 text-[#EC4899]/70 group-hover:scale-110 transition-transform" />
+              </div>
+              <div className="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+                99%
+              </div>
+              <div className="text-xs sm:text-sm text-neutral-400 font-medium tracking-wide mt-1">
+                Client Satisfaction
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Centerpiece: Striking 3D Abstract Digital Artwork/Sculpture */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 flex justify-center items-center relative order-1 lg:order-2"
+          >
+            {/* Multi-layered halo backlighting */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#EC4899]/30 via-[#F59E0B]/25 to-transparent blur-[80px] sm:blur-[110px] rounded-full scale-90 pointer-events-none" />
+
+            {/* Outer subtle glowing ring */}
+            <div className="relative w-[280px] xs:w-[320px] sm:w-[420px] lg:w-[460px] aspect-square rounded-full flex items-center justify-center p-3">
+              <div className="absolute inset-0 rounded-full border border-white/10 border-dashed animate-[spin_60s_linear_infinite] opacity-40 pointer-events-none" />
+              
+              <div className="relative w-full h-full rounded-3xl overflow-hidden animate-float">
+                <img
+                  src="/images/hero-3d-sculpture.jpg"
+                  alt="Webzen BD Abstract 3D Digital Sculpture"
+                  className="w-full h-full object-cover rounded-2xl drop-shadow-[0_25px_60px_rgba(0,0,0,0.9)]"
+                />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right: Editorial Block & Solid White Pill CTA */}
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.85, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-3 flex flex-col justify-center items-start text-left order-3"
+          >
+            <div className="space-y-6 max-w-sm mx-auto lg:mx-0">
+              <div className="w-10 h-0.5 bg-gradient-to-r from-[#EC4899] to-[#F59E0B] rounded-full hidden lg:block" />
+              
+              <p className="text-sm sm:text-base text-neutral-300/90 leading-relaxed font-normal">
+                We engineer mission-critical digital products, ultra-responsive web applications, and intuitive user experiences designed to scale enterprise workflows and convert high-intent users.
+              </p>
+
+              {/* Solid White Pill-Shaped CTA Button */}
+              <div>
+                <a href="#contact">
+                  <button className="bg-white hover:bg-neutral-200 text-black font-extrabold text-xs sm:text-sm tracking-[0.16em] uppercase px-8 py-4 rounded-full transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.25)] hover:shadow-[0_0_40px_rgba(255,255,255,0.45)] flex items-center gap-2 group cursor-pointer active:scale-95">
+                    <span>GET STARTED</span>
+                    <ArrowRight className="w-4 h-4 text-black transition-transform group-hover:translate-x-1" />
+                  </button>
+                </a>
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
 
       </div>
     </section>

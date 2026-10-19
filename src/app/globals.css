@@ -7,9 +7,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-sans: 'Plus Jakarta Sans', var(--font-anek-bangla), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: 'Syne', 'Space Grotesk', system-ui, sans-serif;
+  --font-heading: 'Syne', 'Space Grotesk', system-ui, sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -49,55 +49,56 @@
 }
 
 :root {
-  --background: oklch(0.06 0.015 250);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.09 0.02 250 / 70%);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.09 0.02 250 / 90%);
-  --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.85 0.18 195);
-  --primary-foreground: oklch(0.05 0.02 250);
-  --secondary: oklch(0.18 0.04 250);
-  --secondary-foreground: oklch(0.95 0 0);
-  --muted: oklch(0.15 0.03 250);
-  --muted-foreground: oklch(0.65 0.03 250);
-  --accent: oklch(0.22 0.06 270);
-  --accent-foreground: oklch(0.98 0 0);
-  --destructive: oklch(0.58 0.24 25);
-  --border: oklch(0.22 0.03 250 / 40%);
-  --input: oklch(0.22 0.03 250 / 50%);
-  --ring: oklch(0.85 0.18 195 / 60%);
+  --background: #0B0B0E;
+  --foreground: #F5F5F7;
+  --card: #121216;
+  --card-foreground: #FFFFFF;
+  --popover: #121216;
+  --popover-foreground: #FFFFFF;
+  --primary: #F59E0B;
+  --primary-foreground: #0B0B0E;
+  --secondary: #18181E;
+  --secondary-foreground: #F5F5F7;
+  --muted: #1A1A22;
+  --muted-foreground: #A1A1AA;
+  --accent: #EC4899;
+  --accent-foreground: #FFFFFF;
+  --destructive: #EF4444;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: #F59E0B;
   --radius: 0.75rem;
 
-  --font-sans: var(--font-anek-bangla), var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: var(--font-jakarta), var(--font-anek-bangla), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-syne), var(--font-jakarta), system-ui, sans-serif;
   --font-bengali: var(--font-anek-bangla), sans-serif;
-  --font-english: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-english: var(--font-jakarta), var(--font-syne), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-  --accent-cyan: #00f2fe;
-  --accent-purple: #7928ca;
-  --accent-emerald: #10b981;
+  --accent-orange: #F59E0B;
+  --accent-pink: #EC4899;
+  --accent-coral: #EF4444;
 }
 
 html.light,
 html:not(.dark) {
-  --background: #ffffff;
-  --foreground: #0f172a;
-  --card: #ffffff;
-  --card-foreground: #0f172a;
-  --popover: #ffffff;
-  --popover-foreground: #0f172a;
-  --primary: #009fe3;
-  --primary-foreground: #ffffff;
-  --secondary: #f0f9ff;
-  --secondary-foreground: #0369a1;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --accent: #e0f2fe;
-  --accent-foreground: #0284c7;
-  --destructive: #ef4444;
-  --border: #e2e8f0;
-  --input: #e2e8f0;
-  --ring: #009fe3;
+  --background: #0B0B0E;
+  --foreground: #F5F5F7;
+  --card: #121216;
+  --card-foreground: #FFFFFF;
+  --popover: #121216;
+  --popover-foreground: #FFFFFF;
+  --primary: #F59E0B;
+  --primary-foreground: #0B0B0E;
+  --secondary: #18181E;
+  --secondary-foreground: #F5F5F7;
+  --muted: #1A1A22;
+  --muted-foreground: #A1A1AA;
+  --accent: #EC4899;
+  --accent-foreground: #FFFFFF;
+  --destructive: #EF4444;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: #F59E0B;
 }
 
 /* Language-specific font rendering */
@@ -337,13 +338,53 @@ html:not(.dark) .bg-dots-pattern {
   animation: shimmer 3s infinite;
 }
 
-html {
-  scroll-behavior: smooth;
+/* Display font utility */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Bespoke Agency Gradients: Magenta-pink (#EC4899) to warm amber-gold (#F59E0B) */
+.text-gradient-hero {
+  background: linear-gradient(135deg, #EC4899 0%, #F43F5E 35%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-fire {
+  background: linear-gradient(135deg, #EC4899 0%, #EF4444 50%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Smooth continuous marquee animation */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Ambient glow utilities */
+.glow-warm-ambient {
+  box-shadow: 0 0 80px -10px rgba(245, 158, 11, 0.15), 0 0 100px -20px rgba(236, 72, 153, 0.15);
 }
 
 body {
-  background-color: #030e17;
-  color: #f1f5f9;
+  background-color: #0B0B0E;
+  color: #F5F5F7;
   font-family: var(--font-sans);
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -351,6 +392,6 @@ body {
 
 html.light body,
 html:not(.dark) body {
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: #0B0B0E;
+  color: #F5F5F7;
 }

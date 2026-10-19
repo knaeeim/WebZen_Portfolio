@@ -1,181 +1,152 @@
 "use client";
 
 import React from "react";
-import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/data/translations";
 import { motion } from "framer-motion";
-import { 
-  CodeXml, 
-  Bot, 
-  Palette, 
-  CloudLightning, 
-  BadgeDollarSign, 
-  Smartphone,
-  Check, 
-  ArrowUpRight,
-  Sparkles,
-  Layers
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowUpRight, Check } from "lucide-react";
 
 export function ServicesSection() {
-  const { language } = useLanguage();
-  const t = translations[language].services;
-
-  const getServiceIcon = (iconName: string) => {
-    switch (iconName) {
-      case "CodeXml":
-        return <CodeXml className="w-6 h-6 text-cyan-400" />;
-      case "Bot":
-        return <Bot className="w-6 h-6 text-purple-400" />;
-      case "Palette":
-        return <Palette className="w-6 h-6 text-pink-400" />;
-      case "CloudLightning":
-        return <CloudLightning className="w-6 h-6 text-blue-400" />;
-      case "BadgeDollarSign":
-        return <BadgeDollarSign className="w-6 h-6 text-emerald-400" />;
-      case "Smartphone":
-        return <Smartphone className="w-6 h-6 text-amber-400" />;
-      default:
-        return <Layers className="w-6 h-6 text-cyan-400" />;
-    }
-  };
-
-  const getServiceIconByIndex = (idx: number) => {
-    const icons = [
-      <CodeXml key={1} className="w-6 h-6 text-cyan-400" />,
-      <BadgeDollarSign key={2} className="w-6 h-6 text-emerald-400" />,
-      <Smartphone key={3} className="w-6 h-6 text-amber-400" />,
-      <Bot key={4} className="w-6 h-6 text-purple-400" />,
-      <Palette key={5} className="w-6 h-6 text-pink-400" />,
-      <CloudLightning key={6} className="w-6 h-6 text-blue-400" />,
-    ];
-    return icons[idx % icons.length];
-  };
+  const checklist = [
+    {
+      title: "Custom Full-Stack Web Apps",
+      desc: "Built with Next.js 16, TypeScript, Node.js, and cloud microservices for maximum speed.",
+    },
+    {
+      title: "Interactive UI/UX & Prototyping",
+      desc: "Fluid interactive animations, design systems, and responsive pixel-perfect interfaces.",
+    },
+    {
+      title: "Scalable Dashboard & E-Commerce",
+      desc: "Custom analytics portals, payment integrations (bKash, Stripe), and real-time architectures.",
+    },
+  ];
 
   return (
-    <section id="services" className="relative py-28 overflow-hidden scroll-mt-24">
-      {/* Background Glow */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-cyan-500/10 blur-[140px] pointer-events-none rounded-full" />
-      <div className="absolute bottom-10 right-0 w-96 h-96 bg-purple-600/10 blur-[140px] pointer-events-none rounded-full" />
+    <section id="services" className="relative py-24 sm:py-32 overflow-hidden scroll-mt-24">
+      {/* Background ambient lighting */}
+      <div 
+        className="absolute top-1/2 -left-[10%] w-[500px] h-[500px] bg-[#EC4899]/[0.08] blur-[150px] rounded-full pointer-events-none" 
+        aria-hidden="true" 
+      />
+      <div 
+        className="absolute top-1/3 -right-[10%] w-[500px] h-[500px] bg-[#F59E0B]/[0.08] blur-[150px] rounded-full pointer-events-none" 
+        aria-hidden="true" 
+      />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>{t.badge}</span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-normal leading-[1.35] sm:leading-[1.3] pb-1">
-            <span className="inline-block">{t.heading}</span>{" "}
-            <span className="text-gradient-cyan inline-block mx-1.5">{t.headingGradient}</span>
-          </h2>
-          <p className="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-300">
-            {t.subheading}
-          </p>
+        {/* Section Title: "Our Services" Centered in Bold White */}
+        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 mb-4"
+          >
+            <span className="w-2 h-2 rounded-full bg-[#F59E0B]" />
+            <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-300">
+              SOLUTIONS & CAPABILITIES
+            </span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="font-display font-black text-3xl sm:text-5xl md:text-6xl text-white tracking-tight"
+          >
+            Our Services
+          </motion.h2>
         </div>
 
-        {/* Services Grid (Customer Friendly & Plain Language) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {t.items.map((service, index) => (
-            <motion.div
-              key={service.id || index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const, delay: index * 0.08 }}
-              className={`glass-card rounded-3xl p-8 relative flex flex-col justify-between group transition-all duration-300 border ${
-                service.featured 
-                  ? "border-cyan-500/40 hover:border-cyan-500 shadow-lg shadow-cyan-500/5" 
-                  : "border-cyan-500/15 dark:border-white/10 hover:border-cyan-500/30 dark:hover:border-white/20"
-              }`}
-            >
-              {service.featured && (
-                <div className="absolute top-6 right-6">
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30">
-                    {language === "bn" ? "জনপ্রিয় সেবা" : "Popular"}
-                  </span>
-                </div>
-              )}
+        {/* Split Feature Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column: Heading, Paragraph, Checklist & Dark Pill Button */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 space-y-8"
+          >
+            <div className="space-y-4">
+              <h3 className="font-display font-black text-2xl sm:text-4xl text-white tracking-tight leading-snug">
+                Custom Web & <span className="text-gradient-hero">UI/UX Engineering</span>
+              </h3>
+              <p className="text-base sm:text-lg text-neutral-400 font-normal leading-relaxed">
+                We design and engineer tailored digital products that elevate your brand. From high-converting corporate web architectures to full-stack cloud dashboards, every component is crafted for uncompromising performance.
+              </p>
+            </div>
 
-              <div>
-                {/* Icon */}
-                <div className="w-14 h-14 rounded-2xl bg-slate-100 dark:bg-white/[0.04] border border-cyan-500/20 dark:border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-cyan-500/40 transition-transform">
-                  {getServiceIconByIndex(index)}
-                </div>
-
-                {/* Subtitle & Title */}
-                <span className="text-xs font-semibold text-cyan-600 dark:text-cyan-400/90 tracking-wide uppercase">
-                  {service.subtitle}
-                </span>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors">
-                  {service.title}
-                </h3>
-
-                {/* Description */}
-                <p className="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-                  {service.description}
-                </p>
-
-                {/* Deliverables */}
-                <div className="mt-6 pt-5 border-t border-slate-200 dark:border-white/[0.08]">
-                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">
-                    {t.deliverablesLabel}
-                  </p>
-                  <ul className="space-y-2">
-                    {service.deliverables.map((item, dIdx) => (
-                      <li key={dIdx} className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-200">
-                        <Check className="w-3.5 h-3.5 text-cyan-500 dark:text-cyan-400 shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Bottom Tags & Action */}
-              <div className="mt-8 pt-5 border-t border-slate-200 dark:border-white/[0.06] flex items-center justify-between">
-                <div className="flex flex-wrap gap-1.5 max-w-[70%]">
-                  {service.tags.map((tag, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="text-[10px] px-2 py-0.5 rounded-md bg-slate-100 dark:bg-white/[0.04] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/5"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <a
-                  href="#contact"
-                  className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-white/[0.05] hover:bg-cyan-500 hover:text-slate-950 text-slate-700 dark:text-slate-300 flex items-center justify-center transition-all group-hover:bg-cyan-500 group-hover:text-slate-950 cursor-pointer"
-                  aria-label={`Inquire about ${service.title}`}
+            {/* Vertical Checklist with Subtle Dark Circular Checkmark Icons */}
+            <div className="space-y-4 pt-2">
+              {checklist.map((item, idx) => (
+                <div 
+                  key={idx}
+                  className="flex items-start gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/15 transition-all duration-300 group"
                 >
-                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:scale-110" />
-                </a>
+                  <div className="w-8 h-8 rounded-full bg-[#18181F] border border-white/10 flex items-center justify-center shrink-0 group-hover:border-[#F59E0B]/50 transition-colors shadow-inner">
+                    <Check className="w-4 h-4 text-[#F59E0B]" strokeWidth={3} />
+                  </div>
+                  <div>
+                    <h4 className="font-display font-bold text-white text-base tracking-wide group-hover:text-neutral-100 transition-colors">
+                      {item.title}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-neutral-400 mt-1 leading-normal">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Dark Pill Button with a Border ("LEARN MORE ↗") */}
+            <div className="pt-2">
+              <a href="#projects">
+                <button className="border border-white/20 hover:border-[#F59E0B]/60 text-white hover:text-white bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-md rounded-full px-8 py-4 text-xs font-bold tracking-[0.18em] uppercase transition-all duration-300 shadow-sm hover:shadow-[0_0_25px_rgba(245,158,11,0.2)] flex items-center gap-2.5 group cursor-pointer active:scale-95">
+                  <span>LEARN MORE</span>
+                  <ArrowUpRight className="w-4 h-4 text-[#F59E0B] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </button>
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right Column: Rich Glowing Isometric 3D Composition */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 relative flex justify-center items-center"
+          >
+            {/* Ambient backlight glow */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#EC4899]/25 via-[#F59E0B]/20 to-transparent blur-[90px] rounded-full scale-90 pointer-events-none" />
+
+            {/* Main composition card */}
+            <div className="relative w-full rounded-3xl overflow-hidden border border-white/10 bg-[#121217]/80 backdrop-blur-2xl shadow-[0_30px_80px_rgba(0,0,0,0.8)] group hover:border-white/20 transition-all duration-500 p-2 sm:p-3">
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
+                <img
+                  src="/images/services-isometric-3d.jpg"
+                  alt="Webzen BD Engineering & 3D Interactive Architecture"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                
+                {/* Floating Micro-Badges for Depth */}
+                <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md border border-white/10 rounded-full px-3.5 py-1.5 flex items-center gap-2 shadow-lg">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-[11px] font-bold text-white tracking-wide">Next.js 16 + React 19</span>
+                </div>
+
+                <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md border border-white/10 rounded-full px-3.5 py-1.5 flex items-center gap-2 shadow-lg">
+                  <span className="text-[11px] font-bold text-white tracking-wide">99.9% Uptime SLA</span>
+                  <span className="w-2 h-2 rounded-full bg-[#F59E0B]" />
+                </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Bottom Banner */}
-        <div className="mt-16 glass-card rounded-3xl p-8 border border-cyan-500/20 dark:border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-500 dark:text-cyan-400 shrink-0">
-              <Sparkles className="w-6 h-6" />
             </div>
-            <div>
-              <h4 className="text-lg font-bold text-slate-900 dark:text-white">{t.customScopeTitle}</h4>
-              <p className="text-xs text-slate-600 dark:text-slate-300">{t.customScopeDesc}</p>
-            </div>
-          </div>
+          </motion.div>
 
-          <a href="#calculator">
-            <Button className="bg-gradient-to-r from-[#0077b6] via-[#0096c7] to-[#00a896] hover:from-[#006ca7] hover:to-[#009586] text-white dark:from-cyan-400 dark:via-sky-300 dark:to-cyan-300 dark:text-slate-950 font-extrabold px-6 text-xs h-10 rounded-xl shadow-md shadow-cyan-600/20 dark:shadow-cyan-500/25 border border-white/40 group transition-all cursor-pointer">
-              {t.calculateBtn}
-            </Button>
-          </a>
         </div>
 
       </div>

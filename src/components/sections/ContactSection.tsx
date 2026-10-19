@@ -99,24 +99,30 @@ export function ContactSection() {
   )}`;
 
   return (
-    <section id="contact" className="relative py-28 overflow-hidden dark:bg-black/40 border-t border-cyan-500/15 dark:border-white/[0.06] scroll-mt-24">
-      {/* Background glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/10 blur-[150px] rounded-full pointer-events-none" />
+    <section id="contact" className="relative py-28 sm:py-36 overflow-hidden scroll-mt-24">
+      {/* Background ambient glow */}
+      <div 
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#F59E0B]/[0.08] blur-[150px] rounded-full pointer-events-none" 
+        aria-hidden="true" 
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
-            <MessageCircle className="w-3.5 h-3.5" />
-            <span>{t.badge}</span>
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 mb-4">
+            <span className="w-2 h-2 rounded-full bg-[#F59E0B]" />
+            <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-300">
+              INITIATE PROJECT
+            </span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-normal leading-[1.35] sm:leading-[1.3] pb-1">
-            <span className="inline-block">{t.heading}</span>{" "}
-            <span className="text-gradient-cyan inline-block mx-1.5">{t.headingGradient}</span>
+
+          <h2 className="font-display font-black text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none">
+            Let&apos;s Build <span className="text-gradient-hero">Together</span>
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-300">
-            {t.subheading}
+
+          <p className="mt-4 text-sm sm:text-base text-neutral-400 font-normal leading-relaxed">
+            Have an ambitious digital project or technical requirement? Tell us about your vision and let&apos;s engineer something extraordinary.
           </p>
         </div>
 
@@ -126,21 +132,21 @@ export function ContactSection() {
           <div className="lg:col-span-5 space-y-6">
             
             {/* Quick WhatsApp Action Card */}
-            <div className="glass-card rounded-3xl p-6 border border-emerald-500/30 bg-emerald-500/10 dark:bg-gradient-to-br dark:from-emerald-950/20 dark:to-transparent">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+            <div className="bg-[#141419] rounded-3xl p-6 sm:p-7 border border-white/[0.08] hover:border-[#F59E0B]/40 transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+              <div className="flex items-center gap-3.5 mb-3">
+                <div className="w-11 h-11 rounded-2xl bg-[#25D366]/15 border border-[#25D366]/30 text-[#25D366] flex items-center justify-center">
                   <MessageCircle className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white">{t.whatsappTitle}</h4>
-                  <p className="text-xs text-slate-600 dark:text-slate-400">{t.whatsappSub}</p>
+                  <h4 className="font-display font-extrabold text-base text-white">{t.whatsappTitle}</h4>
+                  <p className="text-xs text-neutral-400 mt-0.5">{t.whatsappSub}</p>
                 </div>
               </div>
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center w-full gap-2 px-5 py-3 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-extrabold text-xs sm:text-sm transition-all shadow-lg shadow-emerald-500/25 border border-white/40 mt-2 cursor-pointer"
+                className="inline-flex items-center justify-center w-full gap-2 px-6 py-3.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs tracking-wider uppercase transition-all shadow-lg shadow-emerald-500/20 mt-3 cursor-pointer"
               >
                 <span>{t.whatsappBtn}</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
@@ -148,62 +154,42 @@ export function ContactSection() {
             </div>
 
             {/* Dhaka Headquarters Card */}
-            <div className="glass-card rounded-3xl p-6 border border-cyan-500/15 dark:border-white/10 space-y-4">
-              <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+            <div className="bg-[#141419] rounded-3xl p-6 sm:p-7 border border-white/[0.08] space-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+              <h3 className="font-display font-extrabold text-base text-white flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-[#F59E0B]" />
                 <span>{t.dhakaHq}</span>
               </h3>
 
-              <div className="space-y-3 text-xs text-slate-600 dark:text-slate-300">
+              <div className="space-y-3 text-xs sm:text-sm text-neutral-400">
                 <div className="flex items-start gap-2.5">
-                  <div className="font-semibold text-slate-500 dark:text-slate-400 w-16 shrink-0">{t.addressLabel}</div>
-                  <span className="text-slate-800 dark:text-slate-200">{contact.address}</span>
+                  <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.addressLabel}</div>
+                  <span className="text-neutral-200">{contact.address}</span>
                 </div>
 
                 <div className="flex items-center gap-2.5">
-                  <div className="font-semibold text-slate-500 dark:text-slate-400 w-16 shrink-0">{t.phoneLabel}</div>
-                  <a href={`tel:${contact.phone}`} className="text-cyan-600 dark:text-cyan-400 hover:underline">
+                  <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.phoneLabel}</div>
+                  <a href={`tel:${contact.phone}`} className="text-[#F59E0B] hover:underline">
                     {contact.phone}
                   </a>
                 </div>
 
                 <div className="flex items-center gap-2.5">
-                  <div className="font-semibold text-slate-500 dark:text-slate-400 w-16 shrink-0">{t.emailLabel}</div>
-                  <a href={`mailto:${contact.email}`} className="text-cyan-600 dark:text-cyan-400 hover:underline">
+                  <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.emailLabel}</div>
+                  <a href={`mailto:${contact.email}`} className="text-[#F59E0B] hover:underline">
                     {contact.email}
                   </a>
                 </div>
 
                 <div className="flex items-start gap-2.5">
-                  <div className="font-semibold text-slate-500 dark:text-slate-400 w-16 shrink-0">{t.hoursLabel}</div>
-                  <span className="text-slate-700 dark:text-slate-300">{contact.officeHours}</span>
+                  <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.hoursLabel}</div>
+                  <span className="text-neutral-300">{contact.officeHours}</span>
                 </div>
               </div>
 
               {/* Security promise */}
-              <div className="pt-4 border-t border-slate-200 dark:border-white/[0.08] flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
-                <ShieldCheck className="w-4 h-4 text-cyan-600 dark:text-cyan-400 shrink-0" />
+              <div className="pt-4 border-t border-white/[0.06] flex items-center gap-2 text-xs text-neutral-400">
+                <ShieldCheck className="w-4 h-4 text-[#F59E0B] shrink-0" />
                 <span>{t.securityPromise}</span>
-              </div>
-            </div>
-
-            {/* Social Channels */}
-            <div className="glass-card rounded-3xl p-6 border border-cyan-500/15 dark:border-white/10">
-              <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">
-                {language === "bn" ? "আমাদের সোশ্যাল মিডিয়া ও চ্যানেল" : "Official Channels & Repositories"}
-              </h4>
-              <div className="flex flex-wrap gap-2 text-xs">
-                {Object.entries(contact.socials).map(([platform, url]) => (
-                  <a
-                    key={platform}
-                    href={url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="capitalize px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-300 hover:border-cyan-500/30 transition-colors"
-                  >
-                    {platform}
-                  </a>
-                ))}
               </div>
             </div>
 
@@ -211,7 +197,7 @@ export function ContactSection() {
 
           {/* Right Contact Form (7 cols) */}
           <div className="lg:col-span-7">
-            <div className="glass-card rounded-3xl p-8 sm:p-10 border border-cyan-500/20 shadow-2xl">
+            <div className="bg-[#141419] rounded-3xl p-8 sm:p-10 border border-white/[0.08] shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
               {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -366,23 +352,23 @@ export function ContactSection() {
                     </div>
                   )}
 
-                  <Button
+                  <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-gradient-to-r from-[#0077b6] via-[#0096c7] to-[#00a896] hover:from-[#006ca7] hover:to-[#009586] text-white dark:from-cyan-400 dark:via-sky-300 dark:to-cyan-300 dark:text-slate-950 font-extrabold h-13 text-sm sm:text-base rounded-2xl shadow-xl shadow-cyan-600/25 dark:shadow-cyan-500/30 border border-white/40 dark:border-white/60 group transition-all cursor-pointer disabled:opacity-70"
+                    className="w-full bg-white hover:bg-neutral-200 text-black font-extrabold h-14 text-xs sm:text-sm tracking-[0.18em] uppercase rounded-full shadow-[0_0_30px_rgba(255,255,255,0.25)] hover:shadow-[0_0_40px_rgba(255,255,255,0.45)] group transition-all duration-300 cursor-pointer disabled:opacity-60 flex items-center justify-center gap-2 active:scale-[0.99]"
                   >
                     {loading ? (
                       <span className="flex items-center gap-2">
-                        <span className="w-3.5 h-3.5 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
+                        <span className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
                         <span>{t.submittingBtn}</span>
                       </span>
                     ) : (
                       <span className="flex items-center gap-2">
                         <span>{t.submitBtn}</span>
-                        <Send className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                        <Send className="w-4 h-4 transition-transform group-hover:translate-x-1 text-black" />
                       </span>
                     )}
-                  </Button>
+                  </button>
                 </form>
               )}
             </div>

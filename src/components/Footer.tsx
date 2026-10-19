@@ -2,191 +2,163 @@
 
 import React from "react";
 import Link from "next/link";
-import { useSite } from "@/context/SiteContext";
-import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/data/translations";
 import { 
   ArrowUp, 
   MapPin, 
   Phone, 
   Mail, 
-  MessageCircle,
+  ArrowUpRight 
 } from "lucide-react";
 
 export function Footer() {
-  const { data } = useSite();
-  const { language } = useLanguage();
-  const t = translations[language].footer;
-  const navT = translations[language].nav;
-  const { contact, companyName, footer } = data;
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const whatsappUrl = `https://wa.me/${contact.whatsapp.replace(/[^0-9]/g, "")}?text=Hello%20WebZen%20Bangladesh,%20I%20have%20an%20inquiry.`;
-
-  // Fallback defaults if not set in localStorage yet
-  const defaultNavLinks = [
-    { id: "nav-1", label: "Services", labelBn: "সার্ভিসসমূহ", url: "#services" },
-    { id: "nav-2", label: "Case Studies", labelBn: "প্রজেক্টসমূহ", url: "#projects" },
-    { id: "nav-3", label: "Process", labelBn: "কাজের ধাপ", url: "#process" },
-    { id: "nav-4", label: "Cost Estimator", labelBn: "বাজেট হিসাব", url: "#calculator" },
-    { id: "nav-5", label: "Pricing Plans", labelBn: "প্যাকেজ ও খরচ", url: "#pricing" },
-    { id: "nav-6", label: "Contact", labelBn: "যোগাযোগ", url: "#contact" },
+  const usefulLinks = [
+    { label: "Services", href: "#services" },
+    { label: "Solutions", href: "#services" },
+    { label: "Portfolio", href: "#projects" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "About Us", href: "#metrics" },
+    { label: "Contact", href: "#contact" },
   ];
 
-  const defaultSolutionsLinks = [
-    { id: "sol-1", label: "HealthTech & Booking", labelBn: "হেলথটেক ও সিরিয়াল বুকিং", url: "#services" },
-    { id: "sol-2", label: "bKash / Nagad E-Commerce", labelBn: "অনলাইন শপ ও বিকাশ পেমেন্ট", url: "#services" },
-    { id: "sol-3", label: "Custom Websites & Apps", labelBn: "কাস্টম ওয়েবসাইট ও অ্যাপ", url: "#services" },
-    { id: "sol-4", label: "AI Chatbots & Automation", labelBn: "অটোমেশন ও AI চ্যাটবট", url: "#services" },
-    { id: "sol-5", label: "Cloud Server Deployment", labelBn: "ক্লাউড সার্ভার ও মেইনটেন্যান্স", url: "#services" },
+  const socialLinks = [
+    { name: "GitHub", href: "https://github.com/webzen-bd", label: "GH" },
+    { name: "LinkedIn", href: "https://linkedin.com/company/webzen-bangladesh", label: "IN" },
+    { name: "Twitter", href: "https://twitter.com/webzen_bd", label: "X" },
+    { name: "Dribbble", href: "https://dribbble.com", label: "DR" },
   ];
-
-  const navLinks = (footer?.navLinks && footer.navLinks.length > 0) ? footer.navLinks : defaultNavLinks;
-  const solutionsLinks = (footer?.solutionsLinks && footer.solutionsLinks.length > 0) ? footer.solutionsLinks : defaultSolutionsLinks;
-
-  const bioText = language === "bn" 
-    ? (footer?.bioBn || footer?.bio || t.bio) 
-    : (footer?.bio || t.bio);
-
-  const statusText = language === "bn" 
-    ? (footer?.statusTextBn || footer?.statusText || t.status) 
-    : (footer?.statusText || t.status);
-
-  const navTitle = language === "bn"
-    ? (footer?.navLinksTitleBn || footer?.navLinksTitle || t.navTitle)
-    : (footer?.navLinksTitle || t.navTitle);
-
-  const solutionsTitle = language === "bn"
-    ? (footer?.solutionsTitleBn || footer?.solutionsTitle || t.solutionsTitle)
-    : (footer?.solutionsTitle || t.solutionsTitle);
-
-  const helpTitle = language === "bn"
-    ? (footer?.helpTitleBn || footer?.helpTitle || t.helpTitle)
-    : (footer?.helpTitle || t.helpTitle);
-
-  const helpDesc = language === "bn"
-    ? (footer?.helpDescBn || footer?.helpDesc || t.helpDesc)
-    : (footer?.helpDesc || t.helpDesc);
-
-  const helpBtnText = language === "bn"
-    ? (footer?.helpButtonTextBn || footer?.helpButtonText || "হোয়াটসঅ্যাপে চ্যাট")
-    : (footer?.helpButtonText || "Chat on WhatsApp");
-
-  const copyrightText = language === "bn"
-    ? (footer?.copyrightTextBn || footer?.copyrightText || t.allRights)
-    : (footer?.copyrightText || t.allRights);
-
-  const locationText = footer?.bottomLocationText || "Gulshan-2, Dhaka, Bangladesh";
-  const locationBadge = footer?.locationBadge || "Dhaka";
 
   return (
-    <footer className="relative bg-slate-100/90 dark:bg-[#031326] border-t border-cyan-500/20 text-slate-600 dark:text-slate-400 pt-20 pb-12 overflow-hidden transition-colors duration-300">
-      {/* Subtle Logo-matched bottom glow */}
-      <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[600px] h-[250px] bg-gradient-to-t from-cyan-400/20 via-[#009fe3]/15 to-transparent blur-[120px] rounded-full pointer-events-none" />
+    <footer className="relative bg-[#0B0B0E] border-t border-white/[0.08] text-neutral-300 pt-20 pb-12 overflow-hidden z-10">
+      {/* Background ambient corner glow */}
+      <div 
+        className="absolute bottom-0 right-0 w-[500px] h-[300px] bg-[#F59E0B]/[0.05] blur-[150px] pointer-events-none" 
+        aria-hidden="true" 
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-slate-200 dark:border-white/[0.08]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-10 pb-16 border-b border-white/[0.08]">
           
-          {/* Col 1 & 2: Brand & Bio (2 cols) */}
-          <div className="lg:col-span-2 space-y-5">
-            <div className="flex items-center gap-3">
-              <div className="relative w-10 h-10 rounded-xl overflow-hidden shrink-0 shadow-lg shadow-cyan-500/15 border border-cyan-500/20 dark:border-white/10">
-                <img
-                  src="/logo.png"
-                  alt="WebZen Bangladesh"
-                  className="w-full h-full object-cover rounded-xl"
-                />
-              </div>
-              <div>
-                <span className="font-bold text-lg text-slate-900 dark:text-white tracking-tight">
-                  {companyName}
-                </span>
-                <span className="ml-2 text-[10px] px-2 py-0.5 rounded-full font-semibold bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20">
-                  {locationBadge}
-                </span>
-              </div>
-            </div>
+          {/* Left Column: WEBZEN BD logo, brief agency bio, and social media icons */}
+          <div className="lg:col-span-5 space-y-6">
+            <Link href="/" className="inline-block">
+              <span className="font-display font-black text-2xl tracking-wider text-white">
+                WEBZEN<span className="text-[#F59E0B] font-black ml-1.5 drop-shadow-[0_0_12px_rgba(245,158,11,0.5)]">BD</span>
+              </span>
+            </Link>
 
-            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed max-w-sm">
-              {bioText}
+            <p className="text-sm text-neutral-400 font-normal leading-relaxed max-w-sm">
+              Webzen BD is an elite full-stack digital agency crafting ultra-fast web applications, custom enterprise dashboards, and bespoke UI/UX architecture.
             </p>
 
-            <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
-              <span>{statusText}</span>
+            {/* Social Media Icons */}
+            <div className="flex items-center gap-3 pt-2">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/[0.04] border border-white/10 hover:border-[#F59E0B]/50 hover:bg-white/[0.08] flex items-center justify-center text-xs font-mono font-bold text-neutral-300 hover:text-white transition-all duration-300 group shadow-sm hover:shadow-[0_0_15px_rgba(245,158,11,0.2)]"
+                  title={social.name}
+                >
+                  <span className="group-hover:scale-110 transition-transform">{social.label}</span>
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Col 3: Navigation */}
-          <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
-              {navTitle}
+          {/* Middle Column: Useful Links */}
+          <div className="lg:col-span-3 space-y-5">
+            <h4 className="font-display font-black text-xs sm:text-sm tracking-[0.2em] uppercase text-white">
+              Useful Links
             </h4>
-            <ul className="space-y-2.5 text-xs">
-              {navLinks.map((item) => (
-                <li key={item.id}>
-                  <a href={item.url} className="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
-                    {language === "bn" ? (item.labelBn || item.label) : item.label}
+            <ul className="space-y-3">
+              {usefulLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-sm text-neutral-400 hover:text-white transition-colors flex items-center gap-1.5 group"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-neutral-600 group-hover:bg-[#F59E0B] transition-colors" />
+                    <span>{link.label}</span>
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Col 4: Solutions */}
-          <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
-              {solutionsTitle}
+          {/* Right Column: Contact Us featuring Dhaka location, phone number, email */}
+          <div className="lg:col-span-4 space-y-5">
+            <h4 className="font-display font-black text-xs sm:text-sm tracking-[0.2em] uppercase text-white">
+              Contact Us
             </h4>
-            <ul className="space-y-2.5 text-xs">
-              {solutionsLinks.map((item) => (
-                <li key={item.id}>
-                  <a href={item.url} className="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
-                    {language === "bn" ? (item.labelBn || item.label) : item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
 
-          {/* Col 5: Customer Assistance */}
-          <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
-              {helpTitle}
-            </h4>
-            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-              {helpDesc}
-            </p>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500/15 dark:bg-emerald-500/20 border border-emerald-500/30 dark:border-emerald-400/40 text-emerald-700 dark:text-emerald-300 text-xs sm:text-sm font-bold hover:bg-emerald-500/25 dark:hover:bg-emerald-500/30 transition-all shadow-sm"
-            >
-              <MessageCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-              <span>{helpBtnText}</span>
-            </a>
+            <div className="space-y-4 text-sm text-neutral-400">
+              {/* Location */}
+              <div className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-[#F59E0B] shrink-0 mt-1" />
+                <span className="leading-relaxed">
+                  Crystal ICT Tower, Gulshan-2, Dhaka-1212, Bangladesh
+                </span>
+              </div>
+
+              {/* Phone */}
+              <div className="flex items-center gap-3">
+                <Phone className="w-4 h-4 text-[#F59E0B] shrink-0" />
+                <a 
+                  href="tel:+8801886932936" 
+                  className="hover:text-white transition-colors"
+                >
+                  +880 1886-932936
+                </a>
+              </div>
+
+              {/* Email */}
+              <div className="flex items-center gap-3">
+                <Mail className="w-4 h-4 text-[#F59E0B] shrink-0" />
+                <a 
+                  href="mailto:hello@webzenbd.com" 
+                  className="hover:text-white transition-colors"
+                >
+                  hello@webzenbd.com
+                </a>
+              </div>
+            </div>
+
+            {/* Quick Action Pill */}
+            <div className="pt-2">
+              <a href="#contact">
+                <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 hover:border-white/30 text-xs font-bold text-white bg-white/[0.03] hover:bg-white/[0.08] transition-all">
+                  <span>Send a Message</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#F59E0B]" />
+                </button>
+              </a>
+            </div>
           </div>
 
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-            <span>© {new Date().getFullYear()} {companyName}. {copyrightText}</span>
+        {/* Bottom Bar: Copyright & Back to Top */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
+          <div>
+            © {new Date().getFullYear()} WEBZEN BD (webzenbd.com). All rights reserved.
           </div>
 
-          <div className="flex items-center gap-4">
-            <span className="text-slate-500 dark:text-slate-400">{locationText}</span>
+          <div className="flex items-center gap-6">
+            <span className="text-neutral-500">
+              Designed & Engineered in Dhaka
+            </span>
+
             <button
               onClick={scrollToTop}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white dark:bg-[#0a2847] border border-cyan-500/30 hover:border-cyan-500 text-slate-700 dark:text-slate-100 hover:text-cyan-600 dark:hover:text-white transition-all shadow-md shadow-slate-200 dark:shadow-black/30 cursor-pointer text-xs font-semibold"
+              className="p-2.5 rounded-full border border-white/10 hover:border-white/20 text-neutral-400 hover:text-white bg-white/[0.02] hover:bg-white/[0.06] transition-all flex items-center gap-1.5 cursor-pointer"
+              title="Back to top"
             >
-              <span>{t.backToTop}</span>
-              <ArrowUp className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
+              <ArrowUp className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>

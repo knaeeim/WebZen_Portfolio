@@ -1,20 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Anek_Bangla } from "next/font/google";
+import { Anek_Bangla } from "next/font/google";
 import "./globals.css";
 import { SiteProvider } from "@/context/SiteContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { TooltipProvider } from "@/components/ui/tooltip";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const anekBangla = Anek_Bangla({
   variable: "--font-anek-bangla",
@@ -24,26 +14,25 @@ const anekBangla = Anek_Bangla({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://webzen.com.bd"),
-  title: "WebZen Bangladesh | Premier Digital Engineering & Software Solutions",
+  metadataBase: new URL("https://webzenbd.com"),
+  title: "Webzen BD | Full-Stack Digital Agency",
   description:
-    "WebZen Bangladesh is a premier digital engineering agency crafting ultra-fast web platforms, e-commerce, mobile apps, and business automation.",
+    "Webzen BD is a bespoke full-stack digital agency crafting ultra-fast web applications, UI/UX architecture, scalable dashboards, and e-commerce platforms.",
   keywords: [
-    "WebZen Bangladesh",
-    "Web development Bangladesh",
-    "Software agency Dhaka",
-    "Next.js agency Bangladesh",
-    "E-commerce development Dhaka",
-    "bKash API integration",
-    "Gulshan software company",
+    "Webzen BD",
+    "Full-Stack Digital Agency",
+    "Web development Dhaka",
+    "MERN Stack agency",
+    "UI/UX Design Bangladesh",
+    "Next.js agency",
   ],
-  authors: [{ name: "WebZen Bangladesh Team" }],
+  authors: [{ name: "Webzen BD Team" }],
   openGraph: {
-    title: "WebZen Bangladesh | Premier Digital Engineering & Software Solutions",
+    title: "Webzen BD | Full-Stack Digital Agency",
     description:
-      "Crafting high-performance digital platforms with modern animations and cloud scale.",
-    url: "https://webzen.com.bd",
-    siteName: "WebZen Bangladesh",
+      "Bespoke high-performance web architecture, custom web applications, and intuitive UI/UX engineering.",
+    url: "https://webzenbd.com",
+    siteName: "Webzen BD",
     locale: "en_US",
     type: "website",
     images: [
@@ -78,8 +67,8 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="bn"
-      className={`${geistSans.variable} ${geistMono.variable} ${anekBangla.variable} h-full dark`}
+      lang="en"
+      className={`${anekBangla.variable} h-full dark`}
       suppressHydrationWarning
     >
       <head>
@@ -89,15 +78,15 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@500;600;700;800;900&display=swap"
+          rel="stylesheet"
+        />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/logo.png" type="image/png" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@100..800&display=swap"
-          rel="stylesheet"
-        />
       </head>
-      <body className="min-h-full flex flex-col bg-[#030e17] text-slate-100 dark:bg-[#030e17] dark:text-slate-100 antialiased selection:bg-cyan-400 selection:text-slate-950 transition-colors duration-300">
+      <body className="min-h-full flex flex-col bg-[#0B0B0E] text-neutral-100 antialiased selection:bg-[#EC4899] selection:text-white transition-colors duration-300">
         <SiteProvider>
           <ThemeProvider>
             <LanguageProvider>

@@ -58,17 +58,8 @@ export function ParticleCanvas() {
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseleave", handleMouseLeave);
 
-    // Color palette based on theme preset
-    const colors =
-      preset === "emerald-matrix"
-        ? ["#10b981", "#34d399", "#065f46", "#6ee7b7"]
-        : preset === "solar-flare"
-        ? ["#ff512f", "#f59e0b", "#ec4899", "#f43f5e"]
-        : preset === "aurora-violet"
-        ? ["#a855f7", "#8b5cf6", "#ec4899", "#6366f1"]
-        : preset === "obsidian-glow"
-        ? ["#ffffff", "#e2e8f0", "#94a3b8", "#cbd5e1"]
-        : ["#0284c7", "#009fe3", "#00b4b8", "#38bdf8", "#2dd4bf"]; // Logo-matched Sky Blue to Teal
+    // Color palette based on theme preset (Warm sunset amber, magenta pink, coral red)
+    const colors = ["#f59e0b", "#ec4899", "#ef4444", "#f97316", "#fbbf24"];
 
     const particleCount = Math.min(Math.floor((width * height) / 18000), 75);
     const particles: Particle[] = [];

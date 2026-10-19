@@ -16,23 +16,11 @@ export function MouseSpotlight() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const preset = data.theme.preset;
-  const glowColor =
-    preset === "emerald-matrix"
-      ? "rgba(16, 185, 129, 0.12)"
-      : preset === "solar-flare"
-      ? "rgba(245, 158, 11, 0.12)"
-      : preset === "aurora-violet"
-      ? "rgba(168, 85, 247, 0.12)"
-      : preset === "obsidian-glow"
-      ? "rgba(255, 255, 255, 0.08)"
-      : "rgba(0, 242, 254, 0.12)"; // cyber-zen default
-
   return (
     <div
       className="fixed inset-0 pointer-events-none z-10 transition-opacity duration-300"
       style={{
-        background: `radial-gradient(650px circle at ${position.x}px ${position.y}px, ${glowColor}, transparent 80%)`,
+        background: `radial-gradient(650px circle at ${position.x}px ${position.y}px, rgba(245, 158, 11, 0.05), rgba(236, 72, 153, 0.03), transparent 75%)`,
       }}
     />
   );
