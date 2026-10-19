@@ -95,7 +95,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#030e17] text-slate-100 antialiased selection:bg-cyan-400 selection:text-slate-950">
+      <body className="min-h-full flex flex-col bg-[#061a33] text-slate-100 antialiased selection:bg-cyan-400 selection:text-slate-950">
         <SiteProvider>
           <LanguageProvider>
             <TooltipProvider>{children}</TooltipProvider>

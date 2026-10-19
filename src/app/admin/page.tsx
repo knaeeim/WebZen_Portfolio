@@ -582,7 +582,7 @@ export default function AdminPage() {
 
   if (!isLoaded || !authChecked) {
     return (
-      <div className="min-h-screen bg-[#05070f] flex items-center justify-center text-white text-xs font-mono">
+      <div className="min-h-screen bg-[#061a33] flex items-center justify-center text-white text-xs font-mono">
         Loading Admin Studio...
       </div>
     );
@@ -591,7 +591,7 @@ export default function AdminPage() {
   // Render Cyber Security Lock Screen if not authenticated
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#05070f] text-slate-100 flex items-center justify-center p-4 relative overflow-hidden font-sans">
+      <div className="min-h-screen bg-[#061a33] text-slate-100 flex items-center justify-center p-4 relative overflow-hidden font-sans">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-gradient-to-tr from-cyan-500/15 via-blue-600/10 to-purple-600/15 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="w-full max-w-md relative z-10">
@@ -691,10 +691,10 @@ export default function AdminPage() {
   const sortedSections = [...data.sections].sort((a, b) => a.order - b.order);
 
   return (
-    <div className="min-h-screen bg-[#05070f] text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-[#061a33] text-slate-100 flex flex-col font-sans">
       
       {/* Top Admin Navigation Header */}
-      <header className="sticky top-0 z-50 bg-[#090d1c]/90 backdrop-blur-xl border-b border-white/10 px-4 sm:px-8 py-3.5 flex items-center justify-between gap-4">
+      <header className="sticky top-0 z-50 bg-[#08213d]/90 backdrop-blur-xl border-b border-white/10 px-4 sm:px-8 py-3.5 flex items-center justify-between gap-4">
         
         {/* Left branding */}
         <div className="flex items-center gap-3">

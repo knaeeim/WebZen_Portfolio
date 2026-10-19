@@ -83,9 +83,9 @@ export function Footer() {
   const locationBadge = footer?.locationBadge || "Dhaka";
 
   return (
-    <footer className="relative bg-[#020b14] border-t border-cyan-500/10 text-slate-400 pt-20 pb-12 overflow-hidden">
+    <footer className="relative bg-[#041726] border-t border-cyan-500/15 text-slate-400 pt-20 pb-12 overflow-hidden">
       {/* Subtle Logo-matched bottom glow */}
-      <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[600px] h-[250px] bg-gradient-to-t from-cyan-500/15 via-[#009fe3]/10 to-transparent blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[600px] h-[250px] bg-gradient-to-t from-cyan-400/20 via-[#009fe3]/15 to-transparent blur-[120px] rounded-full pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-white/[0.08]">

@@ -112,7 +112,7 @@ export function ProjectsSection() {
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 group-hover:filter brightness-90 group-hover:brightness-100"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#020e1a] via-transparent to-transparent opacity-85" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#051c2d] via-transparent to-transparent opacity-85" />
                     
                     {/* Category Badge */}
                     <div className="absolute top-4 left-4">

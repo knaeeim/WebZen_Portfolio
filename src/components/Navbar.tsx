@@ -103,7 +103,7 @@ export function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#031326]/85 backdrop-blur-xl border-b border-cyan-500/15 shadow-2xl py-3"
+          ? "bg-[#061a33]/85 backdrop-blur-xl border-b border-cyan-500/15 shadow-2xl py-3"
           : "bg-transparent py-5"
       }`}
     >
@@ -175,7 +175,7 @@ export function Navbar() {
                 {othersOpen && (
                   <div
                     onMouseLeave={() => setOthersOpen(false)}
-                    className="absolute top-full right-0 mt-2.5 w-44 rounded-2xl bg-[#031527]/95 border border-cyan-500/20 p-2 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150 z-50"
+                    className="absolute top-full right-0 mt-2.5 w-44 rounded-2xl bg-[#07203d]/95 border border-cyan-500/20 p-2 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150 z-50"
                   >
                     <div className="px-2.5 py-1.5 text-[10px] font-mono uppercase tracking-wider text-slate-400 border-b border-white/5 mb-1">
                       {language === "bn" ? "অতিরিক্ত সেকশন" : "More Sections"}
@@ -250,7 +250,7 @@ export function Navbar() {
 
       {/* Mobile Drawer (Reflects active sections dynamically) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[72px] bg-[#031326]/95 backdrop-blur-2xl border-b border-cyan-500/15 p-6 shadow-2xl transition-all max-h-[85vh] overflow-y-auto">
+        <div className="lg:hidden fixed inset-x-0 top-[72px] bg-[#061a33]/95 backdrop-blur-2xl border-b border-cyan-500/15 p-6 shadow-2xl transition-all max-h-[85vh] overflow-y-auto">
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between pb-3 border-b border-white/10 text-xs text-slate-400">
               <span>Status: <span className="text-emerald-400 font-medium">{t.availableStatus}</span></span>
