@@ -267,9 +267,9 @@ export function CalculatorSection() {
               {/* Action Button */}
               <div className="mt-8 pt-4">
                 <a href="#contact">
-                  <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold h-12 text-xs rounded-xl shadow-lg shadow-cyan-500/25 group">
+                  <Button className="w-full bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 hover:from-cyan-300 hover:to-sky-200 text-slate-950 font-extrabold h-12 text-xs rounded-xl shadow-lg shadow-cyan-500/25 border border-white/40 group transition-all">
                     <span>{t.ctaBtn}</span>
-                    <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1 stroke-[2.5]" />
                   </Button>
                 </a>
                 <p className="text-[10px] text-center text-slate-400 mt-2">

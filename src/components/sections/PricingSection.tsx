@@ -132,9 +132,9 @@ export function PricingSection() {
               <div className="mt-8 pt-6 border-t border-white/[0.08]">
                 <a href={plan.ctaLink || "#contact"}>
                   <Button
-                    className={`w-full font-bold text-xs h-11 rounded-xl group ${
+                    className={`w-full font-extrabold text-xs h-11 rounded-xl group transition-all ${
                       plan.popular
-                        ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 hover:from-cyan-400 hover:to-blue-500 shadow-lg shadow-cyan-500/20"
+                        ? "bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 text-slate-950 hover:from-cyan-300 hover:to-sky-200 shadow-lg shadow-cyan-500/25 border border-white/40"
                         : "bg-white/[0.05] hover:bg-white/10 text-white border border-white/10"
                     }`}
                   >

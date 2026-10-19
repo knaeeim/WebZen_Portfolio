@@ -370,7 +370,7 @@ export function ContactSection() {
                   <Button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold h-12 text-xs rounded-xl shadow-lg shadow-cyan-500/25 group transition-all cursor-pointer disabled:opacity-70"
+                    className="w-full bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 hover:from-cyan-300 hover:to-sky-200 text-slate-950 font-extrabold h-12 text-xs rounded-xl shadow-lg shadow-cyan-500/25 border border-white/40 group transition-all cursor-pointer disabled:opacity-70"
                   >
                     {loading ? (
                       <span className="flex items-center gap-2">

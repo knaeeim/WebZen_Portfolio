@@ -81,44 +81,39 @@ export function HeroSection() {
           {t.description}
         </motion.p>
 
-        {/* Action CTAs: Full-width primary + 2 equal secondary buttons on mobile */}
+        {/* Action CTAs: Full-width primary + 2 equal secondary buttons on mobile with high visibility & contrast */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...smoothTransition, delay: 0.25 }}
           className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3.5 w-full max-w-md sm:max-w-none mx-auto px-1 sm:px-0"
         >
-          {/* Primary Action Button */}
+          {/* Primary Action Button - Ultra-radiant Cyan/Sky with sharp black text and vivid neon glow */}
           <a href="#contact" className="w-full sm:w-auto">
             <Button
-              size="lg"
-              className="w-full sm:w-auto bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-slate-950 font-bold px-7 h-11 text-xs rounded-xl shadow-xl shadow-cyan-500/25 group transition-all"
+              className="w-full sm:w-auto bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 hover:from-cyan-300 hover:to-sky-200 text-slate-950 font-extrabold px-6 sm:px-7 h-12 text-sm sm:text-xs rounded-xl shadow-[0_0_30px_rgba(0,242,254,0.42)] hover:shadow-[0_0_42px_rgba(0,242,254,0.65)] border border-white/60 active:scale-[0.98] group transition-all"
             >
-              <span>{t.primaryCta}</span>
-              <ArrowRight className="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" />
+              <span className="tracking-wide">{t.primaryCta}</span>
+              <ArrowRight className="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1 stroke-[2.5]" />
             </Button>
           </a>
 
-          {/* Secondary Action Buttons */}
-          <div className="grid grid-cols-2 sm:flex items-center gap-2 sm:gap-3.5 w-full sm:w-auto">
+          {/* Secondary Action Buttons - Solid high-contrast navy cards with bright accent borders & pure white text */}
+          <div className="grid grid-cols-2 sm:flex items-center gap-2.5 sm:gap-3.5 w-full sm:w-auto">
             <a href="#projects" className="w-full sm:w-auto">
               <Button
-                size="lg"
-                variant="outline"
-                className="w-full sm:w-auto bg-white/[0.04] hover:bg-white/[0.08] border-white/15 text-slate-200 font-semibold px-3 sm:px-6 h-11 text-xs rounded-xl backdrop-blur-md transition-all group"
+                className="w-full sm:w-auto bg-[#0a2847] hover:bg-[#0f3c69] border-2 border-cyan-400/60 hover:border-cyan-300 text-white font-bold px-3 sm:px-6 h-12 text-xs rounded-xl shadow-lg shadow-black/50 active:scale-[0.98] transition-all group"
               >
-                <Code2 className="w-3.5 h-3.5 mr-1.5 text-cyan-400 group-hover:rotate-12 transition-transform shrink-0" />
+                <Code2 className="w-4 h-4 mr-1.5 text-cyan-300 group-hover:rotate-12 transition-transform shrink-0 stroke-[2.5]" />
                 <span className="truncate">{t.secondaryCta}</span>
               </Button>
             </a>
 
             <a href="#calculator" className="w-full sm:w-auto">
               <Button
-                size="lg"
-                variant="ghost"
-                className="w-full sm:w-auto bg-white/[0.03] sm:bg-transparent border border-white/10 sm:border-transparent text-slate-300 hover:text-white hover:bg-white/[0.05] h-11 px-3 sm:px-4 text-xs rounded-xl"
+                className="w-full sm:w-auto bg-[#0a2847] hover:bg-[#0f3c69] border-2 border-amber-400/70 hover:border-amber-300 text-white font-bold h-12 px-3 sm:px-5 text-xs rounded-xl shadow-lg shadow-black/50 active:scale-[0.98] transition-all group"
               >
-                <Zap className="w-3.5 h-3.5 mr-1.5 text-amber-400 shrink-0" />
+                <Zap className="w-4 h-4 mr-1.5 text-amber-400 fill-amber-400/40 group-hover:scale-110 transition-transform shrink-0" />
                 <span className="truncate">{t.calculatorCta}</span>
               </Button>
             </a>

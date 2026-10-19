@@ -52,9 +52,9 @@ export function CustomSection({ section }: { section: SectionItem }) {
             {content.buttonText && (
               <div className="pt-2">
                 <a href={content.buttonLink || "#contact"}>
-                  <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold px-6 h-11 text-xs rounded-xl shadow-lg shadow-cyan-500/20 group">
+                  <Button className="bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 text-slate-950 font-extrabold px-6 h-11 text-xs rounded-xl shadow-lg shadow-cyan-500/25 border border-white/40 group transition-all">
                     <span>{content.buttonText}</span>
-                    <ArrowRight className="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1 stroke-[2.5]" />
                   </Button>
                 </a>
               </div>

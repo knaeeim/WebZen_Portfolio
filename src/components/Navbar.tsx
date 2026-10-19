@@ -220,10 +220,10 @@ export function Navbar() {
             <a href="#contact">
               <Button
                 size="sm"
-                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-semibold text-xs h-9 px-4 shadow-lg shadow-cyan-500/20 rounded-lg group"
+                className="bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 hover:from-cyan-300 hover:to-sky-200 text-slate-950 font-extrabold text-xs h-9 px-4 shadow-md shadow-cyan-500/25 border border-white/40 rounded-lg group"
               >
                 <span>{t.hireUs}</span>
-                <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 stroke-[2.5]" />
               </Button>
             </a>
           </div>
@@ -232,14 +232,14 @@ export function Navbar() {
           <div className="flex items-center gap-2 lg:hidden">
             <button
               onClick={toggleLanguage}
-              className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-xs text-cyan-400 font-semibold"
+              className="px-2.5 py-1 rounded-lg bg-[#0a2847] border border-cyan-500/30 text-xs text-cyan-300 font-bold hover:text-white"
             >
               {language === "bn" ? "EN" : "বাংলা"}
             </button>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-white"
+              className="p-2 rounded-lg bg-[#0a2847] border border-cyan-500/30 text-cyan-300 hover:text-white"
               aria-label="Toggle Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -283,7 +283,7 @@ export function Navbar() {
               </button>
 
               <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-semibold text-xs justify-center h-10">
+                <Button className="w-full bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 text-slate-950 font-extrabold text-xs justify-center h-11 rounded-xl shadow-lg shadow-cyan-500/30 border border-white/50">
                   {t.hireUs}
                 </Button>
               </a>

@@ -66,8 +66,8 @@ export function TechStackSection() {
               onClick={() => setActiveTab(idx)}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all duration-300 ${
                 activeTab === idx
-                  ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 shadow-lg shadow-cyan-500/20 font-bold scale-105"
-                  : "bg-white/[0.04] text-slate-300 hover:bg-white/[0.08] hover:text-white border border-white/5"
+                  ? "bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 text-slate-950 shadow-lg shadow-cyan-500/25 font-extrabold border border-white/40 scale-105"
+                  : "bg-[#0a2847]/70 text-slate-300 hover:bg-[#0d345c] hover:text-white border border-cyan-500/20"
               }`}
             >
               {getIcon(cat.iconType)}
