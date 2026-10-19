@@ -18,7 +18,7 @@ export function TestimonialsSection() {
   const testimonials = t.items || data.testimonials;
 
   return (
-    <section id="testimonials" className="relative py-28 overflow-hidden bg-cyan-500/[0.02] dark:bg-black/20 scroll-mt-24">
+    <section id="testimonials" className="relative py-28 overflow-hidden dark:bg-black/20 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}

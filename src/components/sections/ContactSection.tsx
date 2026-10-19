@@ -99,7 +99,7 @@ export function ContactSection() {
   )}`;
 
   return (
-    <section id="contact" className="relative py-28 overflow-hidden bg-black/40 border-t border-white/[0.06] scroll-mt-24">
+    <section id="contact" className="relative py-28 overflow-hidden dark:bg-black/40 border-t border-cyan-500/15 dark:border-white/[0.06] scroll-mt-24">
       {/* Background glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/10 blur-[150px] rounded-full pointer-events-none" />
 
@@ -227,8 +227,7 @@ export function ContactSection() {
                   </p>
                   <Button
                     onClick={() => setSubmitted(false)}
-                    variant="outline"
-                    className="border-slate-300 dark:border-white/20 text-slate-700 dark:text-slate-200 text-xs mt-4 cursor-pointer"
+                    className="bg-white hover:bg-slate-50 dark:bg-[#0a2847] dark:hover:bg-[#0f3c69] border border-cyan-500/40 text-slate-900 dark:text-slate-100 font-bold text-xs mt-4 px-4 py-2 rounded-xl shadow-sm cursor-pointer transition-all"
                   >
                     {t.formAnotherBtn}
                   </Button>

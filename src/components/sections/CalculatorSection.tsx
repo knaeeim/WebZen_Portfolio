@@ -94,7 +94,7 @@ export function CalculatorSection() {
   const totalUsd = Math.round((currentType.baseUsd + featureUsdTotal) * urgency.multiplier);
 
   return (
-    <section id="calculator" className="relative py-28 overflow-hidden bg-black/40 scroll-mt-24">
+    <section id="calculator" className="relative py-28 overflow-hidden dark:bg-black/40 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}

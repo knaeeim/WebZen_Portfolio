@@ -47,7 +47,7 @@ export function ProjectsSection() {
       : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="projects" className="relative py-28 overflow-hidden bg-cyan-500/[0.02] dark:bg-black/20 scroll-mt-24">
+    <section id="projects" className="relative py-28 overflow-hidden dark:bg-black/20 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
@@ -67,9 +67,11 @@ export function ProjectsSection() {
           </div>
 
           <a href="#contact">
-            <Button variant="outline" className="border-slate-300 dark:border-white/15 text-slate-700 dark:text-slate-200 text-xs gap-2 cursor-pointer">
+            <Button
+              className="bg-white hover:bg-slate-50 dark:bg-[#0a2847] dark:hover:bg-[#0f3c69] border-2 border-cyan-600 dark:border-cyan-400/80 text-slate-950 dark:text-white text-xs sm:text-sm font-extrabold gap-2 px-4 py-2.5 rounded-xl shadow-md shadow-cyan-500/10 dark:shadow-black/50 cursor-pointer transition-all group"
+            >
               <span>{t.discussBtn}</span>
-              <ArrowUpRight className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+              <ArrowUpRight className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform stroke-[2.5]" />
             </Button>
           </a>
         </div>
