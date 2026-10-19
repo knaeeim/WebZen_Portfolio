@@ -16,6 +16,7 @@ import {
   StatItem,
   FooterConfig,
   FooterLinkItem,
+  SeoConfig,
 } from "@/types/site";
 import { initialSiteData } from "@/data/defaultSiteData";
 
@@ -69,6 +70,9 @@ interface SiteContextType {
   // Footer Management
   updateFooter: (updates: Partial<FooterConfig>) => void;
 
+  // SEO & Social OpenGraph
+  updateSeo: (updates: Partial<SeoConfig>) => void;
+
   // Import / Export / Reset
   resetToDefaults: () => void;
   exportDataToJson: () => string;
@@ -118,6 +122,10 @@ export function SiteProvider({ children }: { children: React.ReactNode }) {
           footer: {
             ...initialSiteData.footer,
             ...(parsed.footer || {}),
+          },
+          seo: {
+            ...initialSiteData.seo,
+            ...(parsed.seo || {}),
           },
         });
       }
@@ -381,6 +389,13 @@ export function SiteProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
+  const updateSeo = (updates: Partial<SeoConfig>) => {
+    saveToStorage({
+      ...data,
+      seo: { ...data.seo, ...updates },
+    });
+  };
+
   const updatePassword = (newPassword: string) => {
     saveToStorage({
       ...data,
@@ -449,6 +464,7 @@ export function SiteProvider({ children }: { children: React.ReactNode }) {
         updateFaq,
         deleteFaq,
         updateFooter,
+        updateSeo,
         updatePassword,
         resetToDefaults,
         exportDataToJson,

@@ -453,5 +453,11 @@ export const initialSiteData: SiteData = {
     copyrightText: "All rights reserved.",
     copyrightTextBn: "সর্বস্বত্ব সংরক্ষিত।",
     bottomLocationText: "Gulshan-2, Dhaka, Bangladesh",
+  },
+
+  seo: {
+    metaTitle: "WebZen Bangladesh | Premier Digital Engineering & Software Solutions",
+    metaDescription: "WebZen Bangladesh is a premier digital engineering agency crafting ultra-fast web platforms, e-commerce, mobile apps, and business automation.",
+    ogImage: "/og-image.jpg"
   }
 };

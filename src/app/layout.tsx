@@ -47,12 +47,18 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/logo.png",
-        width: 1024,
-        height: 1024,
-        alt: "WebZen Bangladesh Logo",
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "WebZen Bangladesh - Premier Digital Engineering & Software Studio",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "WebZen Bangladesh | Premier Digital Engineering & Software Solutions",
+    description: "Crafting ultra-fast web platforms, e-commerce, mobile apps, and business automation.",
+    images: ["/og-image.jpg"],
   },
   icons: {
     icon: [

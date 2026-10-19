@@ -187,6 +187,12 @@ export interface FooterConfig {
   bottomLocationText?: string;
 }
 
+export interface SeoConfig {
+  metaTitle?: string;
+  metaDescription?: string;
+  ogImage?: string;
+}
+
 export interface SiteData {
   companyName: string;
   tagline: string;
@@ -205,4 +211,5 @@ export interface SiteData {
   theme: ThemeConfig;
   security?: SecurityConfig;
   footer?: FooterConfig;
+  seo?: SeoConfig;
 }
