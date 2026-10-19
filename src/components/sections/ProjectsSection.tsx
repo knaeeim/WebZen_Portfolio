@@ -45,50 +45,84 @@ export function ProjectsSection() {
       ? projects
       : projects.filter((p) => p.category === activeCategory);
 
+  const isBn = language === "bn";
+
   return (
-    <section id="projects" className="relative py-28 sm:py-36 overflow-hidden scroll-mt-24">
+    <section id="projects" className="relative py-10 sm:py-14 overflow-hidden scroll-mt-20">
       {/* Ambient background glow */}
       <div 
-        className="absolute top-1/3 -right-[15%] w-[600px] h-[500px] bg-[#F59E0B]/[0.06] blur-[160px] rounded-full pointer-events-none" 
+        className="absolute top-1/3 -right-[15%] w-[500px] h-[450px] bg-[#F59E0B]/[0.06] blur-[150px] rounded-full pointer-events-none" 
         aria-hidden="true" 
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 mb-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 mb-3">
               <FolderGit2 className="w-3.5 h-3.5 text-[#F59E0B]" />
-              <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-300">
-                CURATED PORTFOLIO
+              <span className={`text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-300 ${isBn ? "font-bangla-ui" : ""}`}>
+                {isBn ? "নির্বাচিত পোর্টফোলিও" : "CURATED PORTFOLIO"}
               </span>
             </div>
 
-            <h2 className="font-display font-black text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none">
-              Featured <span className="text-gradient-hero">Projects</span>
+            <h2 className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none ${isBn ? "font-bangla-display font-black" : "font-display font-black"}`}>
+              {isBn ? (
+                <>
+                  আমাদের সফল <span className="text-gradient-hero">প্রজেক্টসমূহ</span>
+                </>
+              ) : (
+                <>
+                  Featured <span className="text-gradient-hero">Projects</span>
+                </>
+              )}
             </h2>
 
-            <p className="mt-4 text-sm sm:text-base text-neutral-400 max-w-xl font-normal leading-relaxed">
-              Explore bespoke digital architectures, scalable cloud platforms, and intuitive interfaces we engineered for global brands.
+            <p className={`mt-3 text-sm sm:text-base text-neutral-400 max-w-xl font-normal leading-relaxed ${isBn ? "font-bangla-body" : ""}`}>
+              {isBn
+                ? "আন্তর্জাতিক মানের ডিজিটাল আর্কিটেকচার, স্কেलेबल ক্লাউড প্ল্যাটফর্ম ও দৃষ্টিনন্দন ইউজার ইন্টারফেস যা আমরা বিভিন্ন ব্র্যান্ডের জন্য তৈরি করেছি।"
+                : "Explore bespoke digital architectures, scalable cloud platforms, and intuitive interfaces we engineered for global brands."}
             </p>
-          </div>
+          </motion.div>
 
-          <a href="#contact">
-            <button className="border border-white/20 hover:border-[#F59E0B]/60 text-white bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-md rounded-full px-6 py-3.5 text-xs font-bold tracking-[0.15em] uppercase transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(245,158,11,0.2)] flex items-center gap-2 group cursor-pointer active:scale-95">
-              <span>DISCUSS YOUR PROJECT</span>
-              <ArrowUpRight className="w-4 h-4 text-[#F59E0B] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </button>
-          </a>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <a href="#contact">
+              <motion.button 
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className={`border border-white/20 hover:border-[#F59E0B]/60 text-white bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-md rounded-full px-6 py-3.5 text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(245,158,11,0.2)] flex items-center gap-2 group cursor-pointer ${isBn ? "font-bangla-ui" : ""}`}
+              >
+                <span>{isBn ? "নতুন প্রজেক্ট নিয়ে আলাপ" : "DISCUSS YOUR PROJECT"}</span>
+                <ArrowUpRight className="w-4 h-4 text-[#F59E0B] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </motion.button>
+            </a>
+          </motion.div>
         </div>
 
         {/* Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 mb-14">
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="flex flex-wrap items-center gap-2 sm:gap-2.5 mb-8 sm:mb-10"
+        >
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs font-bold tracking-wider transition-all duration-300 cursor-pointer ${
+              className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs font-bold tracking-wider transition-all duration-300 cursor-pointer ${isBn ? "font-bangla-ui" : ""} ${
                 activeCategory === cat.id
                   ? "bg-white text-black shadow-[0_0_25px_rgba(255,255,255,0.3)] scale-105"
                   : "bg-[#141419] text-neutral-300 hover:text-white hover:bg-white/[0.08] border border-white/[0.08]"
@@ -97,19 +131,20 @@ export function ProjectsSection() {
               {cat.label}
             </button>
           ))}
-        </div>
+        </motion.div>
 
         {/* Projects Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           <AnimatePresence>
-            {filteredProjects.map((project) => (
+            {filteredProjects.map((project, pIdx) => (
               <motion.div
                 layout
                 key={project.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 25, scale: 0.96 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.45, delay: (pIdx % 3) * 0.1 }}
+                whileHover={{ y: -6 }}
                 className="bg-[#141419] rounded-3xl overflow-hidden border border-white/[0.08] hover:border-[#F59E0B]/40 transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.6)] group flex flex-col justify-between"
               >
                 <div>

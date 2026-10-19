@@ -20,39 +20,74 @@ export function PricingSection() {
   const [currency, setCurrency] = useState<"bdt" | "usd">("bdt");
 
   const plans = t.plans || data.pricing;
+  const isBn = language === "bn";
 
   return (
-    <section id="pricing" className="relative py-28 sm:py-36 overflow-hidden scroll-mt-24">
+    <section id="pricing" className="relative py-10 sm:py-14 overflow-hidden scroll-mt-20">
       {/* Background ambient corner glow */}
       <div 
-        className="absolute top-1/2 -left-[10%] w-[500px] h-[500px] bg-[#EC4899]/[0.06] blur-[150px] pointer-events-none" 
+        className="absolute top-1/2 -left-[10%] w-[450px] h-[450px] bg-[#EC4899]/[0.06] blur-[140px] pointer-events-none" 
         aria-hidden="true" 
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 mb-3"
+          >
             <Zap className="w-3.5 h-3.5 text-[#F59E0B]" />
-            <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-300">
-              TRANSPARENT PRICING
+            <span className={`text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-300 ${isBn ? "font-bangla-ui" : ""}`}>
+              {isBn ? "স্বচ্ছ প্যাকেজ ও মূল্যতালিকা" : "TRANSPARENT PRICING"}
             </span>
-          </div>
+          </motion.div>
 
-          <h2 className="font-display font-black text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none">
-            Investment <span className="text-gradient-hero">Plans</span>
-          </h2>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.7, delay: 0.08 }}
+            className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none ${isBn ? "font-bangla-display font-black" : "font-display font-black"}`}
+          >
+            {isBn ? (
+              <>
+                আমাদের <span className="text-gradient-hero">ইনভেস্টমেন্ট প্যাকেজ</span>
+              </>
+            ) : (
+              <>
+                Investment <span className="text-gradient-hero">Plans</span>
+              </>
+            )}
+          </motion.h2>
 
-          <p className="mt-4 text-sm sm:text-base text-neutral-400 font-normal leading-relaxed">
-            Predictable, transparent digital engineering packages designed for early-stage startups and enterprise scale.
-          </p>
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className={`mt-3 text-sm sm:text-base text-neutral-400 font-normal leading-relaxed ${isBn ? "font-bangla-body" : ""}`}
+          >
+            {isBn
+              ? "স্টার্টআপ থেকে শুরু করে এন্টারপ্রাইজ—সব ধরনের ব্যবসার জন্য স্বচ্ছ, সাশ্রয়ী ও ভবিষ্যৎমুখী ডিজিটাল ডেভেলপমেন্ট প্যাকেজ।"
+              : "Predictable, transparent digital engineering packages designed for early-stage startups and enterprise scale."}
+          </motion.p>
 
           {/* Currency Switcher */}
-          <div className="mt-8 inline-flex items-center p-1.5 rounded-full bg-[#141419] border border-white/10 backdrop-blur-xl shadow-lg">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-6 inline-flex items-center p-1.5 rounded-full bg-[#141419] border border-white/10 backdrop-blur-xl shadow-lg"
+          >
             <button
               onClick={() => setCurrency("bdt")}
-              className={`px-6 py-2.5 rounded-full text-xs font-bold tracking-wider transition-all cursor-pointer ${
+              className={`px-5 py-2 rounded-full text-xs font-bold tracking-wider transition-all cursor-pointer ${isBn ? "font-bangla-ui" : ""} ${
                 currency === "bdt"
                   ? "bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.3)]"
                   : "text-neutral-400 hover:text-white"
@@ -62,7 +97,7 @@ export function PricingSection() {
             </button>
             <button
               onClick={() => setCurrency("usd")}
-              className={`px-6 py-2.5 rounded-full text-xs font-bold tracking-wider transition-all cursor-pointer ${
+              className={`px-5 py-2 rounded-full text-xs font-bold tracking-wider transition-all cursor-pointer ${isBn ? "font-bangla-ui" : ""} ${
                 currency === "usd"
                   ? "bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.3)]"
                   : "text-neutral-400 hover:text-white"
@@ -70,34 +105,35 @@ export function PricingSection() {
             >
               {t.currencyUsd}
             </button>
-          </div>
+          </motion.div>
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
           {plans.map((plan, idx) => (
             <motion.div
               key={plan.id || idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const, delay: idx * 0.1 }}
-              className={`rounded-3xl p-8 sm:p-9 relative flex flex-col justify-between transition-all duration-300 ${
+              initial={{ opacity: 0, y: 30, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const, delay: idx * 0.12 }}
+              whileHover={{ y: -6 }}
+              className={`rounded-3xl p-6 sm:p-8 relative flex flex-col justify-between transition-all duration-300 ${
                 plan.popular
-                  ? "bg-[#16161D] border-2 border-[#F59E0B]/50 shadow-[0_20px_60px_rgba(245,158,11,0.15)] lg:-translate-y-3"
+                  ? "bg-[#16161D] border-2 border-[#F59E0B]/50 shadow-[0_20px_60px_rgba(245,158,11,0.15)] lg:-translate-y-2"
                   : "bg-[#131318] border border-white/[0.08] hover:border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                  <span className="text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full bg-gradient-to-r from-[#EC4899] to-[#F59E0B] text-black shadow-lg">
+                  <span className={`text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full bg-gradient-to-r from-[#EC4899] to-[#F59E0B] text-black shadow-lg ${isBn ? "font-bangla-ui" : ""}`}>
                     {t.mostPopular}
                   </span>
                 </div>
               )}
 
               <div>
-                <h3 className="font-display font-extrabold text-2xl text-white mb-2">{plan.name}</h3>
+                <h3 className={`text-2xl text-white mb-2 font-black ${isBn ? "font-bangla-display" : "font-display"}`}>{plan.name}</h3>
                 <p className="text-xs sm:text-sm text-neutral-400 min-h-[36px] leading-relaxed">
                   {plan.description}
                 </p>

@@ -101,62 +101,103 @@ html:not(.dark) {
   --ring: #F59E0B;
 }
 
-/* Language-specific font rendering */
+/* Language-specific font rendering & Bengali Multi-Font Hierarchy */
+:root {
+  --font-bangla-heading: 'Anek Bangla', 'Hind Siliguri', sans-serif;
+  --font-bangla-ui: 'Hind Siliguri', 'Anek Bangla', sans-serif;
+  --font-bangla-body: 'Noto Sans Bengali', 'Hind Siliguri', sans-serif;
+  --font-bangla-serif: 'Tiro Bangla', Georgia, serif;
+}
+
+.font-bangla-display {
+  font-family: var(--font-bangla-heading);
+}
+
+.font-bangla-ui {
+  font-family: var(--font-bangla-ui);
+}
+
+.font-bangla-body {
+  font-family: var(--font-bangla-body);
+}
+
+.font-bangla-serif {
+  font-family: var(--font-bangla-serif);
+}
+
 html[lang="bn"],
-html[data-language="bn"],
-.font-bengali {
-  font-family: var(--font-anek-bangla), var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+html[data-language="bn"] {
+  font-family: 'Hind Siliguri', 'Noto Sans Bengali', system-ui, sans-serif;
 }
 
-html[lang="en"],
-html[data-language="en"],
-.font-english {
-  font-family: var(--font-geist-sans), var(--font-anek-bangla), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-/* Bengali typography spacing enhancements for large titles */
+html[lang="bn"] .font-display,
+html[data-language="bn"] .font-display,
 html[lang="bn"] h1,
 html[lang="bn"] h2,
 html[lang="bn"] h3,
 html[data-language="bn"] h1,
 html[data-language="bn"] h2,
 html[data-language="bn"] h3 {
-  letter-spacing: 0.02em !important;
-  word-spacing: 0.14em !important;
-  line-height: 1.38 !important;
+  font-family: 'Anek Bangla', 'Hind Siliguri', sans-serif !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.25 !important;
+  padding-bottom: 0.15rem;
 }
 
+html[lang="bn"] p,
+html[data-language="bn"] p,
+html[lang="bn"] li,
+html[data-language="bn"] li {
+  font-family: 'Noto Sans Bengali', 'Hind Siliguri', sans-serif;
+  line-height: 1.7;
+}
+
+html[lang="bn"] button,
+html[data-language="bn"] button,
+html[lang="bn"] .font-ui,
+html[data-language="bn"] .font-ui {
+  font-family: 'Hind Siliguri', 'Anek Bangla', sans-serif;
+}
+
+html[lang="bn"] .font-serif-bn,
+html[data-language="bn"] .font-serif-bn,
+html[lang="bn"] blockquote,
+html[data-language="bn"] blockquote {
+  font-family: 'Tiro Bangla', Georgia, serif !important;
+}
+
+/* Neutralize letter-spacing / tracking on Bengali text completely so conjuncts and vowels don't break */
+html[lang="bn"] [class*="tracking-"],
+html[data-language="bn"] [class*="tracking-"],
+html[lang="bn"] nav a,
+html[data-language="bn"] nav a,
+html[lang="bn"] button,
+html[data-language="bn"] button,
+html[lang="bn"] span,
+html[data-language="bn"] span,
+html[lang="bn"] .font-bangla-ui,
+html[data-language="bn"] .font-bangla-ui {
+  letter-spacing: 0 !important;
+}
+
+html[lang="bn"] .font-display,
+html[data-language="bn"] .font-display,
 html[lang="bn"] h1,
-html[data-language="bn"] h1 {
-  line-height: 1.4 !important;
-  word-spacing: 0.16em !important;
-  letter-spacing: 0.02em !important;
-  padding-bottom: 0.35rem;
-}
-
 html[lang="bn"] h2,
-html[data-language="bn"] h2 {
-  line-height: 1.36 !important;
-  word-spacing: 0.14em !important;
-  letter-spacing: 0.02em !important;
-  padding-bottom: 0.25rem;
-}
-
-/* Neutralize negative tracking on Bengali text */
-html[lang="bn"] .tracking-tight,
-html[lang="bn"] .tracking-tighter,
-html[data-language="bn"] .tracking-tight,
-html[data-language="bn"] .tracking-tighter {
-  letter-spacing: 0.015em !important;
+html[lang="bn"] h3,
+html[data-language="bn"] h1,
+html[data-language="bn"] h2,
+html[data-language="bn"] h3 {
+  letter-spacing: 0.005em !important;
 }
 
 /* Ensure gradient spans in titles have breathing room */
-html[lang="bn"] h1 .text-gradient-cyan,
-html[lang="bn"] h2 .text-gradient-cyan,
-html[data-language="bn"] h1 .text-gradient-cyan,
-html[data-language="bn"] h2 .text-gradient-cyan {
-  margin-left: 0.25em;
-  margin-right: 0.25em;
+html[lang="bn"] h1 .text-gradient-hero,
+html[lang="bn"] h2 .text-gradient-hero,
+html[data-language="bn"] h1 .text-gradient-hero,
+html[data-language="bn"] h2 .text-gradient-hero {
+  margin-left: 0.15em;
+  margin-right: 0.15em;
   display: inline-block;
   padding-bottom: 0.08em;
 }

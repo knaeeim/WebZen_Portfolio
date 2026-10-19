@@ -23,7 +23,13 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
+  const navLinks = language === "bn" ? [
+    { label: "সার্ভিস", href: "#services" },
+    { label: "সমাধান", href: "#services" },
+    { label: "পোর্টফোলিও", href: "#projects" },
+    { label: "প্যাকেজ", href: "#pricing" },
+    { label: "পরিসংখ্যান", href: "#metrics" },
+  ] : [
     { label: "SERVICES", href: "#services" },
     { label: "SOLUTIONS", href: "#services" },
     { label: "PORTFOLIO", href: "#projects" },
@@ -35,8 +41,8 @@ export function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0B0B0E]/85 backdrop-blur-2xl border-b border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.6)] py-3.5"
-          : "bg-transparent py-5"
+          ? "bg-[#0B0B0E]/85 backdrop-blur-2xl border-b border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.6)] py-3"
+          : "bg-transparent py-4 sm:py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,7 +61,9 @@ export function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-[11px] font-semibold text-neutral-400 hover:text-white transition-colors tracking-[0.22em] uppercase py-1 relative group"
+                className={`font-semibold text-neutral-400 hover:text-white transition-colors uppercase py-1 relative group font-bangla-ui ${
+                  language === "bn" ? "text-xs tracking-normal" : "text-[11px] tracking-[0.2em]"
+                }`}
               >
                 <span>{link.label}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-gradient-to-r from-[#EC4899] to-[#F59E0B] transition-all duration-300 group-hover:w-full rounded-full" />
@@ -68,17 +76,17 @@ export function Navbar() {
             {/* Language toggle badge */}
             <button
               onClick={toggleLanguage}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 hover:border-white/20 text-neutral-400 hover:text-white text-[11px] font-medium transition-all bg-white/[0.02]"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 hover:border-white/20 text-neutral-300 hover:text-white text-xs font-semibold transition-all bg-white/[0.03] font-bangla-ui cursor-pointer"
               title="Switch Language"
             >
               <Globe className="w-3.5 h-3.5 text-[#F59E0B]" />
-              <span>{language === "bn" ? "EN" : "বাং"}</span>
+              <span>{language === "bn" ? "EN" : "বাংলা"}</span>
             </button>
 
             {/* Minimal Outline CTA Pill */}
             <a href="#contact">
-              <button className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/20 hover:border-[#F59E0B]/60 text-white hover:text-white bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-md text-xs font-bold tracking-[0.1em] uppercase transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(245,158,11,0.2)] group cursor-pointer">
-                <span>START A PROJECT</span>
+              <button className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/20 hover:border-[#F59E0B]/60 text-white hover:text-white bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-md text-xs font-bold tracking-[0.1em] uppercase transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(245,158,11,0.2)] group cursor-pointer font-bangla-ui">
+                <span>{language === "bn" ? "প্রজেক্ট শুরু করুন" : "START A PROJECT"}</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-[#F59E0B] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
             </a>

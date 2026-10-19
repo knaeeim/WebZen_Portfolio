@@ -10,19 +10,33 @@ import {
   ArrowUpRight 
 } from "lucide-react";
 
+import { useLanguage } from "@/context/LanguageContext";
+
 export function Footer() {
+  const { language } = useLanguage();
+  const isBn = language === "bn";
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const usefulLinks = [
-    { label: "Services", href: "#services" },
-    { label: "Solutions", href: "#services" },
-    { label: "Portfolio", href: "#projects" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "About Us", href: "#metrics" },
-    { label: "Contact", href: "#contact" },
-  ];
+  const usefulLinks = isBn
+    ? [
+        { label: "সার্ভিস", href: "#services" },
+        { label: "সমাধান", href: "#services" },
+        { label: "পোর্টফোলিও", href: "#projects" },
+        { label: "প্যাকেজ ও খরচ", href: "#pricing" },
+        { label: "পরিসংখ্যান", href: "#metrics" },
+        { label: "যোগাযোগ", href: "#contact" },
+      ]
+    : [
+        { label: "Services", href: "#services" },
+        { label: "Solutions", href: "#services" },
+        { label: "Portfolio", href: "#projects" },
+        { label: "Pricing", href: "#pricing" },
+        { label: "About Us", href: "#metrics" },
+        { label: "Contact", href: "#contact" },
+      ];
 
   const socialLinks = [
     { name: "GitHub", href: "https://github.com/webzen-bd", label: "GH" },
@@ -32,15 +46,15 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative bg-[#0B0B0E] border-t border-white/[0.08] text-neutral-300 pt-20 pb-12 overflow-hidden z-10">
+    <footer className="relative bg-[#0B0B0E] border-t border-white/[0.08] text-neutral-300 pt-10 pb-8 overflow-hidden z-10">
       {/* Background ambient corner glow */}
       <div 
-        className="absolute bottom-0 right-0 w-[500px] h-[300px] bg-[#F59E0B]/[0.05] blur-[150px] pointer-events-none" 
+        className="absolute bottom-0 right-0 w-[450px] h-[250px] bg-[#F59E0B]/[0.05] blur-[140px] pointer-events-none" 
         aria-hidden="true" 
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-10 pb-16 border-b border-white/[0.08]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-10 border-b border-white/[0.08]">
           
           {/* Left Column: WEBZEN BD logo, brief agency bio, and social media icons */}
           <div className="lg:col-span-5 space-y-6">
@@ -50,8 +64,10 @@ export function Footer() {
               </span>
             </Link>
 
-            <p className="text-sm text-neutral-400 font-normal leading-relaxed max-w-sm">
-              Webzen BD is an elite full-stack digital agency crafting ultra-fast web applications, custom enterprise dashboards, and bespoke UI/UX architecture.
+            <p className={`text-sm text-neutral-400 font-normal leading-relaxed max-w-sm ${isBn ? "font-bangla-body" : ""}`}>
+              {isBn
+                ? "Webzen BD একটি প্রিমিয়াম ফুল-স্ট্যাক ডিজিটাল এজেন্সি। আমরা আল্ট্রা-ফাস্ট ওয়েব অ্যাপ্লিকেশন, কাস্টম এন্টারপ্রাইজ সফটওয়্যার ও আধুনিক UI/UX আর্কিটেকচার তৈরি করি।"
+                : "Webzen BD is an elite full-stack digital agency crafting ultra-fast web applications, custom enterprise dashboards, and bespoke UI/UX architecture."}
             </p>
 
             {/* Social Media Icons */}
@@ -72,16 +88,16 @@ export function Footer() {
           </div>
 
           {/* Middle Column: Useful Links */}
-          <div className="lg:col-span-3 space-y-5">
-            <h4 className="font-display font-black text-xs sm:text-sm tracking-[0.2em] uppercase text-white">
-              Useful Links
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className={`text-xs sm:text-sm tracking-[0.2em] uppercase text-white ${isBn ? "font-bangla-ui font-bold" : "font-display font-black"}`}>
+              {isBn ? "প্রয়োজনীয় লিংক" : "Useful Links"}
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               {usefulLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-sm text-neutral-400 hover:text-white transition-colors flex items-center gap-1.5 group"
+                    className={`text-sm text-neutral-400 hover:text-white transition-colors flex items-center gap-1.5 group ${isBn ? "font-bangla-ui" : ""}`}
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-neutral-600 group-hover:bg-[#F59E0B] transition-colors" />
                     <span>{link.label}</span>
@@ -92,17 +108,17 @@ export function Footer() {
           </div>
 
           {/* Right Column: Contact Us featuring Dhaka location, phone number, email */}
-          <div className="lg:col-span-4 space-y-5">
-            <h4 className="font-display font-black text-xs sm:text-sm tracking-[0.2em] uppercase text-white">
-              Contact Us
+          <div className="lg:col-span-4 space-y-4">
+            <h4 className={`text-xs sm:text-sm tracking-[0.2em] uppercase text-white ${isBn ? "font-bangla-ui font-bold" : "font-display font-black"}`}>
+              {isBn ? "সরাসরি যোগাযোগ" : "Contact Us"}
             </h4>
 
-            <div className="space-y-4 text-sm text-neutral-400">
+            <div className="space-y-3.5 text-sm text-neutral-400">
               {/* Location */}
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-[#F59E0B] shrink-0 mt-1" />
-                <span className="leading-relaxed">
-                  Crystal ICT Tower, Gulshan-2, Dhaka-1212, Bangladesh
+                <span className={`leading-relaxed ${isBn ? "font-bangla-body" : ""}`}>
+                  {isBn ? "ক্রিস্টাল আইসিটি টাওয়ার, গুলশান-২, ঢাকা-১২১২, বাংলাদেশ" : "Crystal ICT Tower, Gulshan-2, Dhaka-1212, Bangladesh"}
                 </span>
               </div>
 
@@ -132,8 +148,8 @@ export function Footer() {
             {/* Quick Action Pill */}
             <div className="pt-2">
               <a href="#contact">
-                <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 hover:border-white/30 text-xs font-bold text-white bg-white/[0.03] hover:bg-white/[0.08] transition-all">
-                  <span>Send a Message</span>
+                <button className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 hover:border-white/30 text-xs font-bold text-white bg-white/[0.03] hover:bg-white/[0.08] transition-all cursor-pointer ${isBn ? "font-bangla-ui" : ""}`}>
+                  <span>{isBn ? "মেসেজ পাঠান" : "Send a Message"}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-[#F59E0B]" />
                 </button>
               </a>

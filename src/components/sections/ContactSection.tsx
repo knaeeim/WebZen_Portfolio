@@ -98,38 +98,74 @@ export function ContactSection() {
       : "Hello WebZen Bangladesh team, I would like to discuss a new project."
   )}`;
 
+  const isBn = language === "bn";
+
   return (
-    <section id="contact" className="relative py-28 sm:py-36 overflow-hidden scroll-mt-24">
+    <section id="contact" className="relative py-10 sm:py-14 overflow-hidden scroll-mt-20">
       {/* Background ambient glow */}
       <div 
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#F59E0B]/[0.08] blur-[150px] rounded-full pointer-events-none" 
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] bg-[#F59E0B]/[0.08] blur-[140px] rounded-full pointer-events-none" 
         aria-hidden="true" 
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 mb-4">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 mb-3"
+          >
             <span className="w-2 h-2 rounded-full bg-[#F59E0B]" />
-            <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-300">
-              INITIATE PROJECT
+            <span className={`text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-300 ${isBn ? "font-bangla-ui" : ""}`}>
+              {isBn ? "প্রজেক্ট আলোচনা" : "INITIATE PROJECT"}
             </span>
-          </div>
+          </motion.div>
 
-          <h2 className="font-display font-black text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none">
-            Let&apos;s Build <span className="text-gradient-hero">Together</span>
-          </h2>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.7, delay: 0.08 }}
+            className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none ${isBn ? "font-bangla-display font-black" : "font-display font-black"}`}
+          >
+            {isBn ? (
+              <>
+                আসুন একসাথে <span className="text-gradient-hero">শুরু করি</span>
+              </>
+            ) : (
+              <>
+                Let&apos;s Build <span className="text-gradient-hero">Together</span>
+              </>
+            )}
+          </motion.h2>
 
-          <p className="mt-4 text-sm sm:text-base text-neutral-400 font-normal leading-relaxed">
-            Have an ambitious digital project or technical requirement? Tell us about your vision and let&apos;s engineer something extraordinary.
-          </p>
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className={`mt-3 text-sm sm:text-base text-neutral-400 font-normal leading-relaxed ${isBn ? "font-bangla-body" : ""}`}
+          >
+            {isBn
+              ? "আপনার নতুন ওয়েবসাইট, সফটওয়্যার বা ডিজিটাল প্রোডাক্ট নিয়ে কথা বলতে নিচের ফর্মটি পূরণ করুন অথবা সরাসরি হোয়াটসঅ্যাপে যোগাযোগ করুন।"
+              : "Have an ambitious digital project or technical requirement? Tell us about your vision and let's engineer something extraordinary."}
+          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 items-start">
           
           {/* Left Details & Office Info (5 cols) */}
-          <div className="lg:col-span-5 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 space-y-6"
+          >
             
             {/* Quick WhatsApp Action Card */}
             <div className="bg-[#141419] rounded-3xl p-6 sm:p-7 border border-white/[0.08] hover:border-[#F59E0B]/40 transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
@@ -193,10 +229,16 @@ export function ContactSection() {
               </div>
             </div>
 
-          </div>
+          </motion.div>
 
           {/* Right Contact Form (7 cols) */}
-          <div className="lg:col-span-7">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7"
+          >
             <div className="bg-[#141419] rounded-3xl p-8 sm:p-10 border border-white/[0.08] shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
               {submitted ? (
                 <motion.div
@@ -372,7 +414,7 @@ export function ContactSection() {
                 </form>
               )}
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
