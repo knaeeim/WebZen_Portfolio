@@ -20,7 +20,7 @@ import {
 } from "@/types/site";
 import { initialSiteData } from "@/data/defaultSiteData";
 
-const STORAGE_KEY = "webzen_bangladesh_site_data_v3";
+const STORAGE_KEY = "webzen_bangladesh_site_data_v4_clay";
 
 interface SiteContextType {
   data: SiteData;

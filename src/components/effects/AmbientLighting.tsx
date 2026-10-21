@@ -11,9 +11,9 @@ export function AmbientLighting() {
     return null;
   }
 
-  const accent = theme?.accentColor || "#FFB800";
-  const start = theme?.accentGradientStart || "#F59E0B";
-  const end = theme?.accentGradientEnd || "#EA7814";
+  const accent = theme?.accentColor || "#FF5C35";
+  const start = theme?.accentGradientStart || "#FF6F4C";
+  const end = theme?.accentGradientEnd || "#7C3AED";
 
   const multiplier = 
     theme?.glowIntensity === "subtle" ? 0.5 :

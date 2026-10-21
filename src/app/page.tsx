@@ -17,25 +17,8 @@ import { PricingSection } from "@/components/sections/PricingSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 
 export default function Home() {
-  const { isLoaded } = useSite();
-
-  if (!isLoaded) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[#000000] text-neutral-100">
-        <div className="flex flex-col items-center gap-4">
-          <div className="font-display font-black text-2xl tracking-tight text-white animate-pulse">
-            webzen<span className="text-[#FFB800] font-black drop-shadow-[0_0_12px_rgba(255,184,0,0.5)]">.bd</span>
-          </div>
-          <p className="text-xs text-neutral-400 font-mono tracking-widest uppercase">
-            Loading Creative Studio...
-          </p>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="relative min-h-screen flex flex-col bg-[#000000] text-[#F5F5F7] selection:bg-[#FFB800] selection:text-black">
+    <div className="relative min-h-screen flex flex-col bg-[#0F1117] text-[#F5F6FA] selection:bg-[#FF5C35] selection:text-white">
       {/* 1. Global Visual Identity & Diffused Radial Mesh Ambient Lighting */}
       <AmbientLighting />
       <ParticleCanvas />

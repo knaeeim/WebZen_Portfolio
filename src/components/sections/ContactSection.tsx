@@ -101,26 +101,26 @@ export function ContactSection() {
   const isBn = language === "bn";
 
   return (
-    <section id="contact" className="relative py-12 sm:py-16 overflow-hidden scroll-mt-20 bg-[#000000]">
-      {/* Background ambient glow - Studio Gold */}
+    <section id="contact" className="relative py-14 sm:py-20 overflow-hidden scroll-mt-20 bg-[#0F1117]">
+      {/* Background ambient glow - Coral & Violet */}
       <div 
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-[#FFB800]/[0.05] blur-[150px] rounded-full pointer-events-none" 
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[550px] h-[350px] bg-gradient-to-r from-[#FF5C35]/[0.06] to-[#7C3AED]/[0.06] blur-[160px] rounded-full pointer-events-none" 
         aria-hidden="true" 
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 mb-3"
+            transition={{ type: "spring", stiffness: 220, damping: 18 }}
+            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#181B24] clay-pill text-neutral-300 mb-3.5"
           >
-            <span className="w-2 h-2 rounded-full bg-[#FFB800]" />
-            <span className={`text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-300 ${isBn ? "font-bangla-ui" : ""}`}>
+            <span className="w-2.5 h-2.5 rounded-full bg-[#FF5C35] shadow-[0_0_8px_rgba(255,92,53,0.8)]" />
+            <span className={`text-[11px] font-extrabold tracking-[0.2em] uppercase text-neutral-200 ${isBn ? "font-bangla-ui" : ""}`}>
               {isBn ? "প্রজেক্ট আলোচনা" : "INITIATE PROJECT"}
             </span>
           </motion.div>
@@ -129,8 +129,8 @@ export function ContactSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.7, delay: 0.08 }}
-            className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none ${isBn ? "font-bangla-display font-black" : "font-display font-black"}`}
+            transition={{ type: "spring", stiffness: 220, damping: 18, delay: 0.08 }}
+            className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none text-clay-3d ${isBn ? "font-bangla-display font-black" : "font-display font-black"}`}
           >
             {isBn ? (
               <>
@@ -147,7 +147,7 @@ export function ContactSection() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            transition={{ type: "spring", stiffness: 220, damping: 18, delay: 0.15 }}
             className={`mt-3 text-sm sm:text-base text-neutral-400 font-normal leading-relaxed ${isBn ? "font-bangla-body" : ""}`}
           >
             {isBn
@@ -158,73 +158,73 @@ export function ContactSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 items-start">
           
-          {/* Left Details & Office Info (5 cols) */}
+          {/* Left Details & Office Info (5 cols) in Inflated Clay */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ type: "spring", stiffness: 220, damping: 20 }}
             className="lg:col-span-5 space-y-6"
           >
             
             {/* Quick WhatsApp Action Card */}
-            <div className="bg-[#050505] rounded-3xl p-6 sm:p-7 border border-white/[0.08] hover:border-[#FFB800]/40 transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.85)]">
-              <div className="flex items-center gap-3.5 mb-3">
-                <div className="w-11 h-11 rounded-2xl bg-[#25D366]/15 border border-[#25D366]/30 text-[#25D366] flex items-center justify-center">
-                  <MessageCircle className="w-5 h-5" />
+            <div className="clay-card-dark rounded-[32px] p-6 sm:p-7 group">
+              <div className="flex items-center gap-3.5 mb-3.5">
+                <div className="w-12 h-12 rounded-2xl bg-[#25D366]/15 clay-icon-bubble text-[#25D366] flex items-center justify-center shrink-0">
+                  <MessageCircle className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-display font-extrabold text-base text-white">{t.whatsappTitle}</h4>
+                  <h4 className="font-display font-extrabold text-base text-white text-clay-3d">{t.whatsappTitle}</h4>
                   <p className="text-xs text-neutral-400 mt-0.5">{t.whatsappSub}</p>
                 </div>
               </div>
-              <a
+              <motion.a
+                whileHover={{ y: -3, scale: 1.02 }}
+                whileTap={{ y: 0, scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 260, damping: 16 }}
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center w-full gap-2.5 px-6 py-3.5 rounded-full text-black font-black text-xs tracking-wider uppercase transition-all shadow-lg mt-3 cursor-pointer"
-                style={{
-                  background: "linear-gradient(135deg, #FFB800 0%, #F59E0B 50%, #EA7814 100%)",
-                }}
+                className="clay-btn-coral w-full py-3.5 text-xs font-black tracking-wider uppercase gap-2.5 mt-3 shadow-lg"
               >
                 <span>{t.whatsappBtn}</span>
-                <span className="flex items-center justify-center w-5 h-5 rounded-full bg-black text-[#FFB800]">
+                <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white/20 shadow-inner">
                   <ArrowRight className="w-3.5 h-3.5" />
                 </span>
-              </a>
+              </motion.a>
             </div>
 
             {/* Dhaka Headquarters Card */}
-            <div className="bg-[#050505] rounded-3xl p-6 sm:p-7 border border-white/[0.08] space-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.85)]">
-              <h3 className="font-display font-extrabold text-base text-white flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-[#FFB800]" />
+            <div className="clay-card-dark rounded-[32px] p-6 sm:p-7 space-y-4">
+              <h3 className="font-display font-extrabold text-base text-white text-clay-3d flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-[#FF5C35]" />
                 <span>{t.dhakaHq}</span>
               </h3>
 
               <div className="space-y-3 text-xs sm:text-sm text-neutral-400">
                 <div className="flex items-start gap-2.5">
-                  <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.addressLabel}</div>
+                  <div className="font-bold text-neutral-500 w-16 shrink-0">{t.addressLabel}</div>
                   <span className={`text-neutral-200 ${isBn ? "font-bangla-body" : ""}`}>
                     {isBn && contact.addressBn ? contact.addressBn : contact.address}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-2.5">
-                  <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.phoneLabel}</div>
-                  <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="text-[#FFB800] hover:underline">
+                  <div className="font-bold text-neutral-500 w-16 shrink-0">{t.phoneLabel}</div>
+                  <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="text-[#FF8B66] hover:underline font-semibold">
                     {contact.phone}
                   </a>
                 </div>
 
                 <div className="flex items-center gap-2.5">
-                  <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.emailLabel}</div>
-                  <a href={`mailto:${contact.email}`} className="text-[#FFB800] hover:underline">
+                  <div className="font-bold text-neutral-500 w-16 shrink-0">{t.emailLabel}</div>
+                  <a href={`mailto:${contact.email}`} className="text-[#FF8B66] hover:underline font-semibold">
                     {contact.email}
                   </a>
                 </div>
 
                 <div className="flex items-start gap-2.5">
-                  <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.hoursLabel}</div>
+                  <div className="font-bold text-neutral-500 w-16 shrink-0">{t.hoursLabel}</div>
                   <span className={`text-neutral-300 ${isBn ? "font-bangla-body" : ""}`}>
                     {isBn && contact.officeHoursBn ? contact.officeHoursBn : contact.officeHours}
                   </span>
@@ -233,94 +233,96 @@ export function ContactSection() {
 
               {/* Security promise */}
               <div className="pt-4 border-t border-white/[0.06] flex items-center gap-2 text-xs text-neutral-400">
-                <ShieldCheck className="w-4 h-4 text-[#06B6D4] shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-[#10B981] shrink-0" />
                 <span>{t.securityPromise}</span>
               </div>
             </div>
 
           </motion.div>
 
-          {/* Right Contact Form (7 cols) */}
+          {/* Right Contact Form (7 cols) with Recessed Clay Insets */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ type: "spring", stiffness: 220, damping: 20 }}
             className="lg:col-span-7"
           >
-            <div className="bg-[#141419] rounded-3xl p-8 sm:p-10 border border-white/[0.08] shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
+            <div className="clay-card-dark rounded-[36px] p-7 sm:p-10">
               {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="text-center py-12 space-y-4"
                 >
-                  <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 rounded-full bg-[#10B981]/20 clay-icon-bubble text-[#10B981] flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white">{t.formSuccessTitle}</h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm max-w-md mx-auto">
+                  <h3 className="text-2xl font-black text-white text-clay-3d">{t.formSuccessTitle}</h3>
+                  <p className="text-neutral-300 text-sm max-w-md mx-auto">
                     {t.formSuccessDesc}
                   </p>
-                  <Button
+                  <motion.button
+                    whileHover={{ y: -2, scale: 1.03 }}
+                    whileTap={{ scale: 0.96 }}
                     onClick={() => setSubmitted(false)}
-                    className="bg-white hover:bg-slate-50 dark:bg-[#0a2847] dark:hover:bg-[#0f3c69] border border-cyan-500/40 text-slate-900 dark:text-slate-100 font-bold text-xs mt-4 px-4 py-2 rounded-xl shadow-sm cursor-pointer transition-all"
+                    className="clay-btn-coral font-bold text-xs mt-4 px-6 py-2.5 rounded-full shadow-md cursor-pointer"
                   >
                     {t.formAnotherBtn}
-                  </Button>
+                  </motion.button>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-bold text-neutral-300 mb-1.5">
                         {t.nameLabel}
                       </label>
-                      <Input
+                      <input
                         required
                         value={formState.name}
                         onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                         placeholder={t.namePlaceholder}
-                        className="bg-slate-50 dark:bg-white/[0.04] border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-xs h-11 rounded-xl focus:border-cyan-500"
+                        className="clay-inset w-full px-4 text-white placeholder:text-neutral-500 text-xs h-12 rounded-2xl outline-none transition-all"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-bold text-neutral-300 mb-1.5">
                         {t.emailLabelForm}
                       </label>
-                      <Input
+                      <input
                         required
                         type="email"
                         value={formState.email}
                         onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                         placeholder="yourname@company.com"
-                        className="bg-slate-50 dark:bg-white/[0.04] border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-xs h-11 rounded-xl focus:border-cyan-500"
+                        className="clay-inset w-full px-4 text-white placeholder:text-neutral-500 text-xs h-12 rounded-2xl outline-none transition-all"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-bold text-neutral-300 mb-1.5">
                         {t.phoneLabelForm}
                       </label>
-                      <Input
+                      <input
                         value={formState.phone}
                         onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
                         placeholder="+880 17XX-XXXXXX"
-                        className="bg-slate-50 dark:bg-white/[0.04] border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-xs h-11 rounded-xl focus:border-cyan-500"
+                        className="clay-inset w-full px-4 text-white placeholder:text-neutral-500 text-xs h-12 rounded-2xl outline-none transition-all"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-bold text-neutral-300 mb-1.5">
                         {t.projectTypeLabel}
                       </label>
                       <select
                         value={formState.projectType}
                         onChange={(e) => setFormState({ ...formState, projectType: e.target.value })}
-                        className="w-full bg-slate-50 dark:bg-[#0d1326] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white text-xs h-11 px-3 rounded-xl focus:border-cyan-500 focus:outline-none"
+                        className="clay-inset w-full px-4 text-white text-xs h-12 rounded-2xl outline-none transition-all cursor-pointer"
                       >
                         {language === "bn" ? (
                           <>
@@ -346,13 +348,13 @@ export function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                    <label className="block text-xs font-bold text-neutral-300 mb-1.5">
                       {t.budgetLabel}
                     </label>
                     <select
                       value={formState.budget}
                       onChange={(e) => setFormState({ ...formState, budget: e.target.value })}
-                      className="w-full bg-slate-50 dark:bg-[#0d1326] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white text-xs h-11 px-3 rounded-xl focus:border-cyan-500 focus:outline-none"
+                      className="clay-inset w-full px-4 text-white text-xs h-12 rounded-2xl outline-none transition-all cursor-pointer"
                     >
                       {language === "bn" ? (
                         <>
@@ -372,8 +374,8 @@ export function ContactSection() {
                         </>
                       )}
                     </select>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1.5 flex items-center gap-1.5 font-normal">
-                      <span className="text-amber-500 dark:text-amber-400 font-semibold">*</span>
+                    <p className="text-[11px] text-neutral-400 mt-1.5 flex items-center gap-1.5 font-normal">
+                      <span className="text-[#FF5C35] font-bold">*</span>
                       <span>
                         {language === "bn"
                           ? "উল্লেখ্য: সার্ভার হোস্টিং ও ডাটাবেজ স্টোরেজ খরচ ক্লায়েন্টকে সরাসরি প্রোভাইডারকে পরিশোধ করতে হবে (আমরা ফ্রিতে সেটআপ করে দেব)।"
@@ -383,48 +385,48 @@ export function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                    <label className="block text-xs font-bold text-neutral-300 mb-1.5">
                       {t.messageLabel}
                     </label>
-                    <Textarea
+                    <textarea
                       required
                       rows={4}
                       value={formState.message}
                       onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                       placeholder={t.messagePlaceholder}
-                      className="bg-slate-50 dark:bg-white/[0.04] border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-xs rounded-xl focus:border-cyan-500 resize-none"
+                      className="clay-inset w-full p-4 text-white placeholder:text-neutral-500 text-xs rounded-2xl outline-none resize-none transition-all"
                     />
                   </div>
 
                   {errorMessage && (
-                    <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/20 text-red-300 text-xs flex items-center gap-2">
+                    <div className="p-3.5 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-300 text-xs flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0" />
                       <span>{errorMessage}</span>
                     </div>
                   )}
 
-                  <button
+                  <motion.button
                     type="submit"
                     disabled={loading}
-                    className="w-full font-black h-14 text-xs sm:text-sm tracking-[0.18em] uppercase rounded-full shadow-[0_0_30px_rgba(255,184,0,0.35)] hover:shadow-[0_0_40px_rgba(255,184,0,0.55)] group transition-all duration-300 cursor-pointer disabled:opacity-60 flex items-center justify-center gap-2.5 active:scale-[0.99] text-black"
-                    style={{
-                      background: "linear-gradient(135deg, #FFB800 0%, #F59E0B 50%, #EA7814 100%)",
-                    }}
+                    whileHover={{ y: -4, scale: 1.02 }}
+                    whileTap={{ y: 0, scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 260, damping: 16 }}
+                    className="clay-btn-coral w-full h-14 text-xs sm:text-sm font-black tracking-[0.18em] uppercase gap-2.5 shadow-xl disabled:opacity-60"
                   >
                     {loading ? (
                       <span className="flex items-center gap-2">
-                        <span className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                        <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                         <span>{t.submittingBtn}</span>
                       </span>
                     ) : (
                       <span className="flex items-center gap-2.5">
                         <span>{t.submitBtn}</span>
-                        <span className="flex items-center justify-center w-7 h-7 rounded-full bg-black text-[#FFB800] group-hover:translate-x-1 transition-transform">
+                        <span className="flex items-center justify-center w-7 h-7 rounded-full bg-white/20 shadow-inner">
                           <Send className="w-3.5 h-3.5" />
                         </span>
                       </span>
                     )}
-                  </button>
+                  </motion.button>
                 </form>
               )}
             </div>

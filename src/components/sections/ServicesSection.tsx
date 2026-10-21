@@ -49,30 +49,30 @@ export function ServicesSection() {
     : fallbackChecklist;
 
   return (
-    <section id="services" className="relative py-12 sm:py-16 overflow-hidden scroll-mt-20 bg-[#000000]">
-      {/* Background ambient lighting - Studio Amber & Warm Gold */}
+    <section id="services" className="relative py-14 sm:py-20 overflow-hidden scroll-mt-20 bg-[#0F1117]">
+      {/* Background ambient lighting - Soft Coral & Violet Clay Glow */}
       <div 
-        className="absolute top-1/2 -left-[10%] w-[500px] h-[500px] bg-[#FFB800]/[0.06] blur-[160px] rounded-full pointer-events-none" 
+        className="absolute top-1/2 -left-[10%] w-[500px] h-[500px] bg-[#FF5C35]/[0.06] blur-[160px] rounded-full pointer-events-none" 
         aria-hidden="true" 
       />
       <div 
-        className="absolute top-1/3 -right-[10%] w-[500px] h-[500px] bg-[#EA7814]/[0.05] blur-[160px] rounded-full pointer-events-none" 
+        className="absolute top-1/3 -right-[10%] w-[500px] h-[500px] bg-[#7C3AED]/[0.06] blur-[160px] rounded-full pointer-events-none" 
         aria-hidden="true" 
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Title: "Our Services" Centered in Bold White */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+        {/* Section Title: "Our Services" Centered in Puffed Typography */}
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 mb-3"
+            transition={{ type: "spring", stiffness: 220, damping: 18 }}
+            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#181B24] clay-pill text-neutral-300 mb-3.5"
           >
-            <span className="w-2 h-2 rounded-full bg-[#FFB800]" />
-            <span className={`text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-300 ${isBn ? "font-bangla-ui" : ""}`}>
+            <span className="w-2.5 h-2.5 rounded-full bg-[#FF5C35] shadow-[0_0_8px_rgba(255,92,53,0.8)]" />
+            <span className={`text-[11px] font-extrabold tracking-[0.2em] uppercase text-neutral-200 ${isBn ? "font-bangla-ui" : ""}`}>
               {isBn ? "সার্ভিস ও ক্যাপাবিলিটিজ" : "SOLUTIONS & CAPABILITIES"}
             </span>
           </motion.div>
@@ -81,8 +81,8 @@ export function ServicesSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.7, delay: 0.08 }}
-            className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight ${isBn ? "font-bangla-display font-extrabold" : "font-display font-black"}`}
+            transition={{ type: "spring", stiffness: 220, damping: 18, delay: 0.08 }}
+            className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight text-clay-3d ${isBn ? "font-bangla-display font-extrabold" : "font-display font-black"}`}
           >
             {isBn ? "আমাদের সার্ভিস" : "Our Services"}
           </motion.h2>
@@ -91,16 +91,16 @@ export function ServicesSection() {
         {/* Split Feature Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Left Column: Heading, Paragraph, Checklist & Dark Pill Button */}
+          {/* Left Column: Heading, Paragraph, Inflated Clay Checklist & Chunky Clay Button */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ type: "spring", stiffness: 220, damping: 20 }}
             className="lg:col-span-6 space-y-6"
           >
             <div className="space-y-3">
-              <h3 className={`text-2xl sm:text-4xl text-white tracking-tight leading-snug ${isBn ? "font-bangla-display font-bold" : "font-display font-black"}`}>
+              <h3 className={`text-2xl sm:text-4xl text-white tracking-tight leading-snug text-clay-3d ${isBn ? "font-bangla-display font-bold" : "font-display font-black"}`}>
                 {isBn ? (
                   <>
                     কাস্টম ওয়েব ও <span className="text-gradient-hero">UI/UX ইঞ্জিনিয়ারিং</span>
@@ -118,23 +118,23 @@ export function ServicesSection() {
               </p>
             </div>
 
-            {/* Vertical Checklist with Subtle Dark Circular Checkmark Icons */}
-            <div className="space-y-3 pt-1">
+            {/* Vertical Checklist with Chunky Inflated Clay Cards & 3D Check Bubbles */}
+            <div className="space-y-3.5 pt-1">
               {checklist.map((item, idx) => (
                 <motion.div 
                   key={idx}
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 + idx * 0.1 }}
-                  whileHover={{ x: 4 }}
-                  className="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-[#FFB800]/30 transition-all duration-300 group"
+                  transition={{ type: "spring", stiffness: 240, damping: 18, delay: 0.1 + idx * 0.1 }}
+                  whileHover={{ y: -3, scale: 1.015 }}
+                  className="flex items-start gap-3.5 p-4 sm:p-4.5 rounded-[24px] clay-card-surface cursor-pointer group"
                 >
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black border border-white/10 flex items-center justify-center shrink-0 group-hover:border-[#FFB800]/50 transition-colors shadow-inner mt-0.5">
-                    <Check className="w-3.5 h-3.5 text-[#FFB800]" strokeWidth={3} />
+                  <div className="w-8 h-8 rounded-full bg-[#14161F] clay-icon-bubble flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                    <Check className="w-4 h-4 text-[#FF5C35] drop-shadow-[0_2px_4px_rgba(255,92,53,0.5)]" strokeWidth={3} />
                   </div>
                   <div>
-                    <h4 className={`text-white text-base tracking-wide group-hover:text-neutral-100 transition-colors ${isBn ? "font-bangla-display font-bold" : "font-display font-bold"}`}>
+                    <h4 className={`text-white text-base tracking-wide text-clay-3d group-hover:text-[#FF8B66] transition-colors ${isBn ? "font-bangla-display font-bold" : "font-display font-bold"}`}>
                       {item.title}
                     </h4>
                     <p className={`text-xs sm:text-sm text-neutral-400 mt-1 leading-normal ${isBn ? "font-bangla-body" : ""}`}>
@@ -145,8 +145,8 @@ export function ServicesSection() {
               ))}
             </div>
 
-            {/* Studio Pill Button ("LEARN MORE ↗") with Smooth Scroll */}
-            <div className="pt-1">
+            {/* Chunky Clay Button ("LEARN MORE ↗") with Squishy Elastic Bounce */}
+            <div className="pt-2">
               <a 
                 href="#projects"
                 onClick={(e) => {
@@ -161,115 +161,134 @@ export function ServicesSection() {
                 }}
               >
                 <motion.button 
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className={`border border-white/20 hover:border-[#FFB800]/60 text-white hover:text-white bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-md rounded-full px-7 py-3.5 text-xs font-bold tracking-[0.16em] uppercase transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(255,184,0,0.25)] flex items-center gap-2.5 group cursor-pointer ${isBn ? "font-bangla-ui" : ""}`}
+                  whileHover={{ y: -4, scale: 1.03 }}
+                  whileTap={{ y: 0, scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 16 }}
+                  className={`clay-btn-coral px-8 py-4 text-xs font-black tracking-[0.18em] uppercase gap-3 shadow-xl ${isBn ? "font-bangla-ui" : ""}`}
                 >
-                  <span>{isBn ? "বিস্তারিত কাজ দেখুন" : "LEARN MORE"}</span>
-                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-black text-[#FFB800] group-hover:translate-x-0.5 transition-transform">
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  <span>{isBn ? "বিস্তারিত কাজ দেখুন" : "EXPLORE WORK"}</span>
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white/20 shadow-inner">
+                    <ArrowUpRight className="w-3.5 h-3.5 text-white" />
                   </span>
                 </motion.button>
               </a>
             </div>
           </motion.div>
 
-          {/* Right Column: Bespoke Interactive Product Suite & Engineering Matrix */}
+          {/* Right Column: Bespoke Inflated Clay Architecture Matrix */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ type: "spring", stiffness: 220, damping: 20 }}
             className="lg:col-span-6 relative flex justify-center items-center"
           >
-            {/* Ambient backlight glow - Warm Studio Gold */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#FFB800]/15 via-[#EA7814]/10 to-transparent blur-[80px] rounded-full scale-90 pointer-events-none" />
+            {/* Ambient backlight glow - Neon Coral to Violet */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#FF5C35]/15 via-[#7C3AED]/12 to-transparent blur-[90px] rounded-full scale-95 pointer-events-none" />
 
-            {/* Bespoke Interactive Software Interface Card */}
-            <div className="relative w-full rounded-3xl overflow-hidden border border-white/10 bg-[#050505]/95 backdrop-blur-2xl shadow-[0_30px_80px_rgba(0,0,0,0.85)] group hover:border-[#FFB800]/30 transition-all duration-500 p-5 sm:p-6">
+            {/* Inflated Master Clay Architecture Station */}
+            <div className="relative w-full rounded-[36px] overflow-hidden clay-card-dark p-6 sm:p-7">
               
-              {/* Window Controls & Live System Indicator */}
-              <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
+              {/* Window Controls & Live System Indicator with Puffy Clay Beads */}
+              <div className="flex items-center justify-between pb-4 border-b border-white/[0.06]">
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
+                  <span className="w-3.5 h-3.5 rounded-full bg-[#FF5F56] shadow-[inset_1px_1px_2px_rgba(255,255,255,0.4),0_2px_4px_rgba(0,0,0,0.5)]" />
+                  <span className="w-3.5 h-3.5 rounded-full bg-[#FFBD2E] shadow-[inset_1px_1px_2px_rgba(255,255,255,0.4),0_2px_4px_rgba(0,0,0,0.5)]" />
+                  <span className="w-3.5 h-3.5 rounded-full bg-[#27C93F] shadow-[inset_1px_1px_2px_rgba(255,255,255,0.4),0_2px_4px_rgba(0,0,0,0.5)]" />
                 </div>
-                <div className="flex items-center gap-2 text-[10px] font-mono text-neutral-400 bg-white/[0.04] px-3 py-1 rounded-full border border-white/5">
-                  <span className="w-2 h-2 rounded-full bg-[#FFB800] animate-pulse" />
-                  <span className="text-neutral-300">WEBZEN ARCHITECTURE SUITE</span>
+                <div className="flex items-center gap-2 text-[10px] font-mono text-neutral-300 bg-[#14161F] clay-pill px-3.5 py-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#FF5C35] animate-ping" />
+                  <span className="font-bold tracking-wider">WEBZEN CLAY ENGINE</span>
                 </div>
               </div>
 
-              {/* Interactive Live Architecture Modules */}
+              {/* Interactive Live Architecture Modules in Inflated Clay */}
               <div className="pt-5 space-y-4">
                 
-                {/* Module 1: E-Commerce & bKash Instant Engine (Studio Gold) */}
-                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-[#FFB800]/40 transition-all duration-300">
+                {/* Module 1: E-Commerce & bKash Instant Engine (Coral Clay Accent) */}
+                <motion.div 
+                  whileHover={{ y: -3, scale: 1.015 }}
+                  transition={{ type: "spring", stiffness: 240, damping: 18 }}
+                  className="p-4 sm:p-4.5 rounded-[24px] clay-card-surface border border-white/[0.06] hover:border-[#FF5C35]/40 transition-colors"
+                >
                   <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-[#FFB800]" />
-                      <span className={`text-xs font-bold text-white ${isBn ? "font-bangla-ui" : "font-display"}`}>
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-7 h-7 rounded-xl bg-[#FF5C35]/20 clay-icon-bubble flex items-center justify-center">
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#FF5C35]" />
+                      </div>
+                      <span className={`text-xs font-extrabold text-white text-clay-3d ${isBn ? "font-bangla-ui" : "font-display"}`}>
                         {isBn ? "ই-কমার্স ও বিকাশ অটোমেটেড গেটওয়ে" : "E-Commerce & bKash Gateway"}
                       </span>
                     </div>
-                    <span className="text-[10px] font-mono text-[#FFB800] bg-[#FFB800]/10 px-2 py-0.5 rounded-md border border-[#FFB800]/20">
-                      LIVE • 0.3s TTFB
+                    <span className="text-[10px] font-mono font-bold text-[#FF5C35] bg-[#FF5C35]/15 px-2.5 py-1 rounded-full shadow-[inset_1px_1px_2px_rgba(255,255,255,0.15)]">
+                      LIVE • 0.2s TTFB
                     </span>
                   </div>
-                  <p className={`text-xs text-neutral-400 ${isBn ? "font-bangla-body" : ""}`}>
+                  <p className={`text-xs text-neutral-400 pl-9.5 ${isBn ? "font-bangla-body" : ""}`}>
                     {isBn 
                     ? "ইনস্ট্যান্ট পেমেন্ট ভেরিফিকেশন, রিয়েল-টাইম এসএমএস নোটিফিকেশন ও অটোমেটিক ইনভয়েস।" 
                     : "Direct payment reconciliation, automated SMS receipts & real-time webhook triggers."}
                   </p>
-                </div>
+                </motion.div>
 
-                {/* Module 2: Telehealth & Booking Pipeline (Studio Amber) */}
-                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-[#F59E0B]/40 transition-all duration-300">
+                {/* Module 2: Telehealth & Booking Pipeline (Violet Clay Accent) */}
+                <motion.div 
+                  whileHover={{ y: -3, scale: 1.015 }}
+                  transition={{ type: "spring", stiffness: 240, damping: 18 }}
+                  className="p-4 sm:p-4.5 rounded-[24px] clay-card-surface border border-white/[0.06] hover:border-[#7C3AED]/40 transition-colors"
+                >
                   <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-[#F59E0B]" />
-                      <span className={`text-xs font-bold text-white ${isBn ? "font-bangla-ui" : "font-display"}`}>
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-7 h-7 rounded-xl bg-[#7C3AED]/20 clay-icon-bubble flex items-center justify-center">
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#7C3AED]" />
+                      </div>
+                      <span className={`text-xs font-extrabold text-white text-clay-3d ${isBn ? "font-bangla-ui" : "font-display"}`}>
                         {isBn ? "টেলিমেডিসিন ও ডক্টর স্লট বুকিং" : "Telehealth & Clinic Scheduling"}
                       </span>
                     </div>
-                    <span className="text-[10px] font-mono text-[#F59E0B] bg-[#F59E0B]/10 px-2 py-0.5 rounded-md border border-[#F59E0B]/20">
+                    <span className="text-[10px] font-mono font-bold text-[#A78BFA] bg-[#7C3AED]/15 px-2.5 py-1 rounded-full shadow-[inset_1px_1px_2px_rgba(255,255,255,0.15)]">
                       SOCKET SYNC
                     </span>
                   </div>
-                  <p className={`text-xs text-neutral-400 ${isBn ? "font-bangla-body" : ""}`}>
+                  <p className={`text-xs text-neutral-400 pl-9.5 ${isBn ? "font-bangla-body" : ""}`}>
                     {isBn 
                     ? "৩ ধাপে অনলাইন সিরিয়াল, ডাক্তারের সময়সূচী ড্যাশবোর্ড ও রোগীর মেডিকেল হিস্ট্রি পোর্টাল।" 
                     : "Multi-slot appointment sync, doctor availability matrix & cloud patient records."}
                   </p>
-                </div>
+                </motion.div>
 
-                {/* Module 3: Enterprise Cloud & Custom Dashboards (Warm Orange) */}
-                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-[#EA7814]/40 transition-all duration-300">
+                {/* Module 3: Enterprise Cloud & Custom Dashboards (Mint Clay Accent) */}
+                <motion.div 
+                  whileHover={{ y: -3, scale: 1.015 }}
+                  transition={{ type: "spring", stiffness: 240, damping: 18 }}
+                  className="p-4 sm:p-4.5 rounded-[24px] clay-card-surface border border-white/[0.06] hover:border-[#10B981]/40 transition-colors"
+                >
                   <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-[#EA7814]" />
-                      <span className={`text-xs font-bold text-white ${isBn ? "font-bangla-ui" : "font-display"}`}>
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-7 h-7 rounded-xl bg-[#10B981]/20 clay-icon-bubble flex items-center justify-center">
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#10B981]" />
+                      </div>
+                      <span className={`text-xs font-extrabold text-white text-clay-3d ${isBn ? "font-bangla-ui" : "font-display"}`}>
                         {isBn ? "এন্টারপ্রাইজ ক্লাউড ও অ্যানালিটিক্স" : "Enterprise Cloud Analytics"}
                       </span>
                     </div>
-                    <span className="text-[10px] font-mono text-[#EA7814] bg-[#EA7814]/10 px-2 py-0.5 rounded-md border border-[#EA7814]/20">
+                    <span className="text-[10px] font-mono font-bold text-[#34D399] bg-[#10B981]/15 px-2.5 py-1 rounded-full shadow-[inset_1px_1px_2px_rgba(255,255,255,0.15)]">
                       99.99% UPTIME
                     </span>
                   </div>
-                  <p className={`text-xs text-neutral-400 ${isBn ? "font-bangla-body" : ""}`}>
+                  <p className={`text-xs text-neutral-400 pl-9.5 ${isBn ? "font-bangla-body" : ""}`}>
                     {isBn 
                     ? "৫০,০০০+ কনকারেন্ট কানেকশন ক্যাপাবিলিটি, ডায়নামিক ডেটা ফিল্টারিং ও রোল-বেসড সিকিউরিটি।" 
                     : "50,000+ concurrent connection throughput, role-based access & encrypted databases."}
                   </p>
-                </div>
+                </motion.div>
 
               </div>
 
-              {/* Bottom Engineering Tagline */}
-              <div className="mt-4 pt-3.5 border-t border-white/[0.06] flex items-center justify-between text-[11px] text-neutral-500 font-mono">
-                <span>Next.js 16 • React 19 • Node • MongoDB</span>
-                <span className="text-neutral-400 font-bold">100% Bespoke Code</span>
+              {/* Bottom Recessed Inset Bar */}
+              <div className="mt-5 p-3 rounded-2xl clay-inset flex items-center justify-between text-[11px] text-neutral-400 font-mono">
+                <span>Next.js 16 • React 19 • Node • Clay UI</span>
+                <span className="text-[#FF8B66] font-bold">100% Tactile Engineering</span>
               </div>
 
             </div>

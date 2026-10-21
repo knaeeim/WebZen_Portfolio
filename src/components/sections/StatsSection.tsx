@@ -34,38 +34,36 @@ export function StatsSection() {
     : fallbackMetrics;
 
   return (
-    <section id="metrics" className="relative w-full py-2 sm:py-4 my-0 overflow-hidden scroll-mt-20 z-10 bg-[#000000]">
-      {/* Ambient Glow Behind the Strip - Studio Amber/Golden Gradient */}
+    <section id="metrics" className="relative w-full py-6 sm:py-10 my-0 overflow-hidden scroll-mt-20 z-10 bg-[#0F1117]">
+      {/* Ambient Glow Behind the Pods - Soft Coral & Violet */}
       <div 
-        className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[160px] bg-gradient-to-r from-[#FFB800]/[0.08] via-[#F59E0B]/[0.06] to-[#EA7814]/[0.06] blur-[100px] pointer-events-none" 
+        className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[180px] bg-gradient-to-r from-[#FF5C35]/[0.08] via-[#7C3AED]/[0.06] to-[#10B981]/[0.06] blur-[100px] pointer-events-none" 
         aria-hidden="true" 
       />
 
-      {/* Full-Width Horizontal Strip */}
-      <div className="relative w-full bg-[#050505]/95 backdrop-blur-2xl border-y border-white/[0.08] py-8 sm:py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10 text-center divide-y sm:divide-y-0 sm:divide-x divide-white/[0.08]">
-            {metrics.map((metric, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 25, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className={`flex flex-col items-center justify-center ${idx > 1 ? "pt-5 sm:pt-0" : ""}`}
-              >
-                {/* Large Bold White Number with Golden Drop-Shadow */}
-                <div className={`text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight drop-shadow-[0_4px_24px_rgba(255,184,0,0.2)] ${isBn ? "font-bangla-display font-black" : "font-display font-black"}`}>
-                  {metric.value}
-                </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-center">
+          {metrics.map((metric, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 25, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ type: "spring", stiffness: 220, damping: 18, delay: idx * 0.08 }}
+              whileHover={{ y: -6, scale: 1.02 }}
+              className="clay-card-surface p-6 sm:p-7 rounded-[28px] sm:rounded-[32px] flex flex-col items-center justify-center cursor-default group"
+            >
+              {/* Large Inflated Bold Number with 3D Depth */}
+              <div className={`text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight text-clay-3d group-hover:text-[#FF8B66] transition-colors ${isBn ? "font-bangla-display font-black" : "font-display font-black"}`}>
+                {metric.value}
+              </div>
 
-                {/* Muted Gray Label */}
-                <div className={`text-xs sm:text-xs text-neutral-400 font-bold tracking-[0.2em] uppercase mt-2 ${isBn ? "font-bangla-ui" : ""}`}>
-                  {metric.label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+              {/* Muted Pill Tag with Soft Clay Inset */}
+              <div className={`mt-3 px-3 py-1 rounded-full bg-[#14161F] clay-pill text-[10px] sm:text-xs text-neutral-300 font-extrabold tracking-[0.16em] uppercase ${isBn ? "font-bangla-ui" : ""}`}>
+                {metric.label}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

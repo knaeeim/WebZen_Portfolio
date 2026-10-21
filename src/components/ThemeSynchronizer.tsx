@@ -4,20 +4,21 @@ import { useEffect } from "react";
 import { useSite } from "@/context/SiteContext";
 
 const PRESET_MAP: Record<string, { accent: string; start: string; end: string }> = {
-  "creative-studio": { accent: "#FFB800", start: "#FFE58F", end: "#EA7814" },
-  "solar-amber": { accent: "#FFB800", start: "#F59E0B", end: "#EA7814" },
-  "cyber-zen": { accent: "#FFB800", start: "#F59E0B", end: "#EA7814" },
+  "dark-clay": { accent: "#FF5C35", start: "#FF6F4C", end: "#7C3AED" },
+  "creative-studio": { accent: "#FF5C35", start: "#FF6F4C", end: "#7C3AED" },
+  "solar-amber": { accent: "#FBBF24", start: "#F59E0B", end: "#EA7814" },
+  "cyber-zen": { accent: "#FF5C35", start: "#FF6F4C", end: "#7C3AED" },
   "emerald-matrix": { accent: "#10B981", start: "#34D399", end: "#84CC16" },
   "azure-sky": { accent: "#0EA5E9", start: "#38BDF8", end: "#6366F1" },
-  "aurora-violet": { accent: "#A855F7", start: "#D946EF", end: "#38BDF8" },
+  "aurora-violet": { accent: "#8B5CF6", start: "#A78BFA", end: "#FF5C35" },
   "crimson-rose": { accent: "#EF4444", start: "#F43F5E", end: "#FB7185" },
 };
 
 const BG_TONE_MAP: Record<string, string> = {
-  "pitch-black": "#000000",
-  "obsidian": "#050505",
-  "midnight-navy": "#080D1A",
-  "deep-slate": "#0F141C",
+  "obsidian": "#0F1117",
+  "pitch-black": "#0B0D13",
+  "midnight-navy": "#0D111A",
+  "deep-slate": "#12141C",
 };
 
 export function ThemeSynchronizer() {
@@ -27,17 +28,13 @@ export function ThemeSynchronizer() {
   useEffect(() => {
     if (typeof window === "undefined" || !theme) return;
 
-    const presetInfo = PRESET_MAP[theme.preset] || {
-      accent: theme.accentColor || "#06B6D4",
-      start: theme.accentGradientStart || "#38BDF8",
-      end: theme.accentGradientEnd || "#10B981",
-    };
+    const presetInfo = PRESET_MAP[theme.preset] || PRESET_MAP["dark-clay"];
 
-    const accent = theme.preset === "custom" ? (theme.accentColor || "#06B6D4") : presetInfo.accent;
+    const accent = theme.preset === "custom" ? (theme.accentColor || "#FF5C35") : presetInfo.accent;
     const start = theme.preset === "custom" ? (theme.accentGradientStart || accent) : presetInfo.start;
     const end = theme.preset === "custom" ? (theme.accentGradientEnd || accent) : presetInfo.end;
 
-    const bgTone = BG_TONE_MAP[theme.backgroundTone || "obsidian"] || "#0B0B0E";
+    const bgTone = BG_TONE_MAP[theme.backgroundTone || "obsidian"] || "#0F1117";
 
     const glowMultiplier = 
       theme.glowIntensity === "off" ? "0" :

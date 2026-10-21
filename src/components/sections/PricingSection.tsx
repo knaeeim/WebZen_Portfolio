@@ -31,26 +31,30 @@ export function PricingSection() {
   }));
 
   return (
-    <section id="pricing" className="relative py-12 sm:py-16 overflow-hidden scroll-mt-20 bg-[#000000]">
-      {/* Background ambient corner glow - Warm Studio Gold */}
+    <section id="pricing" className="relative py-14 sm:py-20 overflow-hidden scroll-mt-20 bg-[#0F1117]">
+      {/* Background ambient corner glow - Neon Coral & Vivid Violet */}
       <div 
-        className="absolute top-1/2 -left-[10%] w-[500px] h-[500px] bg-[#FFB800]/[0.05] blur-[150px] pointer-events-none" 
+        className="absolute top-1/2 -left-[10%] w-[500px] h-[500px] bg-[#FF5C35]/[0.06] blur-[150px] pointer-events-none" 
+        aria-hidden="true" 
+      />
+      <div 
+        className="absolute bottom-10 right-[5%] w-[450px] h-[450px] bg-[#7C3AED]/[0.06] blur-[160px] rounded-full pointer-events-none" 
         aria-hidden="true" 
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 mb-3"
+            transition={{ type: "spring", stiffness: 220, damping: 18 }}
+            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#181B24] clay-pill text-neutral-300 mb-3.5"
           >
-            <Zap className="w-3.5 h-3.5 text-[#FFB800]" />
-            <span className={`text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-300 ${isBn ? "font-bangla-ui" : ""}`}>
+            <Zap className="w-3.5 h-3.5 text-[#FF5C35]" />
+            <span className={`text-[11px] font-extrabold tracking-[0.2em] uppercase text-neutral-200 ${isBn ? "font-bangla-ui" : ""}`}>
               {isBn ? "স্বচ্ছ প্যাকেজ ও মূল্যতালিকা" : "TRANSPARENT PRICING"}
             </span>
           </motion.div>
@@ -59,8 +63,8 @@ export function PricingSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.7, delay: 0.08 }}
-            className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none ${isBn ? "font-bangla-display font-black" : "font-display font-black"}`}
+            transition={{ type: "spring", stiffness: 220, damping: 18, delay: 0.08 }}
+            className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none text-clay-3d ${isBn ? "font-bangla-display font-black" : "font-display font-black"}`}
           >
             {isBn ? (
               <>
@@ -77,7 +81,7 @@ export function PricingSection() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            transition={{ type: "spring", stiffness: 220, damping: 18, delay: 0.15 }}
             className={`mt-3 text-sm sm:text-base text-neutral-400 font-normal leading-relaxed ${isBn ? "font-bangla-body" : ""}`}
           >
             {isBn
@@ -85,92 +89,96 @@ export function PricingSection() {
               : "Predictable, transparent digital engineering packages designed for early-stage startups and enterprise scale."}
           </motion.p>
 
-          {/* Currency Switcher */}
+          {/* Inflated Clay Currency Switcher */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-6 inline-flex items-center p-1.5 rounded-full bg-[#050505] border border-white/10 backdrop-blur-xl shadow-lg"
+            transition={{ type: "spring", stiffness: 240, damping: 18, delay: 0.2 }}
+            className="mt-7 inline-flex items-center p-1.5 rounded-full bg-[#14161F] clay-pill"
           >
-            <button
+            <motion.button
+              whileTap={{ scale: 0.95 }}
               onClick={() => setCurrency("bdt")}
-              className={`px-5 py-2 rounded-full text-xs font-bold tracking-wider transition-all cursor-pointer ${isBn ? "font-bangla-ui" : ""} ${
+              className={`px-6 py-2.5 rounded-full text-xs font-extrabold tracking-wider transition-all cursor-pointer ${isBn ? "font-bangla-ui" : ""} ${
                 currency === "bdt"
-                  ? "bg-[#FFB800] text-black shadow-[0_0_20px_rgba(255,184,0,0.35)]"
+                  ? "clay-btn-coral text-white scale-105"
                   : "text-neutral-400 hover:text-white"
               }`}
             >
               {t.currencyBdt}
-            </button>
-            <button
+            </motion.button>
+            <motion.button
+              whileTap={{ scale: 0.95 }}
               onClick={() => setCurrency("usd")}
-              className={`px-5 py-2 rounded-full text-xs font-bold tracking-wider transition-all cursor-pointer ${isBn ? "font-bangla-ui" : ""} ${
+              className={`px-6 py-2.5 rounded-full text-xs font-extrabold tracking-wider transition-all cursor-pointer ${isBn ? "font-bangla-ui" : ""} ${
                 currency === "usd"
-                  ? "bg-[#FFB800] text-black shadow-[0_0_20px_rgba(255,184,0,0.35)]"
+                  ? "clay-btn-coral text-white scale-105"
                   : "text-neutral-400 hover:text-white"
               }`}
             >
               {t.currencyUsd}
-            </button>
+            </motion.button>
           </motion.div>
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-7 sm:gap-8 items-stretch pt-4">
           {plans.map((plan, idx) => (
             <motion.div
               key={plan.id || idx}
               initial={{ opacity: 0, y: 30, scale: 0.96 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const, delay: idx * 0.12 }}
-              whileHover={{ y: -6 }}
-              className={`rounded-3xl p-6 sm:p-8 relative flex flex-col justify-between transition-all duration-300 ${
+              transition={{ type: "spring", stiffness: 220, damping: 18, delay: idx * 0.1 }}
+              whileHover={{ y: -8, scale: 1.015 }}
+              className={`rounded-[36px] p-7 sm:p-8 relative flex flex-col justify-between transition-all duration-300 ${
                 plan.popular
-                  ? "bg-[#08080C] border-2 border-[#FFB800] shadow-[0_20px_60px_rgba(255,184,0,0.2)] lg:-translate-y-2"
-                  : "bg-[#050505] border border-white/[0.08] hover:border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.85)]"
+                  ? "clay-card-dark border-2 border-[#FF5C35]/60 shadow-[0_25px_60px_rgba(255,92,53,0.25)] lg:-translate-y-3"
+                  : "clay-card-dark"
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                  <span className={`text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full bg-gradient-to-r from-[#FFB800] via-[#F59E0B] to-[#EA7814] text-black shadow-lg ${isBn ? "font-bangla-ui" : ""}`}>
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <span className={`text-[10px] font-black uppercase tracking-[0.2em] px-5 py-1.5 rounded-full clay-btn-coral text-white shadow-xl ${isBn ? "font-bangla-ui" : ""}`}>
                     {plan.badgeText || t.mostPopular}
                   </span>
                 </div>
               )}
 
               <div>
-                <h3 className={`text-2xl text-white mb-2 font-black ${isBn ? "font-bangla-display" : "font-display"}`}>{plan.name}</h3>
+                <h3 className={`text-2xl text-white mb-2 font-black text-clay-3d ${isBn ? "font-bangla-display" : "font-display"}`}>{plan.name}</h3>
                 <p className="text-xs sm:text-sm text-neutral-400 min-h-[36px] leading-relaxed">
                   {plan.description}
                 </p>
 
                 {/* Price Display */}
-                <div className="mt-6 mb-6 pb-6 border-b border-white/[0.08]">
-                  <div className="flex items-baseline gap-1">
-                    <span className="font-display font-black text-3xl sm:text-4xl text-white tracking-tight">
+                <div className="mt-6 mb-6 pb-6 border-b border-white/[0.06]">
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="font-display font-black text-3xl sm:text-4xl text-white tracking-tight text-clay-3d">
                       {currency === "bdt" ? plan.priceBdt : plan.priceUsd}
                     </span>
                     <span className="text-xs text-neutral-400 font-mono">
                       / {plan.period}
                     </span>
                   </div>
-                  <p className="text-[11px] text-[#FFB800]/90 mt-2 flex items-center gap-1.5 font-medium">
-                    <Info className="w-3.5 h-3.5 text-[#FFB800] shrink-0" />
+                  <p className="text-[11px] text-[#FF8B66] mt-2.5 flex items-center gap-1.5 font-medium">
+                    <Info className="w-3.5 h-3.5 text-[#FF5C35] shrink-0" />
                     <span>{t.hostingCardNote}</span>
                   </p>
                 </div>
 
                 {/* Features List */}
                 <div className="space-y-3.5">
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-neutral-300">
+                  <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-neutral-200">
                     {t.whatsIncluded}
                   </p>
                   <ul className="space-y-3">
                     {plan.features.map((feat: string, fIdx: number) => (
                       <li key={fIdx} className="flex items-start gap-3 text-xs sm:text-sm text-neutral-300">
-                        <Check className="w-4 h-4 text-[#FFB800] shrink-0 mt-0.5" />
+                        <div className="w-5 h-5 rounded-full bg-[#14161F] clay-icon-bubble flex items-center justify-center shrink-0 mt-0.5">
+                          <Check className="w-3 h-3 text-[#FF5C35]" strokeWidth={3} />
+                        </div>
                         <span>{feat}</span>
                       </li>
                     ))}
@@ -178,8 +186,8 @@ export function PricingSection() {
                 </div>
               </div>
 
-              {/* Action */}
-              <div className="mt-8 pt-6 border-t border-white/[0.08]">
+              {/* Action with Squishy Tactile Elastic Kinetics */}
+              <div className="mt-8 pt-6 border-t border-white/[0.06]">
                 <a 
                   href={plan.ctaLink || "#contact"}
                   onClick={(e) => {
@@ -196,40 +204,43 @@ export function PricingSection() {
                     }
                   }}
                 >
-                  <button
-                    className={`w-full py-4 rounded-full font-black text-xs tracking-[0.16em] uppercase transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer ${
+                  <motion.button
+                    whileHover={{ y: -4, scale: 1.025 }}
+                    whileTap={{ y: 0, scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 260, damping: 16 }}
+                    className={`w-full py-4 text-xs font-black tracking-[0.16em] uppercase flex items-center justify-center gap-2 group cursor-pointer ${
                       plan.popular
-                        ? "bg-gradient-to-r from-[#FFB800] to-[#EA7814] text-black shadow-[0_0_25px_rgba(255,184,0,0.4)] hover:shadow-[0_0_35px_rgba(255,184,0,0.6)]"
-                        : "border border-white/20 hover:border-[#FFB800]/60 text-white bg-white/[0.04] hover:bg-white/[0.08]"
-                    }`}
+                        ? "clay-btn-coral shadow-xl"
+                        : "clay-btn-dark shadow-md"
+                    } ${isBn ? "font-bangla-ui" : ""}`}
                   >
-                    <span>{plan.ctaText}</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </button>
+                    <span>{plan.ctaText || (isBn ? "শুরু করুন" : "Get Started")}</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </motion.button>
                 </a>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Hosting & Database Storage Transparency Banner */}
+        {/* Hosting & Database Storage Transparency Banner in Inflated Clay */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mt-14 rounded-3xl p-6 sm:p-8 border border-white/[0.08] bg-[#141419] flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
+          transition={{ type: "spring", stiffness: 220, damping: 18 }}
+          className="mt-14 rounded-[32px] p-6 sm:p-8 clay-card-surface flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
         >
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 text-[#06B6D4] flex items-center justify-center shrink-0 mt-0.5">
+            <div className="w-12 h-12 rounded-2xl bg-[#14161F] clay-icon-bubble text-[#FF5C35] flex items-center justify-center shrink-0 mt-0.5">
               <Server className="w-6 h-6" />
             </div>
             <div>
               <div className="flex items-center gap-2.5 flex-wrap">
-                <h4 className="font-display font-extrabold text-base sm:text-lg text-white">
+                <h4 className="font-display font-extrabold text-base sm:text-lg text-white text-clay-3d">
                   {t.hostingNoticeTitle}
                 </h4>
-                <span className="text-[10px] font-bold px-3 py-0.5 rounded-full bg-[#06B6D4]/10 border border-[#06B6D4]/30 text-[#06B6D4] uppercase tracking-wider">
+                <span className="text-[10px] font-bold px-3 py-1 rounded-full bg-[#FF5C35]/15 text-[#FF8B66] clay-pill uppercase tracking-wider">
                   {t.hostingNoticeBadge}
                 </span>
               </div>
@@ -240,7 +251,7 @@ export function PricingSection() {
           </div>
 
           <div className="shrink-0 self-stretch md:self-center flex items-center">
-            <div className="text-xs font-bold text-white bg-white/[0.04] border border-white/10 px-5 py-2.5 rounded-full inline-flex items-center gap-2 w-full md:w-auto justify-center">
+            <div className="text-xs font-bold text-white bg-[#14161F] clay-pill px-5 py-2.5 inline-flex items-center gap-2 w-full md:w-auto justify-center">
               <Check className="w-4 h-4 text-[#10B981] shrink-0" />
               <span>{t.hostingSetupFree}</span>
             </div>

@@ -47,20 +47,20 @@ export function RibbonMarquee() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="relative w-full overflow-hidden py-4 sm:py-6 my-1 z-20"
+      className="relative w-full overflow-hidden py-6 sm:py-8 my-2 z-20"
     >
-      {/* Tilted Angled Ribbon (-2.5deg) */}
-      <div className="-rotate-2 transform scale-105 w-full bg-[#050505] border-y border-white/10 py-3.5 sm:py-4 shadow-[0_15px_40px_rgba(0,0,0,0.9)] overflow-hidden">
+      {/* Floating Inflated 3D Clay Ribbon Bar (-1.5deg tilt with puffed volume) */}
+      <div className="-rotate-1.5 transform scale-105 w-full bg-[#181B24] border-y border-white/[0.08] py-4 sm:py-5 shadow-[0_20px_45px_rgba(0,0,0,0.7),inset_0_3px_5px_rgba(255,255,255,0.09),inset_0_-4px_8px_rgba(0,0,0,0.65)] overflow-hidden">
         <div className="animate-marquee items-center whitespace-nowrap">
           {items.map((item, idx) => (
             <div key={idx} className="flex items-center">
-              <span className={`uppercase text-neutral-300 hover:text-white transition-colors cursor-default ${isBn ? "font-bangla-ui font-bold text-sm sm:text-base tracking-normal" : "font-display font-black text-xs sm:text-sm lg:text-base tracking-[0.2em]"}`}>
+              <span className={`inline-flex items-center px-4 py-1.5 rounded-full bg-[#1E2230]/70 border border-white/[0.05] shadow-[inset_2px_2px_4px_rgba(255,255,255,0.08),inset_-2px_-2px_4px_rgba(0,0,0,0.4)] text-neutral-200 hover:text-white transition-all cursor-default select-none ${isBn ? "font-bangla-ui font-bold text-sm sm:text-base tracking-normal" : "font-display font-black text-xs sm:text-sm tracking-[0.2em] uppercase text-clay-3d"}`}>
                 {item}
               </span>
               
-              {/* Studio Gold 4-point Star (✦) */}
+              {/* Inflated 3D Coral Clay Star (✦) */}
               <span 
-                className="mx-5 sm:mx-8 text-[#FFB800] text-sm sm:text-base select-none inline-block drop-shadow-[0_0_8px_rgba(255,184,0,0.6)]"
+                className="mx-5 sm:mx-8 text-[#FF5C35] text-base sm:text-lg select-none inline-block drop-shadow-[0_4px_12px_rgba(255,92,53,0.5)] transform hover:rotate-45 transition-transform"
                 aria-hidden="true"
               >
                 ✦
