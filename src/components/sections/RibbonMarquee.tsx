@@ -46,21 +46,28 @@ export function RibbonMarquee() {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="relative w-full overflow-hidden py-6 sm:py-8 my-2 z-20"
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="relative w-full overflow-hidden py-6 sm:py-8 my-4 z-20"
     >
-      {/* Floating Inflated 3D Clay Ribbon Bar (-1.5deg tilt with puffed volume) */}
-      <div className="-rotate-1.5 transform scale-105 w-full bg-[#181B24] border-y border-white/[0.08] py-4 sm:py-5 shadow-[0_20px_45px_rgba(0,0,0,0.7),inset_0_3px_5px_rgba(255,255,255,0.09),inset_0_-4px_8px_rgba(0,0,0,0.65)] overflow-hidden">
+      {/* Serene Zen Liquid Glass Ribbon with Hairline Starlight Borders */}
+      <div className="relative w-full bg-[#060813]/60 backdrop-blur-xl border-y border-white/[0.08] py-4 sm:py-5 overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+        {/* Subtle Aurora Horizon Glow */}
+        <div 
+          className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[30px] bg-gradient-to-r from-transparent via-[#2DD4BF]/10 to-transparent blur-md pointer-events-none"
+        />
+
         <div className="animate-marquee items-center whitespace-nowrap">
           {items.map((item, idx) => (
             <div key={idx} className="flex items-center">
-              <span className={`inline-flex items-center px-4 py-1.5 rounded-full bg-[#1E2230]/70 border border-white/[0.05] shadow-[inset_2px_2px_4px_rgba(255,255,255,0.08),inset_-2px_-2px_4px_rgba(0,0,0,0.4)] text-neutral-200 hover:text-white transition-all cursor-default select-none ${isBn ? "font-bangla-ui font-bold text-sm sm:text-base tracking-normal" : "font-display font-black text-xs sm:text-sm tracking-[0.2em] uppercase text-clay-3d"}`}>
+              <span className={`inline-flex items-center px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-neutral-300 hover:text-white hover:border-[#2DD4BF]/30 transition-all cursor-default select-none shadow-[0_2px_10px_rgba(0,0,0,0.3)] ${
+                isBn ? "font-bangla-ui font-semibold text-sm sm:text-base tracking-normal" : "font-display font-bold text-xs sm:text-sm tracking-[0.2em] uppercase"
+              }`}>
                 {item}
               </span>
               
-              {/* Inflated 3D Coral Clay Star (✦) */}
+              {/* Luminous Starlight Aurora Star (✦) */}
               <span 
-                className="mx-5 sm:mx-8 text-[#FF5C35] text-base sm:text-lg select-none inline-block drop-shadow-[0_4px_12px_rgba(255,92,53,0.5)] transform hover:rotate-45 transition-transform"
+                className="mx-5 sm:mx-8 text-[#2DD4BF] text-sm sm:text-base select-none inline-block drop-shadow-[0_0_8px_rgba(45,212,191,0.7)]"
                 aria-hidden="true"
               >
                 ✦

@@ -49,30 +49,30 @@ export function ServicesSection() {
     : fallbackChecklist;
 
   return (
-    <section id="services" className="relative py-14 sm:py-20 overflow-hidden scroll-mt-20 bg-[#0F1117]">
-      {/* Background ambient lighting - Soft Coral & Violet Clay Glow */}
+    <section id="services" className="relative py-20 sm:py-28 overflow-hidden scroll-mt-20 bg-[#060813]">
+      {/* Background ambient lighting - Soft Aurora Teal & Lavender Glow */}
       <div 
-        className="absolute top-1/2 -left-[10%] w-[500px] h-[500px] bg-[#FF5C35]/[0.06] blur-[160px] rounded-full pointer-events-none" 
+        className="absolute top-1/2 -left-[10%] w-[600px] h-[600px] bg-[#2DD4BF]/[0.05] blur-[170px] rounded-full pointer-events-none" 
         aria-hidden="true" 
       />
       <div 
-        className="absolute top-1/3 -right-[10%] w-[500px] h-[500px] bg-[#7C3AED]/[0.06] blur-[160px] rounded-full pointer-events-none" 
+        className="absolute top-1/3 -right-[10%] w-[600px] h-[600px] bg-[#C084FC]/[0.05] blur-[170px] rounded-full pointer-events-none" 
         aria-hidden="true" 
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Title: "Our Services" Centered in Puffed Typography */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+        {/* Section Title: Centered Minimalist Zen Typography */}
+        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ type: "spring", stiffness: 220, damping: 18 }}
-            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#181B24] clay-pill text-neutral-300 mb-3.5"
+            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-zen-pill text-neutral-300 mb-4"
           >
-            <span className="w-2.5 h-2.5 rounded-full bg-[#FF5C35] shadow-[0_0_8px_rgba(255,92,53,0.8)]" />
-            <span className={`text-[11px] font-extrabold tracking-[0.2em] uppercase text-neutral-200 ${isBn ? "font-bangla-ui" : ""}`}>
+            <span className="w-2 h-2 rounded-full bg-[#2DD4BF] shadow-[0_0_8px_#2DD4BF]" />
+            <span className={`text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-200 ${isBn ? "font-bangla-ui tracking-normal" : ""}`}>
               {isBn ? "সার্ভিস ও ক্যাপাবিলিটিজ" : "SOLUTIONS & CAPABILITIES"}
             </span>
           </motion.div>
@@ -82,32 +82,32 @@ export function ServicesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ type: "spring", stiffness: 220, damping: 18, delay: 0.08 }}
-            className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight text-clay-3d ${isBn ? "font-bangla-display font-extrabold" : "font-display font-black"}`}
+            className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight ${isBn ? "font-bangla-display font-extrabold" : "font-display font-black"}`}
           >
             {isBn ? "আমাদের সার্ভিস" : "Our Services"}
           </motion.h2>
         </div>
 
-        {/* Split Feature Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        {/* Split Feature Layout with Architectural Negative Space */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
-          {/* Left Column: Heading, Paragraph, Inflated Clay Checklist & Chunky Clay Button */}
+          {/* Left Column: Heading, Paragraph, Minimalist Numbered Checklist & Aurora Button */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ type: "spring", stiffness: 220, damping: 20 }}
-            className="lg:col-span-6 space-y-6"
+            className="lg:col-span-6 space-y-7"
           >
-            <div className="space-y-3">
-              <h3 className={`text-2xl sm:text-4xl text-white tracking-tight leading-snug text-clay-3d ${isBn ? "font-bangla-display font-bold" : "font-display font-black"}`}>
+            <div className="space-y-4">
+              <h3 className={`text-2xl sm:text-4xl text-white tracking-tight leading-snug ${isBn ? "font-bangla-display font-bold" : "font-display font-bold"}`}>
                 {isBn ? (
                   <>
-                    কাস্টম ওয়েব ও <span className="text-gradient-hero">UI/UX ইঞ্জিনিয়ারিং</span>
+                    কাস্টম ওয়েব ও <span className="text-gradient-aurora">UI/UX ইঞ্জিনিয়ারিং</span>
                   </>
                 ) : (
                   <>
-                    Custom Web & <span className="text-gradient-hero">UI/UX Engineering</span>
+                    Custom Web & <span className="text-gradient-aurora">UI/UX Engineering</span>
                   </>
                 )}
               </h3>
@@ -118,8 +118,8 @@ export function ServicesSection() {
               </p>
             </div>
 
-            {/* Vertical Checklist with Chunky Inflated Clay Cards & 3D Check Bubbles */}
-            <div className="space-y-3.5 pt-1">
+            {/* Vertical Checklist with Frosted Liquid Glass Cards & Numbered Indicators */}
+            <div className="space-y-4 pt-1">
               {checklist.map((item, idx) => (
                 <motion.div 
                   key={idx}
@@ -127,17 +127,17 @@ export function ServicesSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ type: "spring", stiffness: 240, damping: 18, delay: 0.1 + idx * 0.1 }}
-                  whileHover={{ y: -3, scale: 1.015 }}
-                  className="flex items-start gap-3.5 p-4 sm:p-4.5 rounded-[24px] clay-card-surface cursor-pointer group"
+                  whileHover={{ y: -3, scale: 1.01 }}
+                  className="flex items-start gap-4 p-4 sm:p-5 rounded-2xl glass-zen border border-white/[0.07] hover:border-[#2DD4BF]/30 transition-all cursor-pointer group"
                 >
-                  <div className="w-8 h-8 rounded-full bg-[#14161F] clay-icon-bubble flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
-                    <Check className="w-4 h-4 text-[#FF5C35] drop-shadow-[0_2px_4px_rgba(255,92,53,0.5)]" strokeWidth={3} />
+                  <div className="w-8 h-8 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0 mt-0.5 text-xs font-mono font-bold text-[#2DD4BF] group-hover:scale-105 group-hover:bg-[#2DD4BF]/10 transition-all">
+                    0{idx + 1}
                   </div>
                   <div>
-                    <h4 className={`text-white text-base tracking-wide text-clay-3d group-hover:text-[#FF8B66] transition-colors ${isBn ? "font-bangla-display font-bold" : "font-display font-bold"}`}>
+                    <h4 className={`text-white text-base font-bold tracking-wide group-hover:text-[#2DD4BF] transition-colors ${isBn ? "font-bangla-display font-bold" : "font-display font-bold"}`}>
                       {item.title}
                     </h4>
-                    <p className={`text-xs sm:text-sm text-neutral-400 mt-1 leading-normal ${isBn ? "font-bangla-body" : ""}`}>
+                    <p className={`text-xs sm:text-sm text-neutral-400 mt-1 leading-relaxed ${isBn ? "font-bangla-body" : ""}`}>
                       {item.desc}
                     </p>
                   </div>
@@ -145,7 +145,7 @@ export function ServicesSection() {
               ))}
             </div>
 
-            {/* Chunky Clay Button ("LEARN MORE ↗") with Squishy Elastic Bounce */}
+            {/* Aurora Action Button */}
             <div className="pt-2">
               <a 
                 href="#projects"
@@ -161,21 +161,21 @@ export function ServicesSection() {
                 }}
               >
                 <motion.button 
-                  whileHover={{ y: -4, scale: 1.03 }}
-                  whileTap={{ y: 0, scale: 0.95 }}
-                  transition={{ type: "spring", stiffness: 260, damping: 16 }}
-                  className={`clay-btn-coral px-8 py-4 text-xs font-black tracking-[0.18em] uppercase gap-3 shadow-xl ${isBn ? "font-bangla-ui" : ""}`}
+                  whileHover={{ y: -3, scale: 1.02 }}
+                  whileTap={{ y: 0, scale: 0.96 }}
+                  transition={{ type: "spring", stiffness: 280, damping: 18 }}
+                  className={`aurora-btn-primary px-8 py-3.5 text-xs font-bold tracking-[0.16em] uppercase gap-3 shadow-lg ${isBn ? "font-bangla-ui text-sm tracking-normal" : ""}`}
                 >
                   <span>{isBn ? "বিস্তারিত কাজ দেখুন" : "EXPLORE WORK"}</span>
-                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white/20 shadow-inner">
-                    <ArrowUpRight className="w-3.5 h-3.5 text-white" />
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-black/20 shadow-inner">
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[#030712]" />
                   </span>
                 </motion.button>
               </a>
             </div>
           </motion.div>
 
-          {/* Right Column: Bespoke Inflated Clay Architecture Matrix */}
+          {/* Right Column: Architectural Live System Telemetry Hub */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -183,44 +183,44 @@ export function ServicesSection() {
             transition={{ type: "spring", stiffness: 220, damping: 20 }}
             className="lg:col-span-6 relative flex justify-center items-center"
           >
-            {/* Ambient backlight glow - Neon Coral to Violet */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#FF5C35]/15 via-[#7C3AED]/12 to-transparent blur-[90px] rounded-full scale-95 pointer-events-none" />
+            {/* Ambient backlight glow */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#2DD4BF]/10 via-[#818CF8]/10 to-[#C084FC]/10 blur-[100px] rounded-full scale-95 pointer-events-none" />
 
-            {/* Inflated Master Clay Architecture Station */}
-            <div className="relative w-full rounded-[36px] overflow-hidden clay-card-dark p-6 sm:p-7">
+            {/* Master Glass Architecture Station */}
+            <div className="relative w-full rounded-[32px] overflow-hidden glass-zen border border-white/[0.1] p-6 sm:p-8 shadow-[0_25px_60px_rgba(0,0,0,0.6)]">
               
-              {/* Window Controls & Live System Indicator with Puffy Clay Beads */}
-              <div className="flex items-center justify-between pb-4 border-b border-white/[0.06]">
+              {/* Window Controls & Live System Indicator */}
+              <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
                 <div className="flex items-center gap-2">
-                  <span className="w-3.5 h-3.5 rounded-full bg-[#FF5F56] shadow-[inset_1px_1px_2px_rgba(255,255,255,0.4),0_2px_4px_rgba(0,0,0,0.5)]" />
-                  <span className="w-3.5 h-3.5 rounded-full bg-[#FFBD2E] shadow-[inset_1px_1px_2px_rgba(255,255,255,0.4),0_2px_4px_rgba(0,0,0,0.5)]" />
-                  <span className="w-3.5 h-3.5 rounded-full bg-[#27C93F] shadow-[inset_1px_1px_2px_rgba(255,255,255,0.4),0_2px_4px_rgba(0,0,0,0.5)]" />
+                  <span className="w-3 h-3 rounded-full bg-[#EF4444]/80 shadow-[0_0_8px_rgba(239,68,68,0.5)]" />
+                  <span className="w-3 h-3 rounded-full bg-[#F59E0B]/80 shadow-[0_0_8px_rgba(245,158,11,0.5)]" />
+                  <span className="w-3 h-3 rounded-full bg-[#10B981]/80 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
                 </div>
-                <div className="flex items-center gap-2 text-[10px] font-mono text-neutral-300 bg-[#14161F] clay-pill px-3.5 py-1.5">
-                  <span className="w-2 h-2 rounded-full bg-[#FF5C35] animate-ping" />
-                  <span className="font-bold tracking-wider">WEBZEN CLAY ENGINE</span>
+                <div className="flex items-center gap-2 text-[10px] font-mono text-neutral-300 bg-white/[0.04] px-3.5 py-1.5 rounded-full border border-white/[0.06]">
+                  <span className="w-2 h-2 rounded-full bg-[#2DD4BF] animate-ping" />
+                  <span className="font-bold tracking-wider text-[#2DD4BF]">WEBZEN ZEN ENGINE</span>
                 </div>
               </div>
 
-              {/* Interactive Live Architecture Modules in Inflated Clay */}
-              <div className="pt-5 space-y-4">
+              {/* Interactive Live Architecture Modules in Liquid Glass */}
+              <div className="pt-6 space-y-4">
                 
-                {/* Module 1: E-Commerce & bKash Instant Engine (Coral Clay Accent) */}
+                {/* Module 1: E-Commerce & bKash Gateway */}
                 <motion.div 
-                  whileHover={{ y: -3, scale: 1.015 }}
-                  transition={{ type: "spring", stiffness: 240, damping: 18 }}
-                  className="p-4 sm:p-4.5 rounded-[24px] clay-card-surface border border-white/[0.06] hover:border-[#FF5C35]/40 transition-colors"
+                  whileHover={{ y: -2, scale: 1.01 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                  className="p-4 sm:p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-[#2DD4BF]/40 transition-colors shadow-sm"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-7 h-7 rounded-xl bg-[#FF5C35]/20 clay-icon-bubble flex items-center justify-center">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#FF5C35]" />
+                      <div className="w-7 h-7 rounded-lg bg-[#2DD4BF]/15 flex items-center justify-center">
+                        <span className="w-2 h-2 rounded-full bg-[#2DD4BF] shadow-[0_0_6px_#2DD4BF]" />
                       </div>
-                      <span className={`text-xs font-extrabold text-white text-clay-3d ${isBn ? "font-bangla-ui" : "font-display"}`}>
+                      <span className={`text-xs font-bold text-white ${isBn ? "font-bangla-ui" : "font-display"}`}>
                         {isBn ? "ই-কমার্স ও বিকাশ অটোমেটেড গেটওয়ে" : "E-Commerce & bKash Gateway"}
                       </span>
                     </div>
-                    <span className="text-[10px] font-mono font-bold text-[#FF5C35] bg-[#FF5C35]/15 px-2.5 py-1 rounded-full shadow-[inset_1px_1px_2px_rgba(255,255,255,0.15)]">
+                    <span className="text-[10px] font-mono font-bold text-[#2DD4BF] bg-[#2DD4BF]/10 px-2.5 py-1 rounded-full border border-[#2DD4BF]/20">
                       LIVE • 0.2s TTFB
                     </span>
                   </div>
@@ -231,22 +231,22 @@ export function ServicesSection() {
                   </p>
                 </motion.div>
 
-                {/* Module 2: Telehealth & Booking Pipeline (Violet Clay Accent) */}
+                {/* Module 2: Telehealth & Booking Pipeline */}
                 <motion.div 
-                  whileHover={{ y: -3, scale: 1.015 }}
-                  transition={{ type: "spring", stiffness: 240, damping: 18 }}
-                  className="p-4 sm:p-4.5 rounded-[24px] clay-card-surface border border-white/[0.06] hover:border-[#7C3AED]/40 transition-colors"
+                  whileHover={{ y: -2, scale: 1.01 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                  className="p-4 sm:p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-[#818CF8]/40 transition-colors shadow-sm"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-7 h-7 rounded-xl bg-[#7C3AED]/20 clay-icon-bubble flex items-center justify-center">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#7C3AED]" />
+                      <div className="w-7 h-7 rounded-lg bg-[#818CF8]/15 flex items-center justify-center">
+                        <span className="w-2 h-2 rounded-full bg-[#818CF8] shadow-[0_0_6px_#818CF8]" />
                       </div>
-                      <span className={`text-xs font-extrabold text-white text-clay-3d ${isBn ? "font-bangla-ui" : "font-display"}`}>
+                      <span className={`text-xs font-bold text-white ${isBn ? "font-bangla-ui" : "font-display"}`}>
                         {isBn ? "টেলিমেডিসিন ও ডক্টর স্লট বুকিং" : "Telehealth & Clinic Scheduling"}
                       </span>
                     </div>
-                    <span className="text-[10px] font-mono font-bold text-[#A78BFA] bg-[#7C3AED]/15 px-2.5 py-1 rounded-full shadow-[inset_1px_1px_2px_rgba(255,255,255,0.15)]">
+                    <span className="text-[10px] font-mono font-bold text-[#818CF8] bg-[#818CF8]/10 px-2.5 py-1 rounded-full border border-[#818CF8]/20">
                       SOCKET SYNC
                     </span>
                   </div>
@@ -257,22 +257,22 @@ export function ServicesSection() {
                   </p>
                 </motion.div>
 
-                {/* Module 3: Enterprise Cloud & Custom Dashboards (Mint Clay Accent) */}
+                {/* Module 3: Enterprise Cloud Analytics */}
                 <motion.div 
-                  whileHover={{ y: -3, scale: 1.015 }}
-                  transition={{ type: "spring", stiffness: 240, damping: 18 }}
-                  className="p-4 sm:p-4.5 rounded-[24px] clay-card-surface border border-white/[0.06] hover:border-[#10B981]/40 transition-colors"
+                  whileHover={{ y: -2, scale: 1.01 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                  className="p-4 sm:p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-[#C084FC]/40 transition-colors shadow-sm"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-7 h-7 rounded-xl bg-[#10B981]/20 clay-icon-bubble flex items-center justify-center">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#10B981]" />
+                      <div className="w-7 h-7 rounded-lg bg-[#C084FC]/15 flex items-center justify-center">
+                        <span className="w-2 h-2 rounded-full bg-[#C084FC] shadow-[0_0_6px_#C084FC]" />
                       </div>
-                      <span className={`text-xs font-extrabold text-white text-clay-3d ${isBn ? "font-bangla-ui" : "font-display"}`}>
+                      <span className={`text-xs font-bold text-white ${isBn ? "font-bangla-ui" : "font-display"}`}>
                         {isBn ? "এন্টারপ্রাইজ ক্লাউড ও অ্যানালিটিক্স" : "Enterprise Cloud Analytics"}
                       </span>
                     </div>
-                    <span className="text-[10px] font-mono font-bold text-[#34D399] bg-[#10B981]/15 px-2.5 py-1 rounded-full shadow-[inset_1px_1px_2px_rgba(255,255,255,0.15)]">
+                    <span className="text-[10px] font-mono font-bold text-[#C084FC] bg-[#C084FC]/10 px-2.5 py-1 rounded-full border border-[#C084FC]/20">
                       99.99% UPTIME
                     </span>
                   </div>
@@ -286,9 +286,9 @@ export function ServicesSection() {
               </div>
 
               {/* Bottom Recessed Inset Bar */}
-              <div className="mt-5 p-3 rounded-2xl clay-inset flex items-center justify-between text-[11px] text-neutral-400 font-mono">
-                <span>Next.js 16 • React 19 • Node • Clay UI</span>
-                <span className="text-[#FF8B66] font-bold">100% Tactile Engineering</span>
+              <div className="mt-6 p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] flex items-center justify-between text-[11px] text-neutral-400 font-mono">
+                <span>Next.js 16 • TypeScript • Node • Aurora UI</span>
+                <span className="text-[#2DD4BF] font-semibold">100% Bespoke Architecture</span>
               </div>
 
             </div>

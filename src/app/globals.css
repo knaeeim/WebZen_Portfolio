@@ -48,24 +48,24 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 :root {
-  --background: #0F1117;
-  --foreground: #F5F6FA;
-  --card: #181B24;
+  --background: #060813;
+  --foreground: #F8FAFC;
+  --card: #0C1024;
   --card-foreground: #FFFFFF;
-  --popover: #181B24;
+  --popover: #0C1024;
   --popover-foreground: #FFFFFF;
-  --primary: #FF5C35;
-  --primary-foreground: #FFFFFF;
-  --secondary: #1E2230;
-  --secondary-foreground: #F5F6FA;
-  --muted: #1E2230;
-  --muted-foreground: #9DA5B4;
-  --accent: #7C3AED;
+  --primary: #2DD4BF;
+  --primary-foreground: #030712;
+  --secondary: #11162E;
+  --secondary-foreground: #F8FAFC;
+  --muted: #11162E;
+  --muted-foreground: #94A3B8;
+  --accent: #C084FC;
   --accent-foreground: #FFFFFF;
   --destructive: #EF4444;
   --border: rgba(255, 255, 255, 0.08);
-  --input: rgba(255, 255, 255, 0.12);
-  --ring: #FF5C35;
+  --input: rgba(255, 255, 255, 0.10);
+  --ring: #2DD4BF;
   --radius: 1.5rem;
 
   --font-sans: var(--font-jakarta), var(--font-anek-bangla), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -73,16 +73,16 @@
   --font-bengali: var(--font-anek-bangla), sans-serif;
   --font-english: var(--font-jakarta), var(--font-syne), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-  --accent-cyan: #FF5C35;
-  --accent-blue: #7C3AED;
-  --accent-teal: #10B981;
-  --clay-bg: #0F1117;
-  --clay-surface: #181B24;
-  --clay-surface-raised: #1E2230;
-  --clay-coral: #FF5C35;
-  --clay-violet: #7C3AED;
-  --clay-mint: #10B981;
-  --clay-amber: #FBBF24;
+  --accent-cyan: #2DD4BF;
+  --accent-blue: #818CF8;
+  --accent-teal: #14B8A6;
+  --aurora-teal: #2DD4BF;
+  --aurora-indigo: #818CF8;
+  --aurora-lavender: #C084FC;
+  --aurora-sky: #38BDF8;
+  --aurora-blue: #6366F1;
+  --aurora-midnight: #060813;
+  --zen-surface: rgba(12, 16, 36, 0.65);
 }
 
 html.light,
@@ -249,78 +249,178 @@ html:not(.dark) ::-webkit-scrollbar-thumb {
 }
 
 /* ========================================================
-   CLAYMORPHISM 3D DESIGN SYSTEM (Tactile, Inflated, Playful)
+   AURORA UI + ZEN DESIGN SYSTEM (Bespoke, Frictionless, Calm)
    ======================================================== */
 
-/* Dark Mode Master Clay Card */
-.clay-card-dark {
-  background: #181B24;
-  border-radius: 32px;
+/* Master Liquid Zen Glass Surface */
+.glass-zen {
+  background: rgba(12, 16, 36, 0.45);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 
-    16px 22px 42px rgba(0, 0, 0, 0.6),
-    -4px -4px 16px rgba(255, 255, 255, 0.02),
-    inset 3px 3px 6px rgba(255, 255, 255, 0.12),
-    inset -4px -4px 10px rgba(0, 0, 0, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    0 20px 50px -10px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-zen:hover {
+  border-color: rgba(45, 212, 191, 0.3);
+  box-shadow: 
+    0 25px 60px -10px rgba(0, 0, 0, 0.7),
+    0 0 40px -10px rgba(45, 212, 191, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transform: translateY(-4px);
+}
+
+/* Zen Pill / Floating Capsule */
+.glass-zen-pill {
+  background: rgba(12, 16, 36, 0.6);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-zen-pill:hover {
+  border-color: rgba(192, 132, 252, 0.3);
+  box-shadow: 
+    0 16px 36px rgba(0, 0, 0, 0.55),
+    0 0 25px rgba(192, 132, 252, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+/* Primary Luminous Aurora Pill Button */
+.aurora-btn-primary {
+  position: relative;
+  background: linear-gradient(135deg, #2DD4BF 0%, #818CF8 50%, #C084FC 100%);
+  color: #030712;
+  border-radius: 9999px;
+  box-shadow: 
+    0 12px 32px -4px rgba(45, 212, 191, 0.35),
+    0 4px 14px rgba(129, 140, 248, 0.25);
+  font-weight: 800;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.aurora-btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 18px 45px -4px rgba(45, 212, 191, 0.5),
+    0 8px 24px rgba(192, 132, 252, 0.35);
+}
+
+.aurora-btn-primary:active {
+  transform: translateY(0px) scale(0.97);
+}
+
+/* Secondary Frosted Zen Glass Button */
+.aurora-btn-glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #F8FAFC;
+  border-radius: 9999px;
+  box-shadow: 
+    0 10px 24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.aurora-btn-glass:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(45, 212, 191, 0.4);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 14px 30px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(45, 212, 191, 0.15);
+}
+
+.aurora-btn-glass:active {
+  transform: translateY(0px) scale(0.97);
+}
+
+/* Smooth Compatibility Mapping: Map former clay classes to sleek Zen Glass */
+.clay-card-dark {
+  background: rgba(12, 16, 36, 0.55);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 20px 50px -10px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .clay-card-dark:hover {
+  border-color: rgba(45, 212, 191, 0.28);
+  box-shadow: 
+    0 25px 60px -10px rgba(0, 0, 0, 0.7),
+    0 0 40px -10px rgba(45, 212, 191, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
   transform: translateY(-4px);
-  box-shadow: 
-    20px 28px 52px rgba(0, 0, 0, 0.7),
-    -4px -4px 18px rgba(255, 255, 255, 0.04),
-    inset 4px 4px 8px rgba(255, 255, 255, 0.16),
-    inset -4px -4px 10px rgba(0, 0, 0, 0.65);
 }
 
-/* Secondary Clay Surface (Slightly Lighter for nested elements) */
 .clay-card-surface {
-  background: #1E2230;
-  border-radius: 26px;
+  background: rgba(16, 21, 46, 0.45);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
   box-shadow: 
-    12px 16px 32px rgba(0, 0, 0, 0.5),
-    inset 2.5px 2.5px 5px rgba(255, 255, 255, 0.12),
-    inset -3px -3px 8px rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    0 14px 34px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Vibrant Neon Coral Clay Card */
-.clay-card-coral {
-  background: linear-gradient(135deg, #FF6F4C 0%, #FF5C35 60%, #E64820 100%);
-  border-radius: 32px;
+.clay-card-surface:hover {
+  border-color: rgba(192, 132, 252, 0.3);
   box-shadow: 
-    16px 24px 48px rgba(255, 92, 53, 0.38),
-    inset 3px 3px 7px rgba(255, 255, 255, 0.45),
-    inset -4px -4px 10px rgba(160, 30, 8, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #FFFFFF;
+    0 18px 42px rgba(0, 0, 0, 0.55),
+    0 0 30px rgba(129, 140, 248, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
 }
 
-/* Vivid Violet Clay Card */
+.clay-card-coral,
 .clay-card-violet {
-  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 60%, #6D28D9 100%);
-  border-radius: 32px;
+  background: rgba(12, 16, 36, 0.6);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-radius: 28px;
+  border: 1px solid rgba(45, 212, 191, 0.25);
   box-shadow: 
-    16px 24px 48px rgba(124, 58, 237, 0.38),
-    inset 3px 3px 7px rgba(255, 255, 255, 0.45),
-    inset -4px -4px 10px rgba(80, 20, 150, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+    0 20px 50px -10px rgba(0, 0, 0, 0.6),
+    0 0 40px -10px rgba(45, 212, 191, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
   color: #FFFFFF;
 }
 
-/* Tactile Clay Coral Button */
 .clay-btn-coral {
-  background: linear-gradient(135deg, #FF6F4C 0%, #FF5C35 50%, #E64820 100%);
-  color: #FFFFFF;
+  background: linear-gradient(135deg, #2DD4BF 0%, #818CF8 50%, #C084FC 100%);
+  color: #030712;
   border-radius: 9999px;
   box-shadow: 
-    0 12px 28px rgba(255, 92, 53, 0.42),
-    inset 2.5px 2.5px 5px rgba(255, 255, 255, 0.45),
-    inset -3px -3px 6px rgba(160, 30, 8, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    0 12px 32px -4px rgba(45, 212, 191, 0.35),
+    0 4px 14px rgba(129, 140, 248, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -329,32 +429,25 @@ html:not(.dark) ::-webkit-scrollbar-thumb {
 }
 
 .clay-btn-coral:hover {
-  transform: translateY(-4px) scale(1.02);
+  transform: translateY(-3px) scale(1.02);
   box-shadow: 
-    0 18px 38px rgba(255, 92, 53, 0.55),
-    inset 3px 3px 6px rgba(255, 255, 255, 0.55),
-    inset -3px -3px 6px rgba(160, 30, 8, 0.55);
+    0 18px 45px -4px rgba(45, 212, 191, 0.5),
+    0 8px 24px rgba(192, 132, 252, 0.35);
 }
 
 .clay-btn-coral:active {
-  transform: translateY(0px) scale(0.96);
-  box-shadow: 
-    0 6px 14px rgba(255, 92, 53, 0.35),
-    inset 3px 3px 8px rgba(130, 25, 5, 0.65),
-    inset -2px -2px 4px rgba(255, 255, 255, 0.2);
+  transform: translateY(0px) scale(0.97);
 }
 
-/* Tactile Clay Violet Button */
 .clay-btn-violet {
-  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 50%, #6D28D9 100%);
+  background: linear-gradient(135deg, #818CF8 0%, #C084FC 100%);
   color: #FFFFFF;
   border-radius: 9999px;
   box-shadow: 
-    0 12px 28px rgba(124, 58, 237, 0.40),
-    inset 2.5px 2.5px 5px rgba(255, 255, 255, 0.45),
-    inset -3px -3px 6px rgba(80, 20, 150, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    0 12px 32px -4px rgba(129, 140, 248, 0.35),
+    0 4px 14px rgba(192, 132, 252, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -362,33 +455,17 @@ html:not(.dark) ::-webkit-scrollbar-thumb {
   cursor: pointer;
 }
 
-.clay-btn-violet:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 
-    0 18px 38px rgba(124, 58, 237, 0.55),
-    inset 3px 3px 6px rgba(255, 255, 255, 0.55),
-    inset -3px -3px 6px rgba(80, 20, 150, 0.55);
-}
-
-.clay-btn-violet:active {
-  transform: translateY(0px) scale(0.96);
-  box-shadow: 
-    0 6px 14px rgba(124, 58, 237, 0.35),
-    inset 3px 3px 8px rgba(60, 15, 120, 0.65),
-    inset -2px -2px 4px rgba(255, 255, 255, 0.2);
-}
-
-/* Tactile Clay Dark / Slate Button */
 .clay-btn-dark {
-  background: #1E2230;
-  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: #F8FAFC;
   border-radius: 9999px;
   box-shadow: 
-    0 10px 24px rgba(0, 0, 0, 0.45),
-    inset 2px 2px 4px rgba(255, 255, 255, 0.12),
-    inset -3px -3px 6px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    0 10px 24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -397,106 +474,91 @@ html:not(.dark) ::-webkit-scrollbar-thumb {
 
 .clay-btn-dark:hover {
   transform: translateY(-3px) scale(1.02);
-  background: #232838;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(45, 212, 191, 0.35);
   box-shadow: 
-    0 14px 30px rgba(0, 0, 0, 0.55),
-    inset 2.5px 2.5px 5px rgba(255, 255, 255, 0.16),
-    inset -3px -3px 6px rgba(0, 0, 0, 0.6);
-  border-color: rgba(255, 92, 53, 0.4);
+    0 14px 30px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(45, 212, 191, 0.15);
 }
 
-.clay-btn-dark:active {
-  transform: translateY(0px) scale(0.96);
-  box-shadow: 
-    0 4px 10px rgba(0, 0, 0, 0.4),
-    inset 3px 3px 6px rgba(0, 0, 0, 0.7);
-}
-
-/* Puffed Clay Pill Badge / Capsule */
 .clay-pill {
   border-radius: 9999px;
-  box-shadow: 
-    6px 10px 22px rgba(0, 0, 0, 0.45),
-    inset 2px 2px 4px rgba(255, 255, 255, 0.12),
-    inset -2px -2px 5px rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-/* Inflated 3D Icon Bubble */
-.clay-icon-bubble {
-  border-radius: 22px;
-  box-shadow: 
-    8px 12px 24px rgba(0, 0, 0, 0.5),
-    inset 2.5px 2.5px 5px rgba(255, 255, 255, 0.18),
-    inset -3px -3px 6px rgba(0, 0, 0, 0.6);
+  background: rgba(12, 16, 36, 0.55);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Clay Inset for Input Wells & Recessed Panels */
-.clay-inset {
-  background: #11131B;
+.clay-icon-bubble {
   border-radius: 20px;
+  background: rgba(16, 21, 46, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 
-    inset 3px 3px 8px rgba(0, 0, 0, 0.75),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+    0 8px 20px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.clay-inset {
+  background: rgba(6, 8, 19, 0.6);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 .clay-inset:focus-within {
-  border-color: rgba(255, 92, 53, 0.5);
+  border-color: rgba(45, 212, 191, 0.5);
   box-shadow: 
-    inset 3px 3px 8px rgba(0, 0, 0, 0.8),
-    0 0 0 3px rgba(255, 92, 53, 0.15);
+    inset 0 2px 6px rgba(0, 0, 0, 0.6),
+    0 0 0 3px rgba(45, 212, 191, 0.15);
 }
 
-/* Puffy 3D Text Effect */
 .text-clay-3d {
-  text-shadow: 
-    0 2px 0 rgba(0, 0, 0, 0.5),
-    0 4px 8px rgba(0, 0, 0, 0.4),
-    0 1px 2px rgba(255, 255, 255, 0.15);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 
 .text-clay-coral {
-  color: #FF5C35;
-  text-shadow: 
-    0 2px 8px rgba(255, 92, 53, 0.35),
-    0 1px 0 rgba(255, 255, 255, 0.2);
+  color: #2DD4BF;
+  text-shadow: 0 0 20px rgba(45, 212, 191, 0.3);
 }
 
 .text-clay-violet {
-  color: #8B5CF6;
-  text-shadow: 
-    0 2px 8px rgba(124, 58, 237, 0.35),
-    0 1px 0 rgba(255, 255, 255, 0.2);
+  color: #C084FC;
+  text-shadow: 0 0 20px rgba(192, 132, 252, 0.3);
 }
 
-/* Glassmorphism primitives (kept for compatibility) */
+/* Glassmorphism primitives */
 .glass-panel {
-  background: rgba(24, 27, 36, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(12, 16, 36, 0.55);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 14px 18px 36px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
 .glass-card {
-  background: #181B24;
-  border-radius: 32px;
+  background: rgba(12, 16, 36, 0.5);
+  border-radius: 28px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   box-shadow: 
-    14px 18px 36px rgba(0, 0, 0, 0.5),
-    inset 3px 3px 6px rgba(255, 255, 255, 0.1),
-    inset -4px -4px 8px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
   transform: translateY(-4px);
+  border-color: rgba(45, 212, 191, 0.3);
   box-shadow: 
-    18px 26px 46px rgba(0, 0, 0, 0.65),
-    inset 3px 3px 6px rgba(255, 255, 255, 0.14),
-    inset -4px -4px 8px rgba(0, 0, 0, 0.6);
+    0 25px 60px rgba(0, 0, 0, 0.65),
+    0 0 35px rgba(45, 212, 191, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 html.light .glass-card:hover,
 html:not(.dark) .glass-card:hover {
@@ -614,27 +676,45 @@ html:not(.dark) .bg-dots-pattern {
   font-family: var(--font-display);
 }
 
-/* Bespoke Clay Theme Gradients with Live CSS Variable Support */
+/* Bespoke Aurora + Zen Theme Gradients */
 .text-gradient-hero {
-  background: linear-gradient(135deg, #FF6F4C 0%, #FF5C35 45%, #8B5CF6 100%);
+  background: linear-gradient(135deg, #2DD4BF 0%, #818CF8 50%, #C084FC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-aurora {
+  background: linear-gradient(135deg, #2DD4BF 0%, #38BDF8 35%, #818CF8 70%, #C084FC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-zen {
+  background: linear-gradient(180deg, #FFFFFF 15%, rgba(255, 255, 255, 0.75) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-starlight {
+  background: linear-gradient(135deg, #F8FAFC 0%, #CBD5E1 50%, #94A3B8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-coral {
-  background: linear-gradient(135deg, #FFA07A 0%, #FF5C35 50%, #E64820 100%);
+  background: linear-gradient(135deg, #2DD4BF 0%, #818CF8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-violet {
-  background: linear-gradient(135deg, #C4B5FD 0%, #8B5CF6 50%, #7C3AED 100%);
+  background: linear-gradient(135deg, #C4B5FD 0%, #818CF8 50%, #C084FC 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-gold {
-  background: linear-gradient(135deg, #FFE58F 0%, #FBBF24 50%, #F59E0B 100%);
+  background: linear-gradient(135deg, #2DD4BF 0%, #38BDF8 50%, #818CF8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -642,8 +722,8 @@ html:not(.dark) .bg-dots-pattern {
 /* Hollow/Outlined Studio Typography */
 .text-outline-studio {
   color: transparent;
-  -webkit-text-stroke: 1.5px #FF5C35;
-  text-stroke: 1.5px #FF5C35;
+  -webkit-text-stroke: 1.5px #2DD4BF;
+  text-stroke: 1.5px #2DD4BF;
   letter-spacing: 0.08em;
 }
 
@@ -654,7 +734,7 @@ html:not(.dark) .bg-dots-pattern {
 }
 
 .text-gradient-fire {
-  background: linear-gradient(135deg, #FF5C35 0%, #FF6F4C 50%, #7C3AED 100%);
+  background: linear-gradient(135deg, #2DD4BF 0%, #818CF8 50%, #C084FC 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -672,7 +752,7 @@ html:not(.dark) .bg-dots-pattern {
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee-scroll 28s linear infinite;
+  animation: marquee-scroll 32s linear infinite;
   will-change: transform;
 }
 
@@ -680,21 +760,91 @@ html:not(.dark) .bg-dots-pattern {
   animation-play-state: paused;
 }
 
-/* Ambient glow utilities matching Clay studio lighting */
-.glow-warm-ambient {
-  box-shadow: 0 0 80px -10px rgba(255, 92, 53, 0.16), 0 0 100px -20px rgba(124, 58, 237, 0.12);
+/* Aurora Mesh Fluid Kinetics */
+@keyframes aurora-mesh-1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(60px, -50px) scale(1.15);
+  }
+  66% {
+    transform: translate(-40px, 40px) scale(0.9);
+  }
+}
+
+@keyframes aurora-mesh-2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(-60px, 45px) scale(1.18);
+  }
+  66% {
+    transform: translate(50px, -40px) scale(0.92);
+  }
+}
+
+@keyframes aurora-mesh-3 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(35px, -65px) scale(1.1);
+  }
+}
+
+@keyframes zen-breathe {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.08);
+  }
+}
+
+.animate-aurora-mesh-1 {
+  animation: aurora-mesh-1 22s ease-in-out infinite;
+}
+
+.animate-aurora-mesh-2 {
+  animation: aurora-mesh-2 26s ease-in-out infinite;
+}
+
+.animate-aurora-mesh-3 {
+  animation: aurora-mesh-3 30s ease-in-out infinite;
+}
+
+.animate-zen-breathe {
+  animation: zen-breathe 10s ease-in-out infinite;
+}
+
+/* Ambient glow utilities matching Aurora Zen lighting */
+.glow-warm-ambient,
+.glow-aurora-ambient {
+  box-shadow: 0 0 90px -10px rgba(45, 212, 191, 0.16), 0 0 110px -20px rgba(192, 132, 252, 0.14);
+}
+
+.glow-aurora-teal {
+  box-shadow: 0 0 60px -10px rgba(45, 212, 191, 0.3);
+}
+
+.glow-aurora-lavender {
+  box-shadow: 0 0 60px -10px rgba(192, 132, 252, 0.3);
 }
 
 body {
-  background-color: #0F1117;
-  color: #F5F6FA;
+  background-color: #060813;
+  color: #F8FAFC;
   font-family: var(--font-sans);
   overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 html.light body,
 html:not(.dark) body {
-  background-color: #0F1117;
-  color: #F5F6FA;
+  background-color: #060813;
+  color: #F8FAFC;
 }

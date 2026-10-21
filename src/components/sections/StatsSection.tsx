@@ -34,10 +34,10 @@ export function StatsSection() {
     : fallbackMetrics;
 
   return (
-    <section id="metrics" className="relative w-full py-6 sm:py-10 my-0 overflow-hidden scroll-mt-20 z-10 bg-[#0F1117]">
-      {/* Ambient Glow Behind the Pods - Soft Coral & Violet */}
+    <section id="metrics" className="relative w-full py-12 sm:py-16 my-0 overflow-hidden scroll-mt-20 z-10 bg-[#060813]">
+      {/* Ambient Horizon Aurora Glow */}
       <div 
-        className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[180px] bg-gradient-to-r from-[#FF5C35]/[0.08] via-[#7C3AED]/[0.06] to-[#10B981]/[0.06] blur-[100px] pointer-events-none" 
+        className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[220px] bg-gradient-to-r from-[#2DD4BF]/[0.06] via-[#818CF8]/[0.08] to-[#C084FC]/[0.06] blur-[120px] pointer-events-none" 
         aria-hidden="true" 
       />
 
@@ -46,20 +46,20 @@ export function StatsSection() {
           {metrics.map((metric, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 25, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ type: "spring", stiffness: 220, damping: 18, delay: idx * 0.08 }}
-              whileHover={{ y: -6, scale: 1.02 }}
-              className="clay-card-surface p-6 sm:p-7 rounded-[28px] sm:rounded-[32px] flex flex-col items-center justify-center cursor-default group"
+              whileHover={{ y: -4, scale: 1.02 }}
+              className="glass-zen p-6 sm:p-8 rounded-[28px] flex flex-col items-center justify-center cursor-default group border border-white/[0.08] hover:border-[#2DD4BF]/30 transition-all shadow-[0_16px_36px_rgba(0,0,0,0.4)]"
             >
-              {/* Large Inflated Bold Number with 3D Depth */}
-              <div className={`text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight text-clay-3d group-hover:text-[#FF8B66] transition-colors ${isBn ? "font-bangla-display font-black" : "font-display font-black"}`}>
+              {/* Bold Minimalist Typographic Number */}
+              <div className={`text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight group-hover:text-gradient-aurora transition-all duration-300 ${isBn ? "font-bangla-display font-black" : "font-display font-black"}`}>
                 {metric.value}
               </div>
 
-              {/* Muted Pill Tag with Soft Clay Inset */}
-              <div className={`mt-3 px-3 py-1 rounded-full bg-[#14161F] clay-pill text-[10px] sm:text-xs text-neutral-300 font-extrabold tracking-[0.16em] uppercase ${isBn ? "font-bangla-ui" : ""}`}>
+              {/* Clean Zen Tag Pill */}
+              <div className={`mt-3 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.06] text-[10px] sm:text-xs text-neutral-300 font-semibold tracking-[0.16em] uppercase ${isBn ? "font-bangla-ui tracking-normal" : ""}`}>
                 {metric.label}
               </div>
             </motion.div>

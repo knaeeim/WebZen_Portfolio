@@ -28,10 +28,10 @@ export function TestimonialsSection() {
   }));
 
   return (
-    <section id="testimonials" className="relative py-14 sm:py-20 overflow-hidden scroll-mt-20 bg-[#0F1117]">
-      {/* Background ambient lighting - Soft Coral & Violet */}
+    <section id="testimonials" className="relative py-20 sm:py-28 overflow-hidden scroll-mt-20 bg-[#060813]">
+      {/* Background ambient lighting - Soft Teal & Lavender Aurora */}
       <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-r from-[#FF5C35]/[0.05] to-[#7C3AED]/[0.05] blur-[150px] rounded-full pointer-events-none" 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-r from-[#2DD4BF]/[0.05] to-[#C084FC]/[0.05] blur-[160px] rounded-full pointer-events-none" 
         aria-hidden="true" 
       />
 
@@ -44,10 +44,10 @@ export function TestimonialsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ type: "spring", stiffness: 220, damping: 18 }}
-            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#181B24] clay-pill text-neutral-300 mb-3.5"
+            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-zen-pill text-neutral-300 mb-4"
           >
-            <Heart className="w-3.5 h-3.5 text-[#FF5C35]" />
-            <span className={`text-[11px] font-extrabold tracking-[0.2em] uppercase text-neutral-200 ${isBn ? "font-bangla-ui" : ""}`}>
+            <Heart className="w-3.5 h-3.5 text-[#2DD4BF]" />
+            <span className={`text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-200 ${isBn ? "font-bangla-ui tracking-normal" : ""}`}>
               {isBn ? "ক্লায়েন্ট সন্তুষ্টি ও রিভিউ" : "CLIENT TESTIMONIALS"}
             </span>
           </motion.div>
@@ -57,11 +57,11 @@ export function TestimonialsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ type: "spring", stiffness: 220, damping: 18, delay: 0.08 }}
-            className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight text-clay-3d ${isBn ? "font-bangla-display font-black" : "font-display font-black"}`}
+            className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight ${isBn ? "font-bangla-display font-black" : "font-display font-black"}`}
           >
             {isBn ? (
               <>
-                আমাদের সন্তুষ্ট <span className="text-gradient-hero">গ্রাহকদের মন্তব্য</span>
+                আমাদের সন্তুষ্ট <span className="text-gradient-aurora">গ্রাহকদের মন্তব্য</span>
               </>
             ) : (
               "Our Happy Customers"
@@ -69,22 +69,22 @@ export function TestimonialsSection() {
           </motion.h2>
         </div>
 
-        {/* 3-Column Horizontal Card Grid with Overlapping 3D Clay Badges */}
+        {/* 3-Column Horizontal Card Grid with Ethereal Floating Avatars */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-7 pt-4">
           {testimonials.map((item, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ type: "spring", stiffness: 220, damping: 18, delay: idx * 0.1 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="relative clay-card-dark rounded-[32px] p-6 sm:p-7 pt-12 flex flex-col justify-between group"
+              whileHover={{ y: -6 }}
+              className="relative glass-zen rounded-[32px] p-6 sm:p-8 pt-12 flex flex-col justify-between group border border-white/[0.08] hover:border-[#2DD4BF]/30 transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
             >
-              {/* Overlapping top 3D clay badges */}
+              {/* Overlapping top avatar in starlight halo */}
               <div className="absolute -top-7 left-1/2 -translate-x-1/2 flex items-center justify-center">
-                {/* Badge 1: Client Avatar in Inflated Clay Ring */}
-                <div className="w-14 h-14 rounded-full p-1 bg-[#181B24] clay-icon-bubble overflow-hidden shadow-xl shrink-0 group-hover:scale-105 transition-transform">
+                {/* Avatar with Aurora Ring */}
+                <div className="w-14 h-14 rounded-full p-1 bg-[#060813] border-2 border-[#2DD4BF]/40 overflow-hidden shadow-[0_0_20px_rgba(45,212,191,0.35)] shrink-0 group-hover:scale-105 transition-transform">
                   <img
                     src={item.avatar}
                     alt={item.name}
@@ -92,8 +92,8 @@ export function TestimonialsSection() {
                   />
                 </div>
 
-                {/* Badge 2: Overlapping Reaction Clay Bead */}
-                <div className="w-7 h-7 rounded-full clay-btn-coral flex items-center justify-center text-xs shadow-lg -ml-3 z-10 select-none animate-pulse">
+                {/* Overlapping Reaction Bead */}
+                <div className="w-7 h-7 rounded-full bg-[#060813] border border-[#2DD4BF]/50 flex items-center justify-center text-xs shadow-md -ml-3 z-10 select-none">
                   <span>{item.reaction}</span>
                 </div>
               </div>
@@ -103,14 +103,13 @@ export function TestimonialsSection() {
                 {[...Array(item.rating)].map((_, starIdx) => (
                   <Star
                     key={starIdx}
-                    className="w-4 h-4 fill-[#FBBF24] text-[#FBBF24] drop-shadow-[0_2px_4px_rgba(251,191,36,0.5)]"
+                    className="w-4 h-4 fill-[#FBBF24] text-[#FBBF24] drop-shadow-[0_0_6px_rgba(251,191,36,0.5)]"
                   />
                 ))}
               </div>
 
               {/* Card Content */}
               <div className="space-y-3 pt-1">
-                {/* Client Review Quote - uses Tiro Bangla in Bengali */}
                 <p className={`text-sm sm:text-[14.5px] text-neutral-300 text-center leading-relaxed font-normal ${isBn ? "font-bangla-serif text-base" : ""}`}>
                   &ldquo;{item.review}&rdquo;
                 </p>
@@ -118,10 +117,10 @@ export function TestimonialsSection() {
 
               {/* Author info */}
               <div className="pt-5 border-t border-white/[0.06] mt-5 text-center">
-                <div className={`text-white text-base tracking-wide font-extrabold text-clay-3d ${isBn ? "font-bangla-display" : "font-display"}`}>
+                <div className={`text-white text-base tracking-wide font-bold ${isBn ? "font-bangla-display" : "font-display"}`}>
                   {item.name}
                 </div>
-                <div className={`text-xs text-[#FF8B66] font-bold tracking-wide mt-0.5 ${isBn ? "font-bangla-ui" : ""}`}>
+                <div className={`text-xs text-[#2DD4BF] font-medium tracking-wide mt-0.5 ${isBn ? "font-bangla-ui" : ""}`}>
                   {item.designation}
                 </div>
               </div>

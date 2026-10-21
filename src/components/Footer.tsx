@@ -89,34 +89,34 @@ export function Footer() {
   const whatsappNumber = rawWhatsapp.replace(/[^0-9]/g, "");
 
   return (
-    <footer className="relative bg-[#0F1117] border-t border-white/[0.06] text-neutral-300 pt-14 pb-10 overflow-hidden z-10">
-      {/* Background ambient corner glow - Neon Coral & Violet */}
+    <footer className="relative bg-[#060813] border-t border-white/[0.06] text-neutral-300 pt-16 pb-12 overflow-hidden z-10">
+      {/* Background ambient corner glow - Aurora Teal & Lavender */}
       <div 
-        className="absolute bottom-0 right-0 w-[500px] h-[300px] bg-[#FF5C35]/[0.05] blur-[160px] pointer-events-none" 
+        className="absolute bottom-0 right-0 w-[550px] h-[350px] bg-[#2DD4BF]/[0.04] blur-[160px] pointer-events-none" 
         aria-hidden="true" 
       />
       <div 
-        className="absolute top-0 left-10 w-[450px] h-[300px] bg-[#7C3AED]/[0.04] blur-[160px] pointer-events-none" 
+        className="absolute top-0 left-10 w-[500px] h-[350px] bg-[#C084FC]/[0.04] blur-[160px] pointer-events-none" 
         aria-hidden="true" 
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Main Clay Footer Island */}
-        <div className="clay-card-dark rounded-[36px] p-8 sm:p-12 mb-10">
+        {/* Main Zen Glass Footer Island */}
+        <div className="glass-zen rounded-[36px] p-8 sm:p-12 mb-10 border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-8 border-b border-white/[0.06]">
             
             {/* Left Column: webzen.bd logo, brief agency bio, and social media icons */}
             <div className="lg:col-span-5 space-y-5">
               <Link href="/" className="inline-flex items-center gap-2.5 group">
-                <div className="relative w-9 h-9 rounded-2xl overflow-hidden bg-[#14161F] clay-icon-bubble p-1 group-hover:scale-105 transition-all">
+                <div className="relative w-9 h-9 rounded-2xl overflow-hidden bg-white/[0.04] border border-white/10 p-1 group-hover:scale-105 group-hover:border-[#2DD4BF]/40 transition-all">
                   <img src="/logo.png" alt="WebZen Logo" className="w-full h-full object-contain rounded-xl" />
                 </div>
                 <div className="flex items-baseline">
-                  <span className="font-display font-black text-2xl tracking-tight text-white text-clay-3d">
+                  <span className="font-display font-black text-2xl tracking-tight text-white">
                     webzen
                   </span>
-                  <span className="font-display font-black text-2xl text-[#FF5C35] drop-shadow-[0_2px_8px_rgba(255,92,53,0.6)]">
+                  <span className="font-display font-black text-2xl text-[#2DD4BF] drop-shadow-[0_0_10px_rgba(45,212,191,0.6)]">
                     .bd
                   </span>
                 </div>
@@ -126,7 +126,7 @@ export function Footer() {
                 {agencyBio}
               </p>
 
-              {/* Inflated 3D Clay Social Media Beads */}
+              {/* Minimalist Social Media Pills */}
               <div className="flex items-center gap-3 pt-2">
                 {socialLinks.map((social) => (
                   <motion.a
@@ -134,10 +134,10 @@ export function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ y: -3, scale: 1.1 }}
+                    whileHover={{ y: -2, scale: 1.05 }}
                     whileTap={{ scale: 0.94 }}
-                    transition={{ type: "spring", stiffness: 260, damping: 16 }}
-                    className="w-10 h-10 rounded-2xl bg-[#14161F] clay-icon-bubble flex items-center justify-center text-xs font-mono font-black text-neutral-200 hover:text-white hover:text-[#FF8B66] transition-colors shadow-md"
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:border-[#2DD4BF]/40 hover:text-[#2DD4BF] flex items-center justify-center text-xs font-mono font-bold text-neutral-300 transition-colors shadow-sm"
                     title={social.name}
                   >
                     <span>{social.label}</span>
@@ -148,7 +148,7 @@ export function Footer() {
 
             {/* Middle Column: Useful Links */}
             <div className="lg:col-span-3 space-y-4">
-              <h4 className={`text-xs sm:text-sm tracking-[0.2em] uppercase text-white ${isBn ? "font-bangla-ui font-bold" : "font-display font-black"}`}>
+              <h4 className={`text-xs sm:text-sm tracking-[0.2em] uppercase text-white ${isBn ? "font-bangla-ui font-bold" : "font-display font-bold"}`}>
                 {isBn ? (footer?.navLinksTitleBn || "প্রয়োজনীয় লিংক") : (footer?.navLinksTitle || "Useful Links")}
               </h4>
               <ul className="space-y-2.5">
@@ -158,7 +158,7 @@ export function Footer() {
                       href={link.href}
                       className={`text-sm text-neutral-400 hover:text-white transition-colors flex items-center gap-2 group ${isBn ? "font-bangla-ui" : ""}`}
                     >
-                      <span className="w-2 h-2 rounded-full bg-[#1E2230] group-hover:bg-[#FF5C35] transition-colors shadow-inner" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-[#2DD4BF] transition-colors" />
                       <span className="group-hover:translate-x-1 transition-transform">{link.label}</span>
                     </a>
                   </li>
@@ -168,15 +168,15 @@ export function Footer() {
 
             {/* Right Column: Contact Us featuring Dhaka location, phone number, email */}
             <div className="lg:col-span-4 space-y-4">
-              <h4 className={`text-xs sm:text-sm tracking-[0.2em] uppercase text-white ${isBn ? "font-bangla-ui font-bold" : "font-display font-black"}`}>
+              <h4 className={`text-xs sm:text-sm tracking-[0.2em] uppercase text-white ${isBn ? "font-bangla-ui font-bold" : "font-display font-bold"}`}>
                 {contactTitle}
               </h4>
 
               <div className="space-y-3.5 text-sm text-neutral-400">
                 {/* Location */}
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-lg bg-[#14161F] clay-icon-bubble flex items-center justify-center shrink-0 mt-0.5">
-                    <MapPin className="w-3.5 h-3.5 text-[#FF5C35]" />
+                  <div className="w-6 h-6 rounded-lg bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0 mt-0.5 text-[#2DD4BF]">
+                    <MapPin className="w-3.5 h-3.5" />
                   </div>
                   <span className={`leading-relaxed ${isBn ? "font-bangla-body" : ""}`}>
                     {contactAddress}
@@ -185,12 +185,12 @@ export function Footer() {
 
                 {/* Phone */}
                 <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-lg bg-[#14161F] clay-icon-bubble flex items-center justify-center shrink-0">
-                    <Phone className="w-3.5 h-3.5 text-[#FF5C35]" />
+                  <div className="w-6 h-6 rounded-lg bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0 text-[#2DD4BF]">
+                    <Phone className="w-3.5 h-3.5" />
                   </div>
                   <a 
                     href={`tel:${contactPhone.replace(/\s+/g, '')}`} 
-                    className="hover:text-white text-[#FF8B66] font-semibold transition-colors"
+                    className="hover:text-white text-[#2DD4BF] font-semibold transition-colors font-mono"
                   >
                     {contactPhone}
                   </a>
@@ -198,12 +198,12 @@ export function Footer() {
 
                 {/* Email */}
                 <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-lg bg-[#14161F] clay-icon-bubble flex items-center justify-center shrink-0">
-                    <Mail className="w-3.5 h-3.5 text-[#FF5C35]" />
+                  <div className="w-6 h-6 rounded-lg bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0 text-[#2DD4BF]">
+                    <Mail className="w-3.5 h-3.5" />
                   </div>
                   <a 
                     href={`mailto:${contactEmail}`} 
-                    className="hover:text-white text-[#FF8B66] font-semibold transition-colors"
+                    className="hover:text-white text-[#2DD4BF] font-semibold transition-colors font-mono"
                   >
                     {contactEmail}
                   </a>
@@ -214,13 +214,13 @@ export function Footer() {
               <div className="pt-2">
                 <a href={buttonUrl}>
                   <motion.button 
-                    whileHover={{ y: -3, scale: 1.03 }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ type: "spring", stiffness: 260, damping: 16 }}
-                    className={`clay-btn-dark px-6 py-2.5 text-xs font-black tracking-wider uppercase inline-flex items-center gap-2 shadow-md ${isBn ? "font-bangla-ui" : ""}`}
+                    whileHover={{ y: -2, scale: 1.02 }}
+                    whileTap={{ scale: 0.96 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className={`aurora-btn-glass px-6 py-2.5 text-xs font-bold tracking-wider uppercase inline-flex items-center gap-2 shadow-sm ${isBn ? "font-bangla-ui tracking-normal text-xs" : ""}`}
                   >
                     <span>{buttonText}</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-[#FF5C35]" />
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[#2DD4BF]" />
                   </motion.button>
                 </a>
               </div>
@@ -241,13 +241,13 @@ export function Footer() {
 
               <motion.button
                 onClick={scrollToTop}
-                whileHover={{ y: -3, scale: 1.1 }}
-                whileTap={{ scale: 0.92 }}
-                transition={{ type: "spring", stiffness: 260, damping: 16 }}
-                className="w-9 h-9 rounded-2xl bg-[#14161F] clay-icon-bubble text-neutral-300 hover:text-white flex items-center justify-center cursor-pointer shadow-md"
+                whileHover={{ y: -2, scale: 1.05 }}
+                whileTap={{ scale: 0.94 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 text-[#2DD4BF] hover:text-white hover:bg-white/[0.08] flex items-center justify-center cursor-pointer shadow-sm transition-colors"
                 title="Back to top"
               >
-                <ArrowUp className="w-4 h-4 text-[#FF5C35]" />
+                <ArrowUp className="w-4 h-4" />
               </motion.button>
             </div>
           </div>

@@ -12,49 +12,53 @@ import { RibbonMarquee } from "@/components/sections/RibbonMarquee";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
+import { ProcessSection } from "@/components/sections/ProcessSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { PricingSection } from "@/components/sections/PricingSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen flex flex-col bg-[#0F1117] text-[#F5F6FA] selection:bg-[#FF5C35] selection:text-white">
-      {/* 1. Global Visual Identity & Diffused Radial Mesh Ambient Lighting */}
+    <div className="relative min-h-screen flex flex-col bg-[#060813] text-[#F8FAFC] selection:bg-[#2DD4BF] selection:text-[#060813]">
+      {/* 1. Global Visual Identity & Breathing Fluid Aurora Mesh Gradient */}
       <AmbientLighting />
       <ParticleCanvas />
       <MouseSpotlight />
 
-      {/* 2. Header / Navigation */}
+      {/* 2. Floating Liquid Glass Island Navigation */}
       <Navbar />
 
       {/* Main Structural Flow */}
       <main className="flex-1 relative z-10">
-        {/* 3. Hero Section (Headline, 3D Centerpiece Sculpture, Left Glass Cards, Right Editorial + White Pill) */}
+        {/* 3. Hero Section: Full-Viewport Centered Sensory Monument communicating Zen & Tech */}
         <HeroSection />
 
-        {/* 4. Angled Ribbon Marquee Divider (-3deg, glowing coral-red star separators) */}
+        {/* 4. Horizon Glass Ribbon Marquee with Glowing Aurora Stars */}
         <RibbonMarquee />
 
-        {/* 5. Our Services Section (Split Feature Layout, Checklist with dark circular icons, 3D Isometric Screen) */}
+        {/* 5. Solutions & Capabilities: Zen Architecture with Live Telemetry */}
         <ServicesSection />
 
-        {/* 6. Metrics Bar (Full-width horizontal strip with warm ambient glow behind it) */}
+        {/* 6. Key Metrics: Minimalist Frosted Glass Stat Monuments */}
         <StatsSection />
 
-        {/* Portfolio / Projects Showcase */}
+        {/* 7. Curated Portfolio: Editorial Gallery with Live Production Links */}
         <ProjectsSection />
 
-        {/* 7. Our Happy Customers (3-column cards, bottom-edge gradient glow, overlapping dual circular top badges) */}
+        {/* 8. Methodology & Agile Process Pipeline */}
+        <ProcessSection />
+
+        {/* 9. Client Stories: Serene Frosted Cards with Aurora Avatar Rings */}
         <TestimonialsSection />
 
-        {/* Pricing & Investment Plans */}
+        {/* 10. Transparent Investment Plans with Currency Switcher */}
         <PricingSection />
 
-        {/* Contact & Project Initiation */}
+        {/* 11. Frictionless Consultation & Dhaka Headquarters Suite */}
         <ContactSection />
       </main>
 
-      {/* 8. Footer (WEBZEN BD, Useful Links, Contact Us with Dhaka location, phone, email) */}
+      {/* 12. Architectural Zen Glass Footer Island */}
       <Footer />
     </div>
   );
