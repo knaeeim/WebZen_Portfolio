@@ -234,7 +234,7 @@ export function Footer() {
           {/* Bottom Bar: Copyright & Back to Top */}
           <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400">
             <div>
-              © 2026 {data.companyName || "WEBZEN BD"} ({data.companyName ? data.companyName.toLowerCase().replace(/\s+/g, '') + ".com" : "webzenbd.com"}). {copyrightText}
+              © 2026 {data.companyName || "WebZen Bangladesh"} - {copyrightText}
             </div>
 
             <div className="flex items-center gap-6">

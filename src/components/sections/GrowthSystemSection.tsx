@@ -153,141 +153,129 @@ export function GrowthSystemSection() {
           <div className="absolute inset-8 rounded-full border border-[#FF6A00]/20 pointer-events-none shadow-[0_0_60px_rgba(255,106,0,0.12)]" />
           <div className="absolute inset-24 rounded-full border border-[#FF3823]/25 pointer-events-none" />
 
-          {/* ─── SVG Curved Energy Connection Tracks to All 7 Nodes ─── */}
+          {/* ─── SVG Energy Connection Tracks to All 7 Nodes ─── */}
           <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none" viewBox="0 0 820 680">
             <defs>
-              <filter id="neon-glow-red-orange" x="-20%" y="-20%" width="140%" height="140%">
+              <filter id="neon-glow-red-orange" filterUnits="userSpaceOnUse" x="0" y="0" width="820" height="680">
                 <feGaussianBlur stdDeviation="3.5" result="blur" />
                 <feMerge>
                   <feMergeNode in="blur" />
                   <feMergeNode in="SourceGraphic" />
                 </feMerge>
               </filter>
-              <linearGradient id="trackGradCrimson" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#FF3823" stopOpacity="0.9" />
-                <stop offset="100%" stopColor="#FFA000" stopOpacity="0.8" />
-              </linearGradient>
             </defs>
 
-            {/* Track 1: Center (410, 340) to Top-Left (160, 110) [Web Application] */}
-            <path
-              d="M 410 270 C 330 260 230 180 180 130"
+            {/* ═══ LAYER 1: Deep Soft Glow Underlays (All 7 Tracks) ═══ */}
+            <line x1="345" y1="275" x2="185" y2="125" stroke="#FF3823" strokeWidth="6" opacity="0.35" strokeLinecap="round" />
+            <line x1="475" y1="275" x2="635" y2="125" stroke="#FF6A00" strokeWidth="6" opacity="0.35" strokeLinecap="round" />
+            <line x1="315" y1="340" x2="145" y2="340" stroke="#FFA000" strokeWidth="6" opacity="0.35" strokeLinecap="round" />
+            <line x1="505" y1="340" x2="675" y2="340" stroke="#FF3823" strokeWidth="6" opacity="0.35" strokeLinecap="round" />
+            <line x1="345" y1="405" x2="185" y2="550" stroke="#FF6A00" strokeWidth="6" opacity="0.35" strokeLinecap="round" />
+            <line x1="475" y1="405" x2="635" y2="550" stroke="#FFA000" strokeWidth="6" opacity="0.35" strokeLinecap="round" />
+            <line x1="410" y1="435" x2="410" y2="585" stroke="#FF3823" strokeWidth="6" opacity="0.35" strokeLinecap="round" />
+
+            {/* ═══ LAYER 2: Crisp Neon Beams (All 7 Tracks) ═══ */}
+            
+            {/* Track 1: Web Application */}
+            <line
+              x1="345" y1="275" x2="185" y2="125"
               stroke="#FF3823"
               strokeWidth="2.5"
-              fill="none"
+              strokeLinecap="round"
               filter="url(#neon-glow-red-orange)"
-              opacity={activeModule === "webapp" ? "1" : "0.75"}
+              opacity={activeModule === "webapp" ? "1" : "0.85"}
             />
 
-            {/* Track 2: Center (410, 340) to Top-Right (660, 110) [Custom Dashboard] */}
-            <path
-              d="M 410 270 C 490 260 590 180 640 130"
+            {/* Track 2: Custom Dashboard */}
+            <line
+              x1="475" y1="275" x2="635" y2="125"
               stroke="#FF6A00"
               strokeWidth="2.5"
-              fill="none"
+              strokeLinecap="round"
               filter="url(#neon-glow-red-orange)"
-              opacity={activeModule === "dashboard" ? "1" : "0.75"}
+              opacity={activeModule === "dashboard" ? "1" : "0.85"}
             />
 
-            {/* Track 3: Center (410, 340) to Middle-Left (90, 340) [UI/UX Design] */}
-            <path
-              d="M 330 340 C 240 340 180 340 130 340"
+            {/* Track 3: UI/UX Design (Middle-Left) */}
+            <line
+              x1="315" y1="340" x2="145" y2="340"
               stroke="#FFA000"
               strokeWidth="2.5"
-              fill="none"
+              strokeLinecap="round"
               filter="url(#neon-glow-red-orange)"
-              opacity={activeModule === "uiux" ? "1" : "0.75"}
+              opacity={activeModule === "uiux" ? "1" : "0.85"}
             />
 
-            {/* Track 4: Center (410, 340) to Middle-Right (730, 340) [E-Commerce] */}
-            <path
-              d="M 490 340 C 580 340 640 340 690 340"
+            {/* Track 4: E-Commerce (Middle-Right) */}
+            <line
+              x1="505" y1="340" x2="675" y2="340"
               stroke="#FF3823"
               strokeWidth="2.5"
-              fill="none"
+              strokeLinecap="round"
               filter="url(#neon-glow-red-orange)"
-              opacity={activeModule === "ecommerce" ? "1" : "0.75"}
+              opacity={activeModule === "ecommerce" ? "1" : "0.85"}
             />
 
-            {/* Track 5: Center (410, 340) to Bottom-Left (160, 560) [HealthTech] */}
-            <path
-              d="M 410 410 C 330 420 230 500 180 540"
+            {/* Track 5: HealthTech */}
+            <line
+              x1="345" y1="405" x2="185" y2="550"
               stroke="#FF6A00"
               strokeWidth="2.5"
-              fill="none"
+              strokeLinecap="round"
               filter="url(#neon-glow-red-orange)"
-              opacity={activeModule === "healthtech" ? "1" : "0.75"}
+              opacity={activeModule === "healthtech" ? "1" : "0.85"}
             />
 
-            {/* Track 6: Center (410, 340) to Bottom-Right (660, 560) [CRM] */}
-            <path
-              d="M 410 410 C 490 420 590 500 640 540"
+            {/* Track 6: CRM */}
+            <line
+              x1="475" y1="405" x2="635" y2="550"
               stroke="#FFA000"
               strokeWidth="2.5"
-              fill="none"
+              strokeLinecap="round"
               filter="url(#neon-glow-red-orange)"
-              opacity={activeModule === "crm" ? "1" : "0.75"}
+              opacity={activeModule === "crm" ? "1" : "0.85"}
             />
 
-            {/* Track 7: Center (410, 340) to Bottom-Center (410, 580) [Researcher Portfolio] */}
-            <path
-              d="M 410 420 L 410 540"
+            {/* Track 7: Researcher Portfolio (Bottom-Center) */}
+            <line
+              x1="410" y1="435" x2="410" y2="585"
               stroke="#FF3823"
               strokeWidth="2.5"
-              fill="none"
+              strokeLinecap="round"
               filter="url(#neon-glow-red-orange)"
-              opacity={activeModule === "researcher" ? "1" : "0.75"}
+              opacity={activeModule === "researcher" ? "1" : "0.85"}
             />
 
-            {/* Animated traveling data pulses */}
-            <circle r="3.5" fill="#FFFFFF">
-              <animateMotion
-                path="M 410 270 C 330 260 230 180 180 130"
-                dur="2.5s"
-                repeatCount="indefinite"
-              />
+            {/* ═══ LAYER 3: Terminal Anchor Dots at Each Card ═══ */}
+            <circle cx="185" cy="125" r="4" fill="#FF3823" filter="url(#neon-glow-red-orange)" />
+            <circle cx="635" cy="125" r="4" fill="#FF6A00" filter="url(#neon-glow-red-orange)" />
+            <circle cx="145" cy="340" r="4" fill="#FFA000" filter="url(#neon-glow-red-orange)" />
+            <circle cx="675" cy="340" r="4" fill="#FF3823" filter="url(#neon-glow-red-orange)" />
+            <circle cx="185" cy="550" r="4" fill="#FF6A00" filter="url(#neon-glow-red-orange)" />
+            <circle cx="635" cy="550" r="4" fill="#FFA000" filter="url(#neon-glow-red-orange)" />
+            <circle cx="410" cy="585" r="4" fill="#FF3823" filter="url(#neon-glow-red-orange)" />
+
+            {/* ═══ LAYER 4: Animated Traveling Data Pulses (All 7 Tracks) ═══ */}
+            <circle r="3" fill="#FFFFFF">
+              <animateMotion path="M 345 275 L 185 125" dur="2.4s" repeatCount="indefinite" />
             </circle>
-            <circle r="3.5" fill="#FFFFFF">
-              <animateMotion
-                path="M 410 270 C 490 260 590 180 640 130"
-                dur="2.8s"
-                repeatCount="indefinite"
-              />
+            <circle r="3" fill="#FFFFFF">
+              <animateMotion path="M 475 275 L 635 125" dur="2.6s" repeatCount="indefinite" />
             </circle>
-            <circle r="3.5" fill="#FFFFFF">
-              <animateMotion
-                path="M 330 340 C 240 340 180 340 130 340"
-                dur="2.3s"
-                repeatCount="indefinite"
-              />
+            <circle r="3" fill="#FFFFFF">
+              <animateMotion path="M 315 340 L 145 340" dur="2.2s" repeatCount="indefinite" />
             </circle>
-            <circle r="3.5" fill="#FFFFFF">
-              <animateMotion
-                path="M 490 340 C 580 340 640 340 690 340"
-                dur="2.6s"
-                repeatCount="indefinite"
-              />
+            <circle r="3" fill="#FFFFFF">
+              <animateMotion path="M 505 340 L 675 340" dur="2.5s" repeatCount="indefinite" />
             </circle>
-            <circle r="3.5" fill="#FFFFFF">
-              <animateMotion
-                path="M 410 410 C 330 420 230 500 180 540"
-                dur="2.4s"
-                repeatCount="indefinite"
-              />
+            <circle r="3" fill="#FFFFFF">
+              <animateMotion path="M 345 405 L 185 550" dur="2.3s" repeatCount="indefinite" />
             </circle>
-            <circle r="3.5" fill="#FFFFFF">
-              <animateMotion
-                path="M 410 410 C 490 420 590 500 640 540"
-                dur="2.7s"
-                repeatCount="indefinite"
-              />
+            <circle r="3" fill="#FFFFFF">
+              <animateMotion path="M 475 405 L 635 550" dur="2.7s" repeatCount="indefinite" />
             </circle>
-            <circle r="3.5" fill="#FFFFFF">
-              <animateMotion
-                path="M 410 420 L 410 540"
-                dur="2.2s"
-                repeatCount="indefinite"
-              />
+            <circle r="3" fill="#FFFFFF">
+              <animateMotion path="M 410 435 L 410 585" dur="2.1s" repeatCount="indefinite" />
             </circle>
           </svg>
 
