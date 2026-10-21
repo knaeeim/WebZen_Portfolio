@@ -19,7 +19,7 @@ import { ContactSection } from "@/components/sections/ContactSection";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen flex flex-col bg-[#060813] text-[#F8FAFC] selection:bg-[#2DD4BF] selection:text-[#060813]">
+    <div className="relative min-h-screen flex flex-col bg-[#050505] text-[#FFFFFF] selection:bg-[#FF3823] selection:text-white">
       {/* 1. Global Visual Identity & Breathing Fluid Aurora Mesh Gradient */}
       <AmbientLighting />
       <ParticleCanvas />

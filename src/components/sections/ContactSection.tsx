@@ -17,9 +17,6 @@ import {
   ArrowRight,
   ShieldCheck
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 
 export function ContactSection() {
   const { data } = useSite();
@@ -68,13 +65,12 @@ export function ContactSection() {
         message: "",
       });
 
-      // Launch festive celebration confetti
       try {
         confetti({
           particleCount: 120,
           spread: 80,
           origin: { y: 0.6 },
-          colors: ["#00f2fe", "#4facfe", "#7928ca", "#10b981", "#ffffff"],
+          colors: ["#FF3823", "#FF6A00", "#FFA000", "#ffffff"],
         });
       } catch (err) {
         console.log("Confetti trigger:", err);
@@ -101,25 +97,30 @@ export function ContactSection() {
   const isBn = language === "bn";
 
   return (
-    <section id="contact" className="relative py-20 sm:py-28 overflow-hidden scroll-mt-20 bg-[#060813]">
-      {/* Background ambient glow - Aurora Teal & Lavender */}
+    <section id="contact" className="relative py-24 sm:py-32 overflow-hidden scroll-mt-20 bg-[#050505] z-10">
+      
+      {/* Background ambient glow - Crimson & Amber */}
       <div 
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[650px] h-[400px] bg-gradient-to-r from-[#2DD4BF]/[0.05] to-[#C084FC]/[0.05] blur-[170px] rounded-full pointer-events-none" 
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[650px] h-[400px] pointer-events-none rounded-full" 
+        style={{
+          background: "radial-gradient(circle, rgba(255, 56, 35, 0.12) 0%, rgba(255, 149, 0, 0.08) 50%, transparent 75%)",
+          filter: "blur(140px)",
+        }}
         aria-hidden="true" 
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-18">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ type: "spring", stiffness: 220, damping: 18 }}
-            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-zen-pill text-neutral-300 mb-4"
+            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-radiant-pill border border-[#FF3823]/30 text-neutral-300 mb-4 shadow-[0_4px_16px_rgba(255,56,35,0.15)]"
           >
-            <span className="w-2 h-2 rounded-full bg-[#2DD4BF] shadow-[0_0_8px_#2DD4BF]" />
+            <span className="w-2 h-2 rounded-full bg-[#FF3823] shadow-[0_0_8px_#FF3823]" />
             <span className={`text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-200 ${isBn ? "font-bangla-ui tracking-normal" : ""}`}>
               {isBn ? "প্রজেক্ট আলোচনা" : "INITIATE PROJECT"}
             </span>
@@ -130,15 +131,15 @@ export function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ type: "spring", stiffness: 220, damping: 18, delay: 0.08 }}
-            className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none ${isBn ? "font-bangla-display font-black" : "font-display font-black"}`}
+            className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight uppercase leading-none ${isBn ? "font-bangla-display font-black tracking-normal" : "font-display font-black"}`}
           >
             {isBn ? (
               <>
-                আসুন একসাথে <span className="text-gradient-aurora">শুরু করি</span>
+                আসুন একসাথে <span className="text-gradient-hero">শুরু করি</span>
               </>
             ) : (
               <>
-                Let&apos;s Build <span className="text-gradient-aurora">Together</span>
+                Let&apos;s Build <span className="text-gradient-hero">Together</span>
               </>
             )}
           </motion.h2>
@@ -158,7 +159,7 @@ export function ContactSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 items-start">
           
-          {/* Left Details & Office Info in Liquid Glass */}
+          {/* Left Details & Office Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -168,7 +169,7 @@ export function ContactSection() {
           >
             
             {/* Quick WhatsApp Action Card */}
-            <div className="glass-zen rounded-[28px] p-6 sm:p-7 border border-white/[0.08] hover:border-[#2DD4BF]/30 transition-all group shadow-[0_16px_36px_rgba(0,0,0,0.4)]">
+            <div className="glass-radiant rounded-[28px] p-6 sm:p-7 border border-white/[0.08] hover:border-[#25D366]/40 transition-all group shadow-[0_16px_36px_rgba(0,0,0,0.6)]">
               <div className="flex items-center gap-3.5 mb-3.5">
                 <div className="w-12 h-12 rounded-2xl bg-[#25D366]/15 border border-[#25D366]/30 text-[#25D366] flex items-center justify-center shrink-0">
                   <MessageCircle className="w-6 h-6" />
@@ -179,25 +180,24 @@ export function ContactSection() {
                 </div>
               </div>
               <motion.a
-                whileHover={{ y: -2, scale: 1.02 }}
-                whileTap={{ y: 0, scale: 0.96 }}
-                transition={{ type: "spring", stiffness: 280, damping: 18 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="aurora-btn-primary w-full py-3.5 text-xs font-bold tracking-wider uppercase gap-2.5 mt-3 shadow-lg"
+                className="pill-btn-primary w-full py-3.5 text-xs font-bold tracking-wider uppercase gap-2.5 mt-3 shadow-lg"
               >
                 <span>{t.whatsappBtn}</span>
-                <span className="flex items-center justify-center w-5 h-5 rounded-full bg-black/20 text-[#030712] shadow-inner">
+                <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white/20 text-white shadow-inner">
                   <ArrowRight className="w-3.5 h-3.5" />
                 </span>
               </motion.a>
             </div>
 
             {/* Dhaka Headquarters Card */}
-            <div className="glass-zen rounded-[28px] p-6 sm:p-7 space-y-4 border border-white/[0.08] shadow-[0_16px_36px_rgba(0,0,0,0.4)]">
+            <div className="glass-radiant rounded-[28px] p-6 sm:p-7 space-y-4 border border-white/[0.08] shadow-[0_16px_36px_rgba(0,0,0,0.6)]">
               <h3 className="font-display font-bold text-base text-white flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-[#2DD4BF]" />
+                <MapPin className="w-4 h-4 text-[#FF3823]" />
                 <span>{t.dhakaHq}</span>
               </h3>
 
@@ -211,14 +211,14 @@ export function ContactSection() {
 
                 <div className="flex items-center gap-2.5">
                   <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.phoneLabel}</div>
-                  <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="text-[#2DD4BF] hover:underline font-semibold font-mono">
+                  <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="text-[#FF3823] hover:underline font-semibold font-mono">
                     {contact.phone}
                   </a>
                 </div>
 
                 <div className="flex items-center gap-2.5">
                   <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.emailLabel}</div>
-                  <a href={`mailto:${contact.email}`} className="text-[#2DD4BF] hover:underline font-semibold font-mono">
+                  <a href={`mailto:${contact.email}`} className="text-[#FF3823] hover:underline font-semibold font-mono">
                     {contact.email}
                   </a>
                 </div>
@@ -233,14 +233,14 @@ export function ContactSection() {
 
               {/* Security promise */}
               <div className="pt-4 border-t border-white/[0.06] flex items-center gap-2 text-xs text-neutral-400">
-                <ShieldCheck className="w-4 h-4 text-[#2DD4BF] shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-[#FF3823] shrink-0" />
                 <span>{t.securityPromise}</span>
               </div>
             </div>
 
           </motion.div>
 
-          {/* Right Contact Form in Liquid Glass */}
+          {/* Right Contact Form */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -248,14 +248,14 @@ export function ContactSection() {
             transition={{ type: "spring", stiffness: 220, damping: 20 }}
             className="lg:col-span-7"
           >
-            <div className="glass-zen rounded-[32px] p-7 sm:p-10 border border-white/[0.08] shadow-[0_25px_60px_rgba(0,0,0,0.5)]">
+            <div className="glass-radiant rounded-[32px] p-7 sm:p-10 border border-white/[0.08] shadow-[0_25px_60px_rgba(0,0,0,0.8)]">
               {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="text-center py-12 space-y-4"
                 >
-                  <div className="w-16 h-16 rounded-full bg-[#2DD4BF]/20 border border-[#2DD4BF]/40 text-[#2DD4BF] flex items-center justify-center mx-auto shadow-[0_0_20px_rgba(45,212,191,0.3)]">
+                  <div className="w-16 h-16 rounded-full bg-[#FF3823]/20 border border-[#FF3823]/40 text-[#FF3823] flex items-center justify-center mx-auto shadow-[0_0_20px_rgba(255,56,35,0.4)]">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <h3 className="text-2xl font-bold text-white">{t.formSuccessTitle}</h3>
@@ -263,10 +263,10 @@ export function ContactSection() {
                     {t.formSuccessDesc}
                   </p>
                   <motion.button
-                    whileHover={{ y: -2, scale: 1.02 }}
+                    whileHover={{ scale: 1.04 }}
                     whileTap={{ scale: 0.96 }}
                     onClick={() => setSubmitted(false)}
-                    className="aurora-btn-primary font-bold text-xs mt-4 px-6 py-2.5 rounded-full shadow-md cursor-pointer"
+                    className="pill-btn-primary font-bold text-xs mt-4 px-6 py-2.5 rounded-full shadow-md cursor-pointer"
                   >
                     {t.formAnotherBtn}
                   </motion.button>
@@ -283,7 +283,7 @@ export function ContactSection() {
                         value={formState.name}
                         onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                         placeholder={t.namePlaceholder}
-                        className="w-full px-4 text-white placeholder:text-neutral-500 text-xs h-12 rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-[#2DD4BF]/50 focus:outline-none transition-colors"
+                        className="w-full px-4 text-white placeholder:text-neutral-500 text-xs h-12 rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-[#FF3823]/60 focus:outline-none transition-colors"
                       />
                     </div>
 
@@ -297,7 +297,7 @@ export function ContactSection() {
                         value={formState.email}
                         onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                         placeholder="yourname@company.com"
-                        className="w-full px-4 text-white placeholder:text-neutral-500 text-xs h-12 rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-[#2DD4BF]/50 focus:outline-none transition-colors"
+                        className="w-full px-4 text-white placeholder:text-neutral-500 text-xs h-12 rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-[#FF3823]/60 focus:outline-none transition-colors"
                       />
                     </div>
                   </div>
@@ -311,7 +311,7 @@ export function ContactSection() {
                         value={formState.phone}
                         onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
                         placeholder="+880 17XX-XXXXXX"
-                        className="w-full px-4 text-white placeholder:text-neutral-500 text-xs h-12 rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-[#2DD4BF]/50 focus:outline-none transition-colors"
+                        className="w-full px-4 text-white placeholder:text-neutral-500 text-xs h-12 rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-[#FF3823]/60 focus:outline-none transition-colors"
                       />
                     </div>
 
@@ -322,7 +322,7 @@ export function ContactSection() {
                       <select
                         value={formState.projectType}
                         onChange={(e) => setFormState({ ...formState, projectType: e.target.value })}
-                        className="w-full px-4 text-white text-xs h-12 rounded-xl bg-[#0C1024] border border-white/[0.08] focus:border-[#2DD4BF]/50 focus:outline-none transition-colors cursor-pointer"
+                        className="w-full px-4 text-white text-xs h-12 rounded-xl bg-[#08080C] border border-white/[0.08] focus:border-[#FF3823]/60 focus:outline-none transition-colors cursor-pointer"
                       >
                         {language === "bn" ? (
                           <>
@@ -354,34 +354,24 @@ export function ContactSection() {
                     <select
                       value={formState.budget}
                       onChange={(e) => setFormState({ ...formState, budget: e.target.value })}
-                      className="w-full px-4 text-white text-xs h-12 rounded-xl bg-[#0C1024] border border-white/[0.08] focus:border-[#2DD4BF]/50 focus:outline-none transition-colors cursor-pointer"
+                      className="w-full px-4 text-white text-xs h-12 rounded-xl bg-[#08080C] border border-white/[0.08] focus:border-[#FF3823]/60 focus:outline-none transition-colors cursor-pointer"
                     >
                       {language === "bn" ? (
                         <>
-                          <option value="৳ ১৫,০০০ - ৳ ৩৫,০০০">৳ ১৫,০০০ - ৳ ৩৫,০০০ (স্টার্টআপ ও বিজনেস ওয়েবসাইট)</option>
-                          <option value="৳ ৩৫,০০০ - ৳ ৭০,০০০">৳ ৩৫,০০০ - ৳ ৭০,০০০ (ই-কমার্স ও হেলথটেক বুকিং পোর্টাল)</option>
-                          <option value="৳ ৭০,০০০ - ৳ ১,৫০,০০০+">৳ ৭০,০০০ - ৳ ১,৫০,০০০+ (কাস্টম সফটওয়্যার ও অ্যাপ)</option>
-                          <option value="$150 - $400 USD">$150 - $400 USD (আন্তর্জাতিক স্টার্টআপ)</option>
-                          <option value="$400 - $1,200+ USD">$400 - $1,200+ USD (কাস্টম প্ল্যাটফর্ম ও অ্যাপ)</option>
+                          <option value="৳ 15,000 - ৳ 35,000">৳ ১৫,০০০ – ৳ ৩৫,০০০ (স্টার্টিং বাজেট)</option>
+                          <option value="৳ 35,000 - ৳ 75,000">৳ ৩৫,০০০ – ৳ ৭৫,০০০ (স্ট্যান্ডার্ড প্যাকেজ)</option>
+                          <option value="৳ 75,000 - ৳ 1,50,000">৳ ৭৫,০০০ – ৳ ১,৫০,০০০ (এন্টারপ্রাইজ সল্যুশন)</option>
+                          <option value="৳ 1,50,000+">৳ ১,৫০,০০০+ (লার্জ স্কেল সফটওয়্যার)</option>
                         </>
                       ) : (
                         <>
-                          <option value="৳ 15,000 - ৳ 35,000">৳ 15,000 - ৳ 35,000 (Startup Business Web)</option>
-                          <option value="৳ 35,000 - ৳ 70,000">৳ 35,000 - ৳ 70,000 (E-Commerce & HealthTech)</option>
-                          <option value="৳ 70,000 - ৳ 150,000+">৳ 70,000 - ৳ 150,000+ (Custom Software & App)</option>
-                          <option value="$150 - $400 USD">$150 - $400 USD (Starter Web)</option>
-                          <option value="$400 - $1,200+ USD">$400 - $1,200+ USD (Custom Application)</option>
+                          <option value="৳ 15,000 - ৳ 35,000">৳ 15,000 – ৳ 35,000 ($180 - $420)</option>
+                          <option value="৳ 35,000 - ৳ 75,000">৳ 35,000 – ৳ 75,000 ($420 - $890)</option>
+                          <option value="৳ 75,000 - ৳ 1,50,000">৳ 75,000 – ৳ 1,50,000 ($890 - $1,780)</option>
+                          <option value="৳ 1,50,000+">৳ 1,50,000+ ($1,780+ Enterprise)</option>
                         </>
                       )}
                     </select>
-                    <p className="text-[11px] text-neutral-400 mt-1.5 flex items-center gap-1.5 font-normal">
-                      <span className="text-[#2DD4BF] font-bold">*</span>
-                      <span>
-                        {language === "bn"
-                          ? "উল্লেখ্য: সার্ভার হোস্টিং ও ডাটাবেজ স্টোরেজ খরচ ক্লায়েন্টকে সরাসরি প্রোভাইডারকে পরিশোধ করতে হবে (আমরা ফ্রিতে সেটআপ করে দেব)।"
-                          : "Note: Server hosting & database storage expenses are billed directly to the client (we configure it free)."}
-                      </span>
-                    </p>
                   </div>
 
                   <div>
@@ -394,38 +384,25 @@ export function ContactSection() {
                       value={formState.message}
                       onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                       placeholder={t.messagePlaceholder}
-                      className="w-full p-4 text-white placeholder:text-neutral-500 text-xs rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-[#2DD4BF]/50 focus:outline-none resize-none transition-colors"
+                      className="w-full p-4 text-white placeholder:text-neutral-500 text-xs rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-[#FF3823]/60 focus:outline-none transition-colors resize-none"
                     />
                   </div>
 
                   {errorMessage && (
-                    <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/20 text-red-300 text-xs flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0" />
-                      <span>{errorMessage}</span>
+                    <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs">
+                      {errorMessage}
                     </div>
                   )}
 
                   <motion.button
-                    type="submit"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     disabled={loading}
-                    whileHover={{ y: -2, scale: 1.02 }}
-                    whileTap={{ y: 0, scale: 0.96 }}
-                    transition={{ type: "spring", stiffness: 280, damping: 18 }}
-                    className="aurora-btn-primary w-full h-13 text-xs sm:text-sm font-bold tracking-[0.16em] uppercase gap-2.5 shadow-xl disabled:opacity-60"
+                    type="submit"
+                    className="pill-btn-primary w-full py-4 text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer shadow-[0_10px_30px_rgba(255,56,35,0.45)]"
                   >
-                    {loading ? (
-                      <span className="flex items-center gap-2">
-                        <span className="w-4 h-4 border-2 border-[#030712] border-t-transparent rounded-full animate-spin" />
-                        <span>{t.submittingBtn}</span>
-                      </span>
-                    ) : (
-                      <span className="flex items-center gap-2.5">
-                        <span>{t.submitBtn}</span>
-                        <span className="flex items-center justify-center w-6 h-6 rounded-full bg-black/20 text-[#030712] shadow-inner">
-                          <Send className="w-3.5 h-3.5" />
-                        </span>
-                      </span>
-                    )}
+                    <span>{loading ? t.submittingBtn : t.submitBtn}</span>
+                    <Send className="w-4 h-4" />
                   </motion.button>
                 </form>
               )}

@@ -97,10 +97,15 @@ export function ProcessSection() {
       ];
 
   return (
-    <section id="process" className="relative py-20 sm:py-28 overflow-hidden scroll-mt-20 bg-[#060813]">
-      {/* Background ambient lighting - Soft Aurora Indigo & Teal */}
+    <section id="process" className="relative py-24 sm:py-32 overflow-hidden scroll-mt-20 bg-[#050505] z-10">
+      
+      {/* Background ambient lighting - Soft Crimson & Amber */}
       <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-r from-[#2DD4BF]/[0.05] via-[#818CF8]/[0.05] to-[#C084FC]/[0.05] blur-[170px] rounded-full pointer-events-none" 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] pointer-events-none rounded-full" 
+        style={{
+          background: "radial-gradient(circle, rgba(255, 56, 35, 0.1) 0%, rgba(255, 149, 0, 0.06) 45%, transparent 75%)",
+          filter: "blur(140px)",
+        }}
         aria-hidden="true" 
       />
 
@@ -113,9 +118,9 @@ export function ProcessSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ type: "spring", stiffness: 220, damping: 18 }}
-            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-zen-pill text-neutral-300 mb-4"
+            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-radiant-pill border border-[#FF3823]/30 text-neutral-300 mb-4 shadow-[0_4px_16px_rgba(255,56,35,0.15)]"
           >
-            <Workflow className="w-3.5 h-3.5 text-[#2DD4BF]" />
+            <Workflow className="w-3.5 h-3.5 text-[#FF3823]" />
             <span className={`text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-200 ${isBn ? "font-bangla-ui tracking-normal" : ""}`}>
               {isBn ? "আমাদের কাজের পদ্ধতি" : "OUR METHODOLOGY"}
             </span>
@@ -126,15 +131,15 @@ export function ProcessSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ type: "spring", stiffness: 220, damping: 18, delay: 0.08 }}
-            className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none ${isBn ? "font-bangla-display font-black" : "font-display font-black"}`}
+            className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight uppercase leading-none ${isBn ? "font-bangla-display font-black tracking-normal" : "font-display font-black"}`}
           >
             {isBn ? (
               <>
-                যেভাবে আমরা আপনার <span className="text-gradient-aurora">প্রজেক্ট সম্পন্ন করি</span>
+                যেভাবে আমরা আপনার <span className="text-gradient-hero">প্রজেক্ট সম্পন্ন করি</span>
               </>
             ) : (
               <>
-                Engineered for <span className="text-gradient-aurora">Frictionless Delivery</span>
+                Engineered for <span className="text-gradient-hero">Frictionless Delivery</span>
               </>
             )}
           </motion.h2>
@@ -164,25 +169,25 @@ export function ProcessSection() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ type: "spring", stiffness: 220, damping: 18, delay: idx * 0.08 }}
                 whileHover={{ y: -6 }}
-                className="glass-zen rounded-[28px] p-6 relative flex flex-col justify-between group border border-white/[0.08] hover:border-[#2DD4BF]/35 shadow-[0_16px_36px_rgba(0,0,0,0.4)] transition-all duration-300"
+                className="glass-radiant rounded-[28px] p-6 relative flex flex-col justify-between group border border-white/[0.08] hover:border-[#FF3823]/35 shadow-[0_16px_36px_rgba(0,0,0,0.7)] transition-all duration-300"
               >
                 {/* Step indicator watermark */}
-                <div className="text-4xl font-black text-white/[0.04] absolute top-4 right-5 group-hover:text-[#2DD4BF]/15 transition-colors font-mono select-none">
+                <div className="text-4xl font-black text-white/[0.04] absolute top-4 right-5 group-hover:text-[#FF3823]/15 transition-colors font-mono select-none">
                   {step.step}
                 </div>
 
                 <div>
                   {/* Step Icon */}
-                  <div className="w-11 h-11 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-[#2DD4BF]/40 group-hover:bg-[#2DD4BF]/10 transition-all">
-                    <Icon className="w-5 h-5 text-[#2DD4BF]" />
+                  <div className="w-11 h-11 rounded-2xl bg-[#FF3823]/15 border border-[#FF3823]/30 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-[#FF3823]/25 transition-all shadow-[0_0_12px_rgba(255,56,35,0.2)]">
+                    <Icon className="w-5 h-5 text-[#FF3823]" />
                   </div>
 
-                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-semibold text-[#2DD4BF] bg-[#2DD4BF]/10 px-2.5 py-0.5 rounded-full border border-[#2DD4BF]/20 w-fit mb-3">
+                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-semibold text-[#FFA000] bg-[#FFA000]/10 px-2.5 py-0.5 rounded-full border border-[#FFA000]/25 w-fit mb-3">
                     <Clock className="w-3 h-3" />
                     <span>{step.duration}</span>
                   </div>
 
-                  <h3 className={`text-base font-bold text-white group-hover:text-[#2DD4BF] transition-colors leading-snug ${isBn ? "font-bangla-display" : "font-display"}`}>
+                  <h3 className={`text-base font-bold text-white group-hover:text-[#FF5C35] transition-colors leading-snug ${isBn ? "font-bangla-display" : "font-display"}`}>
                     {step.title}
                   </h3>
 
@@ -193,7 +198,7 @@ export function ProcessSection() {
 
                 <div className="mt-6 pt-3.5 border-t border-white/[0.06] flex items-center justify-between text-[10px] text-neutral-400 font-mono">
                   <span>PHASE {step.step}</span>
-                  <span className="text-[#2DD4BF] font-semibold">MILESTONE</span>
+                  <span className="text-[#FF3823] font-semibold">MILESTONE</span>
                 </div>
               </motion.div>
             );

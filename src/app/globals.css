@@ -48,24 +48,24 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 :root {
-  --background: #060813;
-  --foreground: #F8FAFC;
-  --card: #0C1024;
+  --background: #050505;
+  --foreground: #FFFFFF;
+  --card: #0A0A0D;
   --card-foreground: #FFFFFF;
-  --popover: #0C1024;
+  --popover: #0A0A0D;
   --popover-foreground: #FFFFFF;
-  --primary: #2DD4BF;
-  --primary-foreground: #030712;
-  --secondary: #11162E;
+  --primary: #FF3823;
+  --primary-foreground: #FFFFFF;
+  --secondary: #141419;
   --secondary-foreground: #F8FAFC;
-  --muted: #11162E;
+  --muted: #141419;
   --muted-foreground: #94A3B8;
-  --accent: #C084FC;
+  --accent: #FF6A00;
   --accent-foreground: #FFFFFF;
   --destructive: #EF4444;
   --border: rgba(255, 255, 255, 0.08);
   --input: rgba(255, 255, 255, 0.10);
-  --ring: #2DD4BF;
+  --ring: #FF3823;
   --radius: 1.5rem;
 
   --font-sans: var(--font-jakarta), var(--font-anek-bangla), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -73,16 +73,13 @@
   --font-bengali: var(--font-anek-bangla), sans-serif;
   --font-english: var(--font-jakarta), var(--font-syne), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-  --accent-cyan: #2DD4BF;
-  --accent-blue: #818CF8;
-  --accent-teal: #14B8A6;
-  --aurora-teal: #2DD4BF;
-  --aurora-indigo: #818CF8;
-  --aurora-lavender: #C084FC;
-  --aurora-sky: #38BDF8;
-  --aurora-blue: #6366F1;
-  --aurora-midnight: #060813;
-  --zen-surface: rgba(12, 16, 36, 0.65);
+  --neon-crimson: #FF3823;
+  --neon-orange: #FF6A00;
+  --neon-amber: #FF9500;
+  --neon-copper: #EA580C;
+  --neon-gold: #FBBF24;
+  --dark-pitch: #050505;
+  --glass-surface: rgba(18, 18, 22, 0.55);
 }
 
 html.light,
@@ -249,210 +246,225 @@ html:not(.dark) ::-webkit-scrollbar-thumb {
 }
 
 /* ========================================================
-   AURORA UI + ZEN DESIGN SYSTEM (Bespoke, Frictionless, Calm)
+   DARK MODE GLASSMORPHISM WITH RADIANT NEON GLOWS
    ======================================================== */
 
-/* Master Liquid Zen Glass Surface */
+/* Master Dark Glass Surface with Ultra-Thin Gradient Border */
+.glass-radiant,
 .glass-zen {
-  background: rgba(12, 16, 36, 0.45);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  background: rgba(14, 14, 18, 0.55);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 
-    0 20px 50px -10px rgba(0, 0, 0, 0.6),
+    0 24px 60px -12px rgba(0, 0, 0, 0.85),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
   border-radius: 28px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-radiant:hover,
+.glass-zen:hover {
+  border-color: rgba(255, 75, 40, 0.45);
+  box-shadow: 
+    0 30px 70px -12px rgba(0, 0, 0, 0.95),
+    0 0 35px -5px rgba(255, 56, 35, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+/* Glass Pill / Floating Capsule */
+.glass-radiant-pill,
+.glass-zen-pill {
+  background: rgba(14, 14, 18, 0.65);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 12px 32px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-radiant-pill:hover,
+.glass-zen-pill:hover {
+  border-color: rgba(255, 106, 0, 0.4);
+  box-shadow: 
+    0 16px 36px rgba(0, 0, 0, 0.7),
+    0 0 25px rgba(255, 56, 35, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* 3D Tactile Stat Blocks (Image 3: Chunky, softly rounded squircle with warm amber/copper translucent lighting) */
+.squircle-3d-amber {
+  background: linear-gradient(145deg, rgba(255, 145, 40, 0.30) 0%, rgba(200, 85, 15, 0.22) 45%, rgba(35, 18, 6, 0.75) 100%);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-radius: 36px;
+  border: 1px solid rgba(255, 175, 80, 0.42);
+  box-shadow: 
+    0 25px 60px -10px rgba(0, 0, 0, 0.85),
+    0 0 45px -5px rgba(245, 158, 11, 0.35),
+    inset 0 2px 4px rgba(255, 230, 180, 0.5),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.7);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-zen:hover {
-  border-color: rgba(45, 212, 191, 0.3);
+.squircle-3d-amber:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: rgba(255, 200, 120, 0.6);
   box-shadow: 
-    0 25px 60px -10px rgba(0, 0, 0, 0.7),
-    0 0 40px -10px rgba(45, 212, 191, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
-  transform: translateY(-4px);
+    0 32px 75px -10px rgba(0, 0, 0, 0.95),
+    0 0 60px -5px rgba(245, 158, 11, 0.5),
+    inset 0 2px 6px rgba(255, 240, 200, 0.65),
+    inset 0 -4px 10px rgba(0, 0, 0, 0.8);
 }
 
-/* Zen Pill / Floating Capsule */
-.glass-zen-pill {
-  background: rgba(12, 16, 36, 0.6);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+/* Featured / Middle Pricing Card (Image 2: Dramatic top-down glowing orange/amber inner gradient) */
+.glass-middle-featured {
+  background: linear-gradient(180deg, rgba(255, 92, 53, 0.32) 0%, rgba(255, 92, 53, 0.08) 32%, rgba(14, 14, 18, 0.75) 100%);
+  backdrop-filter: blur(30px) saturate(190%);
+  -webkit-backdrop-filter: blur(30px) saturate(190%);
+  border: 1.5px solid rgba(255, 92, 53, 0.5);
   box-shadow: 
-    0 12px 30px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  border-radius: 9999px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    0 30px 80px -10px rgba(0, 0, 0, 0.9),
+    0 0 60px -10px rgba(255, 75, 40, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border-radius: 32px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-zen-pill:hover {
-  border-color: rgba(192, 132, 252, 0.3);
+.glass-middle-featured:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(255, 115, 60, 0.7);
   box-shadow: 
-    0 16px 36px rgba(0, 0, 0, 0.55),
-    0 0 25px rgba(192, 132, 252, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    0 35px 90px -10px rgba(0, 0, 0, 0.95),
+    0 0 80px -5px rgba(255, 92, 53, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
-/* Primary Luminous Aurora Pill Button */
-.aurora-btn-primary {
-  position: relative;
-  background: linear-gradient(135deg, #2DD4BF 0%, #818CF8 50%, #C084FC 100%);
-  color: #030712;
-  border-radius: 9999px;
-  box-shadow: 
-    0 12px 32px -4px rgba(45, 212, 191, 0.35),
-    0 4px 14px rgba(129, 140, 248, 0.25);
-  font-weight: 800;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.aurora-btn-primary:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 
-    0 18px 45px -4px rgba(45, 212, 191, 0.5),
-    0 8px 24px rgba(192, 132, 252, 0.35);
-}
-
-.aurora-btn-primary:active {
-  transform: translateY(0px) scale(0.97);
-}
-
-/* Secondary Frosted Zen Glass Button */
-.aurora-btn-glass {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #F8FAFC;
-  border-radius: 9999px;
-  box-shadow: 
-    0 10px 24px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.aurora-btn-glass:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(45, 212, 191, 0.4);
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 
-    0 14px 30px rgba(0, 0, 0, 0.5),
-    0 0 25px rgba(45, 212, 191, 0.15);
-}
-
-.aurora-btn-glass:active {
-  transform: translateY(0px) scale(0.97);
-}
-
-/* Smooth Compatibility Mapping: Map former clay classes to sleek Zen Glass */
-.clay-card-dark {
-  background: rgba(12, 16, 36, 0.55);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border-radius: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 
-    0 20px 50px -10px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.clay-card-dark:hover {
-  border-color: rgba(45, 212, 191, 0.28);
-  box-shadow: 
-    0 25px 60px -10px rgba(0, 0, 0, 0.7),
-    0 0 40px -10px rgba(45, 212, 191, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
-  transform: translateY(-4px);
-}
-
-.clay-card-surface {
-  background: rgba(16, 21, 46, 0.45);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 
-    0 14px 34px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.clay-card-surface:hover {
-  border-color: rgba(192, 132, 252, 0.3);
-  box-shadow: 
-    0 18px 42px rgba(0, 0, 0, 0.55),
-    0 0 30px rgba(129, 140, 248, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  transform: translateY(-3px);
-}
-
-.clay-card-coral,
-.clay-card-violet {
-  background: rgba(12, 16, 36, 0.6);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border-radius: 28px;
-  border: 1px solid rgba(45, 212, 191, 0.25);
-  box-shadow: 
-    0 20px 50px -10px rgba(0, 0, 0, 0.6),
-    0 0 40px -10px rgba(45, 212, 191, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  color: #FFFFFF;
-}
-
+/* Primary Pill Button with Glowing Gradient Fill & Outer Ring (Image 1 & 3) */
+.pill-btn-primary,
+.aurora-btn-primary,
 .clay-btn-coral {
-  background: linear-gradient(135deg, #2DD4BF 0%, #818CF8 50%, #C084FC 100%);
-  color: #030712;
+  position: relative;
+  background: linear-gradient(135deg, #FF3823 0%, #FF6A00 100%);
+  color: #FFFFFF;
   border-radius: 9999px;
   box-shadow: 
-    0 12px 32px -4px rgba(45, 212, 191, 0.35),
-    0 4px 14px rgba(129, 140, 248, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+    0 10px 30px -4px rgba(255, 56, 35, 0.55),
+    0 0 25px rgba(255, 106, 0, 0.35);
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.25);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
   cursor: pointer;
 }
 
+.pill-btn-primary:hover,
+.aurora-btn-primary:hover,
 .clay-btn-coral:hover {
-  transform: translateY(-3px) scale(1.02);
+  transform: translateY(-2px) scale(1.03);
   box-shadow: 
-    0 18px 45px -4px rgba(45, 212, 191, 0.5),
-    0 8px 24px rgba(192, 132, 252, 0.35);
+    0 16px 45px -4px rgba(255, 56, 35, 0.75),
+    0 0 35px rgba(255, 106, 0, 0.55);
 }
 
+.pill-btn-primary:active,
+.aurora-btn-primary:active,
 .clay-btn-coral:active {
   transform: translateY(0px) scale(0.97);
 }
 
-.clay-btn-violet {
-  background: linear-gradient(135deg, #818CF8 0%, #C084FC 100%);
+/* Secondary Frosted Glass Pill Button (Image 1) */
+.pill-btn-glass,
+.aurora-btn-glass,
+.clay-btn-dark {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: #FFFFFF;
   border-radius: 9999px;
   box-shadow: 
-    0 12px 32px -4px rgba(129, 140, 248, 0.35),
-    0 4px 14px rgba(192, 132, 252, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+    0 10px 24px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
   cursor: pointer;
+}
+
+.pill-btn-glass:hover,
+.aurora-btn-glass:hover,
+.clay-btn-dark:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 92, 53, 0.45);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 
+    0 14px 30px rgba(0, 0, 0, 0.7),
+    0 0 25px rgba(255, 92, 53, 0.2);
+}
+
+/* Amber CTA Pill Button (Image 3) */
+.pill-btn-amber {
+  background: linear-gradient(135deg, #FF9500 0%, #EA580C 100%);
+  color: #FFFFFF;
+  border-radius: 9999px;
+  box-shadow: 
+    0 10px 30px -4px rgba(255, 149, 0, 0.5),
+    0 0 25px rgba(234, 88, 12, 0.35);
+  border: 1px solid rgba(255, 230, 180, 0.3);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.pill-btn-amber:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 
+    0 16px 45px -4px rgba(255, 149, 0, 0.7),
+    0 0 35px rgba(234, 88, 12, 0.5);
+}
+
+/* Smooth Compatibility Mapping */
+.clay-card-dark,
+.clay-card-surface,
+.clay-card-coral,
+.clay-card-violet {
+  background: rgba(14, 14, 18, 0.55);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.85);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.clay-card-dark:hover,
+.clay-card-surface:hover {
+  border-color: rgba(255, 75, 40, 0.4);
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.95), 0 0 35px -5px rgba(255, 56, 35, 0.2);
+  transform: translateY(-4px);
+}
+
+.clay-pill {
+  border-radius: 9999px;
+  background: rgba(14, 14, 18, 0.65);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.clay-icon-bubble {
+  border-radius: 20px;
+  background: rgba(255, 56, 35, 0.12);
+  border: 1px solid rgba(255, 56, 35, 0.3);
+  box-shadow: 0 0 20px rgba(255, 56, 35, 0.2);
 }
 
 .clay-btn-dark {
@@ -676,15 +688,28 @@ html:not(.dark) .bg-dots-pattern {
   font-family: var(--font-display);
 }
 
-/* Bespoke Aurora + Zen Theme Gradients */
-.text-gradient-hero {
-  background: linear-gradient(135deg, #2DD4BF 0%, #818CF8 50%, #C084FC 100%);
+/* Bespoke Radiant Neon & Amber Gradients */
+.text-gradient-hero,
+.text-gradient-crimson {
+  background: linear-gradient(135deg, #FF3823 0%, #FF6A00 60%, #FFA000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-amber {
+  background: linear-gradient(135deg, #FFB800 0%, #FF8A00 50%, #FF4500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-copper {
+  background: linear-gradient(135deg, #FF9500 0%, #EA580C 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-aurora {
-  background: linear-gradient(135deg, #2DD4BF 0%, #38BDF8 35%, #818CF8 70%, #C084FC 100%);
+  background: linear-gradient(135deg, #FF3823 0%, #FF6A00 50%, #FF9500 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -696,25 +721,25 @@ html:not(.dark) .bg-dots-pattern {
 }
 
 .text-gradient-starlight {
-  background: linear-gradient(135deg, #F8FAFC 0%, #CBD5E1 50%, #94A3B8 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 50%, #94A3B8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-coral {
-  background: linear-gradient(135deg, #2DD4BF 0%, #818CF8 100%);
+  background: linear-gradient(135deg, #FF3823 0%, #FF6A00 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-violet {
-  background: linear-gradient(135deg, #C4B5FD 0%, #818CF8 50%, #C084FC 100%);
+  background: linear-gradient(135deg, #FF6A00 0%, #FF3823 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-gold {
-  background: linear-gradient(135deg, #2DD4BF 0%, #38BDF8 50%, #818CF8 100%);
+  background: linear-gradient(135deg, #FFD700 0%, #FF9500 50%, #EA580C 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -722,8 +747,8 @@ html:not(.dark) .bg-dots-pattern {
 /* Hollow/Outlined Studio Typography */
 .text-outline-studio {
   color: transparent;
-  -webkit-text-stroke: 1.5px #2DD4BF;
-  text-stroke: 1.5px #2DD4BF;
+  -webkit-text-stroke: 1.5px #FF5C35;
+  text-stroke: 1.5px #FF5C35;
   letter-spacing: 0.08em;
 }
 
@@ -731,12 +756,6 @@ html:not(.dark) .bg-dots-pattern {
   color: transparent;
   -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.75);
   text-stroke: 1.5px rgba(255, 255, 255, 0.75);
-}
-
-.text-gradient-fire {
-  background: linear-gradient(135deg, #2DD4BF 0%, #818CF8 50%, #C084FC 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 /* Smooth continuous marquee animation */
@@ -760,84 +779,150 @@ html:not(.dark) .bg-dots-pattern {
   animation-play-state: paused;
 }
 
-/* Aurora Mesh Fluid Kinetics */
-@keyframes aurora-mesh-1 {
+/* Continuous Weightless Floating Animations with Staggered Delays */
+@keyframes float-subtle-1 {
   0%, 100% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  33% {
-    transform: translate(60px, -50px) scale(1.15);
-  }
-  66% {
-    transform: translate(-40px, 40px) scale(0.9);
-  }
-}
-
-@keyframes aurora-mesh-2 {
-  0%, 100% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  33% {
-    transform: translate(-60px, 45px) scale(1.18);
-  }
-  66% {
-    transform: translate(50px, -40px) scale(0.92);
-  }
-}
-
-@keyframes aurora-mesh-3 {
-  0%, 100% {
-    transform: translate(0px, 0px) scale(1);
+    transform: translateY(0px);
   }
   50% {
-    transform: translate(35px, -65px) scale(1.1);
+    transform: translateY(-8px);
   }
 }
 
-@keyframes zen-breathe {
+@keyframes float-subtle-2 {
   0%, 100% {
-    opacity: 0.35;
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes float-subtle-3 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float-1 {
+  animation: float-subtle-1 5s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: float-subtle-2 6.5s ease-in-out infinite;
+}
+
+.animate-float-3 {
+  animation: float-subtle-3 5.8s ease-in-out infinite;
+}
+
+/* Vertical Amber Light Stream Breathing */
+@keyframes beam-breathe {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1.15);
+  }
+}
+
+.animate-beam-breathe {
+  animation: beam-breathe 7s ease-in-out infinite;
+}
+
+/* Crimson Horizon Glow Pulse */
+@keyframes horizon-pulse {
+  0%, 100% {
+    opacity: 0.55;
     transform: scale(1);
   }
   50% {
-    opacity: 0.7;
-    transform: scale(1.08);
+    opacity: 0.85;
+    transform: scale(1.04);
   }
 }
 
-.animate-aurora-mesh-1 {
-  animation: aurora-mesh-1 22s ease-in-out infinite;
+.animate-horizon-pulse {
+  animation: horizon-pulse 8s ease-in-out infinite;
 }
 
-.animate-aurora-mesh-2 {
-  animation: aurora-mesh-2 26s ease-in-out infinite;
+/* 3D Orb Centerpiece Orbital Rings */
+@keyframes orbit-3d-1 {
+  from {
+    transform: rotateX(68deg) rotateY(15deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(68deg) rotateY(15deg) rotateZ(360deg);
+  }
 }
 
-.animate-aurora-mesh-3 {
-  animation: aurora-mesh-3 30s ease-in-out infinite;
+@keyframes orbit-3d-2 {
+  from {
+    transform: rotateX(-65deg) rotateY(-20deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(-65deg) rotateY(-20deg) rotateZ(-360deg);
+  }
 }
 
-.animate-zen-breathe {
-  animation: zen-breathe 10s ease-in-out infinite;
+@keyframes orbit-3d-3 {
+  from {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+  }
 }
 
-/* Ambient glow utilities matching Aurora Zen lighting */
-.glow-warm-ambient,
-.glow-aurora-ambient {
-  box-shadow: 0 0 90px -10px rgba(45, 212, 191, 0.16), 0 0 110px -20px rgba(192, 132, 252, 0.14);
+.animate-orbit-1 {
+  animation: orbit-3d-1 16s linear infinite;
 }
 
-.glow-aurora-teal {
-  box-shadow: 0 0 60px -10px rgba(45, 212, 191, 0.3);
+.animate-orbit-2 {
+  animation: orbit-3d-2 22s linear infinite;
 }
 
-.glow-aurora-lavender {
-  box-shadow: 0 0 60px -10px rgba(192, 132, 252, 0.3);
+.animate-orbit-3 {
+  animation: orbit-3d-3 19s linear infinite;
+}
+
+/* Core Energy Pulse */
+@keyframes core-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+.animate-core-pulse {
+  animation: core-pulse 4s ease-in-out infinite;
+}
+
+/* Ambient glow utilities */
+.glow-warm-ambient {
+  box-shadow: 0 0 90px -10px rgba(255, 56, 35, 0.22), 0 0 110px -20px rgba(255, 149, 0, 0.18);
+}
+
+.glow-neon-crimson {
+  box-shadow: 0 0 60px -10px rgba(255, 56, 35, 0.4);
+}
+
+.glow-neon-amber {
+  box-shadow: 0 0 60px -10px rgba(255, 149, 0, 0.4);
 }
 
 body {
-  background-color: #060813;
-  color: #F8FAFC;
+  background-color: #050505;
+  color: #FFFFFF;
   font-family: var(--font-sans);
   overflow-x: hidden;
   transition: background-color 0.4s ease, color 0.4s ease;
@@ -845,6 +930,6 @@ body {
 
 html.light body,
 html:not(.dark) body {
-  background-color: #060813;
-  color: #F8FAFC;
+  background-color: #050505;
+  color: #FFFFFF;
 }

@@ -24,8 +24,8 @@ export function ParticleCanvas() {
 
   const theme = data.theme;
   const enabled = theme?.enableParticles ?? true;
-  const preset = theme?.preset || "cyber-zen";
-  const accentColor = theme?.accentColor || "#06B6D4";
+  const preset = theme?.preset || "radiant-neon";
+  const accentColor = theme?.accentColor || "#FF3823";
 
   useEffect(() => {
     if (!enabled) return;
@@ -60,10 +60,10 @@ export function ParticleCanvas() {
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseleave", handleMouseLeave);
 
-    const accent = theme?.accentColor || "#06b6d4";
-    const start = theme?.accentGradientStart || "#38bdf8";
-    const end = theme?.accentGradientEnd || "#10b981";
-    const colors = [start, accent, end, "#ffffff"];
+    const accent = theme?.accentColor || "#FF3823";
+    const start = theme?.accentGradientStart || "#FF3823";
+    const end = theme?.accentGradientEnd || "#FF6A00";
+    const colors = [start, accent, end, "#FFA000", "rgba(255,255,255,0.7)"];
 
     const particleCount = Math.min(Math.floor((width * height) / 20000), 65);
     const particles: Particle[] = [];

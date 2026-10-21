@@ -4,23 +4,24 @@ import { useEffect } from "react";
 import { useSite } from "@/context/SiteContext";
 
 const PRESET_MAP: Record<string, { accent: string; start: string; end: string }> = {
-  "aurora-zen": { accent: "#2DD4BF", start: "#2DD4BF", end: "#C084FC" },
-  "dark-clay": { accent: "#2DD4BF", start: "#2DD4BF", end: "#C084FC" },
-  "creative-studio": { accent: "#2DD4BF", start: "#2DD4BF", end: "#C084FC" },
-  "solar-amber": { accent: "#FBBF24", start: "#F59E0B", end: "#EA7814" },
-  "cyber-zen": { accent: "#2DD4BF", start: "#2DD4BF", end: "#C084FC" },
+  "radiant-neon": { accent: "#FF3823", start: "#FF3823", end: "#FF6A00" },
+  "aurora-zen": { accent: "#FF3823", start: "#FF3823", end: "#FF6A00" },
+  "dark-clay": { accent: "#FF3823", start: "#FF3823", end: "#FF6A00" },
+  "creative-studio": { accent: "#FF3823", start: "#FF3823", end: "#FF6A00" },
+  "solar-amber": { accent: "#FFA000", start: "#FFB800", end: "#EA580C" },
+  "cyber-zen": { accent: "#FF3823", start: "#FF3823", end: "#FF6A00" },
   "emerald-matrix": { accent: "#10B981", start: "#34D399", end: "#84CC16" },
   "azure-sky": { accent: "#0EA5E9", start: "#38BDF8", end: "#6366F1" },
   "aurora-violet": { accent: "#8B5CF6", start: "#A78BFA", end: "#C084FC" },
-  "crimson-rose": { accent: "#EF4444", start: "#F43F5E", end: "#FB7185" },
+  "crimson-rose": { accent: "#FF3823", start: "#FF3823", end: "#FF6A00" },
 };
 
 const BG_TONE_MAP: Record<string, string> = {
-  "midnight": "#060813",
-  "obsidian": "#060813",
-  "pitch-black": "#0B0D13",
-  "midnight-navy": "#0D111A",
-  "deep-slate": "#12141C",
+  "midnight": "#050505",
+  "obsidian": "#050505",
+  "pitch-black": "#050505",
+  "midnight-navy": "#050505",
+  "deep-slate": "#050505",
 };
 
 export function ThemeSynchronizer() {
