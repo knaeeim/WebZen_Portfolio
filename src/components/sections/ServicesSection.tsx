@@ -2,7 +2,22 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Zap, CodeXml, Layers, Server } from "lucide-react";
+import { 
+  ArrowUpRight, 
+  CodeXml, 
+  Bot, 
+  Palette, 
+  ShieldCheck, 
+  Zap, 
+  Server, 
+  TrendingUp, 
+  CheckCircle2, 
+  Globe, 
+  Monitor, 
+  ArrowRight,
+  Layers,
+  Lock
+} from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useSite } from "@/context/SiteContext";
 
@@ -11,295 +26,719 @@ export function ServicesSection() {
   const { data } = useSite();
   const isBn = language === "bn";
 
-  const fallbackChecklist = isBn
-    ? [
-        {
-          title: "কাস্টম ফুল-স্ট্যাক ওয়েব আর্কিটেকচার",
-          desc: "Next.js 16, TypeScript, Node.js এবং ক্লাউড মাইক্রোসার্ভিসেস দিয়ে তৈরি দ্রুতগতির আর্কিটেকচার।",
-        },
-        {
-          title: "রেডিয়েন্ট UI/UX ডিজাইন ও প্রোটোটাইপিং",
-          desc: "চোখ ধাঁধানো নিয়ন গ্লো, আধুনিক ডিজাইন সিস্টেম এবং ১০০% পিক্সেল-পারফেক্ট গ্লাস ইন্টারফেস।",
-        },
-        {
-          title: "স্কেलेबल ড্যাশবোর্ড ও বিকাশ-নগদ পেমেন্ট",
-          desc: "কাস্টম অ্যানালিটিক্স পোর্টাল, বিকাশ-নগদ-স্ট্রাইপ ইনস্ট্যান্ট পেমেন্ট গেটওয়ে এবং রিয়েল-টাইম ডাটা।",
-        },
-      ]
-    : [
-        {
-          title: "Custom Full-Stack Web Architecture",
-          desc: "Built with Next.js 16, TypeScript, Node.js, and cloud microservices for maximum speed.",
-        },
-        {
-          title: "Radiant UI/UX Design & Prototyping",
-          desc: "Fluid neon interactive animations, design systems, and responsive pixel-perfect interfaces.",
-        },
-        {
-          title: "Scalable Dashboard & E-Commerce",
-          desc: "Custom analytics portals, payment integrations (bKash, Stripe), and real-time architectures.",
-        },
-      ];
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        const navHeight = 80;
+        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+        window.scrollTo({ top: targetPos, behavior: "smooth" });
+        window.history.pushState(null, "", href);
+      }
+    }
+  };
 
-  const checklist = (data?.services && data.services.length > 0)
-    ? data.services.slice(0, 3).map((s) => ({
-        title: isBn && s.titleBn ? s.titleBn : s.title,
-        desc: isBn && s.descriptionBn ? s.descriptionBn : s.description,
-      }))
-    : fallbackChecklist;
+  const steps = [
+    {
+      step: "01",
+      numberText: "01 •",
+      side: "left",
+      annotationTitle: isBn ? "ফুল-স্ট্যাক ওয়েব ইঞ্জিনিয়ারিং" : "Full-Stack Web Architecture",
+      annotationDesc: isBn 
+        ? "Next.js ও ক্লাউড প্রাকৃতি দিয়ে সাব-সেকেন্ড পেজ লোড ও ভবিষ্যৎমুখী আর্কিটেকচার।" 
+        : "Next.js platforms with sub-second page loads and bespoke API architecture.",
+      icon: Globe,
+      cardTitle: isBn ? "ফুল-স্ট্যাক ওয়েব আর্কিটেকচার" : "Full-Stack Web Architecture",
+      cardDomain: "webzen.bd/web-architecture",
+      status: isBn ? "সক্রিয় সিস্টেম" : "Active System",
+      statusColor: "emerald",
+      badgeText: "NEXT.JS 16",
+      tags: isBn 
+        ? ["কাস্টম আর্কিটেকচার", "অটোমেটেড CI/CD", "লাইটহাউস ৯৫+"] 
+        : ["Custom Architecture", "Automated CI/CD", "Lighthouse 95+"]
+    },
+    {
+      step: "02",
+      numberText: "02 •",
+      side: "right",
+      annotationTitle: isBn ? "AI ওয়ার্কফ্লো ও অটোমেশন" : "AI Workflows & Automation",
+      annotationDesc: isBn 
+        ? "অটোনোমাস LLM এজেন্টস ও স্মার্ট ইন্টেলিজেন্ট পাইপলাইন দিয়ে সময় ও ব্যয় সাশ্রয়।" 
+        : "Autonomous LLM agents and semantic pipelines to automate complex workflows.",
+      icon: Bot,
+      cardTitle: isBn ? "AI ও প্রসেস অটোমেশন" : "AI & Process Automation",
+      cardDomain: "webzen.bd/ai-workflows",
+      status: isBn ? "অটোমেটেড" : "Resolved",
+      statusColor: "emerald",
+      badgeText: "SMART AGENTS",
+      tags: isBn 
+        ? ["AI এজেন্টস", "অটোমেটেড পাইপলাইন", "ভেক্টর সার্চ"] 
+        : ["AI Agents", "Automated Pipelines", "Smart Analytics"]
+    },
+    {
+      step: "03",
+      numberText: "03 •",
+      side: "left",
+      annotationTitle: isBn ? "রেডিয়েন্ট UI/UX ডিজাইন" : "Radiant UI/UX Architecture",
+      annotationDesc: isBn 
+        ? "চোখ ধাঁধানো নিয়ন গ্লাস ও ৬০fps মাইক্রো-ইন্টারঅ্যাকশন দিয়ে আধুনিক ব্র্যান্ডিং।" 
+        : "Elevate your brand with award-winning aesthetics, micro-interactions, and 60fps physics.",
+      icon: Palette,
+      cardTitle: isBn ? "UI/UX ও ডিজাইন সিস্টেমস" : "UI/UX & Design Systems",
+      cardDomain: "webzen.bd/uiux-design",
+      status: isBn ? "পিক্সেল-পারফেক্ট" : "Pixel-Perfect",
+      statusColor: "emerald",
+      badgeText: "60FPS MOTION",
+      tags: isBn 
+        ? ["ইন্টারঅ্যাক্টিভ প্রোটোটাইপ", "ডিজাইন সিস্টেম", "A/B অপ্টিমাইজড"] 
+        : ["Interactive Prototypes", "Design System", "A/B Tested"]
+    },
+    {
+      step: "04",
+      numberText: "04 •",
+      side: "right",
+      annotationTitle: isBn ? "ক্লাউড স্কেলিং ও পেমেন্ট সিকিউরিটি" : "Cloud & BD Payment Security",
+      annotationDesc: isBn 
+        ? "বিকাশ, নগদ, স্ট্রাইপ ও এন্টারপ্রাইজ AWS ক্লাউড সিকিউরিটি দিয়ে নিরবচ্ছিন্ন লেনদেন।" 
+        : "Instant checkout with bKash, Nagad, Stripe, and enterprise SSL encryption.",
+      icon: Lock,
+      cardTitle: isBn ? "ক্লাউড ও পেমেন্ট গেটওয়ে" : "Cloud & Payment Gateways",
+      cardDomain: "webzen.bd/fintech-cloud",
+      status: isBn ? "সুরক্ষিত ও এনক্রিপ্টেড" : "Active & Encrypted",
+      statusColor: "emerald",
+      badgeText: "BKASH / SSL",
+      tags: isBn 
+        ? ["বিকাশ ও নগদ API", "ইনস্ট্যান্ট ওয়েবহুক", "ক্লাউড ক্লাস্টারিং"] 
+        : ["bKash & Nagad API", "Instant Webhooks", "Zero-Downtime"]
+    }
+  ];
 
   return (
     <section id="services" className="relative py-24 sm:py-32 overflow-hidden scroll-mt-20 bg-[#050505] z-10">
       
       {/* Background ambient lighting - Soft Crimson & Amber Glow */}
       <div 
-        className="absolute top-1/2 -left-[10%] w-[600px] h-[600px] pointer-events-none rounded-full" 
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[550px] pointer-events-none rounded-full" 
         style={{
-          background: "radial-gradient(circle, rgba(255, 56, 35, 0.12) 0%, transparent 70%)",
-          filter: "blur(140px)",
-        }}
-        aria-hidden="true" 
-      />
-      <div 
-        className="absolute top-1/3 -right-[10%] w-[600px] h-[600px] pointer-events-none rounded-full" 
-        style={{
-          background: "radial-gradient(circle, rgba(255, 149, 0, 0.12) 0%, transparent 70%)",
-          filter: "blur(140px)",
+          background: "radial-gradient(circle, rgba(255, 106, 0, 0.12) 0%, rgba(255, 56, 35, 0.08) 40%, transparent 70%)",
+          filter: "blur(130px)",
         }}
         aria-hidden="true" 
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Title */}
-        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
+        {/* ═══ Header Area (Matching Reference Layout: Eyebrow + Headline on Left, Status Card on Right) ═══ */}
+        <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 mb-16 sm:mb-20">
+          
+          {/* Left Column: Eyebrow, Heading, Subhead */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ type: "spring", stiffness: 220, damping: 18 }}
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-radiant-pill border border-[#FF3823]/30 text-neutral-300 mb-4 shadow-[0_4px_16px_rgba(255,56,35,0.15)]"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#FF3823] shadow-[0_0_8px_#FF3823]" />
-            <span className={`text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-200 ${isBn ? "font-bangla-ui tracking-normal" : ""}`}>
-              {isBn ? "সার্ভিস ও ক্যাপাবিলিটিজ" : "SOLUTIONS & CAPABILITIES"}
-            </span>
-          </motion.div>
-
-          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ type: "spring", stiffness: 220, damping: 18, delay: 0.08 }}
-            className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight uppercase ${isBn ? "font-bangla-display font-black tracking-normal" : "font-display font-black"}`}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-xl"
           >
-            {isBn ? "আমাদের সার্ভিস" : "Our Services"}
-          </motion.h2>
+            {/* Orange Eyebrow Badge */}
+            <div className="text-[11px] font-mono font-bold tracking-[0.2em] text-[#FF6A00] uppercase mb-3 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#FF6A00] shadow-[0_0_8px_#FF6A00]" />
+              <span>{isBn ? "সার্ভিস আর্কিটেকচার ব্লুপ্রিন্ট" : "INFRASTRUCTURE MAP"}</span>
+            </div>
+
+            {/* Massive Bold Headline */}
+            <h2 className={`text-4xl sm:text-5xl lg:text-[3.5rem] text-white font-black tracking-tight leading-[1.08] ${isBn ? "font-bangla-display" : "font-display"}`}>
+              {isBn ? (
+                <>
+                  কনসেপ্ট থেকে <br className="hidden sm:inline" />
+                  <span className="text-gradient-hero">লাইভ ডেপ্লয়মেন্ট</span>
+                </>
+              ) : (
+                <>
+                  From Concept <br className="hidden sm:inline" />
+                  <span className="text-gradient-hero">to Deployed</span>
+                </>
+              )}
+            </h2>
+
+            {/* Subhead */}
+            <p className={`mt-4 text-sm sm:text-base text-neutral-400 font-normal leading-relaxed ${isBn ? "font-bangla-body" : ""}`}>
+              {isBn
+                ? "কীভাবে আপনার ডিজিটাল আইডিয়া ওয়েবজেন বাংলাদেশের উন্নত ক্লাউড ইঞ্জিনিয়ারিং ও সিকিউর প্রোটোকলের মাধ্যমে লাইভ ওয়েবসাইটে রূপান্তরিত হয়।"
+                : "How your vision transforms into an ultra-fast, live web platform through modern engineering, DNS routing, and secure protocols."}
+            </p>
+          </motion.div>
+
+          {/* Right Column: Top Status Glass Card (Matching Reference Image) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full lg:w-[360px] shrink-0"
+          >
+            <div className="p-5 sm:p-6 rounded-2xl glass-radiant border border-white/[0.1] shadow-[0_15px_35px_rgba(0,0,0,0.8)]">
+              
+              {/* Header: Icon + Title + Registered Status */}
+              <div className="flex items-center gap-3.5 pb-4 border-b border-white/[0.08]">
+                <div className="w-12 h-12 rounded-full border border-[#FF6A00]/40 bg-[#FF6A00]/10 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(255,106,0,0.3)]">
+                  <Globe className="w-5 h-5 text-[#FF6A00]" />
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-white font-mono">webzen.bd</div>
+                  <div className="text-[11px] text-neutral-400 font-medium">
+                    {isBn ? "এন্টারপ্রাইজ ওয়েব আর্কিটেকচার" : "Registered Architecture"}
+                  </div>
+                </div>
+              </div>
+
+              {/* 4 Checklist Items with Orange Checkmarks */}
+              <div className="pt-4 space-y-2.5">
+                {[
+                  isBn ? "সাব-সেকেন্ড টিটিএফবি ও এজ রাউটিং" : "Sub-second TTFB & Edge Routing",
+                  isBn ? "অটোমেটেড সিআই/সিডি পাইপলাইন" : "Automated CI/CD Pipeline",
+                  isBn ? "গ্লোবাল প্রোপাগেশন ও সিডিএন" : "Propagation Global & CDN",
+                  isBn ? "সিকিউর বিকাশ ও কার্ড গেটওয়ে" : "Connection & SSL Established"
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2.5 text-xs text-neutral-300">
+                    <CheckCircle2 className="w-4 h-4 text-[#FF6A00] shrink-0" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </motion.div>
+
         </div>
 
-        {/* Split Feature Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        {/* ═══ The S-Curve Flow Architecture (Center Cards with Alternating Notes & Glowing Wires) ═══ */}
+        <div className="relative my-8 sm:my-14">
           
-          {/* Left Column: Heading, Paragraph, Numbered Checklist & Button */}
+          {/* Step 01: Full-Stack Web (Left Note, Center Card) */}
+          <div className="relative">
+            <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-4 md:gap-0">
+              
+              {/* Left Annotation Note */}
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="md:col-span-4 flex flex-col md:items-end md:text-right order-2 md:order-1"
+              >
+                <div className="max-w-[260px]">
+                  <div className="text-xs font-mono font-bold text-[#FF6A00] uppercase tracking-wider mb-1">
+                    {steps[0].numberText} {steps[0].annotationTitle}
+                  </div>
+                  <p className="text-xs text-neutral-400 leading-relaxed font-normal">
+                    {steps[0].annotationDesc}
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Dotted Connector Line (Desktop) */}
+              <div className="hidden md:flex md:col-span-1 items-center justify-end pr-2 order-2">
+                <span className="w-full border-t border-dashed border-[#FF6A00]/50" />
+                <span className="w-2 h-2 rounded-full bg-[#FF6A00] shadow-[0_0_8px_#FF6A00] shrink-0 ml-1" />
+              </div>
+
+              {/* Center Card */}
+              <motion.div 
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                whileHover={{ y: -4, scale: 1.01 }}
+                className="md:col-span-6 md:col-start-6 max-w-md w-full mx-auto order-1 md:order-3"
+              >
+                <div className="p-5 rounded-2xl glass-radiant border border-white/[0.1] hover:border-[#FF6A00]/40 transition-all duration-300 shadow-[0_12px_32px_rgba(0,0,0,0.85)]">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 rounded-full border border-[#FF6A00]/40 bg-[#FF6A00]/10 flex items-center justify-center shrink-0 shadow-[0_0_16px_rgba(255,106,0,0.25)]">
+                      <Globe className="w-6 h-6 text-[#FF6A00]" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-2">
+                        <h4 className="text-base font-bold text-white tracking-wide truncate">
+                          {steps[0].cardTitle}
+                        </h4>
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.04] text-neutral-400 border border-white/10">
+                          {steps[0].badgeText}
+                        </span>
+                      </div>
+                      <div className="text-xs font-mono text-neutral-400 mt-0.5 truncate">
+                        {steps[0].cardDomain}
+                      </div>
+                      <div className="mt-2.5 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/60 border border-white/[0.08] text-[11px] font-medium text-emerald-400">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_#34D399]" />
+                        <span>{steps[0].status}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              <div className="hidden md:block md:col-span-1" />
+
+            </div>
+
+            {/* Glowing S-Curve Wire: From Bottom Center of Card 1 -> Right -> Down -> Left into Top Center of Card 2 */}
+            <div className="relative w-full h-16 sm:h-20 flex items-center justify-center my-1 pointer-events-none">
+              <svg className="w-full h-full max-w-[540px] overflow-visible" viewBox="0 0 540 80" fill="none">
+                <defs>
+                  <filter id="glow-orange-1" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+                <path
+                  d="M 270 0 L 270 20 Q 270 30 280 30 L 410 30 Q 420 30 420 40 L 420 50 Q 420 60 410 60 L 280 60 Q 270 60 270 70 L 270 80"
+                  stroke="#FF6A00"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  filter="url(#glow-orange-1)"
+                  opacity="0.95"
+                />
+                <circle r="3.5" fill="#FFFFFF">
+                  <animateMotion
+                    path="M 270 0 L 270 20 Q 270 30 280 30 L 410 30 Q 420 30 420 40 L 420 50 Q 420 60 410 60 L 280 60 Q 270 60 270 70 L 270 80"
+                    dur="3s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+              </svg>
+            </div>
+          </div>
+
+          {/* Step 02: AI Workflows & Automation (Center Card, Right Note) */}
+          <div className="relative">
+            <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-4 md:gap-0">
+              
+              <div className="hidden md:block md:col-span-1" />
+
+              {/* Center Card */}
+              <motion.div 
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                whileHover={{ y: -4, scale: 1.01 }}
+                className="md:col-span-6 max-w-md w-full mx-auto"
+              >
+                <div className="p-5 rounded-2xl glass-radiant border border-white/[0.1] hover:border-[#FF6A00]/40 transition-all duration-300 shadow-[0_12px_32px_rgba(0,0,0,0.85)]">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 rounded-full border border-[#FF6A00]/40 bg-[#FF6A00]/10 flex items-center justify-center shrink-0 shadow-[0_0_16px_rgba(255,106,0,0.25)]">
+                      <span className="text-xl font-black text-[#FF6A00] font-mono">A</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-2">
+                        <h4 className="text-base font-bold text-white tracking-wide truncate">
+                          {steps[1].cardTitle}
+                        </h4>
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.04] text-neutral-400 border border-white/10">
+                          {steps[1].badgeText}
+                        </span>
+                      </div>
+                      <div className="text-xs font-mono text-neutral-400 mt-0.5 truncate">
+                        {steps[1].cardDomain}
+                      </div>
+                      <div className="mt-2.5 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/60 border border-white/[0.08] text-[11px] font-medium text-emerald-400">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_#34D399]" />
+                        <span>{steps[1].status}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Dotted Connector Line (Desktop) */}
+              <div className="hidden md:flex md:col-span-1 items-center justify-start pl-2">
+                <span className="w-2 h-2 rounded-full bg-[#FF6A00] shadow-[0_0_8px_#FF6A00] shrink-0 mr-1" />
+                <span className="w-full border-t border-dashed border-[#FF6A00]/50" />
+              </div>
+
+              {/* Right Annotation Note */}
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="md:col-span-4 flex flex-col md:items-start md:text-left"
+              >
+                <div className="max-w-[260px]">
+                  <div className="text-xs font-mono font-bold text-[#FF6A00] uppercase tracking-wider mb-1">
+                    {steps[1].numberText} {steps[1].annotationTitle}
+                  </div>
+                  <p className="text-xs text-neutral-400 leading-relaxed font-normal">
+                    {steps[1].annotationDesc}
+                  </p>
+                </div>
+              </motion.div>
+
+            </div>
+
+            {/* Glowing S-Curve Wire: From Bottom Center of Card 2 -> Left -> Down -> Right into Top Center of Card 3 */}
+            <div className="relative w-full h-16 sm:h-20 flex items-center justify-center my-1 pointer-events-none">
+              <svg className="w-full h-full max-w-[540px] overflow-visible" viewBox="0 0 540 80" fill="none">
+                <defs>
+                  <filter id="glow-orange-2" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+                <path
+                  d="M 270 0 L 270 20 Q 270 30 260 30 L 130 30 Q 120 30 120 40 L 120 50 Q 120 60 130 60 L 260 60 Q 270 60 270 70 L 270 80"
+                  stroke="#FF6A00"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  filter="url(#glow-orange-2)"
+                  opacity="0.95"
+                />
+                <circle r="3.5" fill="#FFFFFF">
+                  <animateMotion
+                    path="M 270 0 L 270 20 Q 270 30 260 30 L 130 30 Q 120 30 120 40 L 120 50 Q 120 60 130 60 L 260 60 Q 270 60 270 70 L 270 80"
+                    dur="3s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+              </svg>
+            </div>
+          </div>
+
+          {/* Step 03: Radiant UI/UX Design (Left Note, Center Card) */}
+          <div className="relative">
+            <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-4 md:gap-0">
+              
+              {/* Left Annotation Note */}
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="md:col-span-4 flex flex-col md:items-end md:text-right order-2 md:order-1"
+              >
+                <div className="max-w-[260px]">
+                  <div className="text-xs font-mono font-bold text-[#FF6A00] uppercase tracking-wider mb-1">
+                    {steps[2].numberText} {steps[2].annotationTitle}
+                  </div>
+                  <p className="text-xs text-neutral-400 leading-relaxed font-normal">
+                    {steps[2].annotationDesc}
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Dotted Connector Line (Desktop) */}
+              <div className="hidden md:flex md:col-span-1 items-center justify-end pr-2 order-2">
+                <span className="w-full border-t border-dashed border-[#FF6A00]/50" />
+                <span className="w-2 h-2 rounded-full bg-[#FF6A00] shadow-[0_0_8px_#FF6A00] shrink-0 ml-1" />
+              </div>
+
+              {/* Center Card */}
+              <motion.div 
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                whileHover={{ y: -4, scale: 1.01 }}
+                className="md:col-span-6 md:col-start-6 max-w-md w-full mx-auto order-1 md:order-3"
+              >
+                <div className="p-5 rounded-2xl glass-radiant border border-white/[0.1] hover:border-[#FF6A00]/40 transition-all duration-300 shadow-[0_12px_32px_rgba(0,0,0,0.85)]">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 rounded-full border border-[#FF6A00]/40 bg-[#FF6A00]/10 flex items-center justify-center shrink-0 shadow-[0_0_16px_rgba(255,106,0,0.25)]">
+                      <span className="text-xs font-black text-[#FF6A00] font-mono">UI/UX</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-2">
+                        <h4 className="text-base font-bold text-white tracking-wide truncate">
+                          {steps[2].cardTitle}
+                        </h4>
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.04] text-neutral-400 border border-white/10">
+                          {steps[2].badgeText}
+                        </span>
+                      </div>
+                      <div className="text-xs font-mono text-neutral-400 mt-0.5 truncate">
+                        {steps[2].cardDomain}
+                      </div>
+                      <div className="mt-2.5 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/60 border border-white/[0.08] text-[11px] font-medium text-emerald-400">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_#34D399]" />
+                        <span>{steps[2].status}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              <div className="hidden md:block md:col-span-1" />
+
+            </div>
+
+            {/* Glowing S-Curve Wire: From Bottom Center of Card 3 -> Right -> Down -> Left into Top Center of Card 4 */}
+            <div className="relative w-full h-16 sm:h-20 flex items-center justify-center my-1 pointer-events-none">
+              <svg className="w-full h-full max-w-[540px] overflow-visible" viewBox="0 0 540 80" fill="none">
+                <defs>
+                  <filter id="glow-orange-3" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+                <path
+                  d="M 270 0 L 270 20 Q 270 30 280 30 L 410 30 Q 420 30 420 40 L 420 50 Q 420 60 410 60 L 280 60 Q 270 60 270 70 L 270 80"
+                  stroke="#FF6A00"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  filter="url(#glow-orange-3)"
+                  opacity="0.95"
+                />
+                <circle r="3.5" fill="#FFFFFF">
+                  <animateMotion
+                    path="M 270 0 L 270 20 Q 270 30 280 30 L 410 30 Q 420 30 420 40 L 420 50 Q 420 60 410 60 L 280 60 Q 270 60 270 70 L 270 80"
+                    dur="3s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+              </svg>
+            </div>
+          </div>
+
+          {/* Step 04: Cloud & BD Payments Security (Center Card, Right Note) */}
+          <div className="relative">
+            <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-4 md:gap-0">
+              
+              <div className="hidden md:block md:col-span-1" />
+
+              {/* Center Card */}
+              <motion.div 
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                whileHover={{ y: -4, scale: 1.01 }}
+                className="md:col-span-6 max-w-md w-full mx-auto"
+              >
+                <div className="p-5 rounded-2xl glass-radiant border border-white/[0.1] hover:border-[#FF6A00]/40 transition-all duration-300 shadow-[0_12px_32px_rgba(0,0,0,0.85)]">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 rounded-full border border-[#FF6A00]/40 bg-[#FF6A00]/10 flex items-center justify-center shrink-0 shadow-[0_0_16px_rgba(255,106,0,0.25)]">
+                      <Lock className="w-6 h-6 text-[#FF6A00]" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-2">
+                        <h4 className="text-base font-bold text-white tracking-wide truncate">
+                          {steps[3].cardTitle}
+                        </h4>
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.04] text-neutral-400 border border-white/10">
+                          {steps[3].badgeText}
+                        </span>
+                      </div>
+                      <div className="text-xs font-mono text-neutral-400 mt-0.5 truncate">
+                        {steps[3].cardDomain}
+                      </div>
+                      <div className="mt-2.5 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/60 border border-white/[0.08] text-[11px] font-medium text-emerald-400">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_#34D399]" />
+                        <span>{steps[3].status}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Dotted Connector Line (Desktop) */}
+              <div className="hidden md:flex md:col-span-1 items-center justify-start pl-2">
+                <span className="w-2 h-2 rounded-full bg-[#FF6A00] shadow-[0_0_8px_#FF6A00] shrink-0 mr-1" />
+                <span className="w-full border-t border-dashed border-[#FF6A00]/50" />
+              </div>
+
+              {/* Right Annotation Note */}
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="md:col-span-4 flex flex-col md:items-start md:text-left"
+              >
+                <div className="max-w-[260px]">
+                  <div className="text-xs font-mono font-bold text-[#FF6A00] uppercase tracking-wider mb-1">
+                    {steps[3].numberText} {steps[3].annotationTitle}
+                  </div>
+                  <p className="text-xs text-neutral-400 leading-relaxed font-normal">
+                    {steps[3].annotationDesc}
+                  </p>
+                </div>
+              </motion.div>
+
+            </div>
+
+            {/* Straight Vertical Circuit Line to Destination Node */}
+            <div className="relative w-full h-16 sm:h-20 flex items-center justify-center my-1 pointer-events-none">
+              <svg className="w-full h-full max-w-[540px] overflow-visible" viewBox="0 0 540 80" fill="none">
+                <defs>
+                  <filter id="glow-orange-4" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+                <line
+                  x1="270"
+                  y1="0"
+                  x2="270"
+                  y2="80"
+                  stroke="#FF6A00"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  filter="url(#glow-orange-4)"
+                  opacity="0.95"
+                />
+                <circle r="3.5" fill="#FFFFFF">
+                  <animate
+                    attributeName="cy"
+                    from="0"
+                    to="80"
+                    dur="1.8s"
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="cx"
+                    values="270;270"
+                    dur="1.8s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+              </svg>
+            </div>
+          </div>
+
+          {/* ═══ Radiant Destination Node: "Your Web Platform / Delivered Securely" ═══ */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ type: "spring", stiffness: 220, damping: 20 }}
-            className="lg:col-span-6 space-y-7"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="flex flex-col items-center text-center mt-2"
           >
-            <div className="space-y-4">
-              <h3 className={`text-2xl sm:text-4xl text-white tracking-tight leading-snug ${isBn ? "font-bangla-display font-bold" : "font-display font-bold"}`}>
-                {isBn ? (
-                  <>
-                    কাস্টম ওয়েব ও <span className="text-gradient-hero">UI/UX ইঞ্জিনিয়ারিং</span>
-                  </>
-                ) : (
-                  <>
-                    Custom Web & <span className="text-gradient-hero">UI/UX Engineering</span>
-                  </>
-                )}
-              </h3>
-              <p className={`text-sm sm:text-base text-neutral-400 font-normal leading-relaxed ${isBn ? "font-bangla-body" : ""}`}>
-                {isBn
-                  ? "আমরা আপনার ব্যবসার জন্য নির্দিষ্ট ও শক্তিশালী ডিজিটাল প্রোডাক্ট তৈরি করি। কনভার্সন-ড্রাইভেন কর্পোরেট পোর্টাল থেকে শুরু করে ফুল-স্ট্যাক ক্লাউড ড্যাশবোর্ড—সবকিছুই হয় সর্বোচ্চ গতি ও পারফরম্যান্সে তৈরি।"
-                  : "We design and engineer tailored digital products that elevate your brand. From high-converting corporate web architectures to full-stack cloud dashboards, every component is crafted for uncompromising performance."}
-              </p>
+            {/* Glowing Circular Node */}
+            <div className="relative flex items-center justify-center">
+              <div className="absolute inset-0 rounded-full bg-[#FF6A00]/30 blur-2xl animate-pulse" />
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 border-[#FF6A00] bg-[#140804] flex items-center justify-center shadow-[0_0_40px_rgba(255,106,0,0.65),inset_0_0_20px_rgba(255,106,0,0.4)]">
+                <Monitor className="w-9 h-9 sm:w-11 sm:h-11 text-[#FF6A00] drop-shadow-[0_0_12px_rgba(255,106,0,0.8)]" />
+              </div>
             </div>
 
-            {/* Vertical Checklist with Glass Cards */}
-            <div className="space-y-4 pt-1">
-              {checklist.map((item, idx) => (
-                <motion.div 
-                  key={idx}
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ type: "spring", stiffness: 240, damping: 18, delay: 0.1 + idx * 0.1 }}
-                  whileHover={{ y: -3, scale: 1.01 }}
-                  className="flex items-start gap-4 p-4 sm:p-5 rounded-2xl glass-radiant border border-white/[0.07] hover:border-[#FF3823]/35 transition-all cursor-pointer group"
-                >
-                  <div className="w-8 h-8 rounded-xl bg-[#FF3823]/15 border border-[#FF3823]/30 flex items-center justify-center shrink-0 mt-0.5 text-xs font-mono font-bold text-[#FF3823] group-hover:scale-105 group-hover:bg-[#FF3823]/25 transition-all shadow-[0_0_12px_rgba(255,56,35,0.2)]">
-                    0{idx + 1}
-                  </div>
-                  <div>
-                    <h4 className={`text-white text-base font-bold tracking-wide group-hover:text-[#FF3823] transition-colors ${isBn ? "font-bangla-display font-bold" : "font-display font-bold"}`}>
-                      {item.title}
-                    </h4>
-                    <p className={`text-xs sm:text-sm text-neutral-400 mt-1 leading-relaxed ${isBn ? "font-bangla-body" : ""}`}>
-                      {item.desc}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            {/* Destination Title & Subtitle */}
+            <h3 className={`mt-5 text-xl sm:text-2xl font-bold text-white tracking-tight ${isBn ? "font-bangla-display" : "font-display"}`}>
+              {isBn ? "আপনার লাইভ ওয়েব প্ল্যাটফর্ম" : "Your Web Platform"}
+            </h3>
+            <p className="text-xs sm:text-sm text-neutral-400 mt-1 font-medium">
+              {isBn ? "১০০% নিরাপদ ও সর্বোচ্চ গতিতে লাইভ" : "Delivered Securely & Scalable"}
+            </p>
 
-            {/* Radiant CTA Button */}
-            <div className="pt-2">
+            {/* Direct CTA Button */}
+            <div className="mt-6">
               <a 
-                href="#projects"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const target = document.querySelector("#projects");
-                  if (target) {
-                    const navHeight = 80;
-                    const targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-                    window.scrollTo({ top: targetPos, behavior: "smooth" });
-                    window.history.pushState(null, "", "#projects");
-                  }
-                }}
+                href="#contact" 
+                onClick={(e) => handleSmoothScroll(e, "#contact")}
               >
                 <motion.button 
-                  whileHover={{ scale: 1.03 }}
+                  whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.96 }}
-                  className={`pill-btn-primary pl-7 pr-3 py-3 text-xs sm:text-sm font-bold tracking-wider uppercase gap-3 shadow-[0_10px_30px_rgba(255,56,35,0.45)] ${isBn ? "font-bangla-ui text-sm tracking-normal" : ""}`}
+                  className="pill-btn-primary pl-6 pr-2.5 py-2.5 text-xs font-bold tracking-wider uppercase flex items-center gap-3 shadow-[0_10px_30px_rgba(255,56,35,0.45)]"
                 >
-                  <span>{isBn ? "বিস্তারিত কাজ দেখুন" : "EXPLORE WORK"}</span>
-                  <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20 shadow-inner">
-                    <ArrowUpRight className="w-3.5 h-3.5 text-white" />
+                  <span>{isBn ? "প্রজেক্টের আর্কিটেকচার শুরু করুন" : "Initiate Architecture"}</span>
+                  <span className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center">
+                    <ArrowRight className="w-3.5 h-3.5 text-white" />
                   </span>
                 </motion.button>
               </a>
             </div>
           </motion.div>
 
-          {/* Right Column: Radiant Live Architecture Station */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ type: "spring", stiffness: 220, damping: 20 }}
-            className="lg:col-span-6 relative flex justify-center items-center"
-          >
-            {/* Ambient backlight glow */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#FF3823]/15 via-[#FF6A00]/10 to-[#FFA000]/10 blur-[90px] rounded-full scale-95 pointer-events-none" />
-
-            {/* Master Glass Architecture Station */}
-            <div className="relative w-full rounded-[32px] overflow-hidden glass-radiant border border-white/[0.1] p-6 sm:p-8 shadow-[0_25px_60px_rgba(0,0,0,0.85)]">
-              
-              {/* Window Controls & Live System Indicator */}
-              <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-[#EF4444] shadow-[0_0_8px_rgba(239,68,68,0.7)]" />
-                  <span className="w-3 h-3 rounded-full bg-[#F59E0B] shadow-[0_0_8px_rgba(245,158,11,0.7)]" />
-                  <span className="w-3 h-3 rounded-full bg-[#10B981] shadow-[0_0_8px_rgba(16,185,129,0.7)]" />
-                </div>
-                <div className="flex items-center gap-2 text-[10px] font-mono text-neutral-300 bg-white/[0.04] px-3.5 py-1.5 rounded-full border border-white/[0.08]">
-                  <span className="w-2 h-2 rounded-full bg-[#FF3823] animate-ping" />
-                  <span className="font-bold tracking-wider text-[#FF3823]">WEBZEN ENGINE</span>
-                </div>
-              </div>
-
-              {/* Interactive Live Architecture Modules */}
-              <div className="pt-6 space-y-4">
-                
-                {/* Module 1: E-Commerce & bKash Gateway */}
-                <motion.div 
-                  whileHover={{ y: -2, scale: 1.01 }}
-                  className="p-4 sm:p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-[#FF3823]/40 transition-colors shadow-sm"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-7 h-7 rounded-lg bg-[#FF3823]/15 flex items-center justify-center">
-                        <span className="w-2 h-2 rounded-full bg-[#FF3823] shadow-[0_0_6px_#FF3823]" />
-                      </div>
-                      <span className={`text-xs font-bold text-white ${isBn ? "font-bangla-ui" : "font-display"}`}>
-                        {isBn ? "ই-কমার্স ও বিকাশ অটোমেটেড গেটওয়ে" : "E-Commerce & bKash Gateway"}
-                      </span>
-                    </div>
-                    <span className="text-[10px] font-mono font-bold text-[#FF3823] bg-[#FF3823]/10 px-2.5 py-1 rounded-full border border-[#FF3823]/25">
-                      LIVE • 0.2s TTFB
-                    </span>
-                  </div>
-                  <p className={`text-xs text-neutral-400 pl-9.5 ${isBn ? "font-bangla-body" : ""}`}>
-                    {isBn 
-                    ? "ইনস্ট্যান্ট পেমেন্ট ভেরিফিকেশন, রিয়েল-টাইম এসএমএস নোটিফিকেশন ও অটোমেটিক ইনভয়েস।" 
-                    : "Direct payment reconciliation, automated SMS receipts & real-time webhook triggers."}
-                  </p>
-                </motion.div>
-
-                {/* Module 2: Telehealth & Booking Pipeline */}
-                <motion.div 
-                  whileHover={{ y: -2, scale: 1.01 }}
-                  className="p-4 sm:p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-[#FFA000]/40 transition-colors shadow-sm"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-7 h-7 rounded-lg bg-[#FFA000]/15 flex items-center justify-center">
-                        <span className="w-2 h-2 rounded-full bg-[#FFA000] shadow-[0_0_6px_#FFA000]" />
-                      </div>
-                      <span className={`text-xs font-bold text-white ${isBn ? "font-bangla-ui" : "font-display"}`}>
-                        {isBn ? "টেলিমেডিসিন ও ডক্টর স্লট বুকিং" : "Telehealth & Clinic Scheduling"}
-                      </span>
-                    </div>
-                    <span className="text-[10px] font-mono font-bold text-[#FFA000] bg-[#FFA000]/10 px-2.5 py-1 rounded-full border border-[#FFA000]/25">
-                      SOCKET SYNC
-                    </span>
-                  </div>
-                  <p className={`text-xs text-neutral-400 pl-9.5 ${isBn ? "font-bangla-body" : ""}`}>
-                    {isBn 
-                    ? "৩ ধাপে অনলাইন সিরিয়াল, ডাক্তারের সময়সূচী ড্যাশবোর্ড ও রোগীর মেডিকেল হিস্ট্রি পোর্টাল।" 
-                    : "Multi-slot appointment sync, doctor availability matrix & cloud patient records."}
-                  </p>
-                </motion.div>
-
-                {/* Module 3: Enterprise Cloud Analytics */}
-                <motion.div 
-                  whileHover={{ y: -2, scale: 1.01 }}
-                  className="p-4 sm:p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-[#FF5C35]/40 transition-colors shadow-sm"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-7 h-7 rounded-lg bg-[#FF5C35]/15 flex items-center justify-center">
-                        <span className="w-2 h-2 rounded-full bg-[#FF5C35] shadow-[0_0_6px_#FF5C35]" />
-                      </div>
-                      <span className={`text-xs font-bold text-white ${isBn ? "font-bangla-ui" : "font-display"}`}>
-                        {isBn ? "এন্টারপ্রাইজ ক্লাউড ও অ্যানালিটিক্স" : "Enterprise Cloud Analytics"}
-                      </span>
-                    </div>
-                    <span className="text-[10px] font-mono font-bold text-[#FF5C35] bg-[#FF5C35]/10 px-2.5 py-1 rounded-full border border-[#FF5C35]/25">
-                      99.99% UPTIME
-                    </span>
-                  </div>
-                  <p className={`text-xs text-neutral-400 pl-9.5 ${isBn ? "font-bangla-body" : ""}`}>
-                    {isBn 
-                    ? "৫০,০০০+ কনকারেন্ট কানেকশন ক্যাপাবিলিটি, ডায়নামিক ডেটা ফিল্টারিং ও রোল-বেসড সিকিউরিটি।" 
-                    : "50,000+ concurrent connection throughput, role-based access & encrypted databases."}
-                  </p>
-                </motion.div>
-
-              </div>
-
-              {/* Bottom Recessed Bar */}
-              <div className="mt-6 p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] flex items-center justify-between text-[11px] text-neutral-400 font-mono">
-                <span>Next.js 16 • TypeScript • Node</span>
-                <span className="text-[#FF3823] font-semibold">100% Bespoke Architecture</span>
-              </div>
-
-            </div>
-          </motion.div>
-
         </div>
+
+        {/* ═══ Bottom Feature Tray: 4 Pillars (Secure, Fast, Reliable, Scalable) ═══ */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mt-16 sm:mt-24 p-6 sm:p-8 rounded-2xl glass-radiant border border-white/[0.1] shadow-[0_15px_40px_rgba(0,0,0,0.85)]"
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            
+            {/* Pillar 1: Secure */}
+            <div className="flex flex-col">
+              <div className="flex items-center gap-2.5 mb-2">
+                <ShieldCheck className="w-5 h-5 text-[#FF6A00]" />
+                <span className="text-sm font-bold text-white tracking-wide">
+                  {isBn ? "সর্বোচ্চ নিরাপত্তা" : "Secure"}
+                </span>
+              </div>
+              <p className="text-xs text-neutral-400 leading-relaxed font-normal">
+                {isBn 
+                  ? "এন্ড-টু-এন্ড এনক্রিপশন ও সংরক্ষিত API এন্ডপয়েন্ট আপনার ব্যবহারকারী ও ডেটা নিরাপদ রাখে।" 
+                  : "End-to-end encryption protects your users, transactions, and enterprise data."}
+              </p>
+            </div>
+
+            {/* Pillar 2: Fast */}
+            <div className="flex flex-col">
+              <div className="flex items-center gap-2.5 mb-2">
+                <Zap className="w-5 h-5 text-[#FF6A00]" />
+                <span className="text-sm font-bold text-white tracking-wide">
+                  {isBn ? "সাব-সেকেন্ড স্পিড" : "Fast"}
+                </span>
+              </div>
+              <p className="text-xs text-neutral-400 leading-relaxed font-normal">
+                {isBn 
+                  ? "Next.js এজ রাউটিং ও ক্যাশিং নিশ্চিত করে মিলি-সেকেন্ডে পেজ লোড ও ব্রাউজিং গতি।" 
+                  : "Optimized DNS routing and edge caching ensure quick, sub-second global delivery."}
+              </p>
+            </div>
+
+            {/* Pillar 3: Reliable */}
+            <div className="flex flex-col">
+              <div className="flex items-center gap-2.5 mb-2">
+                <Server className="w-5 h-5 text-[#FF6A00]" />
+                <span className="text-sm font-bold text-white tracking-wide">
+                  {isBn ? "নির্ভরযোগ্য আর্কিটেকচার" : "Reliable"}
+                </span>
+              </div>
+              <p className="text-xs text-neutral-400 leading-relaxed font-normal">
+                {isBn 
+                  ? "রিডান্ড্যান্ট ক্লাউড ক্লাস্টার ও অটোমেটেড হেলথ-চেক দিয়ে ৯৯.৯% আপটাইম গ্যারান্টি।" 
+                  : "Redundant infrastructure and automated health checks ensure 99.9% uptime."}
+              </p>
+            </div>
+
+            {/* Pillar 4: Scalable */}
+            <div className="flex flex-col">
+              <div className="flex items-center gap-2.5 mb-2">
+                <TrendingUp className="w-5 h-5 text-[#FF6A00]" />
+                <span className="text-sm font-bold text-white tracking-wide">
+                  {isBn ? "স্কেলিং ক্যাপাসিটি" : "Scalable"}
+                </span>
+              </div>
+              <p className="text-xs text-neutral-400 leading-relaxed font-normal">
+                {isBn 
+                  ? "ব্যবসার প্রবৃদ্ধির সাথে সাথে হাজার থেকে মিলিয়ন ভিজিটর সহজে হ্যান্ডেল করার ক্ষমতা।" 
+                  : "Built to seamlessly grow with your business traffic, users, and enterprise needs."}
+              </p>
+            </div>
+
+          </div>
+        </motion.div>
 
       </div>
     </section>
