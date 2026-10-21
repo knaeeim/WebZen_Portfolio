@@ -8,7 +8,7 @@ import { AmbientLighting } from "@/components/effects/AmbientLighting";
 import { ParticleCanvas } from "@/components/effects/ParticleCanvas";
 import { MouseSpotlight } from "@/components/effects/MouseSpotlight";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { RibbonMarquee } from "@/components/sections/RibbonMarquee";
+import { GrowthSystemSection } from "@/components/sections/GrowthSystemSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
@@ -33,8 +33,8 @@ export default function Home() {
         {/* 3. Hero Section: Full-Viewport Centered Sensory Monument communicating Zen & Tech */}
         <HeroSection />
 
-        {/* 4. Horizon Glass Ribbon Marquee with Glowing Aurora Stars */}
-        <RibbonMarquee />
+        {/* 4. Growth Systems Architecture (Inspired by "Growth Isn't Random. It's built on systems.") */}
+        <GrowthSystemSection />
 
         {/* 5. Solutions & Capabilities: Zen Architecture with Live Telemetry */}
         <ServicesSection />
