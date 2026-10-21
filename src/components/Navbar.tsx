@@ -90,10 +90,7 @@ export function Navbar() {
             </motion.div>
             <div className="flex items-baseline">
               <span className="font-display font-black text-xl sm:text-2xl tracking-tight text-white group-hover:text-neutral-100 transition-colors">
-                webzen
-              </span>
-              <span className="font-display font-black text-xl sm:text-2xl text-[#FF3823] drop-shadow-[0_0_12px_rgba(255,56,35,0.7)]">
-                .bd
+                WebZen
               </span>
             </div>
           </Link>
