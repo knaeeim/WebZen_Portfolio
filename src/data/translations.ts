@@ -193,6 +193,14 @@ export interface TranslationSchema {
     messagePlaceholder: string;
     submitBtn: string;
     submittingBtn: string;
+    commitmentsTitle: string;
+    commitment1Title: string;
+    commitment1Desc: string;
+    commitment2Title: string;
+    commitment2Desc: string;
+    commitment3Title: string;
+    commitment3Desc: string;
+    liveIntakeStatus: string;
   };
   footer: {
     bio: string;
@@ -259,63 +267,63 @@ export const translations: Record<"bn" | "en", TranslationSchema> = {
       calculateBtn: "বাজেট হিসাব করুন",
       items: [
         {
-          id: "srv-1",
-          title: "কর্পোরেট ও হেলথটেক পোর্টাল",
-          subtitle: "ডাক্তার, কনসালটেন্ট ও ব্র্যান্ডের আস্থার ভিত্তি",
+          id: "srv-healthtech",
+          title: "হেলথটেক ও ডক্টর সিরিয়াল পোর্টাল",
+          subtitle: "স্পেশালাইজড: ডাক্তার, ক্লিনিক ও পেশেন্ট ম্যানেজমেন্ট",
           description:
-            "ডাক্তারদের জন্য স্মার্ট সিরিয়াল বুকিং, ক্লিনিক শিডিউলিং বা করপোরেট পোর্টাল। রোগীরা সরাসরি ৩ ধাপে অ্যাপয়েন্টমেন্ট বুক করতে পারবে এবং ফোনে তাৎক্ষণিক এসএমএস কনফার্মেশন পাবে।",
-          deliverables: ["অনলাইন সিরিয়াল ও স্লট বুকিং", "মোবাইল ও ল্যাপটপে নিখুঁত ডিসপ্লে", "গুগল সার্চ ও এসইও (SEO) সেটআপ"],
-          tags: ["হেলথটেক", "সিরিয়াল বুকিং", "কর্পোরেট পোর্টাল"],
+            "ডাক্তার ও ক্লিনিকের জন্য ৩ ধাপে সহজ অনলাইন সিরিয়াল বুকিং, চেম্বার শিডিউলিং, ভিডিও কনসালটেশন, ই-প্রেসক্রিপশন রেকর্ড ও তাৎক্ষণিক এসএমএস কনফার্মেশন।",
+          deliverables: ["৩ ধাপে অনলাইন ডক্টর সিরিয়াল বুকিং", "মাল্টি-চেম্বার ও স্লট শিডিউলিং", "ডিজিটাল প্রেসক্রিপশন ও অটো এসএমএস", "পেশেন্ট হিস্ট্রি পোর্টাল"],
+          tags: ["হেলথটেক", "ডক্টর বুকিং", "টেলিমেডিসিন", "এসএমএস গেটওয়ে"],
           featured: true,
         },
         {
-          id: "srv-2",
-          title: "ই-কমার্স ও অনলাইন শপ",
-          subtitle: "ঝামেলাহীন অর্ডার ও ইনস্ট্যান্ট পেমেন্ট",
+          id: "srv-ecommerce",
+          title: "ই-কমার্স ও অনলাইন শপ সল্যুশন",
+          subtitle: "স্পেশালাইজড: বিকাশ, নগদ ও কার্ডে অটোমেটেড সেলস",
           description:
-            "ফেসবুক ইনবক্সে ঘণ্টার পর ঘণ্টা অর্ডার নেওয়ার দিন শেষ। কাস্টমার সরাসরি ওয়েবসাইটে বিকাশ, নগদ বা কার্ডে পে করে অর্ডার কনফার্ম করবে, আর আপনার ফোনে যাবে ইনস্ট্যান্ট নোটিফিকেশন।",
-          deliverables: ["বিকাশ, নগদ ও কার্ড পেমেন্ট গেটওয়ে", "অটোমেটিক ইনভয়েস ও এসএমএস নোটিফিকেশন", "স্টক ও অর্ডার ম্যানেজমেন্ট ড্যাশবোর্ড"],
-          tags: ["অনলাইন শপ", "বিকাশ পেমেন্ট", "ই-কমার্স"],
+            "ঝামেলাহীন অর্ডার প্রসেসিং, বিকাশ ও নগদ অটোমেটিক পেমেন্ট গেটওয়ে, অটো ইনভয়েস, স্টক ম্যানেজমেন্ট, কুরিয়ার ট্র্যাকিং ও রিয়েল-টাইম অ্যাডমিন ড্যাশবোর্ড।",
+          deliverables: ["বিকাশ, নগদ ও কার্ড ইনস্ট্যান্ট গেটওয়ে", "অটোমেটেড ইনভয়েস ও এসএমএস কনফার্মেশন", "স্টক ও অর্ডার ম্যানেজমেন্ট ড্যাশবোর্ড", "কার্ট রিকভারি"],
+          tags: ["অনলাইন শপ", "বিকাশ পেমেন্ট", "ই-কমার্স", "ইনভেন্টরি সিঙ্ক"],
           featured: true,
         },
         {
-          id: "srv-3",
-          title: "মোবাইল অ্যাপস (Android & iOS)",
-          subtitle: "কাস্টমারের মোবাইলের হোম স্ক্রিনে আপনার সার্ভিস",
+          id: "srv-vps",
+          title: "প্রোডাকশন VPS ডেপ্লয়মেন্ট",
+          subtitle: "উবুন্টু লিনাক্স, Nginx, ডকার ও জিরো-ডাউনটাইম",
           description:
-            "অ্যান্ড্রয়েড ও আইফোন উভয়ের জন্যই স্মুথ, দ্রুতগতির ও বাগমুক্ত অ্যাপ্লিকেশন। পুশ নোটিফিকেশন পাঠিয়ে অফার জানান বা নিয়মিত গ্রাহক তৈরি করুন সহজে।",
-          deliverables: ["গুগল প্লে স্টোর ও অ্যাপল অ্যাপ স্টোরে লঞ্চ", "পুশ নোটিফিকেশন সিস্টেম", "অফলাইনেও কাজ করার সুবিধা"],
-          tags: ["অ্যান্ড্রয়েড", "আইওএস", "মোবাইল অ্যাপ"],
+            "DigitalOcean, Hetzner বা AWS লিনাক্স VPS-এ Next.js ও Node.js অ্যাপ্লিকেশনের নিরাপদ সেটআপ। Nginx রিভার্স প্রক্সি, অটো-রিনিউ SSL, PM2 ও ১-ক্লিকে GitHub Actions CI/CD অটোমেশন।",
+          deliverables: ["লিনাক্স VPS ও Nginx কনফিগারেশন", "ফ্রি অটো-রিনিউ SSL (HTTPS)", "GitHub Actions দিয়ে ১-ক্লিকে অটো ডেপ্লয়", "ফায়ারওয়াল ও পোর্ট সিকিউরিটি"],
+          tags: ["VPS ডেপ্লয়মেন্ট", "উবুন্টু লিনাক্স", "Nginx", "ডকার", "CI/CD"],
+          featured: true,
+        },
+        {
+          id: "srv-management",
+          title: "ওয়েবসাইট ম্যানেজমেন্ট ও টেকনিক্যাল কেয়ার",
+          subtitle: "২৪/৭ মনিটরিং, অটোমেটেড ব্যাকআপ ও সিকিউরিটি সাপোর্ট",
+          description:
+            "সাইট ডাউন হওয়া, বাগে আটকে যাওয়া বা ব্যাকআপ নষ্ট হওয়ার ভয় নেই। আমরা ২৪/৭ আপটাইম মনিটর করি, নিয়মিত কনটেন্ট ও প্রোডাক্ট আপডেট করি এবং সিকিউরিটি প্যাচ নিশ্চিত করি।",
+          deliverables: ["সার্বক্ষণিক ২৪/৭ আপটাইম মনিটরিং", "প্রতিদিনের অটো ক্লাউড ব্যাকআপ", "নিয়মিত কনটেন্ট ও প্রোডাক্ট আপডেট", "জরুরি বাগ ফিক্সিং ও সাপোর্ট"],
+          tags: ["সাইট ম্যানেজমেন্ট", "২৪/৭ মনিটরিং", "ক্লাউড ব্যাকআপ", "বাগ ফিক্সিং"],
+          featured: true,
+        },
+        {
+          id: "srv-fullstack",
+          title: "ফুল-স্ট্যাক ওয়েব আর্কিটেকচার",
+          subtitle: "আল্ট্রা-ফাস্ট নেক্সট.জেএস ১৬ ও কাস্টম প্ল্যাটফর্ম",
+          description:
+            "সাব-সেকেন্ড পেজ লোড ও ভবিষ্যৎমুখী আর্কিটেকচার। কাস্টম ডাটাবেস ডিজাইন, জটিল বিজনেস লজিক ও স্কেলেবল ডিজিটাল প্ল্যাটফর্ম।",
+          deliverables: ["কাস্টম ফুল-স্ট্যাক আর্কিটেকচার", "সাব-০.৫ সেকেন্ড লোডিং গতি", "লাইটহাউস ৯৫+ পারফরম্যান্স", "স্কেলেবল ডাটাবেস ডিজাইন"],
+          tags: ["Next.js 16", "টাইপস্ক্রিপ্ট", "PostgreSQL", "টেইলউইন্ড"],
           featured: false,
         },
         {
-          id: "srv-4",
-          title: "বিজনেস অটোমেশন ও AI চ্যাটবট",
-          subtitle: "মানুষ ছাড়াই ২৪ ঘণ্টা কাস্টমার হ্যান্ডলিং",
+          id: "srv-uiux",
+          title: "রেডিয়েন্ট UI/UX ও ব্র্যান্ড ডিজাইন",
+          subtitle: "ডার্ক গ্লাস আর্কিটেকচার, ৬০fps মোশন ও কনভার্সন",
           description:
-            "রাত-দিন যেকোনো সময় কাস্টমার মেসেজ দিলে স্মার্ট চ্যাটবট সেকেন্ডের মধ্যে উত্তর দেবে এবং অর্ডার কনফার্ম করবে। আপনার কাজের সময় ও জনবল খরচ দুটোই বাঁচবে।",
-          deliverables: ["ওয়েবসাইট ও সোশ্যাল মিডিয়া চ্যাটবট", "স্বয়ংক্রিয় অর্ডার প্রসেসিং", "দৈনিক সেলস ও আয়ের রিয়েল-টাইম রিপোর্ট"],
-          tags: ["স্মার্ট চ্যাটবট", "অটোমেশন", "কাস্টমার সাপোর্ট"],
-          featured: true,
-        },
-        {
-          id: "srv-5",
-          title: "UI/UX ডিজাইন ও রি-ডিজাইন",
-          subtitle: "পুরনো ও ধীরগতির ওয়েবসাইটকে প্রিমিয়াম রূপ দিন",
-          description:
-            "আপনার বর্তমান সাইট কি দেখতে পুরনো কিংবা মোবাইল থেকে ব্রাউজ করা কঠিন? আধুনিক ট্রেন্ড অনুযায়ী রি-ডিজাইন করে সাইটকে আকর্ষণীয় ও ব্যবহারে সহজ করে তুলুন।",
-          deliverables: ["আন্তর্জাতিক মানের প্রিমিয়াম লুক", "লোগো ও কালার ব্র্যান্ড গাইডলাইন", "ইউজার-ফ্রেন্ডলি সহজ ইন্টারফেস"],
-          tags: ["UI/UX ডিজাইন", "সাইট রি-ডিজাইন", "ব্র্যান্ডিং"],
-          featured: false,
-        },
-        {
-          id: "srv-6",
-          title: "হোস্টিং, মেইনটেন্যান্স ও সাইবার সিকিউরিটি",
-          subtitle: "সাইট সচল আর নিরাপদ রাখার পুরো দায়িত্ব আমাদের",
-          description:
-            "সার্ভার ডাউন হওয়া, সাইট হ্যাক হওয়া বা ডাটা মুছে যাওয়ার ভয় ভুলে যান। সার্বক্ষণিক সার্ভার মনিটরিং, অটোমেটিক ব্যাকআপ আর প্রয়োজনীয় রক্ষণাবেক্ষণ আমরাই সামলাই।",
-          deliverables: ["সার্বক্ষণিক আপটাইম মনিটরিং", "প্রতিদিনের ক্লাউড ব্যাকআপ", "ডিডস ও হ্যাকিং প্রটেকশন"],
-          tags: ["সার্ভার কেয়ার", "ডাটা ব্যাকআপ", "সাইবার নিরাপত্তা"],
+            "পুরনো ওয়েবসাইটকে বদলে দিয়ে আধুনিক ডার্ক গ্লাস আর্কিটেকচার, ৬০fps মোশন ট্রানজিশন ও সেলস বৃদ্ধিকারী প্রিমিয়াম ইউজার ইন্টারফেস।",
+          deliverables: ["পিক্সেল-পারফেক্ট প্রিমিয়াম লুক", "আধুনিক ডার্ক গ্লাস ডিজাইন সিস্টেম", "৬০fps ফ্লুইড মাইক্রো-অ্যানিমেশন", "কনভার্সন অপ্টিমাইজড লেআউট"],
+          tags: ["UI/UX ডিজাইন", "ডিজাইন সিস্টেম", "৬০fps ট্রানজিশন", "কনভার্সন UX"],
           featured: false,
         },
       ],
@@ -617,6 +625,14 @@ export const translations: Record<"bn" | "en", TranslationSchema> = {
       messagePlaceholder: "আপনি কী ধরনের ওয়েবসাইট বা অ্যাপ বানাতে চান, কোন নির্দিষ্ট ফিচার প্রয়োজন কি না...",
       submitBtn: "মেসেজ পাঠান ও আলাপ শুরু করুন",
       submittingBtn: "পাঠানো হচ্ছে...",
+      commitmentsTitle: "আমাদের কাজের নিশ্চয়তা ও সুবিধা",
+      commitment1Title: "২ ঘণ্টার মধ্যে রেসপন্স",
+      commitment1Desc: "অফিস সময়ে টেকনিক্যাল টিম দ্রুত আপনার চাহিদা যাচাই করে উত্তর দেবে।",
+      commitment2Title: "১০০% কোড ও আইপি আপনার",
+      commitment2Desc: "কাজ শেষে পুরো সোর্স কোড ও গিটহাব রিপোজিটরি সম্পূর্ণ আপনার নামে বুঝিয়ে দেওয়া হয়।",
+      commitment3Title: "৩০ দিন ফ্রি টেকনিক্যাল কেয়ার",
+      commitment3Desc: "প্রজেক্ট লাইভ করার পর যেকোনো বাগ ফিক্সিং ও পরামর্শে আমরা পাশে থাকি।",
+      liveIntakeStatus: "নতুন প্রজেক্ট ইনটেক চালু • সরাসরি ইঞ্জিনিয়ারদের পরামর্শ",
     },
     footer: {
       bio: "WebZen Bangladesh — প্রিমিয়াম ডিজিটাল ও সফটওয়্যার স্টুডিও। আমরা আধুনিক ব্যবসা ও প্রতিষ্ঠানের জন্য দ্রুতগতির ওয়েবসাইট, অনলাইন শপ ও মোবাইল অ্যাপ তৈরি করি।",
@@ -681,63 +697,63 @@ export const translations: Record<"bn" | "en", TranslationSchema> = {
       calculateBtn: "Calculate Cost",
       items: [
         {
-          id: "srv-1",
-          title: "Corporate & HealthTech Portals",
-          subtitle: "Smart doctor booking & verified brand presence",
+          id: "srv-healthtech",
+          title: "HealthTech & Doctor Portals",
+          subtitle: "Specialized: Doctor Serial & Clinic Management",
           description:
-            "Tailored digital consultation platforms for doctors, specialized clinics, and modern brands. Effortless 3-step appointment booking, automated SMS/WhatsApp slips, and doctor chamber dashboards.",
-          deliverables: ["Online slot & appointment booking", "Automated SMS/WhatsApp slip", "Mobile-first responsive design"],
-          tags: ["HealthTech", "Doctor Booking", "Corporate Web"],
+            "End-to-end digital consultation platforms for doctors, specialized clinics, and modern hospitals. 3-step online appointment booking, chamber scheduling, telemedicine video links, and automated SMS notifications.",
+          deliverables: ["3-Step Patient Serial Booking", "Multi-Chamber Slot Scheduling", "Digital E-Prescription Portal", "Automated SMS Confirmations"],
+          tags: ["HealthTech", "Doctor Booking", "Telemedicine", "SMS Gateway"],
           featured: true,
         },
         {
-          id: "srv-2",
-          title: "E-Commerce & Online Stores",
-          subtitle: "Automate orders and accept payments",
+          id: "srv-ecommerce",
+          title: "E-Commerce & Online Storefronts",
+          subtitle: "Specialized: Automated Sales & BD Payments",
           description:
-            "Stop losing sales on social media DMs. Give your customers an instant checkout experience with bKash, Nagad, and credit cards.",
-          deliverables: ["Instant bKash, Nagad & Card checkout", "Inventory & order management", "Automated SMS & invoice delivery"],
-          tags: ["Online Store", "bKash Payment", "E-Commerce"],
+            "High-converting online shops with automated bKash, Nagad, and Card checkout. Includes real-time inventory management, automated invoices, courier tracking, and admin telemetry.",
+          deliverables: ["bKash, Nagad & Card Instant Gateways", "Automated Invoice & SMS Delivery", "Stock & Inventory Management", "Abandoned Cart Recovery"],
+          tags: ["Online Shop", "bKash Payment", "E-Commerce", "Inventory Sync"],
           featured: true,
         },
         {
-          id: "srv-3",
-          title: "Mobile Apps (Android & iOS)",
-          subtitle: "Your business right in your customer's pocket",
+          id: "srv-vps",
+          title: "Production VPS Deployment",
+          subtitle: "Ubuntu Linux, Nginx, Docker & Zero Downtime",
           description:
-            "Fast, reliable mobile apps built with React Native and Flutter. Keep your audience engaged with push notifications and seamless offline support.",
-          deliverables: ["App Store & Play Store publication", "Targeted push notifications", "Offline sync & account security"],
-          tags: ["Android", "iOS", "Cross-Platform"],
+            "Robust Linux VPS deployment on DigitalOcean, Hetzner, AWS, or local cloud providers. We configure Ubuntu, Nginx reverse proxy, free auto-renew SSL, PM2 daemon, Docker, and GitHub Actions CI/CD.",
+          deliverables: ["Linux VPS & Nginx Hardening", "Free Auto-Renew SSL (HTTPS)", "1-Click GitHub Actions CI/CD", "Firewall & Security Protocols"],
+          tags: ["VPS Deployment", "Ubuntu Linux", "Nginx", "Docker", "CI/CD"],
+          featured: true,
+        },
+        {
+          id: "srv-management",
+          title: "Website Management & Technical Care",
+          subtitle: "24/7 Monitoring, Daily Backups & Bug Fixes",
+          description:
+            "Complete peace of mind for your digital presence. We take full responsibility for 24/7 uptime monitoring, daily offsite cloud backups, regular content updates, security patches, and instant bug fixes.",
+          deliverables: ["24/7 Real-Time Uptime Monitoring", "Automated Daily Cloud Backups", "Regular Content & Product Updates", "Priority Bug Fixes & Tech Support"],
+          tags: ["Site Management", "24/7 Monitoring", "Daily Backups", "Bug Fixes"],
+          featured: true,
+        },
+        {
+          id: "srv-fullstack",
+          title: "Full-Stack Web Engineering",
+          subtitle: "Ultra-Fast Next.js 16 & Bespoke Architecture",
+          description:
+            "Modern enterprise-grade web platforms and custom portals built with Next.js, TypeScript, PostgreSQL, and Redis for sub-second page loads and infinite scalability.",
+          deliverables: ["Custom Full-Stack Architecture", "Sub-0.5s TTFB & Edge Routing", "Enterprise Database Design", "Lighthouse 95+ Performance"],
+          tags: ["Next.js 16", "TypeScript", "PostgreSQL", "Tailwind CSS"],
           featured: false,
         },
         {
-          id: "srv-4",
-          title: "Business Automation & AI Chatbots",
-          subtitle: "Save hours of daily manual work",
+          id: "srv-uiux",
+          title: "Radiant UI/UX & Brand Modernization",
+          subtitle: "Glassmorphism, 60fps Motion & Aesthetics",
           description:
-            "Automate repetitive tasks like answering common questions on WhatsApp/Web, issuing receipts, and updating your sales sheets automatically.",
-          deliverables: ["Intelligent 24/7 customer assistant", "Automated order confirmation flows", "Real-time sales & revenue reports"],
-          tags: ["Chatbots", "Automation", "Customer Care"],
-          featured: true,
-        },
-        {
-          id: "srv-5",
-          title: "UI/UX Redesign & Modernization",
-          subtitle: "Give your existing website a premium facelift",
-          description:
-            "Is your current site feeling outdated, slow, or hard to use on phones? We redesign your interfaces into sleek, modern, conversion-focused experiences.",
-          deliverables: ["World-class visual redesign", "Design system & brand guidelines", "Smooth, intuitive user journeys"],
-          tags: ["UI/UX Design", "Redesign", "Brand Identity"],
-          featured: false,
-        },
-        {
-          id: "srv-6",
-          title: "Hosting, DevOps & Cyber Security",
-          subtitle: "Your digital assets protected 24/7",
-          description:
-            "Never worry about site crashes, traffic spikes, or malware again. We take care of server configuration, automated backups, and security hardening.",
-          deliverables: ["24/7 uptime monitoring & SLAs", "Automated daily cloud backups", "DDoS mitigation & firewall setup"],
-          tags: ["Cloud DevOps", "Backups", "Security"],
+            "Transform outdated websites into visually breathtaking, conversion-focused digital monuments with dark glass aesthetics, smooth micro-interactions, and tailored typography.",
+          deliverables: ["Pixel-Perfect Responsive Layouts", "Bespoke Design System & Tokens", "Fluid 60fps Micro-Animations", "Conversion Rate Optimization"],
+          tags: ["UI/UX Design", "Design Systems", "60fps Motion", "Conversion UX"],
           featured: false,
         },
       ],
@@ -1039,6 +1055,14 @@ export const translations: Record<"bn" | "en", TranslationSchema> = {
       messagePlaceholder: "Briefly describe what you need, your target deadline, or any special requirements...",
       submitBtn: "Send Inquiry & Request Consultation",
       submittingBtn: "Submitting...",
+      commitmentsTitle: "Our Work Commitments",
+      commitment1Title: "Rapid Turnaround (< 2h)",
+      commitment1Desc: "Our senior technical team evaluates your scope and responds within 2 hours.",
+      commitment2Title: "100% Code & IP Ownership",
+      commitment2Desc: "Full GitHub repository ownership & digital rights transferred directly to you.",
+      commitment3Title: "30 Days Free Warranty",
+      commitment3Desc: "Post-launch bug fixes, performance monitoring, and guidance fully covered.",
+      liveIntakeStatus: "Live Project Intake Active • Direct Senior Engineer Consultation",
     },
     footer: {
       bio: "WebZen Bangladesh is your trusted software engineering partner. We build world-class websites, online stores, and mobile apps for ambitious brands.",

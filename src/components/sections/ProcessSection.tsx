@@ -107,7 +107,7 @@ export function ProcessSection() {
           className="text-center max-w-3xl mx-auto mb-16 sm:mb-24"
         >
           {/* Main Statement Quote */}
-          <h2 className={`text-3xl sm:text-5xl lg:text-[3.75rem] font-black text-white tracking-tight leading-[1.08] ${isBn ? "font-bangla-display" : "font-display"}`}>
+          <h2 className={`text-3xl sm:text-5xl lg:text-[3.75rem] font-black text-white tracking-tight leading-[1.18] sm:leading-[1.15] pb-1 ${isBn ? "font-bangla-display" : "font-display"}`}>
             {isBn ? (
               <>“সফলতা একটি ধারাবাহিক প্রসেস।”</>
             ) : (

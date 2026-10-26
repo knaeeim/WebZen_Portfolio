@@ -108,14 +108,14 @@ export function HeroSection() {
         {/* Center-Aligned Bold Headline with Crimson-Orange Gradient Highlight */}
         <motion.h1
           variants={itemVariants}
-          className={`text-4xl sm:text-6xl lg:text-[4.25rem] leading-[1.08] sm:leading-[1.05] tracking-[-0.035em] ${
+          className={`text-4xl sm:text-6xl lg:text-[4.25rem] leading-[1.18] sm:leading-[1.14] tracking-[-0.035em] ${
             isBn ? "font-bangla-display font-black" : "font-display font-black"
           }`}
         >
-          <span className="block text-white">
+          <span className="block text-white pb-1">
             {titlePart1}
           </span>
-          <span className="block text-gradient-hero mt-1 sm:mt-2 drop-shadow-[0_4px_30px_rgba(255,56,35,0.4)]">
+          <span className="block text-gradient-hero mt-1 sm:mt-2 pb-2 sm:pb-3 drop-shadow-[0_4px_30px_rgba(255,56,35,0.4)]">
             {titleHighlight}
           </span>
         </motion.h1>

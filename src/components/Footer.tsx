@@ -116,11 +116,14 @@ export function Footer() {
                 <div className="relative w-9 h-9 rounded-2xl overflow-hidden bg-white/[0.04] border border-white/10 p-1 group-hover:scale-105 group-hover:border-[#FF3823]/50 transition-all">
                   <img src="/logo.png" alt="WebZen Logo" className="w-full h-full object-contain rounded-xl" />
                 </div>
-                <div className="flex items-baseline">
-                  <span className="font-display font-black text-2xl tracking-tight text-white">
-                    webzen
+                <div className="flex items-baseline select-none">
+                  <span className="font-display font-black text-2xl tracking-tight text-white group-hover:text-neutral-100 transition-colors">
+                    Web
                   </span>
-                  <span className="font-display font-black text-2xl text-[#FF3823] drop-shadow-[0_0_10px_rgba(255,56,35,0.7)]">
+                  <span className="font-display font-black text-2xl tracking-tight text-gradient-hero drop-shadow-[0_0_16px_rgba(255,56,35,0.45)] group-hover:drop-shadow-[0_0_22px_rgba(255,56,35,0.7)] transition-all">
+                    Zen
+                  </span>
+                  <span className="font-display font-black text-2xl text-[#FF3823] drop-shadow-[0_0_10px_rgba(255,56,35,0.7)] ml-0.5">
                     .bd
                   </span>
                 </div>

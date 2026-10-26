@@ -202,7 +202,18 @@ html[data-language="bn"] h3 {
   letter-spacing: 0.005em !important;
 }
 
-/* Ensure gradient spans in titles have breathing room */
+/* Ensure gradient spans in titles have breathing room and descenders are never clipped */
+h1 .text-gradient-hero,
+h2 .text-gradient-hero,
+h3 .text-gradient-hero,
+h1 [class*="text-gradient"],
+h2 [class*="text-gradient"],
+h3 [class*="text-gradient"] {
+  display: inline-block;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.06em;
+}
+
 html[lang="bn"] h1 .text-gradient-hero,
 html[lang="bn"] h2 .text-gradient-hero,
 html[data-language="bn"] h1 .text-gradient-hero,
@@ -210,7 +221,7 @@ html[data-language="bn"] h2 .text-gradient-hero {
   margin-left: 0.15em;
   margin-right: 0.15em;
   display: inline-block;
-  padding-bottom: 0.08em;
+  padding-bottom: 0.16em;
 }
 
 /* Custom Scrollbar */
@@ -742,6 +753,23 @@ html:not(.dark) .bg-dots-pattern {
   background: linear-gradient(135deg, #FFD700 0%, #FF9500 50%, #EA580C 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+:where(
+  .text-gradient-hero,
+  .text-gradient-crimson,
+  .text-gradient-amber,
+  .text-gradient-copper,
+  .text-gradient-aurora,
+  .text-gradient-zen,
+  .text-gradient-starlight,
+  .text-gradient-coral,
+  .text-gradient-violet,
+  .text-gradient-gold
+) {
+  display: inline-block;
+  padding-bottom: 0.14em;
+  background-clip: text;
 }
 
 /* Hollow/Outlined Studio Typography */

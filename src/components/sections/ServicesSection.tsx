@@ -16,15 +16,21 @@ import {
   Monitor, 
   ArrowRight,
   Layers,
-  Lock
+  Lock,
+  Activity,
+  ShoppingBag,
+  Sparkles,
+  Check
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useSite } from "@/context/SiteContext";
+import { translations } from "@/data/translations";
 
 export function ServicesSection() {
   const { language } = useLanguage();
   const { data } = useSite();
   const isBn = language === "bn";
+  const tServices = translations[language].services;
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("#")) {
@@ -44,75 +50,94 @@ export function ServicesSection() {
       step: "01",
       numberText: "01 •",
       side: "left",
-      annotationTitle: isBn ? "ফুল-স্ট্যাক ওয়েব ইঞ্জিনিয়ারিং" : "Full-Stack Web Architecture",
+      annotationTitle: isBn ? "হেলথটেক ও ডক্টর সিরিয়াল" : "HealthTech & Clinic Architecture",
       annotationDesc: isBn 
-        ? "Next.js ও ক্লাউড প্রাকৃতি দিয়ে সাব-সেকেন্ড পেজ লোড ও ভবিষ্যৎমুখী আর্কিটেকচার।" 
-        : "Next.js platforms with sub-second page loads and bespoke API architecture.",
-      icon: Globe,
-      cardTitle: isBn ? "ফুল-স্ট্যাক ওয়েব আর্কিটেকচার" : "Full-Stack Web Architecture",
-      cardDomain: "webzen.bd/web-architecture",
-      status: isBn ? "সক্রিয় সিস্টেম" : "Active System",
+        ? "ডাক্তার ও ক্লিনিকের ৩ ধাপে অনলাইন সিরিয়াল বুকিং, চেম্বার শিডিউলিং ও ডিজিটাল প্রেসক্রিপশন।" 
+        : "Multi-chamber clinic scheduling, 3-step doctor serial booking, and digital prescription history.",
+      icon: Activity,
+      cardTitle: isBn ? "হেলথটেক ও ডক্টর সিরিয়াল পোর্টাল" : "HealthTech & Doctor Portals",
+      cardDomain: "webzen.bd/healthtech-portal",
+      status: isBn ? "স্পেশালাইজড সিস্টেম" : "Specialized System",
       statusColor: "emerald",
-      badgeText: "NEXT.JS 16",
+      badgeText: "SPECIALIZED",
       tags: isBn 
-        ? ["কাস্টম আর্কিটেকচার", "অটোমেটেড CI/CD", "লাইটহাউস ৯৫+"] 
-        : ["Custom Architecture", "Automated CI/CD", "Lighthouse 95+"]
+        ? ["৩ ধাপে ডক্টর সিরিয়াল", "চেম্বার শিডিউলিং", "অটো এসএমএস"] 
+        : ["Doctor Serial Booking", "Chamber Scheduling", "SMS Gateway"]
     },
     {
       step: "02",
       numberText: "02 •",
       side: "right",
-      annotationTitle: isBn ? "AI ওয়ার্কফ্লো ও অটোমেশন" : "AI Workflows & Automation",
+      annotationTitle: isBn ? "ই-কমার্স ও পেমেন্ট অটোমেশন" : "High-Conversion E-Commerce",
       annotationDesc: isBn 
-        ? "অটোনোমাস LLM এজেন্টস ও স্মার্ট ইন্টেলিজেন্ট পাইপলাইন দিয়ে সময় ও ব্যয় সাশ্রয়।" 
-        : "Autonomous LLM agents and semantic pipelines to automate complex workflows.",
-      icon: Bot,
-      cardTitle: isBn ? "AI ও প্রসেস অটোমেশন" : "AI & Process Automation",
-      cardDomain: "webzen.bd/ai-workflows",
-      status: isBn ? "অটোমেটেড" : "Resolved",
+        ? "বিকাশ, নগদ ও কার্ড ইনস্ট্যান্ট পেমেন্ট গেটওয়ে, অটোমেটিক ক্যাশ মেমো ও রিয়েল-টাইম স্টক।" 
+        : "Automated bKash & Nagad payments, instant customer invoices, and real-time inventory.",
+      icon: ShoppingBag,
+      cardTitle: isBn ? "ই-কমার্স ও অনলাইন শপ" : "High-Conversion E-Commerce",
+      cardDomain: "webzen.bd/ecommerce-engine",
+      status: isBn ? "অটোমেটেড পেমেন্ট" : "Live Checkout",
       statusColor: "emerald",
-      badgeText: "SMART AGENTS",
+      badgeText: "BKASH / NAGAD",
       tags: isBn 
-        ? ["AI এজেন্টস", "অটোমেটেড পাইপলাইন", "ভেক্টর সার্চ"] 
-        : ["AI Agents", "Automated Pipelines", "Smart Analytics"]
+        ? ["বিকাশ ও নগদ গেটওয়ে", "অটোমেটেড ইনভয়েস", "স্টক ম্যানেজমেন্ট"] 
+        : ["bKash & Nagad API", "Instant Invoicing", "Inventory Sync"]
     },
     {
       step: "03",
       numberText: "03 •",
       side: "left",
-      annotationTitle: isBn ? "রেডিয়েন্ট UI/UX ডিজাইন" : "Radiant UI/UX Architecture",
+      annotationTitle: isBn ? "লিনাক্স ক্লাউড ও VPS সেটআপ" : "Production VPS Infrastructure",
       annotationDesc: isBn 
-        ? "চোখ ধাঁধানো নিয়ন গ্লাস ও ৬০fps মাইক্রো-ইন্টারঅ্যাকশন দিয়ে আধুনিক ব্র্যান্ডিং।" 
-        : "Elevate your brand with award-winning aesthetics, micro-interactions, and 60fps physics.",
-      icon: Palette,
-      cardTitle: isBn ? "UI/UX ও ডিজাইন সিস্টেমস" : "UI/UX & Design Systems",
-      cardDomain: "webzen.bd/uiux-design",
-      status: isBn ? "পিক্সেল-পারফেক্ট" : "Pixel-Perfect",
+        ? "উবুন্টু লিনাক্স VPS, Nginx রিভার্স প্রক্সি, অটো-রিনিউ SSL, PM2 ও ১-ক্লিকে GitHub Actions CI/CD।" 
+        : "Robust Ubuntu VPS setup, Nginx reverse proxy, free SSL, PM2 daemon, and automated CI/CD.",
+      icon: Server,
+      cardTitle: isBn ? "প্রোডাকশন VPS ডেপ্লয়মেন্ট" : "Production VPS Deployment",
+      cardDomain: "webzen.bd/vps-deployment",
+      status: isBn ? "জিরো-ডাউনটাইম" : "Zero-Downtime",
       statusColor: "emerald",
-      badgeText: "60FPS MOTION",
+      badgeText: "LINUX / NGINX",
       tags: isBn 
-        ? ["ইন্টারঅ্যাক্টিভ প্রোটোটাইপ", "ডিজাইন সিস্টেম", "A/B অপ্টিমাইজড"] 
-        : ["Interactive Prototypes", "Design System", "A/B Tested"]
+        ? ["উবুন্টু লিনাক্স VPS", "Nginx রিভার্স প্রক্সি", "ডকার ও SSL"] 
+        : ["Ubuntu Linux VPS", "Nginx Reverse Proxy", "Docker & SSL"]
     },
     {
       step: "04",
       numberText: "04 •",
       side: "right",
-      annotationTitle: isBn ? "ক্লাউড স্কেলিং ও পেমেন্ট সিকিউরিটি" : "Cloud & BD Payment Security",
+      annotationTitle: isBn ? "সার্বক্ষণিক সাইট কেয়ার ও ব্যাকআপ" : "Continuous Site Care & SLAs",
       annotationDesc: isBn 
-        ? "বিকাশ, নগদ, স্ট্রাইপ ও এন্টারপ্রাইজ AWS ক্লাউড সিকিউরিটি দিয়ে নিরবচ্ছিন্ন লেনদেন।" 
-        : "Instant checkout with bKash, Nagad, Stripe, and enterprise SSL encryption.",
-      icon: Lock,
-      cardTitle: isBn ? "ক্লাউড ও পেমেন্ট গেটওয়ে" : "Cloud & Payment Gateways",
-      cardDomain: "webzen.bd/fintech-cloud",
-      status: isBn ? "সুরক্ষিত ও এনক্রিপ্টেড" : "Active & Encrypted",
+        ? "সার্ভার ডাউন হওয়া বা ডাটা হারানোর ভয় নেই। ২৪/৭ আপটাইম মনিটরিং ও নিয়মিত ক্লাউড ব্যাকআপ।" 
+        : "Complete peace of mind with 24/7 uptime monitoring, daily offsite backups, and priority support.",
+      icon: ShieldCheck,
+      cardTitle: isBn ? "ওয়েবসাইট ম্যানেজমেন্ট ও কেয়ার" : "24/7 Website Management",
+      cardDomain: "webzen.bd/site-care",
+      status: isBn ? "সার্বক্ষণিক সচল" : "Protected & Active",
       statusColor: "emerald",
-      badgeText: "BKASH / SSL",
+      badgeText: "24/7 MONITORING",
       tags: isBn 
-        ? ["বিকাশ ও নগদ API", "ইনস্ট্যান্ট ওয়েবহুক", "ক্লাউড ক্লাস্টারিং"] 
-        : ["bKash & Nagad API", "Instant Webhooks", "Zero-Downtime"]
+        ? ["২৪/৭ আপটাইম মনিটরিং", "প্রতিদিনের ক্লাউড ব্যাকআপ", "বাগ ফিক্সিং সাপোর্ট"] 
+        : ["24/7 Uptime SLAs", "Daily Cloud Backups", "Bug Fixes Included"]
     }
   ];
+
+  const getServiceIcon = (id: string) => {
+    switch (id) {
+      case "srv-healthtech":
+        return Activity;
+      case "srv-ecommerce":
+        return ShoppingBag;
+      case "srv-vps":
+        return Server;
+      case "srv-management":
+        return ShieldCheck;
+      case "srv-fullstack":
+        return CodeXml;
+      case "srv-uiux":
+        return Palette;
+      default:
+        return Globe;
+    }
+  };
 
   return (
     <section id="services" className="relative py-24 sm:py-32 overflow-hidden scroll-mt-20 bg-[#050505] z-10">
@@ -129,7 +154,7 @@ export function ServicesSection() {
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* ═══ Header Area (Matching Reference Layout: Eyebrow + Headline on Left, Status Card on Right) ═══ */}
+        {/* ═══ Header Area ═══ */}
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 mb-16 sm:mb-20">
           
           {/* Left Column: Eyebrow, Heading, Subhead */}
@@ -143,20 +168,20 @@ export function ServicesSection() {
             {/* Orange Eyebrow Badge */}
             <div className="text-[11px] font-mono font-bold tracking-[0.2em] text-[#FF6A00] uppercase mb-3 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#FF6A00] shadow-[0_0_8px_#FF6A00]" />
-              <span>{isBn ? "সার্ভিস আর্কিটেকচার ব্লুপ্রিন্ট" : "INFRASTRUCTURE MAP"}</span>
+              <span>{isBn ? "স্পেশালাইজড আর্কিটেকচার ও ক্লাউড ইঞ্জিনিয়ারিং" : "SPECIALIZED ARCHITECTURE & CLOUD"}</span>
             </div>
 
             {/* Massive Bold Headline */}
-            <h2 className={`text-4xl sm:text-5xl lg:text-[3.5rem] text-white font-black tracking-tight leading-[1.08] ${isBn ? "font-bangla-display" : "font-display"}`}>
+            <h2 className={`text-4xl sm:text-5xl lg:text-[3.5rem] text-white font-black tracking-tight leading-[1.18] sm:leading-[1.15] pb-1 ${isBn ? "font-bangla-display" : "font-display"}`}>
               {isBn ? (
                 <>
-                  কনসেপ্ট থেকে <br className="hidden sm:inline" />
-                  <span className="text-gradient-hero">লাইভ ডেপ্লয়মেন্ট</span>
+                  স্পেশালাইজড ইন <br className="hidden sm:inline" />
+                  <span className="text-gradient-hero">হেলথটেক ও ই-কমার্স</span>
                 </>
               ) : (
                 <>
-                  From Concept <br className="hidden sm:inline" />
-                  <span className="text-gradient-hero">to Deployed</span>
+                  Specialized in <br className="hidden sm:inline" />
+                  <span className="text-gradient-hero">HealthTech & E-Commerce</span>
                 </>
               )}
             </h2>
@@ -164,12 +189,12 @@ export function ServicesSection() {
             {/* Subhead */}
             <p className={`mt-4 text-sm sm:text-base text-neutral-400 font-normal leading-relaxed ${isBn ? "font-bangla-body" : ""}`}>
               {isBn
-                ? "কীভাবে আপনার ডিজিটাল আইডিয়া ওয়েবজেন বাংলাদেশের উন্নত ক্লাউড ইঞ্জিনিয়ারিং ও সিকিউর প্রোটোকলের মাধ্যমে লাইভ ওয়েবসাইটে রূপান্তরিত হয়।"
-                : "How your vision transforms into an ultra-fast, live web platform through modern engineering, DNS routing, and secure protocols."}
+                ? "হেলথটেক ডক্টর বুকিং পোর্টাল ও ই-কমার্স প্ল্যাটফর্ম থেকে শুরু করে লিনাক্স VPS ডেপ্লয়মেন্ট ও সার্বক্ষণিক ওয়েবসাইট ম্যানেজমেন্ট—আপনার ব্যবসার প্রতিটি ডিজিটাল প্রয়োজনের পূর্ণাঙ্গ সমাধান।"
+                : "From bespoke HealthTech doctor booking portals and high-converting e-commerce engines to production VPS cloud deployment and 24/7 continuous website management."}
             </p>
           </motion.div>
 
-          {/* Right Column: Top Status Glass Card (Matching Reference Image) */}
+          {/* Right Column: Top Status Glass Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -182,12 +207,12 @@ export function ServicesSection() {
               {/* Header: Icon + Title + Registered Status */}
               <div className="flex items-center gap-3.5 pb-4 border-b border-white/[0.08]">
                 <div className="w-12 h-12 rounded-full border border-[#FF6A00]/40 bg-[#FF6A00]/10 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(255,106,0,0.3)]">
-                  <Globe className="w-5 h-5 text-[#FF6A00]" />
+                  <Activity className="w-5 h-5 text-[#FF6A00]" />
                 </div>
                 <div>
                   <div className="text-sm font-bold text-white font-mono">webzen.bd</div>
                   <div className="text-[11px] text-neutral-400 font-medium">
-                    {isBn ? "এন্টারপ্রাইজ ওয়েব আর্কিটেকচার" : "Registered Architecture"}
+                    {isBn ? "হেলথটেক, ই-কমার্স ও ক্লাউড" : "HealthTech, E-Commerce & Cloud"}
                   </div>
                 </div>
               </div>
@@ -195,10 +220,10 @@ export function ServicesSection() {
               {/* 4 Checklist Items with Orange Checkmarks */}
               <div className="pt-4 space-y-2.5">
                 {[
-                  isBn ? "সাব-সেকেন্ড টিটিএফবি ও এজ রাউটিং" : "Sub-second TTFB & Edge Routing",
-                  isBn ? "অটোমেটেড সিআই/সিডি পাইপলাইন" : "Automated CI/CD Pipeline",
-                  isBn ? "গ্লোবাল প্রোপাগেশন ও সিডিএন" : "Propagation Global & CDN",
-                  isBn ? "সিকিউর বিকাশ ও কার্ড গেটওয়ে" : "Connection & SSL Established"
+                  isBn ? "ডক্টর সিরিয়াল ও চেম্বার শিডিউলিং" : "Doctor Serial & Chamber Booking",
+                  isBn ? "বিকাশ ও নগদ অটোমেটেড পেমেন্ট" : "Automated bKash & Nagad Gateways",
+                  isBn ? "উবুন্টু লিনাক্স VPS ও Nginx সেটআপ" : "Production Ubuntu VPS & Nginx Setup",
+                  isBn ? "২৪/৭ মনিটরিং ও ডেইলি ব্যাকআপ" : "24/7 Monitoring & Cloud Backups"
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-center gap-2.5 text-xs text-neutral-300">
                     <CheckCircle2 className="w-4 h-4 text-[#FF6A00] shrink-0" />
@@ -215,7 +240,7 @@ export function ServicesSection() {
         {/* ═══ The S-Curve Flow Architecture (Center Cards with Alternating Notes & Glowing Wires) ═══ */}
         <div className="relative my-8 sm:my-14">
           
-          {/* Step 01: Full-Stack Web (Left Note, Center Card) */}
+          {/* Step 01: HealthTech (Left Note, Center Card) */}
           <div className="relative">
             <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-4 md:gap-0">
               
@@ -255,14 +280,14 @@ export function ServicesSection() {
                 <div className="p-5 rounded-2xl glass-radiant border border-white/[0.1] hover:border-[#FF6A00]/40 transition-all duration-300 shadow-[0_12px_32px_rgba(0,0,0,0.85)]">
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 rounded-full border border-[#FF6A00]/40 bg-[#FF6A00]/10 flex items-center justify-center shrink-0 shadow-[0_0_16px_rgba(255,106,0,0.25)]">
-                      <Globe className="w-6 h-6 text-[#FF6A00]" />
+                      <Activity className="w-6 h-6 text-[#FF6A00]" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
                         <h4 className="text-base font-bold text-white tracking-wide truncate">
                           {steps[0].cardTitle}
                         </h4>
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.04] text-neutral-400 border border-white/10">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#FF3823]/15 text-[#FF3823] border border-[#FF3823]/30 font-bold">
                           {steps[0].badgeText}
                         </span>
                       </div>
@@ -282,7 +307,7 @@ export function ServicesSection() {
 
             </div>
 
-            {/* Glowing S-Curve Wire: From Bottom Center of Card 1 -> Right -> Down -> Left into Top Center of Card 2 */}
+            {/* Glowing S-Curve Wire */}
             <div className="relative w-full h-16 sm:h-20 flex items-center justify-center my-1 pointer-events-none">
               <svg className="w-full h-full max-w-[540px] overflow-visible" viewBox="0 0 540 80" fill="none">
                 <defs>
@@ -314,7 +339,7 @@ export function ServicesSection() {
             </div>
           </div>
 
-          {/* Step 02: AI Workflows & Automation (Center Card, Right Note) */}
+          {/* Step 02: E-Commerce (Center Card, Right Note) */}
           <div className="relative">
             <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-4 md:gap-0">
               
@@ -332,14 +357,14 @@ export function ServicesSection() {
                 <div className="p-5 rounded-2xl glass-radiant border border-white/[0.1] hover:border-[#FF6A00]/40 transition-all duration-300 shadow-[0_12px_32px_rgba(0,0,0,0.85)]">
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 rounded-full border border-[#FF6A00]/40 bg-[#FF6A00]/10 flex items-center justify-center shrink-0 shadow-[0_0_16px_rgba(255,106,0,0.25)]">
-                      <span className="text-xl font-black text-[#FF6A00] font-mono">A</span>
+                      <ShoppingBag className="w-6 h-6 text-[#FF6A00]" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
                         <h4 className="text-base font-bold text-white tracking-wide truncate">
                           {steps[1].cardTitle}
                         </h4>
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.04] text-neutral-400 border border-white/10">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#FF6A00]/15 text-[#FF6A00] border border-[#FF6A00]/30 font-bold">
                           {steps[1].badgeText}
                         </span>
                       </div>
@@ -381,7 +406,7 @@ export function ServicesSection() {
 
             </div>
 
-            {/* Glowing S-Curve Wire: From Bottom Center of Card 2 -> Left -> Down -> Right into Top Center of Card 3 */}
+            {/* Glowing S-Curve Wire */}
             <div className="relative w-full h-16 sm:h-20 flex items-center justify-center my-1 pointer-events-none">
               <svg className="w-full h-full max-w-[540px] overflow-visible" viewBox="0 0 540 80" fill="none">
                 <defs>
@@ -413,7 +438,7 @@ export function ServicesSection() {
             </div>
           </div>
 
-          {/* Step 03: Radiant UI/UX Design (Left Note, Center Card) */}
+          {/* Step 03: VPS Deployment (Left Note, Center Card) */}
           <div className="relative">
             <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-4 md:gap-0">
               
@@ -453,14 +478,14 @@ export function ServicesSection() {
                 <div className="p-5 rounded-2xl glass-radiant border border-white/[0.1] hover:border-[#FF6A00]/40 transition-all duration-300 shadow-[0_12px_32px_rgba(0,0,0,0.85)]">
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 rounded-full border border-[#FF6A00]/40 bg-[#FF6A00]/10 flex items-center justify-center shrink-0 shadow-[0_0_16px_rgba(255,106,0,0.25)]">
-                      <span className="text-xs font-black text-[#FF6A00] font-mono">UI/UX</span>
+                      <Server className="w-6 h-6 text-[#FF6A00]" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
                         <h4 className="text-base font-bold text-white tracking-wide truncate">
                           {steps[2].cardTitle}
                         </h4>
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.04] text-neutral-400 border border-white/10">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.04] text-neutral-400 border border-white/10 font-bold">
                           {steps[2].badgeText}
                         </span>
                       </div>
@@ -480,7 +505,7 @@ export function ServicesSection() {
 
             </div>
 
-            {/* Glowing S-Curve Wire: From Bottom Center of Card 3 -> Right -> Down -> Left into Top Center of Card 4 */}
+            {/* Glowing S-Curve Wire */}
             <div className="relative w-full h-16 sm:h-20 flex items-center justify-center my-1 pointer-events-none">
               <svg className="w-full h-full max-w-[540px] overflow-visible" viewBox="0 0 540 80" fill="none">
                 <defs>
@@ -512,7 +537,7 @@ export function ServicesSection() {
             </div>
           </div>
 
-          {/* Step 04: Cloud & BD Payments Security (Center Card, Right Note) */}
+          {/* Step 04: Website Management (Center Card, Right Note) */}
           <div className="relative">
             <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-4 md:gap-0">
               
@@ -530,14 +555,14 @@ export function ServicesSection() {
                 <div className="p-5 rounded-2xl glass-radiant border border-white/[0.1] hover:border-[#FF6A00]/40 transition-all duration-300 shadow-[0_12px_32px_rgba(0,0,0,0.85)]">
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 rounded-full border border-[#FF6A00]/40 bg-[#FF6A00]/10 flex items-center justify-center shrink-0 shadow-[0_0_16px_rgba(255,106,0,0.25)]">
-                      <Lock className="w-6 h-6 text-[#FF6A00]" />
+                      <ShieldCheck className="w-6 h-6 text-[#FF6A00]" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
                         <h4 className="text-base font-bold text-white tracking-wide truncate">
                           {steps[3].cardTitle}
                         </h4>
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.04] text-neutral-400 border border-white/10">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.04] text-neutral-400 border border-white/10 font-bold">
                           {steps[3].badgeText}
                         </span>
                       </div>
@@ -639,7 +664,7 @@ export function ServicesSection() {
 
             {/* Destination Title & Subtitle */}
             <h3 className={`mt-5 text-xl sm:text-2xl font-bold text-white tracking-tight ${isBn ? "font-bangla-display" : "font-display"}`}>
-              {isBn ? "আপনার লাইভ ওয়েব প্ল্যাটফর্ম" : "Your Web Platform"}
+              {isBn ? "আপনার লাইভ ওয়েব প্ল্যাটফর্ম" : "Your Live Web Platform"}
             </h3>
             <p className="text-xs sm:text-sm text-neutral-400 mt-1 font-medium">
               {isBn ? "১০০% নিরাপদ ও সর্বোচ্চ গতিতে লাইভ" : "Delivered Securely & Scalable"}
@@ -654,7 +679,7 @@ export function ServicesSection() {
                 <motion.button 
                   whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.96 }}
-                  className="pill-btn-primary pl-6 pr-2.5 py-2.5 text-xs font-bold tracking-wider uppercase flex items-center gap-3 shadow-[0_10px_30px_rgba(255,56,35,0.45)]"
+                  className="pill-btn-primary pl-6 pr-2.5 py-2.5 text-xs font-bold tracking-wider uppercase flex items-center gap-3 shadow-[0_10px_30px_rgba(255,56,35,0.45)] cursor-pointer"
                 >
                   <span>{isBn ? "প্রজেক্টের আর্কিটেকচার শুরু করুন" : "Initiate Architecture"}</span>
                   <span className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center">
@@ -667,7 +692,147 @@ export function ServicesSection() {
 
         </div>
 
-        {/* ═══ Bottom Feature Tray: 4 Pillars (Secure, Fast, Reliable, Scalable) ═══ */}
+        {/* ═══ All Core Services Catalog Grid (Specialized in HealthTech & E-Commerce, VPS, Management) ═══ */}
+        <div className="mt-20 sm:mt-28">
+          
+          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-[11px] font-mono font-bold tracking-[0.2em] text-[#FF6A00] uppercase bg-[#FF6A00]/10 border border-[#FF6A00]/25 mb-3 shadow-[0_0_12px_rgba(255,106,0,0.2)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] shadow-[0_0_6px_#FF6A00]" />
+              <span>{isBn ? "আমাদের পূর্ণাঙ্গ সেবাসমূহ" : "CORE ENGINEERING SOLUTIONS"}</span>
+            </div>
+
+            <h3 className={`text-2xl sm:text-4xl font-black text-white tracking-tight ${isBn ? "font-bangla-display" : "font-display"}`}>
+              {isBn ? (
+                <>
+                  যেসব সার্ভিসে আমরা <span className="text-gradient-hero">বিশেষজ্ঞ</span>
+                </>
+              ) : (
+                <>
+                  Specialized Solutions We <span className="text-gradient-hero">Engineer</span>
+                </>
+              )}
+            </h3>
+
+            <p className={`mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed ${isBn ? "font-bangla-body" : ""}`}>
+              {isBn 
+                ? "হেলথটেক ও ই-কমার্স স্পেশালাইজেশন থেকে শুরু করে লিনাক্স VPS ডেপ্লয়মেন্ট ও সার্বক্ষণিক সাইট কেয়ার—আপনার ডিজিটাল যাত্রার প্রতিটি পদক্ষেপে আমাদের পূর্ণাঙ্গ প্রযুক্তি সেবা।"
+                : "From specialized HealthTech portals and automated E-Commerce to production Linux VPS deployment and continuous 24/7 technical management."}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+            {tServices.items.map((item) => {
+              const IconComp = getServiceIcon(item.id);
+              const isSpecialized = item.id === "srv-healthtech" || item.id === "srv-ecommerce";
+              const isInfrastructure = item.id === "srv-vps" || item.id === "srv-management";
+
+              return (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{ duration: 0.6 }}
+                  whileHover={{ y: -6 }}
+                  className={`glass-radiant rounded-[28px] p-6 sm:p-7 border transition-all duration-300 flex flex-col justify-between group shadow-[0_16px_36px_rgba(0,0,0,0.6)] ${
+                    isSpecialized 
+                      ? "border-[#FF3823]/35 hover:border-[#FF3823]/60 hover:shadow-[0_20px_45px_rgba(255,56,35,0.2)]" 
+                      : isInfrastructure
+                      ? "border-[#FF6A00]/30 hover:border-[#FF6A00]/60 hover:shadow-[0_20px_45px_rgba(255,106,0,0.2)]"
+                      : "border-white/[0.08] hover:border-white/25"
+                  }`}
+                >
+                  <div>
+                    {/* Top Header: Icon + Category Badge */}
+                    <div className="flex items-center justify-between gap-3 mb-5">
+                      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border ${
+                        isSpecialized
+                          ? "bg-[#FF3823]/15 border-[#FF3823]/35 text-[#FF3823] shadow-[0_0_15px_rgba(255,56,35,0.3)]"
+                          : isInfrastructure
+                          ? "bg-[#FF6A00]/15 border-[#FF6A00]/35 text-[#FF6A00] shadow-[0_0_15px_rgba(255,106,0,0.3)]"
+                          : "bg-white/[0.04] border-white/10 text-white"
+                      }`}>
+                        <IconComp className="w-6 h-6" />
+                      </div>
+
+                      {isSpecialized ? (
+                        <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#FF3823]/15 border border-[#FF3823]/40 text-[#FF3823] shadow-[0_0_12px_rgba(255,56,35,0.25)] flex items-center gap-1.5 font-mono">
+                          <Sparkles className="w-3 h-3" />
+                          <span>{isBn ? "স্পেশালাইজড" : "SPECIALIZED"}</span>
+                        </span>
+                      ) : isInfrastructure ? (
+                        <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#FF6A00]/15 border border-[#FF6A00]/40 text-[#FF6A00] font-mono">
+                          <span>{isBn ? "ক্লাউড ও কেয়ার" : "INFRASTRUCTURE"}</span>
+                        </span>
+                      ) : (
+                        <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/[0.04] border border-white/10 text-neutral-400 font-mono">
+                          <span>{isBn ? "কোর সল্যুশন" : "ENGINEERING"}</span>
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Title & Subtitle */}
+                    <h4 className={`text-lg sm:text-xl font-bold text-white tracking-tight group-hover:text-[#FF3823] transition-colors ${
+                      isBn ? "font-bangla-display" : "font-display"
+                    }`}>
+                      {item.title}
+                    </h4>
+                    <p className="text-xs text-[#FFA000] font-semibold mt-1">
+                      {item.subtitle}
+                    </p>
+
+                    {/* Description */}
+                    <p className={`mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed font-normal ${
+                      isBn ? "font-bangla-body" : ""
+                    }`}>
+                      {item.description}
+                    </p>
+
+                    {/* Deliverables Checklist */}
+                    <div className="mt-5 pt-4 border-t border-white/[0.06] space-y-2">
+                      <div className="text-[11px] font-mono uppercase font-bold text-neutral-400 tracking-wider mb-2">
+                        {isBn ? "যা যা অন্তর্ভুক্ত:" : "Key Deliverables:"}
+                      </div>
+                      {item.deliverables.map((deliv, idx) => (
+                        <div key={idx} className="flex items-start gap-2 text-xs text-neutral-300">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#FF6A00] shrink-0 mt-0.5" />
+                          <span className={isBn ? "font-bangla-body leading-snug" : "leading-snug"}>{deliv}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Bottom: Tags & Action Button */}
+                  <div className="mt-6 pt-4 border-t border-white/[0.06]">
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {item.tags.map((tag, tIdx) => (
+                        <span 
+                          key={tIdx} 
+                          className="px-2 py-0.5 rounded-md text-[10px] font-mono bg-white/[0.03] text-neutral-400 border border-white/[0.07]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <a 
+                      href="#contact" 
+                      onClick={(e) => handleSmoothScroll(e, "#contact")}
+                      className="inline-flex items-center justify-between w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-white/[0.03] hover:bg-[#FF3823] border border-white/[0.08] hover:border-[#FF3823] transition-all group/btn shadow-sm"
+                    >
+                      <span>{isBn ? "এই বিষয়ে আলাপ করুন" : "Discuss Project"}</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                    </a>
+                  </div>
+
+                </motion.div>
+              );
+            })}
+          </div>
+
+        </div>
+
+        {/* ═══ Bottom Feature Tray: 4 Pillars (Secure, Fast, VPS Cloud, 24/7 Managed) ═══ */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -682,13 +847,13 @@ export function ServicesSection() {
               <div className="flex items-center gap-2.5 mb-2">
                 <ShieldCheck className="w-5 h-5 text-[#FF6A00]" />
                 <span className="text-sm font-bold text-white tracking-wide">
-                  {isBn ? "সর্বোচ্চ নিরাপত্তা" : "Secure"}
+                  {isBn ? "সর্বোচ্চ নিরাপত্তা" : "Secure Infrastructure"}
                 </span>
               </div>
               <p className="text-xs text-neutral-400 leading-relaxed font-normal">
                 {isBn 
-                  ? "এন্ড-টু-এন্ড এনক্রিপশন ও সংরক্ষিত API এন্ডপয়েন্ট আপনার ব্যবহারকারী ও ডেটা নিরাপদ রাখে।" 
-                  : "End-to-end encryption protects your users, transactions, and enterprise data."}
+                  ? "এন্ড-টু-এন্ড এনক্রিপশন ও সংরক্ষিত API এন্ডপয়েন্ট আপনার ব্যবহারকারী ও লেনদেনের ডেটা নিরাপদ রাখে।" 
+                  : "End-to-end encryption protects your users, medical records, transactions, and enterprise data."}
               </p>
             </div>
 
@@ -697,43 +862,43 @@ export function ServicesSection() {
               <div className="flex items-center gap-2.5 mb-2">
                 <Zap className="w-5 h-5 text-[#FF6A00]" />
                 <span className="text-sm font-bold text-white tracking-wide">
-                  {isBn ? "সাব-সেকেন্ড স্পিড" : "Fast"}
+                  {isBn ? "সাব-সেকেন্ড স্পিড" : "Sub-Second Speed"}
                 </span>
               </div>
               <p className="text-xs text-neutral-400 leading-relaxed font-normal">
                 {isBn 
-                  ? "Next.js এজ রাউটিং ও ক্যাশিং নিশ্চিত করে মিলি-সেকেন্ডে পেজ লোড ও ব্রাউজিং গতি।" 
+                  ? "Next.js এজ রাউটিং ও অপ্টিমাইজড ক্যাশিং নিশ্চিত করে মিলি-সেকেন্ডে পেজ লোড ও নির্বিঘ্ন বুকিং।" 
                   : "Optimized DNS routing and edge caching ensure quick, sub-second global delivery."}
               </p>
             </div>
 
-            {/* Pillar 3: Reliable */}
+            {/* Pillar 3: VPS Cloud */}
             <div className="flex flex-col">
               <div className="flex items-center gap-2.5 mb-2">
                 <Server className="w-5 h-5 text-[#FF6A00]" />
                 <span className="text-sm font-bold text-white tracking-wide">
-                  {isBn ? "নির্ভরযোগ্য আর্কিটেকচার" : "Reliable"}
+                  {isBn ? "লিনাক্স VPS ক্লাউড" : "Production VPS & Cloud"}
                 </span>
               </div>
               <p className="text-xs text-neutral-400 leading-relaxed font-normal">
                 {isBn 
-                  ? "রিডান্ড্যান্ট ক্লাউড ক্লাস্টার ও অটোমেটেড হেলথ-চেক দিয়ে ৯৯.৯% আপটাইম গ্যারান্টি।" 
-                  : "Redundant infrastructure and automated health checks ensure 99.9% uptime."}
+                  ? "উবুন্টু VPS, Nginx ও ডকার ক্লাস্টারে ডেপ্লয়মেন্ট দিয়ে ৯৯.৯% নিরবচ্ছিন্ন আপটাইম গ্যারান্টি।" 
+                  : "Dedicated Ubuntu VPS, Nginx reverse proxy, and Docker environments for 99.9% uptime."}
               </p>
             </div>
 
-            {/* Pillar 4: Scalable */}
+            {/* Pillar 4: 24/7 Managed */}
             <div className="flex flex-col">
               <div className="flex items-center gap-2.5 mb-2">
                 <TrendingUp className="w-5 h-5 text-[#FF6A00]" />
                 <span className="text-sm font-bold text-white tracking-wide">
-                  {isBn ? "স্কেলিং ক্যাপাসিটি" : "Scalable"}
+                  {isBn ? "২৪/৭ সাইট ম্যানেজমেন্ট" : "24/7 Site Management"}
                 </span>
               </div>
               <p className="text-xs text-neutral-400 leading-relaxed font-normal">
                 {isBn 
-                  ? "ব্যবসার প্রবৃদ্ধির সাথে সাথে হাজার থেকে মিলিয়ন ভিজিটর সহজে হ্যান্ডেল করার ক্ষমতা।" 
-                  : "Built to seamlessly grow with your business traffic, users, and enterprise needs."}
+                  ? "প্রতিদিনের ক্লাউড ব্যাকআপ, নিয়মিত কনটেন্ট আপডেট ও সরাসরি সিনিয়র ইঞ্জিনিয়ারদের টেক সাপোর্ট।" 
+                  : "Automated daily cloud backups, regular content updates, and direct senior engineer support."}
               </p>
             </div>
 

@@ -10,7 +10,8 @@ import {
   Activity, 
   Users, 
   GraduationCap,
-  Sparkles
+  Server,
+  ShieldCheck
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -22,11 +23,55 @@ export function GrowthSystemSection() {
 
   const systems = [
     {
+      id: "healthtech",
+      title: isBn ? "HealthTech Portal" : "HealthTech Portal",
+      titleBn: "হেলথটেক প্ল্যাটফর্ম",
+      icon: Activity,
+      accent: "#FF3823",
+      tech: "Doctor Booking & Clinic Portal",
+      desc: isBn 
+        ? "৩ ধাপে অনলাইন ডক্টর সিরিয়াল বুকিং, চেম্বার শিডিউলিং, ভিডিও কনসালটেশন ও পেশেন্ট হিস্ট্রি।" 
+        : "Multi-chamber clinic scheduling, patient telemedicine consultations, and digital prescription history."
+    },
+    {
+      id: "ecommerce",
+      title: isBn ? "E-Commerce" : "E-Commerce",
+      titleBn: "ই-কমার্স সল্যুশন",
+      icon: ShoppingBag,
+      accent: "#FF6A00",
+      tech: "bKash, Nagad & Cards",
+      desc: isBn 
+        ? "ইনস্ট্যান্ট বিকাশ ও নগদ অটোমেটেড পেমেন্ট, স্মার্ট ইনভেন্টরি, অটোমেটিক ইনভয়েসিং ও কুরিয়ার।" 
+        : "Seamless payment checkout with bKash, Nagad, Stripe, and real-time inventory webhooks."
+    },
+    {
+      id: "vps",
+      title: isBn ? "VPS Deployment" : "VPS Deployment",
+      titleBn: "VPS ডেপ্লয়মেন্ট",
+      icon: Server,
+      accent: "#FFA000",
+      tech: "Ubuntu • Nginx • Docker • SSL",
+      desc: isBn 
+        ? "লিনাক্স VPS ক্লাউড সেটআপ, Nginx রিভার্স প্রক্সি, অটো-রিনিউ SSL, PM2 ও GitHub CI/CD।" 
+        : "Production Linux VPS setup, Nginx reverse proxy, auto-renew SSL, PM2 daemon, and GitHub CI/CD."
+    },
+    {
+      id: "management",
+      title: isBn ? "Website Management" : "Website Management",
+      titleBn: "ওয়েবসাইট ম্যানেজমেন্ট",
+      icon: ShieldCheck,
+      accent: "#FF3823",
+      tech: "24/7 Monitoring & Cloud Backups",
+      desc: isBn 
+        ? "সার্বক্ষণিক ২৪/৭ আপটাইম মনিটরিং, প্রতিদিনের ক্লাউড ব্যাকআপ, কনটেন্ট আপডেট ও টেকনিক্যাল সাপোর্ট।" 
+        : "24/7 uptime monitoring, automated daily cloud backups, regular content updates, and instant bug fixes."
+    },
+    {
       id: "webapp",
       title: isBn ? "Web Application" : "Web Application",
       titleBn: "ওয়েব অ্যাপ্লিকেশন",
       icon: CodeXml,
-      accent: "#FF3823",
+      accent: "#FF6A00",
       tech: "Next.js 16 • Sub-0.5s TTFB",
       desc: isBn 
         ? "আল্ট্রা-ফাস্ট নেক্সট.জেএস ১৬ ও টাইপস্ক্রিপ্ট আর্কিটেকচার যা যেকোনো ট্রাফিকেও স্মুথ পারফরম্যান্স দেয়।" 
@@ -37,7 +82,7 @@ export function GrowthSystemSection() {
       title: isBn ? "Custom Dashboard" : "Custom Dashboard",
       titleBn: "কাস্টম ড্যাশবোর্ড",
       icon: LayoutDashboard,
-      accent: "#FF6A00",
+      accent: "#FFA000",
       tech: "Real-time Telemetry & Data",
       desc: isBn 
         ? "রিয়েল-টাইম ডাটা ট্র্যাকিং, ফিল্টারিং ও রোল-বেসড সিকিউরিটি সমৃদ্ধ কাস্টম অ্যাডমিন ড্যাশবোর্ড।" 
@@ -48,51 +93,18 @@ export function GrowthSystemSection() {
       title: isBn ? "UI/UX Design" : "UI/UX Design",
       titleBn: "UI/UX ডিজাইন",
       icon: Palette,
-      accent: "#FFA000",
+      accent: "#FF3823",
       tech: "Glassmorphism • 60fps Motion",
       desc: isBn 
         ? "চোখ ধাঁধানো ডার্ক গ্লাস আর্কিটেকচার, ৬০fps ট্রানজিশন ও আধুনিক ডিজাইন সিস্টেম।" 
         : "Bespoke dark glass aesthetics, fluid 60fps micro-animations, and high-conversion UX."
     },
     {
-      id: "ecommerce",
-      title: isBn ? "E-Commerce" : "E-Commerce",
-      titleBn: "ই-কমার্স সল্যুশন",
-      icon: ShoppingBag,
-      accent: "#FF3823",
-      tech: "bKash, Nagad & Stripe",
-      desc: isBn 
-        ? "ইনস্ট্যান্ট বিকাশ ও নগদ অটোমেটেড পেমেন্ট, স্মার্ট ইনভেন্টরি ও অটোমেটিক ইনভয়েসিং।" 
-        : "Seamless payment checkout with bKash, Nagad, Stripe, and real-time inventory webhooks."
-    },
-    {
-      id: "healthtech",
-      title: isBn ? "HealthTech" : "HealthTech",
-      titleBn: "হেলথটেক প্ল্যাটফর্ম",
-      icon: Activity,
-      accent: "#FF6A00",
-      tech: "Online Doctor Appointments",
-      desc: isBn 
-        ? "৩ ধাপে অনলাইন ডক্টর সিরিয়াল বুকিং, চেম্বার শিডিউলিং ও পেশেন্ট হিস্ট্রি ম্যানেজমেন্ট।" 
-        : "Multi-chamber clinic scheduling, patient telemedicine consultations, and prescription history."
-    },
-    {
-      id: "crm",
-      title: isBn ? "CRM" : "CRM",
-      titleBn: "সিআরএম ও অটোমেশন",
-      icon: Users,
-      accent: "#FFA000",
-      tech: "Automated Lead Funnel",
-      desc: isBn 
-        ? "ইনবাউন্ড লিড ক্যাপচার, কাস্টমার পাইপলাইন ও সরাসরি সেলস ট্র্যাকিং অটোমেশন।" 
-        : "Automated lead tracking, customer lifecycle routing, and direct CRM integrations."
-    },
-    {
       id: "researcher",
       title: isBn ? "Researcher Portfolio" : "Researcher Portfolio",
       titleBn: "রিসার্চার পোর্টফোলিও",
       icon: GraduationCap,
-      accent: "#FF3823",
+      accent: "#FF6A00",
       tech: "Academic Papers & Canvas",
       desc: isBn 
         ? "আন্তর্জাতিক মানের একাডেমিক রিসার্চ পেপার শোকেস, ডায়নামিক অ্যাবস্ট্রাক্ট রিডার ও ক্যানভাস।" 

@@ -88,9 +88,12 @@ export function Navbar() {
             >
               <img src="/logo.png" alt="WebZen Logo" className="w-full h-full object-contain rounded-xl" />
             </motion.div>
-            <div className="flex items-baseline">
+            <div className="flex items-baseline select-none">
               <span className="font-display font-black text-xl sm:text-2xl tracking-tight text-white group-hover:text-neutral-100 transition-colors">
-                WebZen
+                Web
+              </span>
+              <span className="font-display font-black text-xl sm:text-2xl tracking-tight text-gradient-hero drop-shadow-[0_0_16px_rgba(255,56,35,0.45)] group-hover:drop-shadow-[0_0_22px_rgba(255,56,35,0.7)] transition-all">
+                Zen
               </span>
             </div>
           </Link>

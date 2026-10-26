@@ -131,7 +131,7 @@ export function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ type: "spring", stiffness: 220, damping: 18, delay: 0.08 }}
-            className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight uppercase leading-none ${isBn ? "font-bangla-display font-black tracking-normal" : "font-display font-black"}`}
+            className={`text-3xl sm:text-5xl md:text-6xl text-white tracking-tight uppercase leading-[1.15] pb-1 ${isBn ? "font-bangla-display font-black tracking-normal" : "font-display font-black"}`}
           >
             {isBn ? (
               <>
@@ -157,98 +157,112 @@ export function ContactSection() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 items-start">
-          
-          {/* Left Details & Office Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ type: "spring", stiffness: 220, damping: 20 }}
-            className="lg:col-span-5 space-y-6"
-          >
+        {/* Unified Executive Contact Suite */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="glass-radiant rounded-[32px] sm:rounded-[36px] border border-white/[0.1] shadow-[0_25px_70px_rgba(0,0,0,0.85)] overflow-hidden"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12">
             
-            {/* Quick WhatsApp Action Card */}
-            <div className="glass-radiant rounded-[28px] p-6 sm:p-7 border border-white/[0.08] hover:border-[#25D366]/40 transition-all group shadow-[0_16px_36px_rgba(0,0,0,0.6)]">
-              <div className="flex items-center gap-3.5 mb-3.5">
-                <div className="w-12 h-12 rounded-2xl bg-[#25D366]/15 border border-[#25D366]/30 text-[#25D366] flex items-center justify-center shrink-0">
-                  <MessageCircle className="w-6 h-6" />
+            {/* Left Panel: Dhaka Studio, Direct WhatsApp, Trust & NDA (5 cols) */}
+            <div className="lg:col-span-5 p-7 sm:p-9 lg:p-10 bg-white/[0.015] border-b lg:border-b-0 lg:border-r border-white/[0.08] flex flex-col justify-between gap-6 sm:gap-8">
+              
+              {/* Top: Studio Identity & Direct Channels */}
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-[0.2em] text-[#FF6A00] uppercase bg-[#FF6A00]/10 border border-[#FF6A00]/25 mb-4 shadow-[0_0_12px_rgba(255,106,0,0.15)]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] shadow-[0_0_6px_#FF6A00]" />
+                  <span>{isBn ? "ঢাকা স্টুডিও ও আর্কিটেকচার টিম" : "DHAKA STUDIO & CHANNELS"}</span>
                 </div>
-                <div>
-                  <h4 className="font-display font-bold text-base text-white">{t.whatsappTitle}</h4>
-                  <p className="text-xs text-neutral-400 mt-0.5">{t.whatsappSub}</p>
+
+                <h3 className="font-display font-bold text-xl sm:text-2xl text-white flex items-center gap-2 mb-2">
+                  <MapPin className="w-5 h-5 text-[#FF3823] shrink-0" />
+                  <span>{t.dhakaHq}</span>
+                </h3>
+                <p className="text-xs text-neutral-400 mb-6 leading-relaxed">
+                  {isBn 
+                    ? "নতুন প্রজেক্টের কারিগরি পরিকল্পনা, আর্কিটেকচার অডিট বা সরাসরি মিটিংয়ের জন্য যোগাযোগ করুন।"
+                    : "Direct consultation with our senior engineering architects in Dhaka for modern web, cloud & digital products."}
+                </p>
+
+                <div className="space-y-3.5 text-xs sm:text-sm text-neutral-400">
+                  <div className="flex items-start gap-3">
+                    <div className="font-semibold text-neutral-500 w-20 shrink-0">{t.addressLabel}</div>
+                    <span className={`text-neutral-200 ${isBn ? "font-bangla-body" : ""}`}>
+                      {isBn && contact.addressBn ? contact.addressBn : contact.address}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <div className="font-semibold text-neutral-500 w-20 shrink-0">{t.phoneLabel}</div>
+                    <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="text-[#FF3823] hover:underline font-semibold font-mono">
+                      {contact.phone}
+                    </a>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <div className="font-semibold text-neutral-500 w-20 shrink-0">{t.emailLabel}</div>
+                    <a href={`mailto:${contact.email}`} className="text-[#FF3823] hover:underline font-semibold font-mono">
+                      {contact.email}
+                    </a>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <div className="font-semibold text-neutral-500 w-20 shrink-0">{t.hoursLabel}</div>
+                    <span className={`text-neutral-300 ${isBn ? "font-bangla-body" : ""}`}>
+                      {isBn && contact.officeHoursBn ? contact.officeHoursBn : contact.officeHours}
+                    </span>
+                  </div>
                 </div>
               </div>
-              <motion.a
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                href={whatsappUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="pill-btn-primary w-full py-3.5 text-xs font-bold tracking-wider uppercase gap-2.5 mt-3 shadow-lg"
-              >
-                <span>{t.whatsappBtn}</span>
-                <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white/20 text-white shadow-inner">
+
+              {/* Middle: WhatsApp Action Box */}
+              <div className="p-5 rounded-2xl bg-[#25D366]/[0.06] border border-[#25D366]/25 hover:border-[#25D366]/40 transition-all group shadow-sm">
+                <div className="flex items-center gap-3.5 mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#25D366]/20 border border-[#25D366]/30 text-[#25D366] flex items-center justify-center shrink-0">
+                    <MessageCircle className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-display font-bold text-sm text-white">{t.whatsappTitle}</h4>
+                    <p className="text-[11px] text-neutral-400 mt-0.5">{t.whatsappSub}</p>
+                  </div>
+                </div>
+                <motion.a
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="pill-btn-primary w-full py-3 text-xs font-bold tracking-wider uppercase gap-2 shadow-md flex items-center justify-center"
+                >
+                  <span>{t.whatsappBtn}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </span>
-              </motion.a>
-            </div>
+                </motion.a>
+              </div>
 
-            {/* Dhaka Headquarters Card */}
-            <div className="glass-radiant rounded-[28px] p-6 sm:p-7 space-y-4 border border-white/[0.08] shadow-[0_16px_36px_rgba(0,0,0,0.6)]">
-              <h3 className="font-display font-bold text-base text-white flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-[#FF3823]" />
-                <span>{t.dhakaHq}</span>
-              </h3>
-
-              <div className="space-y-3 text-xs sm:text-sm text-neutral-400">
-                <div className="flex items-start gap-2.5">
-                  <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.addressLabel}</div>
-                  <span className={`text-neutral-200 ${isBn ? "font-bangla-body" : ""}`}>
-                    {isBn && contact.addressBn ? contact.addressBn : contact.address}
+              {/* Bottom: Commitments & Live Status */}
+              <div className="pt-4 border-t border-white/[0.08] space-y-3">
+                <div className="flex items-center gap-2.5 text-xs text-neutral-300">
+                  <ShieldCheck className="w-4 h-4 text-[#FF3823] shrink-0" />
+                  <span>{t.securityPromise}</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-[11px] text-neutral-400">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500 shadow-[0_0_8px_#10B981]" />
                   </span>
-                </div>
-
-                <div className="flex items-center gap-2.5">
-                  <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.phoneLabel}</div>
-                  <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="text-[#FF3823] hover:underline font-semibold font-mono">
-                    {contact.phone}
-                  </a>
-                </div>
-
-                <div className="flex items-center gap-2.5">
-                  <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.emailLabel}</div>
-                  <a href={`mailto:${contact.email}`} className="text-[#FF3823] hover:underline font-semibold font-mono">
-                    {contact.email}
-                  </a>
-                </div>
-
-                <div className="flex items-start gap-2.5">
-                  <div className="font-semibold text-neutral-500 w-16 shrink-0">{t.hoursLabel}</div>
-                  <span className={`text-neutral-300 ${isBn ? "font-bangla-body" : ""}`}>
-                    {isBn && contact.officeHoursBn ? contact.officeHoursBn : contact.officeHours}
+                  <span className={isBn ? "font-bangla-body text-emerald-400 font-semibold" : "text-emerald-400 font-semibold"}>
+                    {t.liveIntakeStatus}
                   </span>
                 </div>
               </div>
 
-              {/* Security promise */}
-              <div className="pt-4 border-t border-white/[0.06] flex items-center gap-2 text-xs text-neutral-400">
-                <ShieldCheck className="w-4 h-4 text-[#FF3823] shrink-0" />
-                <span>{t.securityPromise}</span>
-              </div>
             </div>
 
-          </motion.div>
-
-          {/* Right Contact Form */}
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ type: "spring", stiffness: 220, damping: 20 }}
-            className="lg:col-span-7"
-          >
-            <div className="glass-radiant rounded-[32px] p-7 sm:p-10 border border-white/[0.08] shadow-[0_25px_60px_rgba(0,0,0,0.8)]">
+            {/* Right Panel: Clean Compact Form (7 cols) */}
+            <div className="lg:col-span-7 p-7 sm:p-9 lg:p-10 flex flex-col justify-center">
               {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -272,7 +286,7 @@ export function ContactSection() {
                   </motion.button>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-4.5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-semibold text-neutral-300 mb-1.5">
@@ -283,7 +297,7 @@ export function ContactSection() {
                         value={formState.name}
                         onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                         placeholder={t.namePlaceholder}
-                        className="w-full px-4 text-white placeholder:text-neutral-500 text-xs h-12 rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-[#FF3823]/60 focus:outline-none transition-colors"
+                        className="w-full px-4 text-white placeholder:text-neutral-500 text-xs h-11 sm:h-12 rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-[#FF3823]/60 focus:outline-none transition-colors"
                       />
                     </div>
 
@@ -297,7 +311,7 @@ export function ContactSection() {
                         value={formState.email}
                         onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                         placeholder="yourname@company.com"
-                        className="w-full px-4 text-white placeholder:text-neutral-500 text-xs h-12 rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-[#FF3823]/60 focus:outline-none transition-colors"
+                        className="w-full px-4 text-white placeholder:text-neutral-500 text-xs h-11 sm:h-12 rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-[#FF3823]/60 focus:outline-none transition-colors"
                       />
                     </div>
                   </div>
@@ -311,7 +325,7 @@ export function ContactSection() {
                         value={formState.phone}
                         onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
                         placeholder="+880 17XX-XXXXXX"
-                        className="w-full px-4 text-white placeholder:text-neutral-500 text-xs h-12 rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-[#FF3823]/60 focus:outline-none transition-colors"
+                        className="w-full px-4 text-white placeholder:text-neutral-500 text-xs h-11 sm:h-12 rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-[#FF3823]/60 focus:outline-none transition-colors"
                       />
                     </div>
 
@@ -322,25 +336,25 @@ export function ContactSection() {
                       <select
                         value={formState.projectType}
                         onChange={(e) => setFormState({ ...formState, projectType: e.target.value })}
-                        className="w-full px-4 text-white text-xs h-12 rounded-xl bg-[#08080C] border border-white/[0.08] focus:border-[#FF3823]/60 focus:outline-none transition-colors cursor-pointer"
+                        className="w-full px-4 text-white text-xs h-11 sm:h-12 rounded-xl bg-[#08080C] border border-white/[0.08] focus:border-[#FF3823]/60 focus:outline-none transition-colors cursor-pointer"
                       >
                         {language === "bn" ? (
                           <>
-                            <option value="হেলথটেক ও সিরিয়াল বুকিং">হেলথটেক ও ডক্টর সিরিয়াল বুকিং পোর্টাল</option>
-                            <option value="অনলাইন শপ ও ই-কমার্স">অনলাইন শপ ও ই-কমার্স (বিকাশ পেমেন্ট)</option>
-                            <option value="কাস্টম ওয়েবসাইট">কাস্টম ওয়েবসাইট তৈরি</option>
-                            <option value="মোবাইল অ্যাপস (Android & iOS)">মোবাইল অ্যাপস (Android & iOS)</option>
-                            <option value="স্মার্ট অটোমেশন ও AI">স্মার্ট অটোমেশন ও AI চ্যাটবট</option>
-                            <option value="কাস্টম সফটওয়্যার ও ডাটাবেস">কাস্টম সফটওয়্যার ও ডাটাবেস</option>
+                            <option value="হেলথটেক ও ডক্টর সিরিয়াল পোর্টাল">হেলথটেক ও ডক্টর সিরিয়াল বুকিং পোর্টাল</option>
+                            <option value="অনলাইন শপ ও ই-কমার্স সল্যুশন">অনলাইন শপ ও ই-কমার্স (বিকাশ পেমেন্ট)</option>
+                            <option value="প্রোডাকশন VPS ডেপ্লয়মেন্ট">প্রোডাকশন VPS ডেপ্লয়মেন্ট ও লিনাক্স ক্লাউড</option>
+                            <option value="ওয়েবসাইট ম্যানেজমেন্ট ও কেয়ার">ওয়েবসাইট ম্যানেজমেন্ট ও টেকনিক্যাল কেয়ার</option>
+                            <option value="কাস্টম ফুল-স্ট্যাক ওয়েবসাইট">কাস্টম ফুল-স্ট্যাক ওয়েবসাইট ও পোর্টাল</option>
+                            <option value="UI/UX ডিজাইন ও ব্র্যান্ডিং">UI/UX ডিজাইন ও ব্র্যান্ড আধুনিকায়ন</option>
                           </>
                         ) : (
                           <>
                             <option value="HealthTech & Doctor Booking">HealthTech & Doctor Appointment Portal</option>
                             <option value="Online Shop & E-Commerce">Online Shop & E-Commerce (bKash/Card)</option>
+                            <option value="Production VPS Deployment">Production VPS Deployment & Linux Cloud</option>
+                            <option value="Website Management & Care">Website Management & 24/7 Care</option>
                             <option value="Full-Stack Web Application">Full-Stack Web Application</option>
-                            <option value="Brand Website & Portfolio">Brand Website & Portfolio</option>
-                            <option value="Mobile App (iOS & Android)">Mobile App (iOS & Android)</option>
-                            <option value="AI Integration & Workflows">AI Integration & Workflows</option>
+                            <option value="Brand Website & UI/UX">Brand Website & UI/UX Redesign</option>
                           </>
                         )}
                       </select>
@@ -354,7 +368,7 @@ export function ContactSection() {
                     <select
                       value={formState.budget}
                       onChange={(e) => setFormState({ ...formState, budget: e.target.value })}
-                      className="w-full px-4 text-white text-xs h-12 rounded-xl bg-[#08080C] border border-white/[0.08] focus:border-[#FF3823]/60 focus:outline-none transition-colors cursor-pointer"
+                      className="w-full px-4 text-white text-xs h-11 sm:h-12 rounded-xl bg-[#08080C] border border-white/[0.08] focus:border-[#FF3823]/60 focus:outline-none transition-colors cursor-pointer"
                     >
                       {language === "bn" ? (
                         <>
@@ -380,11 +394,11 @@ export function ContactSection() {
                     </label>
                     <textarea
                       required
-                      rows={4}
+                      rows={3}
                       value={formState.message}
                       onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                       placeholder={t.messagePlaceholder}
-                      className="w-full p-4 text-white placeholder:text-neutral-500 text-xs rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-[#FF3823]/60 focus:outline-none transition-colors resize-none"
+                      className="w-full p-3.5 text-white placeholder:text-neutral-500 text-xs rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-[#FF3823]/60 focus:outline-none transition-colors resize-none"
                     />
                   </div>
 
@@ -399,7 +413,7 @@ export function ContactSection() {
                     whileTap={{ scale: 0.98 }}
                     disabled={loading}
                     type="submit"
-                    className="pill-btn-primary w-full py-4 text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer shadow-[0_10px_30px_rgba(255,56,35,0.45)]"
+                    className="pill-btn-primary w-full py-3.5 sm:py-4 text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer shadow-[0_10px_30px_rgba(255,56,35,0.45)]"
                   >
                     <span>{loading ? t.submittingBtn : t.submitBtn}</span>
                     <Send className="w-4 h-4" />
@@ -407,9 +421,9 @@ export function ContactSection() {
                 </form>
               )}
             </div>
-          </motion.div>
 
-        </div>
+          </div>
+        </motion.div>
 
       </div>
     </section>

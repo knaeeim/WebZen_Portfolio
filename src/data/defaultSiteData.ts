@@ -98,64 +98,64 @@ export const initialSiteData: SiteData = {
 
   services: [
     {
-      id: "srv-1",
-      title: "Full-Stack Web Platforms",
-      subtitle: "Ultra-fast & Scalable",
-      description: "Modern web applications built with Next.js and cloud primitives for sub-second load times.",
+      id: "srv-healthtech",
+      title: "HealthTech & Doctor Portals",
+      subtitle: "Specialized: Doctor Serial & Clinic Management",
+      description: "End-to-end digital architecture for doctors and hospitals: 3-step online serial booking, chamber scheduling, telemedicine video links, digital prescription records, and instant SMS alerts.",
+      icon: "Activity",
+      featured: true,
+      tags: ["HealthTech", "Doctor Booking", "Telemedicine", "SMS Gateway", "Next.js"],
+      deliverables: ["3-Step Patient Serial Booking", "Multi-Chamber Slot Scheduling", "Digital E-Prescription Portal", "Automated SMS Confirmations"]
+    },
+    {
+      id: "srv-ecommerce",
+      title: "E-Commerce & Online Storefronts",
+      subtitle: "Specialized: Automated Sales & BD Payments",
+      description: "High-converting online shops with automated bKash, Nagad, and Card checkout. Includes real-time inventory management, automated invoices, courier tracking, and admin dashboard.",
+      icon: "ShoppingBag",
+      featured: true,
+      tags: ["E-Commerce", "bKash / Nagad", "Online Shop", "Inventory Sync", "SSLCommerz"],
+      deliverables: ["bKash, Nagad & Card Instant Gateways", "Automated Invoice & SMS Delivery", "Stock & Inventory Management", "Abandoned Cart Recovery"]
+    },
+    {
+      id: "srv-vps",
+      title: "Production VPS Deployment",
+      subtitle: "Cloud Servers, Nginx & Zero Downtime",
+      description: "Robust Linux VPS deployment on DigitalOcean, Hetzner, AWS, or local cloud providers. We configure Ubuntu, Nginx reverse proxy, free auto-renew SSL, PM2 daemon, Docker, and GitHub Actions CI/CD.",
+      icon: "Server",
+      featured: true,
+      tags: ["VPS Deployment", "Ubuntu Linux", "Nginx", "Docker", "SSL / PM2", "CI/CD"],
+      deliverables: ["Linux VPS & Nginx Hardening", "Free Auto-Renew SSL (HTTPS)", "1-Click GitHub Actions CI/CD", "Firewall & Security Protocols"]
+    },
+    {
+      id: "srv-management",
+      title: "Website Management & Technical Care",
+      subtitle: "24/7 Monitoring, Daily Backups & Bug Fixes",
+      description: "Complete peace of mind for your digital presence. We take full responsibility for 24/7 uptime monitoring, daily offsite cloud backups, regular content updates, security patches, and instant bug fixes.",
+      icon: "ShieldCheck",
+      featured: true,
+      tags: ["Site Management", "24/7 Monitoring", "Daily Backups", "Content Updates", "Bug Fixes"],
+      deliverables: ["24/7 Real-Time Uptime Monitoring", "Automated Daily Cloud Backups", "Regular Content & Product Updates", "Priority Bug Fixes & Tech Support"]
+    },
+    {
+      id: "srv-fullstack",
+      title: "Full-Stack Web Engineering",
+      subtitle: "Ultra-Fast Next.js 16 & Bespoke Architecture",
+      description: "Modern enterprise-grade web platforms and custom portals built with Next.js, TypeScript, PostgreSQL, and Redis for sub-second page loads and infinite scalability.",
       icon: "CodeXml",
-      featured: true,
-      tags: ["Next.js", "TypeScript", "PostgreSQL", "Redis"],
-      deliverables: ["Custom Architecture", "Automated CI/CD", "Lighthouse 95+"]
+      featured: false,
+      tags: ["Next.js 16", "TypeScript", "PostgreSQL", "Tailwind CSS", "Redis"],
+      deliverables: ["Custom Full-Stack Architecture", "Sub-0.5s TTFB & Edge Routing", "Enterprise Database Design", "Lighthouse 95+ Performance"]
     },
     {
-      id: "srv-2",
-      title: "AI Workflows & Agents",
-      subtitle: "Intelligent Automation",
-      description: "Autonomous LLM agents and semantic search pipelines to streamline manual business operations.",
-      icon: "Bot",
-      featured: true,
-      tags: ["OpenAI", "Claude", "LangChain", "Vector DB"],
-      deliverables: ["AI Agents", "Automated Pipelines", "Smart Analytics"]
-    },
-    {
-      id: "srv-3",
-      title: "High-End UI/UX Design",
-      subtitle: "Engaging & Modern",
-      description: "Clean aesthetic systems, micro-interactions, dark mode finesse, and high-conversion layouts.",
+      id: "srv-uiux",
+      title: "Radiant UI/UX & Brand Modernization",
+      subtitle: "Glassmorphism, 60fps Motion & Aesthetics",
+      description: "Transform outdated websites into visually breathtaking, conversion-focused digital monuments with dark glass aesthetics, smooth micro-interactions, and tailored typography.",
       icon: "Palette",
       featured: false,
-      tags: ["Figma", "Design Systems", "Framer Motion"],
-      deliverables: ["Interactive Prototypes", "Design System", "A/B Testing"]
-    },
-    {
-      id: "srv-4",
-      title: "Enterprise Cloud & DevOps",
-      subtitle: "Zero-Downtime Scaling",
-      description: "Cloud-native infrastructure on AWS and Vercel with Docker and automated testing.",
-      icon: "CloudLightning",
-      featured: false,
-      tags: ["AWS", "Docker", "Kubernetes", "CI/CD"],
-      deliverables: ["Cloud Migration", "Auto-scaling", "Security Audits"]
-    },
-    {
-      id: "srv-5",
-      title: "FinTech & BD Payments",
-      subtitle: "bKash, Nagad & Cards",
-      description: "Seamless checkout experiences integrated with bKash, Nagad, SSLCommerz, and Stripe.",
-      icon: "BadgeDollarSign",
-      featured: true,
-      tags: ["bKash API", "Nagad", "SSLCommerz", "Stripe"],
-      deliverables: ["Payment Gateways", "Instant Webhooks", "Ledger Logs"]
-    },
-    {
-      id: "srv-6",
-      title: "Mobile App Development",
-      subtitle: "iOS & Android",
-      description: "High-performance hybrid mobile apps using React Native with offline sync support.",
-      icon: "Smartphone",
-      featured: false,
-      tags: ["React Native", "iOS / Android", "WebSockets"],
-      deliverables: ["App Store Launch", "Push Notifications", "Biometric Auth"]
+      tags: ["Figma", "Design Systems", "Framer Motion", "Conversion UX"],
+      deliverables: ["Pixel-Perfect Responsive Layouts", "Bespoke Design System & Tokens", "Fluid 60fps Micro-Animations", "Conversion Rate Optimization"]
     }
   ],
 

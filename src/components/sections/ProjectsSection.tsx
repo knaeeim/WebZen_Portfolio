@@ -144,7 +144,7 @@ export function ProjectsSection() {
             </div>
 
             {/* Massive Bold Headline */}
-            <h2 className={`text-4xl sm:text-5xl lg:text-[3.5rem] text-white font-black tracking-tight leading-[1.08] ${isBn ? "font-bangla-display" : "font-display"}`}>
+            <h2 className={`text-4xl sm:text-5xl lg:text-[3.5rem] text-white font-black tracking-tight leading-[1.18] sm:leading-[1.15] pb-1 ${isBn ? "font-bangla-display" : "font-display"}`}>
               {isBn ? (
                 <>
                   আর্কিটেকচার থেকে <br className="hidden sm:inline" />
