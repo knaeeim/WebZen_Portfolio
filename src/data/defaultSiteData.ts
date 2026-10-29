@@ -161,15 +161,28 @@ export const initialSiteData: SiteData = {
 
   projects: [
     {
-      id: "proj-devojyoti",
-      title: "DevojyotiDutta.com — হেলথটেক ও স্মার্ট সিরিয়াল পোর্টাল",
-      category: "HealthTech",
-      description: "আয়ুর্বেদাচার্য দেবজ্যোতি দত্তের অফিশিয়াল হেলথটেক পোর্টাল। সহজ ৩ ধাপে অনলাইন ডক্টর সিরিয়াল বুকিং, চেম্বার শিডিউলিং, ভিডিও কনসালটেশন, প্রেসক্রিপশন পোর্টাল, প্রকৃতি অ্যাসেসমেন্ট টুল এবং ডায়নামিক অ্যাডমিন ড্যাশবোর্ড।",
-      image: "/projects/devojyoti-dutta.jpg",
-      client: "দেবজ্যোতি দত্ত (B.A.M.S., NIA Jaipur)",
+      id: "proj-shankhapushpi",
+      title: "শঙ্খপুষ্পী (shankhapushpibd.com) — দ্বিভাষিক অর্গানিক ই-কমার্স ও ওমনিচ্যানেল ক্লাউড POS",
+      category: "Web Applications",
+      description: "দ্বিভাষিক (বাংলা ও ইংরেজি) অর্গানিক ই-কমার্স ও ওমনিচ্যানেল ক্লাউড POS প্ল্যাটফর্ম। অনলাইন স্টোর ও ফিজিক্যাল আউটলেটের সেন্ট্রাল ইনভেন্টরি পুলিং, কাস্টম ইন-হাউস অথেনটিকেশন, থার্মাল ও A4 রসিদ প্রিন্টিং, অটোমেটেড SMS গেটওয়ে এবং Steadfast কুরিয়ার সম্পূর্ণ অটোমেশন।",
+      image: "/projects/shankhapushpi.jpg",
+      client: "শঙ্খপুষ্পী অর্গানিকস (Shankhapushpi BD)",
       country: "ঢাকা, বাংলাদেশ",
-      liveUrl: "https://devojyotidutta.com",
-      tags: ["HealthTech", "Next.js", "সিরিয়াল বুকিং", "Tailwind CSS", "TypeScript"],
+      liveUrl: "https://shankhapushpibd.com/bn",
+      tags: ["Next.js 15", "PostgreSQL", "Cloud POS", "Steadfast API", "SMS Gateway", "In-House Auth"],
+      metrics: "লাইভ প্রোডাকশন • ওমনিচ্যানেল ক্লাউড POS",
+      featured: true
+    },
+    {
+      id: "proj-devojyoti",
+      title: "DevojyotiDutta.com — হেলথটেক ও অটোমেটেড ক্লিনিক্যাল অ্যাপয়েন্টমেন্ট ইঞ্জিন",
+      category: "HealthTech",
+      description: "জাতীয় আয়ুর্বেদ ইনস্টিটিউট (NIA) জয়পুরের আয়ুর্বেদাচার্য ডা. দেবজ্যোতি দত্তের অফিশিয়াল মেডিকেল প্ল্যাটফর্ম। ১৫ মিনিটের স্লট ভিত্তিক ডায়নামিক ক্যালেন্ডার, রেস-কন্ডিশন ফ্রি অ্যাটমিক লক, প্রকৃতি পরীক্ষা, ৩১-প্রশ্নের ক্লিনিক্যাল ইনটেক ফর্ম এবং ডক্টর এডমিন OS।",
+      image: "/projects/devojyoti-dutta.jpg",
+      client: "ডা. দেবজ্যোতি দত্ত (B.A.M.S., NIA Jaipur)",
+      country: "ঢাকা, বাংলাদেশ",
+      liveUrl: "https://www.devojyotidutta.com",
+      tags: ["HealthTech", "Next.js 15", "PostgreSQL", "Coolify VPS", "WhatsApp API", "SMS Gateway"],
       metrics: "১,২০০+ সফল সিরিয়াল বুকিং",
       featured: true
     },
@@ -177,38 +190,25 @@ export const initialSiteData: SiteData = {
       id: "proj-imranh",
       title: "imranh.me — একাডেমিক ও রিসার্চ পোর্টফোলিও",
       category: "Web Applications",
-      description: "ব্র্যাক ইনস্টিটিউট অব গভর্ন্যান্স অ্যান্ড ডেভেলপমেন্ট (BIGD)-এর রিসার্চ অ্যাসোসিয়েট ইমরান হোসেনের অফিশিয়াল একাডেমিক পোর্টফোলিও। আধুনিক রিসার্চ পেপার শোকেস, ডায়নামিক অ্যাবস্ট্রাক্ট রিডার, পলিসি ইভ্যালুয়েশন স্টাডিজ, ইন্টারঅ্যাক্টিভ ইকুইলিব্রিয়াম ওয়েভ ফিল্ড ক্যানভাস এবং এলিগ্যান্ট টাইপোগ্রাফি সমৃদ্ধ প্ল্যাটফর্ম।",
+      description: "ব্র্যাক ইনস্টিটিউট অব গভর্ন্যান্স অ্যান্ড ডেভেলপমেন্ট (BIGD)-এর অর্থনীতি ও পলিসি গবেষক ইমরান হোসেনের অফিশিয়াল একাডেমিক প্ল্যাটফর্ম। রিয়েল-টাইম ইন্টারেক্টিভ ক্যানভাস ফ্লুইড ওয়েভ ফিজিক্স, একাডেমিক রিসার্চ পেপার আর্কাইভ ও সাব-সেকেন্ড এজ ক্যাশিং।",
       image: "/projects/imranh-me.jpg",
       client: "ইমরান হোসেন (Research Associate, BIGD)",
       country: "ঢাকা, বাংলাদেশ",
       liveUrl: "https://www.imranh.me",
-      tags: ["Next.js", "রিসার্চ পোর্টফোলিও", "TypeScript", "Canvas Animation", "Tailwind CSS"],
+      tags: ["Next.js 16", "Turbopack", "TypeScript", "HTML5 Canvas Physics", "Academic SEO"],
       metrics: "১০০% লাইভ একাডেমিক শোকেস",
       featured: true
     },
     {
-      id: "proj-job-prep",
-      title: "Job Prep Arena — চাকরির পরীক্ষার গ্যামিফাইড প্ল্যাটফর্ম",
-      category: "AI & Automation",
-      description: "চাকরির পরীক্ষার প্রস্তুতিকে আকর্ষণীয় করতে গেম-বেসড ইন্টারঅ্যাক্টিভ কুইজ, লাইভ লিডারবোর্ড, টাইমড ব্যাটেল, স্কিল অ্যাসেসমেন্ট এবং পারফরম্যান্স অ্যানালিটিক্স প্ল্যাটফর্ম। আরও অত্যাধুনিক ফিচার ডেভেলপমেন্ট চলমান রয়েছে যা শীঘ্রই পূর্ণাঙ্গভাবে লাইভ করা হবে।",
-      image: "/projects/job-prep-gamified.jpg",
-      client: "WebZen EdTech In-House",
-      country: "ঢাকা, বাংলাদেশ",
-      liveUrl: "",
-      tags: ["Gamification", "Job Prep", "EdTech", "Next.js", "WebSockets"],
-      metrics: "কাজ চলমান — শীঘ্রই লাইভ হবে",
-      featured: true
-    },
-    {
       id: "proj-skillbridge",
-      title: "Mentora (SkillBridge) — অনলাইন টিউটর ও লার্নিং প্ল্যাটফর্ম",
+      title: "Skill-Bridge Enterprise (Mentora) — টিউটর মার্কেটপ্লেস ও লার্নিং প্ল্যাটফর্ম",
       category: "Web Applications",
-      description: "শিক্ষক ও শিক্ষার্থীদের সরাসরি কানেক্ট করার আধুনিক এডু-টেক প্ল্যাটফর্ম। বিষয়ভিত্তিক অভিজ্ঞ টিউটর ব্রাউজিং, ওয়ান-অন-ওয়ান সেশন শিডিউলিং, প্রোফাইল ভেরিফিকেশন, স্টুডেন্ট রিভিউ ও নির্বিঘ্ন বুকিং সুবিধা।",
+      description: "শিক্ষার্থী ও সার্টিফাইড শিক্ষকদের জন্য ফুল-স্ট্যাক টিউটরিং মার্কেটপ্লেস ও এডটেক ইকোসিস্টেম। মাল্টি-রোল RBAC ড্যাশবোর্ড, ডায়নামিক সেশন শিডিউলিং ইঞ্জিন, Prisma ORM এবং সিকিউর JWT অথেনটিকেশন।",
       image: "/projects/skillbridge-mentora.jpg",
       client: "SkillBridge EdTech",
       country: "ঢাকা, বাংলাদেশ",
       liveUrl: "https://skill-bridge-client-taupe.vercel.app/",
-      tags: ["Next.js", "Shadcn UI", "Tutor Matching", "Tailwind CSS", "TypeScript"],
+      tags: ["Next.js", "Express.js", "PostgreSQL", "Prisma ORM", "JWT Security", "REST API"],
       metrics: "১০০% লাইভ এডুটেক প্ল্যাটফর্ম",
       featured: true
     },
@@ -223,7 +223,7 @@ export const initialSiteData: SiteData = {
       liveUrl: "https://house-manager-56098.web.app/",
       tags: ["React", "Firebase", "Property Management", "Tailwind CSS", "Auth"],
       metrics: "লাইভ রেন্টাল ড্যাশবোর্ড",
-      featured: true
+      featured: false
     }
   ],
 

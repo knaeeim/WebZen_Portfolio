@@ -84,6 +84,34 @@ interface SiteContextType {
 
 const SiteContext = createContext<SiteContextType | null>(null);
 
+function sanitizeProjects(projectsList: any[]) {
+  if (!Array.isArray(projectsList)) return initialSiteData.projects;
+
+  // Exclude legacy demo IDs, placeholder CRM, in-progress dummy, or any entry referring to WebZen as a client project
+  const cleaned = projectsList.filter((p: any) => {
+    if (!p || !p.id) return false;
+    const isLegacy = ["proj-1", "proj-2", "proj-3", "proj-4", "proj-5", "proj-6", "proj-1792383462412", "proj-job-prep"].includes(p.id);
+    const isWebZenProject = (p.title && /webzen/i.test(p.title) && !/devojyoti|shankhapushpi|imran|skill/i.test(p.title)) || (p.liveUrl && /webzen\.com/i.test(p.liveUrl));
+    return !isLegacy && !isWebZenProject;
+  });
+
+  const existingIds = new Set(cleaned.map((p: any) => p.id));
+  const missingCore = initialSiteData.projects.filter((p) => !existingIds.has(p.id));
+
+  // Merge missing core projects with cleaned projects
+  const merged = [...missingCore, ...cleaned];
+
+  // Specific priority sort order for showcase
+  const sortOrder: Record<string, number> = {
+    "proj-shankhapushpi": 1,
+    "proj-devojyoti": 2,
+    "proj-imranh": 3,
+    "proj-skillbridge": 4,
+    "proj-house-manager": 5,
+  };
+  return merged.sort((a, b) => (sortOrder[a.id] || 99) - (sortOrder[b.id] || 99));
+}
+
 export function SiteProvider({ children }: { children: React.ReactNode }) {
   const [data, setData] = useState<SiteData>(initialSiteData);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -98,18 +126,8 @@ export function SiteProvider({ children }: { children: React.ReactNode }) {
       if (stored) {
         const parsed = JSON.parse(stored);
 
-        // Clean up legacy dummy demo projects if previously cached
-        let currentProjects = parsed.projects && Array.isArray(parsed.projects)
-          ? parsed.projects.filter((p: any) => !["proj-1", "proj-2", "proj-3", "proj-4", "proj-5", "proj-6"].includes(p.id))
-          : initialSiteData.projects;
-
-        const currentIds = new Set(currentProjects.map((p: any) => p.id));
-        const newRealProjects = initialSiteData.projects.filter(
-          (p) => !currentIds.has(p.id) && ["proj-job-prep", "proj-skillbridge", "proj-house-manager"].includes(p.id)
-        );
-        if (newRealProjects.length > 0) {
-          currentProjects = [...currentProjects, ...newRealProjects];
-        }
+        // Sanitize and clean up legacy dummy demo projects or accidental WebZen project entries
+        const currentProjects = sanitizeProjects(parsed.projects);
 
         setData({
           ...initialSiteData,
@@ -143,6 +161,9 @@ export function SiteProvider({ children }: { children: React.ReactNode }) {
       .then((res) => (res.ok ? res.json() : null))
       .then((serverData) => {
         if (serverData && serverData.companyName) {
+          if (serverData.projects) {
+            serverData.projects = sanitizeProjects(serverData.projects);
+          }
           setData(serverData);
           setIsCloudSynced(true);
           try {

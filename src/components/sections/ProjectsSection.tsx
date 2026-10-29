@@ -19,7 +19,8 @@ import {
   GraduationCap,
   Users,
   Building2,
-  FolderGit2
+  FolderGit2,
+  ShoppingBag
 } from "lucide-react";
 
 export function ProjectsSection() {
@@ -45,69 +46,69 @@ export function ProjectsSection() {
       step: "01",
       numberText: "01 •",
       side: "left",
-      annotationTitle: isBn ? "হেলথটেক ও ডক্টর বুকিং" : "HealthTech & Doctor Booking",
+      annotationTitle: isBn ? "ই-কমার্স ও ওমনিচ্যানেল POS" : "E-Commerce & Omnichannel POS",
       annotationDesc: isBn
-        ? "সহজ ৩ ধাপে অনলাইন ডক্টর সিরিয়াল বুকিং, চেম্বার শিডিউলিং ও ভিডিও কনসালটেশন পোর্টাল।"
-        : "Online doctor appointments, multi-chamber scheduling, and patient history portal.",
-      icon: Activity,
-      title: "DevojyotiDutta.com",
-      domain: "devojyotidutta.com",
-      status: isBn ? "১,২০০+ সফল সিরিয়াল বুকিং" : "1,200+ Bookings • Active",
-      badgeText: "HEALTHTECH",
-      client: isBn ? "দেবজ্যোতি দত্ত (B.A.M.S.)" : "Devojyoti Dutta (B.A.M.S.)",
-      liveUrl: "https://devojyotidutta.com",
-      tags: ["HealthTech", "Next.js", "Doctor Booking", "Admin CMS"]
+        ? "দ্বিভাষিক অর্গানিক শপ, সেন্ট্রাল ইনভেন্টরি পুলিং, ক্লাউড POS ও Steadfast কুরিয়ার অটোমেশন।"
+        : "Bilingual organic store, central inventory sync, cloud POS, and Steadfast courier automation.",
+      icon: ShoppingBag,
+      title: "ShankhapushpiBD.com",
+      domain: "shankhapushpibd.com",
+      status: isBn ? "লাইভ শপ ও ক্লাউড POS" : "Live Store • Cloud POS",
+      badgeText: "FLAGSHIP POS",
+      client: isBn ? "শঙ্খপুষ্পী অর্গানিকস" : "Shankhapushpi BD",
+      liveUrl: "https://shankhapushpibd.com/bn",
+      tags: ["Next.js 15", "PostgreSQL", "Cloud POS", "Steadfast API"]
     },
     {
       step: "02",
       numberText: "02 •",
       side: "right",
-      annotationTitle: isBn ? "একাডেমিক ও রিসার্চ প্ল্যাটফর্ম" : "Academic & Research Platform",
+      annotationTitle: isBn ? "হেলথটেক ও ডক্টর বুকিং OS" : "HealthTech & Doctor Booking OS",
       annotationDesc: isBn
-        ? "BIGD রিসার্চ অ্যাসোসিয়েটের অফিশিয়াল একাডেমিক পেপার ও ইন্টারঅ্যাক্টিভ অ্যানিমেশন শোকেস।"
-        : "Official academic research portal for BRAC Institute of Governance and Development (BIGD).",
-      icon: GraduationCap,
-      title: "imranh.me",
-      domain: "www.imranh.me",
-      status: isBn ? "১০০% লাইভ রিসার্চ পোর্টাল" : "100% Live Academic Showcase",
-      badgeText: "ACADEMIC",
-      client: isBn ? "ইমরান হোসেন (Research Associate, BIGD)" : "Imran Hossain (BIGD)",
-      liveUrl: "https://www.imranh.me",
-      tags: ["Research", "Next.js", "Wave Canvas", "BIGD"]
+        ? "সহজ ৩ ধাপে ডক্টর সিরিয়াল বুকিং, অ্যাটমিক স্লট লক, প্রকৃতি পরীক্ষা ও ডক্টর এডমিন OS।"
+        : "Online doctor appointments, atomic concurrency lock, clinical intake, and doctor admin OS.",
+      icon: Activity,
+      title: "DevojyotiDutta.com",
+      domain: "devojyotidutta.com",
+      status: isBn ? "১,২০০+ সফল সিরিয়াল বুকিং" : "1,200+ Bookings • Active",
+      badgeText: "HEALTHTECH",
+      client: isBn ? "ডা. দেবজ্যোতি দত্ত (B.A.M.S.)" : "Devojyoti Dutta (B.A.M.S.)",
+      liveUrl: "https://www.devojyotidutta.com",
+      tags: ["HealthTech", "Next.js 15", "PostgreSQL", "Coolify VPS"]
     },
     {
       step: "03",
       numberText: "03 •",
       side: "left",
-      annotationTitle: isBn ? "এডুটেক ও টিউটর মার্কেটপ্লেস" : "EdTech & Tutor Marketplace",
+      annotationTitle: isBn ? "একাডেমিক ও রিসার্চ প্ল্যাটফর্ম" : "Academic & Research Platform",
       annotationDesc: isBn
-        ? "অভিজ্ঞ টিউটর ব্রাউজিং, ওয়ান-অন-ওয়ান সেশন শিডিউলিং ও প্রোফাইল ভেরিফিকেশন প্ল্যাটফর্ম।"
-        : "Modern learning ecosystem connecting students with verified educators for 1-on-1 sessions.",
-      icon: Users,
-      title: "Mentora (SkillBridge)",
-      domain: "skillbridge.vercel.app",
-      status: isBn ? "লাইভ এডুটেক প্ল্যাটফর্ম" : "Live Marketplace • Verified",
-      badgeText: "EDUTECH",
-      client: isBn ? "SkillBridge EdTech" : "SkillBridge EdTech",
-      liveUrl: "https://skill-bridge-client-taupe.vercel.app/",
-      tags: ["Next.js", "Tutor Matching", "Shadcn UI", "TypeScript"]
+        ? "BIGD ব্র্যাক ইউনিভার্সিটির গবেষকের একাডেমিক পেপার ও ইন্টারঅ্যাক্টিভ ওয়েভ ক্যানভাস শোকেস।"
+        : "Official academic research portal for BIGD, BRAC University with real-time wave canvas.",
+      icon: GraduationCap,
+      title: "imranh.me",
+      domain: "www.imranh.me",
+      status: isBn ? "১০০% লাইভ রিসার্চ পোর্টাল" : "100% Live Academic Showcase",
+      badgeText: "ACADEMIC",
+      client: isBn ? "ইমরান হোসেন (BIGD, BRACU)" : "Imran Hossain (BIGD, BRACU)",
+      liveUrl: "https://www.imranh.me",
+      tags: ["Research", "Next.js 16", "Wave Canvas", "Academic SEO"]
     },
     {
       step: "04",
       numberText: "04 •",
       side: "right",
-      annotationTitle: isBn ? "স্মার্ট প্রপার্টি ও রেন্টাল SaaS" : "Smart Property & Rental SaaS",
+      annotationTitle: isBn ? "এডুটেক ও টিউটর মার্কেটপ্লেস" : "EdTech & Tutor Marketplace",
       annotationDesc: isBn
-        ? "ফ্ল্যাট লিস্টিং, রেন্ট কালেকশন ট্র্যাকিং, টেন্যান্ট ভেরিফিকেশন ও রিয়েল-টাইম অ্যাডমিন ড্যাশবোর্ড।"
-        : "Automated lease management, rent collection, tenant verification, and property analytics.",
-      icon: Building2,
-      title: "House Manager",
-      domain: "house-manager.web.app",
-      status: isBn ? "লাইভ রেন্টাল ড্যাশবোর্ড" : "Production SaaS • Active",
-      badgeText: "PROPERTY SAAS",
-      client: isBn ? "House Manager Solutions" : "House Manager Solutions",
-      liveUrl: "https://house-manager-56098.web.app/",
-      tags: ["Property SaaS", "React", "Firebase", "Real-time DB"]
+        ? "শিক্ষার্থী ও সার্টিফাইড টিউটরদের ওয়ান-অন-ওয়ান সেশন শিডিউলিং, RBAC ড্যাশবোর্ড ও সিকিউর পেমেন্ট।"
+        : "Tutor marketplace connecting students with verified educators for 1-on-1 scheduled sessions.",
+      icon: Users,
+      title: "Skill-Bridge Enterprise",
+      domain: "skillbridge.vercel.app",
+      status: isBn ? "লাইভ এডুটেক প্ল্যাটফর্ম" : "Live Marketplace • Verified",
+      badgeText: "EDUTECH",
+      client: isBn ? "SkillBridge EdTech" : "SkillBridge EdTech",
+      liveUrl: "https://skill-bridge-client-taupe.vercel.app/",
+      tags: ["Next.js", "Express.js", "PostgreSQL", "Prisma ORM"]
     }
   ];
 
@@ -192,10 +193,10 @@ export function ProjectsSection() {
               {/* 4 Checklist Items with Orange Checkmarks */}
               <div className="pt-4 space-y-2.5">
                 {[
-                  "DevojyotiDutta.com (1,200+ Bookings)",
-                  "ImranH.me (Academic & Research)",
-                  "Mentora (SkillBridge EdTech)",
-                  "House Manager (Rental SaaS)"
+                  isBn ? "শঙ্খপুষ্পী (shankhapushpibd.com — ক্লাউড POS)" : "ShankhapushpiBD.com (Omnichannel Cloud POS)",
+                  isBn ? "DevojyotiDutta.com (১,২০০+ সফল সিরিয়াল বুকিং)" : "DevojyotiDutta.com (1,200+ Clinical Bookings)",
+                  isBn ? "imranh.me (BIGD একাডেমিক ও রিসার্চ)" : "ImranH.me (BIGD Academic & Research)",
+                  isBn ? "Skill-Bridge Enterprise (এডটেক মার্কেটপ্লেস)" : "Skill-Bridge Enterprise (EdTech Ecosystem)"
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-center gap-2.5 text-xs text-neutral-300">
                     <CheckCircle2 className="w-4 h-4 text-[#FF6A00] shrink-0" />
@@ -252,7 +253,7 @@ export function ProjectsSection() {
                 <div className="p-5 rounded-2xl glass-radiant border border-white/[0.1] hover:border-[#FF6A00]/40 transition-all duration-300 shadow-[0_12px_32px_rgba(0,0,0,0.85)]">
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 rounded-full border border-[#FF6A00]/40 bg-[#FF6A00]/10 flex items-center justify-center shrink-0 shadow-[0_0_16px_rgba(255,106,0,0.25)]">
-                      <Activity className="w-6 h-6 text-[#FF6A00]" />
+                      <ShoppingBag className="w-6 h-6 text-[#FF6A00]" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
@@ -342,7 +343,7 @@ export function ProjectsSection() {
                 <div className="p-5 rounded-2xl glass-radiant border border-white/[0.1] hover:border-[#FF6A00]/40 transition-all duration-300 shadow-[0_12px_32px_rgba(0,0,0,0.85)]">
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 rounded-full border border-[#FF6A00]/40 bg-[#FF6A00]/10 flex items-center justify-center shrink-0 shadow-[0_0_16px_rgba(255,106,0,0.25)]">
-                      <GraduationCap className="w-6 h-6 text-[#FF6A00]" />
+                      <Activity className="w-6 h-6 text-[#FF6A00]" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
@@ -476,7 +477,7 @@ export function ProjectsSection() {
                 <div className="p-5 rounded-2xl glass-radiant border border-white/[0.1] hover:border-[#FF6A00]/40 transition-all duration-300 shadow-[0_12px_32px_rgba(0,0,0,0.85)]">
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 rounded-full border border-[#FF6A00]/40 bg-[#FF6A00]/10 flex items-center justify-center shrink-0 shadow-[0_0_16px_rgba(255,106,0,0.25)]">
-                      <Users className="w-6 h-6 text-[#FF6A00]" />
+                      <GraduationCap className="w-6 h-6 text-[#FF6A00]" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
@@ -566,7 +567,7 @@ export function ProjectsSection() {
                 <div className="p-5 rounded-2xl glass-radiant border border-white/[0.1] hover:border-[#FF6A00]/40 transition-all duration-300 shadow-[0_12px_32px_rgba(0,0,0,0.85)]">
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 rounded-full border border-[#FF6A00]/40 bg-[#FF6A00]/10 flex items-center justify-center shrink-0 shadow-[0_0_16px_rgba(255,106,0,0.25)]">
-                      <Building2 className="w-6 h-6 text-[#FF6A00]" />
+                      <Users className="w-6 h-6 text-[#FF6A00]" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
